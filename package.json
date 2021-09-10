@@ -1,0 +1,45 @@
+{
+  "name": "lauvinko",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "./node_modules/webpack-cli/bin/cli.js --mode development ./src/index.tsx",
+    "build": "./node_modules/webpack-cli/bin/cli.js --mode production ./src/index.tsx "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cstuartroe/lauvinko.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cstuartroe/lauvinko/issues"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "@types/node": "^15.0.0",
+    "@types/react": "^17.0.4",
+    "@types/react-dom": "^17.0.3",
+    "@types/react-router-dom": "^5.1.7",
+    "css-loader": "^5.2.4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0",
+    "sass": "^1.32.11",
+    "sass-loader": "^11.0.1",
+    "style-loader": "^2.0.0",
+    "ts-loader": "^9.1.1",
+    "typescript": "^4.2.4",
+    "webpack": "^5.36.0",
+    "webpack-cli": "^4.6.0"
+  }
+}

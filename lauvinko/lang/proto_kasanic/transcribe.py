@@ -1,4 +1,4 @@
-from lauvinko.lang.pk_phonology import (
+from lauvinko.lang.proto_kasanic.phonology import (
     MannerOfArticulation,
     PlaceOfArticulation,
     ProtoKasanicOnset,

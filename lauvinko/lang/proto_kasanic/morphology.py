@@ -2,8 +2,9 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import List, Optional
 import regex
-from .semantics import PrimaryTenseAspect, KasanicStemCategory
-from .pk_phonology import (
+from lauvinko.lang.shared.semantics import PrimaryTenseAspect, KasanicStemCategory
+from lauvinko.lang.shared.morphology import Morpheme, Lemma, Word
+from .phonology import (
     ProtoKasanicOnset,
     VowelFrontness,
     ProtoKasanicVowel,
@@ -14,7 +15,7 @@ from .pk_phonology import (
 
 
 @dataclass
-class ProtoKasanicMorpheme:
+class ProtoKasanicMorpheme(Morpheme):
     syllables: List[ProtoKasanicSyllable]
     end_mutation: Optional[ProtoKasanicMutation]
 
@@ -23,9 +24,10 @@ class ProtoKasanicMorpheme:
             if syllable.vowel.frontness is VowelFrontness.UNDERSPECIFIED:
                 raise ProtoKasanicSyllable.InvalidSyllable(f"Non-initial vowel is underspecified: {self.syllables}")
 
-    def surface_form(self, stress_position=0):
+    def surface_form(self, stress_position=0) -> PKSurfaceForm:
         sf = ProtoKasanicMorpheme.join([self], 0)
-        sf.stress_position = stress_position
+        if stress_position != 0:
+            return PKSurfaceForm(syllables=sf.syllables, stress_position=stress_position)
         return sf
 
     class InvalidTranscription(ValueError):
@@ -71,31 +73,21 @@ class ProtoKasanicMorpheme:
         # I need a separate function
         return syllables, mutation
 
-    @classmethod
-    def from_informal_transcription(cls, transcription: str):
-        return ProtoKasanicMorpheme(*cls._from_informal_transcription(transcription))
-
-    class StressedZeroMorpheme(ValueError):
-        pass
-
     @staticmethod
-    def join(morphemes: List["ProtoKasanicMorpheme"], stressed: int) -> PKSurfaceForm:
+    def join(morphemes: List["ProtoKasanicMorpheme"], stressed: Optional[int]) -> PKSurfaceForm:
         syllables = []
         stress_position = None
         active_mutation = None
 
         for i, morpheme in enumerate(morphemes):
-            if len(morpheme.syllables) == 0:
-                if stressed == i:
-                    raise ProtoKasanicMorpheme.StressedZeroMorpheme
+            if stressed == i:
+                stress_position = len(syllables)
 
+            if len(morpheme.syllables) == 0:
                 # Zero morphemes may still apply a mutation, which overrides any previous mutation
                 active_mutation = morpheme.end_mutation or active_mutation
 
                 continue
-
-            if stressed == i:
-                stress_position = len(syllables)
 
             syllables_to_add = [*morpheme.syllables]
             if active_mutation is not None:
@@ -159,32 +151,23 @@ class ProtoKasanicStem:
     main_morpheme: ProtoKasanicMorpheme
 
 
-class ProtoKasanicLemma:
-    def __init__(
-            self,
-            category: KasanicStemCategory,
-            generic_morph: ProtoKasanicMorpheme,
-            definition: str,
-            irregular_forms: dict[PrimaryTenseAspect, ProtoKasanicStem] = None
-    ):
-        if PrimaryTenseAspect.GENERAL in category.primary_aspects:
-            if generic_morph.syllables[0].vowel.frontness is VowelFrontness.UNDERSPECIFIED:
-                raise AblautMismatch(f"{category} generic form must not include ablaut vowel: {generic_morph}")
+@dataclass
+class ProtoKasanicLemma(Lemma):
+    category: KasanicStemCategory
+    generic_morph: ProtoKasanicMorpheme
+    definition: str
+    forms: dict[PrimaryTenseAspect, ProtoKasanicStem]
+
+    def __post_init__(self):
+        if PrimaryTenseAspect.GENERAL in self.category.primary_aspects:
+            if self.generic_morph.syllables[0].vowel.frontness is VowelFrontness.UNDERSPECIFIED:
+                raise AblautMismatch(f"{self.category} generic form must not include ablaut vowel: {self.generic_morph}")
 
         else:
-            if generic_morph.syllables[0].vowel.frontness is not VowelFrontness.UNDERSPECIFIED:
-                raise AblautMismatch(f"{category} generic form must include ablaut vowel: {generic_morph}")
+            if self.generic_morph.syllables[0].vowel.frontness is not VowelFrontness.UNDERSPECIFIED:
+                raise AblautMismatch(f"{self.category} generic form must include ablaut vowel: {self.generic_morph}")
 
-        self.category = category
-        self.generic_morph = generic_morph
-        self.definition = definition
-        self.forms: dict[PrimaryTenseAspect, ProtoKasanicStem] = irregular_forms or {}
-
-    def form(self, primary_ta: PrimaryTenseAspect) -> ProtoKasanicStem:
-        if primary_ta not in self.forms:
-            self.forms[primary_ta] = self._generate_form(primary_ta)
-
-        return self.forms[primary_ta]
+        self.forms = self.forms or {}
 
     def _generate_form(self, primary_ta: PrimaryTenseAspect) -> ProtoKasanicStem:
 
@@ -208,7 +191,7 @@ class ProtoKasanicLemma:
 
         return ProtoKasanicStem(primary_prefix=prefix, main_morpheme=main)
 
-    def citation_form(self):
+    def citation_form(self) -> ProtoKasanicStem:
         return self.form(self.category.citation_form)
 
 
@@ -260,17 +243,17 @@ class PKTopicCasePrefix(PKPrefix):
 
 
 @dataclass
-class PKWord:
-    stem: ProtoKasanicStem
+class PKWord(Word):
     modal_prefixes: List[PKModalPrefix]
     tertiary_aspect: Optional[PKTertiaryAspectPrefix]
     topic_agreement: Optional[PKTopicAgreementPrefix]
     topic_case: Optional[PKTopicCasePrefix]
+    stem: ProtoKasanicStem
 
     class MorphemeOrderError(ValueError):
         pass
 
-    def morphemes(self):
+    def morphemes(self) -> List[ProtoKasanicMorpheme]:
         out = [*self.modal_prefixes]
 
         for m in self.tertiary_aspect, self.topic_agreement, self.topic_agreement, self.stem.primary_prefix:
@@ -282,14 +265,13 @@ class PKWord:
         return out
 
     def surface_form(self):
-        ms = self.morphemes()
         return ProtoKasanicMorpheme.join(
-            ms,
-            len(ms) - 1,
+            self.morphemes(),
+            len(self.morphemes()) - 1,
         )
 
     @staticmethod
-    def bucket_prefixes(prefixes: List[PKPrefix]):
+    def bucket_prefixes(prefixes: List[PKPrefix]) -> dict:
         modal_prefixes: List[PKModalPrefix] = []
         tertiary_aspect: Optional[PKTertiaryAspectPrefix] = None
         topic_agreement: Optional[PKTopicAgreementPrefix] = None

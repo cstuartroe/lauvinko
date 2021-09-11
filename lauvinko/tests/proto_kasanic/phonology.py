@@ -1,14 +1,16 @@
 import unittest
 
-from lauvinko.lang.pk_phonology import (
+from lauvinko.lang.proto_kasanic.phonology import (
     ProtoKasanicOnset,
     ProtoKasanicVowel,
-    ProtoKasanicMutation, ProtoKasanicSyllable,
+    ProtoKasanicMutation,
+    ProtoKasanicSyllable,
+    PKSurfaceForm,
 )
-from lauvinko.lang.pk_morphology import pkm, ProtoKasanicMorpheme
+from lauvinko.lang.proto_kasanic.morphology import pkm, ProtoKasanicMorpheme
 
 
-class ProtoKasanicTests(unittest.TestCase):
+class ProtoKasanicPhonologyTests(unittest.TestCase):
     def test_phonemes(self):
         m = pkm("siruwai+N")
         self.assertIs(m.syllables[1].onset, ProtoKasanicOnset.R)
@@ -42,12 +44,12 @@ class ProtoKasanicTests(unittest.TestCase):
 
     def test_zero_morpheme(self):
         m = pkm("")
-        assert m.syllables == []
-        assert m.end_mutation is None
+        self.assertEqual(m.syllables, [])
+        self.assertIs(m.end_mutation, None)
 
         m = pkm("+F")
-        assert m.syllables == []
-        assert m.end_mutation is ProtoKasanicMutation.FORTITION
+        self.assertEqual(m.syllables, [])
+        self.assertIs(m.end_mutation, ProtoKasanicMutation.FORTITION)
 
     def test_invalid_transcriptions(self):
         invalids = ["mmo", "mii", "ssu", "roi", "laala", "va", "umti", "ba", "da", "ga", "anwa", "ap"]
@@ -77,6 +79,23 @@ class ProtoKasanicTests(unittest.TestCase):
         )
 
         self.assertEqual(sf, pkm("iso'aro").surface_form(2))
+
+        sf = ProtoKasanicMorpheme.join(
+            [pkm("yo"), pkm("yo")],
+            None,
+        )
+
+        self.assertEqual(sf, pkm("yoyo").surface_form(None))
+
+    def test_invalid_stress(self):
+        with self.assertRaises(PKSurfaceForm.InvalidStress):
+            pkm("a").surface_form(1)
+
+        with self.assertRaises(PKSurfaceForm.InvalidStress):
+            pkm("").surface_form(0)
+
+        with self.assertRaises(PKSurfaceForm.InvalidStress):
+            pkm("").surface_form(None)
 
     def test_mutations(self):
         mutations = [
@@ -110,3 +129,12 @@ class ProtoKasanicTests(unittest.TestCase):
 
             self.assertEqual(sf, pkm(joined).surface_form())
 
+    def test_phonemic_transcription(self):
+        m = pkm("mpaari'okka")
+        self.assertEqual(m.surface_form().broad_transcription(), "ˈᵐpa.ri.o.ˀkə")
+
+        m = pkm("ncewi")
+        self.assertEqual(m.surface_form(1).broad_transcription(), "ᶮt͡ɕe.ˈwi")
+
+        m = pkm("tti")
+        self.assertEqual(m.surface_form(None).broad_transcription(), "ˀti")

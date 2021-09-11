@@ -1,7 +1,7 @@
 import unittest
 
-from lauvinko.lang.pk_morphology import pkm
-from lauvinko.lang.transcribe import transcribe, falavay
+from lauvinko.lang.proto_kasanic.morphology import pkm
+from lauvinko.lang.proto_kasanic.transcribe import transcribe, falavay
 
 
 TRANSCRIPTIONS = [

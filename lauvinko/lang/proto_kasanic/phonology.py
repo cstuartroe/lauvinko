@@ -1,35 +1,15 @@
 from dataclasses import dataclass
 from enum import Enum
 from typing import Optional, List
-
-
-@dataclass
-class Phoneme:
-    ipa: str
-
-
-class PlaceOfArticulation(str, Enum):
-    LABIAL = "labial"
-    ALVEOLAR = "alveolar"
-    PALATAL = "palatal"
-    VELAR = "velar"
-    LABIOVELAR = "labiovelar"
-    GLOTTAL = "glottal"
-
-
-class MannerOfArticulation(str, Enum):
-    NASAL = "nasal"
-    PLAIN_STOP = "stop"
-    PRENASALIZED_STOP = "prenasalized stop"
-    PREGLOTTALIZED_STOP = "preglottalized stop"
-    FRICATIVE = "fricative"
-    APPROXIMANT = "approximant"
-
-
-@dataclass
-class Consonant(Phoneme):
-    poa: PlaceOfArticulation
-    moa: MannerOfArticulation
+from lauvinko.lang.shared.phonology import (
+    MannerOfArticulation,
+    PlaceOfArticulation,
+    Consonant,
+    VowelFrontness,
+    Vowel,
+    Syllable,
+    SurfaceForm,
+)
 
 
 class ProtoKasanicOnset(Consonant, Enum):
@@ -64,39 +44,13 @@ class ProtoKasanicOnset(Consonant, Enum):
     Y = ("j", PlaceOfArticulation.PALATAL, MannerOfArticulation.APPROXIMANT)
     W = ("w", PlaceOfArticulation.LABIOVELAR, MannerOfArticulation.APPROXIMANT)
 
-    @classmethod
-    def find_by(cls, poa: PlaceOfArticulation, moa: MannerOfArticulation) -> Optional["ProtoKasanicOnset"]:
-        for c in list(cls):
-            if c.poa == poa and c.moa == moa:
-                return c
-
-        return None
-
-    def __hash__(self):
-        return hash(f"{self.ipa}{self.poa}{self.moa}")
-
-
-class VowelFrontness(str, Enum):
-    FRONT = "front"
-    MID = "mid"
-    BACK = "back"
-    FRONTING = "fronting"
-    BACKING = "backing"
-    UNDERSPECIFIED = "underspecified"
-
-
-@dataclass
-class Vowel(Phoneme):
-    low: bool
-    frontness: VowelFrontness
-
 
 class ProtoKasanicVowel(Vowel, Enum):
     AA = ('a', True, VowelFrontness.MID)
     E = ('e', True, VowelFrontness.FRONT)
     O = ('o', True, VowelFrontness.BACK)
 
-    A = ('ɘ', False, VowelFrontness.MID)
+    A = ('ə', False, VowelFrontness.MID)
     I = ('i', False, VowelFrontness.FRONT)
     U = ('u', False, VowelFrontness.BACK)
 
@@ -106,20 +60,9 @@ class ProtoKasanicVowel(Vowel, Enum):
     LOW = ('A', True, VowelFrontness.UNDERSPECIFIED)
     HIGH = ('I', False, VowelFrontness.UNDERSPECIFIED)
 
-    @classmethod
-    def shift_height(cls, vowel: "ProtoKasanicVowel", low: bool) -> "ProtoKasanicVowel":
-        for v in list(cls):
-            if v.low == low and v.frontness == vowel.frontness:
-                return v
-
-        return vowel
-
-    def __hash__(self):
-        return hash(f"{self.ipa}{self.low}{self.frontness}")
-
 
 @dataclass
-class ProtoKasanicSyllable:
+class ProtoKasanicSyllable(Syllable):
     onset: Optional[ProtoKasanicOnset]
     vowel: ProtoKasanicVowel
 
@@ -169,6 +112,30 @@ class ProtoKasanicMutation(Enum):
 
 
 @dataclass
-class PKSurfaceForm:
+class PKSurfaceForm(SurfaceForm):
     syllables: List[ProtoKasanicSyllable]
-    stress_position: int
+    stress_position: Optional[int]
+
+    class InvalidStress(ValueError):
+        pass
+
+    def __post_init__(self):
+        if self.stress_position is not None and self.stress_position >= len(self.syllables):
+            raise PKSurfaceForm.InvalidStress
+
+        for syllable in self.syllables:
+            if syllable.vowel.frontness is VowelFrontness.UNDERSPECIFIED:
+                raise ProtoKasanicSyllable.InvalidSyllable(f"Surface form cannot have underspecified vowel")
+
+    def broad_transcription(self) -> str:
+        syllables_ipa = []
+
+        for i, syllable in enumerate(self.syllables):
+            stress = "ˈ" if i == self.stress_position else ''
+
+            syllables_ipa.append(f"{stress}{getattr(syllable.onset, 'ipa', '')}{syllable.vowel.ipa}")
+
+        return '.'.join(syllables_ipa)
+
+    def narrow_transcription(self) -> str:
+        return self.broad_transcription()  # This is a protolang, who needs narrow transcription lol

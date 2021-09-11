@@ -114,6 +114,9 @@ class ProtoKasanicVowel(Vowel, Enum):
 
         return vowel
 
+    def __hash__(self):
+        return hash(f"{self.ipa}{self.low}{self.frontness}")
+
 
 @dataclass
 class ProtoKasanicSyllable:

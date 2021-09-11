@@ -70,6 +70,14 @@ class ProtoKasanicTests(unittest.TestCase):
         with self.assertRaises(ProtoKasanicSyllable.InvalidSyllable):
             pkm("war@")
 
+    def test_surface_forms(self):
+        sf = ProtoKasanicMorpheme.join(
+            [pkm("iso"), pkm("aro")],
+            1,
+        )
+
+        self.assertEqual(sf, pkm("iso'aro").surface_form(2))
+
     def test_mutations(self):
         mutations = [
             ("a+F", "sa",   "aca"),

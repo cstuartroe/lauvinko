@@ -24,7 +24,9 @@ class ProtoKasanicMorpheme:
                 raise ProtoKasanicSyllable.InvalidSyllable(f"Non-initial vowel is underspecified: {self.syllables}")
 
     def surface_form(self, stress_position=0):
-        return ProtoKasanicMorpheme.join([self], stress_position)
+        sf = ProtoKasanicMorpheme.join([self], 0)
+        sf.stress_position = stress_position
+        return sf
 
     class InvalidTranscription(ValueError):
         pass

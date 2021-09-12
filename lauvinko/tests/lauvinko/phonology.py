@@ -1,7 +1,7 @@
 import unittest
 
 from lauvinko.lang.proto_kasanic.phonology import ProtoKasanicOnset, ProtoKasanicMutation
-from lauvinko.lang.lauvinko.morphology import LauvinkoMorpheme
+from lauvinko.lang.lauvinko.morpheme import LauvinkoMorpheme
 
 
 lm = LauvinkoMorpheme.from_informal_transcription

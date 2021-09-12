@@ -190,6 +190,14 @@ class ProtoKasanicLemma(Lemma):
 
         self.forms = self.forms or {}
 
+    def form(self, primary_ta: PrimaryTenseAspect):
+        self.check_form_allowed(primary_ta)
+
+        if primary_ta not in self.forms:
+            self.forms[primary_ta] = self._generate_form(primary_ta)
+
+        return self.forms[primary_ta]
+
     def _generate_form(self, primary_ta: PrimaryTenseAspect) -> ProtoKasanicStem:
 
         generic_first_syllable = self.generic_morph.syllables[0]

@@ -53,15 +53,10 @@ class Lemma:
         for primary_ta in self.forms.keys():
             self.check_form_allowed(primary_ta)
 
-    def form(self, primary_ta: PrimaryTenseAspect):
-        self.check_form_allowed(primary_ta)
+    def form(self, *args, **kwargs):
+        raise NotImplementedError
 
-        if primary_ta not in self.forms:
-            self.forms[primary_ta] = self._generate_form(primary_ta)
-
-        return self.forms[primary_ta]
-
-    def _generate_form(self, primary_ta: PrimaryTenseAspect):
+    def _generate_form(self, *args, **kwargs):
         raise NotImplementedError
 
     def citation_form(self):

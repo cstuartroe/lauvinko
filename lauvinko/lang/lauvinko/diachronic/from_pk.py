@@ -1,6 +1,11 @@
+from dataclasses import dataclass
+from lauvinko.lang.proto_kasanic.morphology import ProtoKasanicLemma
+from lauvinko.lang.shared.semantics import PrimaryTenseAspect
 from lauvinko.lang.shared.phonology import MannerOfArticulation, PlaceOfArticulation
-from lauvinko.lang.proto_kasanic.phonology import ProtoKasanicOnset
-from lauvinko.lang.lauvinko.phonology import LauvinkoConsonant
+from lauvinko.lang.proto_kasanic.phonology import ProtoKasanicOnset, PKSurfaceForm
+from lauvinko.lang.proto_kasanic.morphology import MUTATION_NOTATION
+from lauvinko.lang.lauvinko.phonology import LauvinkoConsonant, LauvinkoVowel, LauvinkoSyllable, LauvinkoSurfaceForm
+from .base import LauvinkoLemmaOrigin
 
 
 def pk_to_lv_onset(pk_onset: ProtoKasanicOnset):
@@ -35,3 +40,12 @@ PK_TO_LV_ONSETS = {
     for c in ProtoKasanicOnset
     if c is not ProtoKasanicOnset.NC
 }
+
+
+def pk_to_lv(pk_sf: PKSurfaceForm, augment: bool) -> LauvinkoSurfaceForm:
+    pass
+
+
+@dataclass
+class ProtoKasanicOrigin(LauvinkoLemmaOrigin):
+    derived_from: ProtoKasanicLemma

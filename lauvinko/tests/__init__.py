@@ -1,2 +1,3 @@
 from .proto_kasanic.phonology import ProtoKasanicPhonologyTests
-from lauvinko.tests.proto_kasanic.transcribe import TranscriptionTests
+from .proto_kasanic.transcribe import TranscriptionTests
+from .proto_kasanic.morphology import ProtoKasanicMorphologyTests

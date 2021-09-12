@@ -11,7 +11,7 @@ class PrimaryTenseAspect(Enum):
     PERFECTIVE = "perfective"
     INCEPTIVE = "inceptive"
     FREQUENTATIVE_NONPAST = "nonpast frequentative"
-    FREQUENTATIVE_PAST = "nonpast frequentative"
+    FREQUENTATIVE_PAST = "past frequentative"
 
 
 class StemCategory:

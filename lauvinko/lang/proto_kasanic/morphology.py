@@ -83,13 +83,18 @@ class ProtoKasanicMorpheme(Morpheme):
             if stressed == i:
                 stress_position = len(syllables)
 
-            if len(morpheme.syllables) == 0:
+            if morpheme is REDUPLICATOR:
+                syllables_to_add = morphemes[i + 1].syllables[:1]
+
+            elif len(morpheme.syllables) == 0 and morpheme:
                 # Zero morphemes may still apply a mutation, which overrides any previous mutation
                 active_mutation = morpheme.end_mutation or active_mutation
 
                 continue
 
-            syllables_to_add = [*morpheme.syllables]
+            else:
+                syllables_to_add = [*morpheme.syllables]
+
             if active_mutation is not None:
                 syllables_to_add[0] = ProtoKasanicSyllable(
                     onset=active_mutation.mutate(syllables_to_add[0].onset),
@@ -150,6 +155,15 @@ class ProtoKasanicStem:
     primary_prefix: Optional[ProtoKasanicMorpheme]
     main_morpheme: ProtoKasanicMorpheme
 
+    def morphemes(self) -> List[ProtoKasanicMorpheme]:
+        if self.primary_prefix is None:
+            return [self.main_morpheme]
+        else:
+            return [self.primary_prefix, self.main_morpheme]
+
+    def surface_form(self) -> PKSurfaceForm:
+        return ProtoKasanicMorpheme.join(self.morphemes(), int(self.primary_prefix is not None))
+
 
 @dataclass
 class ProtoKasanicLemma(Lemma):
@@ -159,6 +173,8 @@ class ProtoKasanicLemma(Lemma):
     forms: dict[PrimaryTenseAspect, ProtoKasanicStem]
 
     def __post_init__(self):
+        super().__post_init__()
+
         if PrimaryTenseAspect.GENERAL in self.category.primary_aspects:
             if self.generic_morph.syllables[0].vowel.frontness is VowelFrontness.UNDERSPECIFIED:
                 raise AblautMismatch(f"{self.category} generic form must not include ablaut vowel: {self.generic_morph}")
@@ -198,7 +214,7 @@ class ProtoKasanicLemma(Lemma):
 class PKPrefix(ProtoKasanicMorpheme, Enum):
     def gloss_keyname(self) -> str:
         if self.name.endswith("_"):
-            return f"${self[:-1].lower()}$"
+            return f"${self.name[:-1].lower()}$"
         else:
             return self.name.lower()
 
@@ -226,13 +242,13 @@ class PKTertiaryAspectPrefix(PKPrefix):
 
 class PKTopicAgreementPrefix(PKPrefix):
     T1S_ = _pkm("na")
-    T1P = _pkm("ta")
-    T2S = _pkm("i+F")
-    T2P = _pkm("e+F")
-    T3AS = _pkm("")
-    T3AP = _pkm("aa")
-    T3IS = _pkm("sa")
-    T3IP = _pkm("aasa")
+    T1P_ = _pkm("ta")
+    T2S_ = _pkm("i+F")
+    T2P_ = _pkm("e+F")
+    T3AS_ = _pkm("")
+    T3AP_ = _pkm("aa")
+    T3IS_ = _pkm("sa")
+    T3IP_ = _pkm("aasa")
 
 
 class PKTopicCasePrefix(PKPrefix):
@@ -256,11 +272,11 @@ class PKWord(Word):
     def morphemes(self) -> List[ProtoKasanicMorpheme]:
         out = [*self.modal_prefixes]
 
-        for m in self.tertiary_aspect, self.topic_agreement, self.topic_agreement, self.stem.primary_prefix:
+        for m in self.tertiary_aspect, self.topic_agreement, self.topic_agreement:
             if m is not None:
                 out.append(m)
 
-        out.append(self.stem.main_morpheme)
+        out += self.stem.morphemes()
 
         return out
 

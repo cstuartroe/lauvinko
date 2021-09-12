@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import List, Optional
+from typing import List, Optional, Any
 from lauvinko.lang.shared.semantics import PrimaryTenseAspect, KasanicStemCategory
 from .phonology import Syllable, SurfaceForm
 
@@ -40,9 +40,22 @@ class Lemma:
     """
     definition: str
     category: KasanicStemCategory
-    forms: dict
+    forms: dict[PrimaryTenseAspect, Any]  # Values are stems in PK, morphemes in Lauvinko
+
+    class NonexistentForm(ValueError):
+        pass
+
+    def check_form_allowed(self, primary_ta: PrimaryTenseAspect):
+        if primary_ta not in self.category.primary_aspects:
+            raise self.NonexistentForm(f"{self.category.title} stem has no {primary_ta.value} form")
+
+    def __post_init__(self):
+        for primary_ta in self.forms.keys():
+            self.check_form_allowed(primary_ta)
 
     def form(self, primary_ta: PrimaryTenseAspect):
+        self.check_form_allowed(primary_ta)
+
         if primary_ta not in self.forms:
             self.forms[primary_ta] = self._generate_form(primary_ta)
 

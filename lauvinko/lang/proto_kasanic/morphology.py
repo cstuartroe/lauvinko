@@ -14,6 +14,18 @@ from .phonology import (
 )
 
 
+MUTATION_NOTATION = {
+    "+F": ProtoKasanicMutation.FORTITION,
+    "+L": ProtoKasanicMutation.LENITION,
+    "+N": ProtoKasanicMutation.NASALIZATION,
+}
+
+UNDERSPECIFIED_VOWELS = {
+    "@": ProtoKasanicVowel.LOW,
+    "~": ProtoKasanicVowel.HIGH,
+}
+
+
 @dataclass
 class ProtoKasanicMorpheme(Morpheme):
     syllables: List[ProtoKasanicSyllable]
@@ -33,6 +45,10 @@ class ProtoKasanicMorpheme(Morpheme):
     class InvalidTranscription(ValueError):
         pass
 
+    @classmethod
+    def from_informal_transcription(cls, transcription: str) -> "ProtoKasanicMorpheme":
+        return cls(*cls._from_informal_transcription(transcription))
+
     @staticmethod
     def _from_informal_transcription(transcription: str):
         m = regex.fullmatch("(([mngptckshryw']{0,3})([aeiou@~]{1,2}))*(\\+[FLN])?", transcription)
@@ -50,11 +66,6 @@ class ProtoKasanicMorpheme(Morpheme):
                 except KeyError:
                     raise ProtoKasanicMorpheme.InvalidTranscription("Invalid onset: " + o_str)
 
-            UNDERSPECIFIED_VOWELS = {
-                "@": ProtoKasanicVowel.LOW,
-                "~": ProtoKasanicVowel.HIGH,
-            }
-
             try:
                 vowel = UNDERSPECIFIED_VOWELS.get(v_str) or ProtoKasanicVowel[v_str.upper()]
             except KeyError:
@@ -62,13 +73,7 @@ class ProtoKasanicMorpheme(Morpheme):
 
             syllables.append(ProtoKasanicSyllable(onset, vowel))
 
-        mutations = {
-            "+F": ProtoKasanicMutation.FORTITION,
-            "+L": ProtoKasanicMutation.LENITION,
-            "+N": ProtoKasanicMutation.NASALIZATION,
-        }
-
-        mutation = mutations.get(m.group(4))
+        mutation = MUTATION_NOTATION.get(m.group(4))
 
         # I need a separate function
         return syllables, mutation

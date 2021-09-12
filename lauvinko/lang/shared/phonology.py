@@ -23,6 +23,7 @@ class MannerOfArticulation(str, Enum):
     PLAIN_STOP = "stop"
     PRENASALIZED_STOP = "prenasalized stop"
     PREGLOTTALIZED_STOP = "preglottalized stop"
+    AFFRICATE = "affricate"
     FRICATIVE = "fricative"
     APPROXIMANT = "approximant"
 
@@ -84,7 +85,6 @@ class Syllable(ABC):
 @dataclass
 class SurfaceForm(ABC):
     syllables: List[Syllable]
-    stress_position: Optional[int]
 
     def broad_transcription(self) -> str:
         raise NotImplementedError

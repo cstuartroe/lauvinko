@@ -76,6 +76,24 @@ PK_TESTS: list[tuple[ProtoKasanicMorpheme, LauvinkoMorpheme, LauvinkoMorpheme]] 
 ]
 
 
+TA_TEST_ORDER = [
+    PrimaryTenseAspect.IMPERFECTIVE_NONPAST,
+    PrimaryTenseAspect.IMPERFECTIVE_PAST,
+    PrimaryTenseAspect.PERFECTIVE,
+    PrimaryTenseAspect.INCEPTIVE,
+    PrimaryTenseAspect.FREQUENTATIVE_NONPAST,
+    PrimaryTenseAspect.FREQUENTATIVE_PAST,
+]
+
+
+FULL_TENSE_ASPECT_TESTS = [
+    (pkm("tt@ko"), lm("ta/u"), lm("to/"), lm("te/u"), lm("itta/u"), lm("tette/u"), lm("totto/")),
+    (pkm("kw~ri"), lm("pe\\li"), lm("po\\li"), lm("pi\\li"), lm("inpe\\li"), lm("pipi\\li"), lm("papo\\li")),
+    (pkm("nc@"), lm("anca\\"), lm("anco\\"), lm("ance\\"), lm("inca\\"), lm("ancence\\"), lm("anconco\\")),
+    (pkm("nt~toka"), lm("ne/lak"), lm("no/lak"), lm("ni/lak"), lm("inte/lak"), lm("ninti/lak"), lm("nanto/lak")),
+]
+
+
 class LauvinkoDiachronicTests(unittest.TestCase):
     def test_evolution_from_pk(self):
         for pk_morpheme, lv_morpheme_au, lv_morpheme_na in PK_TESTS:
@@ -101,4 +119,22 @@ class LauvinkoDiachronicTests(unittest.TestCase):
                 self.assertIs(
                     evolved_form.original_initial_consonant,
                     lv_morpheme.original_initial_consonant,
+                )
+
+    def test_test_aspect(self):
+        for pk_morpheme, *forms in FULL_TENSE_ASPECT_TESTS:
+            pk_lemma = ProtoKasanicLemma(
+                definition="",
+                category=KasanicStemCategory.FIENTIVE,
+                forms={},
+                generic_morph=pk_morpheme,
+            )
+            lv_lemma = LauvinkoLemma.from_pk(pk_lemma)
+
+            for primary_ta, lv_morpheme in zip(TA_TEST_ORDER, forms):
+                evolved_form = lv_lemma.form(primary_ta, False)
+
+                self.assertEqual(
+                    evolved_form.surface_form().historical_transcription(),
+                    lv_morpheme.surface_form().historical_transcription(),
                 )

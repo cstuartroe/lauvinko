@@ -5,6 +5,6 @@ from lauvinko.lang.shared.semantics import PrimaryTenseAspect
 
 class LauvinkoLemmaOrigin:
     def generate_form(self, primary_ta: PrimaryTenseAspect, augment: bool) \
-            -> tuple[LauvinkoSurfaceForm, ProtoKasanicOnset, ProtoKasanicMutation]:
+            -> tuple[LauvinkoSurfaceForm, ProtoKasanicOnset, ProtoKasanicMutation, str]:
         raise NotImplementedError
 

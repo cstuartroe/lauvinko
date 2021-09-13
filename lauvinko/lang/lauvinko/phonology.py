@@ -193,6 +193,8 @@ class LauvinkoSurfaceForm(SurfaceForm):
         for syllable in self.syllables[1:]:
             if syllable.onset is LauvinkoConsonant.H:
                 raise self.InvalidLauvinkoSurfaceForm("Lauvinko surface form cannot have h medially")
+            elif syllable.onset is None:
+                raise self.InvalidLauvinkoSurfaceForm("Non-initial syllables in Lauvinko must have an onset")
 
     def _phonemic_transcription(self, narrower_coda: bool):
         syllables_ipa = []

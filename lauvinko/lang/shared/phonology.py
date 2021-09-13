@@ -73,6 +73,15 @@ class Vowel(Phoneme):
 
         return vowel
 
+    @classmethod
+    def find_by(cls, low: bool, frontness: VowelFrontness) -> Optional["cls"]:
+        """Finds a consonant with given poa and moa within a particular inventory"""
+        for c in list(cls):
+            if c.low == low and c.frontness == frontness:
+                return c
+
+        return None
+
     def __hash__(self):
         return hash(f"{self.ipa}{self.low}{self.frontness}")
 
@@ -80,6 +89,14 @@ class Vowel(Phoneme):
 @dataclass
 class Syllable(ABC):
     pass
+
+
+@dataclass
+class GenericCVCSyllable(Syllable):
+    onset: Optional[Consonant]
+    vowel: Vowel
+    coda: Optional[Consonant]
+    stressed: bool
 
 
 @dataclass

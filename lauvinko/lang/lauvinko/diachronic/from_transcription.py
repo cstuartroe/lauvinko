@@ -81,7 +81,12 @@ class TranscriptionReader:
             self.end_mutation = None
 
     def get_initial_consonant(self):
-        if self.next(2) in INFORMAL_PK_ONSETS:
+        if self.next(3) in INFORMAL_PK_ONSETS:
+            self.original_initial_consonant = INFORMAL_PK_ONSETS[self.next(3)]
+            self.last_seen_consonant = PK_TO_LV_ONSETS[self.original_initial_consonant]
+            self.i += 3
+
+        elif self.next(2) in INFORMAL_PK_ONSETS:
             self.original_initial_consonant = INFORMAL_PK_ONSETS[self.next(2)]
 
             if self.original_initial_consonant is ProtoKasanicOnset.NC:

@@ -54,7 +54,7 @@ class ProtoKasanicMorpheme(Morpheme):
         m = regex.fullmatch("(([mngptckshryw']{0,3})([aeiou@~]{1,2}))*(\\+[FLN])?", transcription)
 
         if m is None:
-            raise ProtoKasanicMorpheme.InvalidTranscription("Transcription does not match regex")
+            raise ProtoKasanicMorpheme.InvalidTranscription("Transcription does not match regex: " + transcription)
 
         syllables = []
         for o_str, v_str in zip(m.captures(2), m.captures(3)):

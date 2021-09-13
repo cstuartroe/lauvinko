@@ -1,9 +1,19 @@
-from dataclasses import dataclass
+from typing import Optional, List, Iterable
 from lauvinko.lang.proto_kasanic.morphology import ProtoKasanicLemma
 from lauvinko.lang.shared.semantics import PrimaryTenseAspect
-from lauvinko.lang.shared.phonology import MannerOfArticulation, PlaceOfArticulation
-from lauvinko.lang.proto_kasanic.phonology import ProtoKasanicOnset, PKSurfaceForm
-from lauvinko.lang.proto_kasanic.morphology import MUTATION_NOTATION
+from lauvinko.lang.shared.phonology import (
+    MannerOfArticulation,
+    PlaceOfArticulation,
+    VowelFrontness,
+    GenericCVCSyllable,
+)
+from lauvinko.lang.proto_kasanic.phonology import (
+    ProtoKasanicOnset,
+    PKSurfaceForm,
+    ProtoKasanicMutation,
+    ProtoKasanicVowel,
+)
+from lauvinko.lang.proto_kasanic.transcribe import falavay as pk_falavay
 from lauvinko.lang.lauvinko.phonology import LauvinkoConsonant, LauvinkoVowel, LauvinkoSyllable, LauvinkoSurfaceForm
 from .base import LauvinkoLemmaOrigin
 
@@ -41,11 +51,294 @@ PK_TO_LV_ONSETS = {
     if c is not ProtoKasanicOnset.NC
 }
 
+DIPHTHONG_END = {
+    ProtoKasanicVowel.AI: ProtoKasanicVowel.I,
+    ProtoKasanicVowel.AU: ProtoKasanicVowel.U,
+}
 
-def pk_to_lv(pk_sf: PKSurfaceForm, augment: bool) -> LauvinkoSurfaceForm:
-    pass
+OFFGLIDES = {
+    VowelFrontness.FRONT: LauvinkoConsonant.Y,
+    VowelFrontness.MID: LauvinkoConsonant.A,
+    VowelFrontness.BACK: LauvinkoConsonant.V,
+}
 
 
-@dataclass
 class ProtoKasanicOrigin(LauvinkoLemmaOrigin):
-    derived_from: ProtoKasanicLemma
+    """Ye gods what a mess of duct tape and brimstone this class is.
+    Heaven forbid the need ever arises to change it again.
+    Thank the stars above for the test suite.
+    """
+    def __init__(self, derived_from: ProtoKasanicLemma):
+        self.derived_from = derived_from
+
+    def generate_form(self, primary_ta: PrimaryTenseAspect, augment: bool) \
+            -> tuple[LauvinkoSurfaceForm, ProtoKasanicOnset, ProtoKasanicMutation, str]:
+        pk_morpheme = self.derived_from.form(primary_ta)
+        pk_sf = pk_morpheme.surface_form()
+
+        lv_sf = self.evolve_surface_form(pk_sf, augment)
+        original_initial_consonant = pk_sf.syllables[0].onset
+        end_mutation = pk_morpheme.main_morpheme.end_mutation
+        falavay = pk_falavay(pk_sf, augment)
+
+        return lv_sf, original_initial_consonant, end_mutation, falavay
+
+    def evolve_surface_form(self, pk_sf: PKSurfaceForm, augment: bool) -> LauvinkoSurfaceForm:
+        syllables: Iterable[GenericCVCSyllable] = self.genericize(pk_sf)
+
+        syllables = self.break_diphthongs(syllables)
+        syllables, falling_accent = self.transform_consonants(syllables, augment)
+        syllables = self.remove_h(syllables)
+        syllables = self.reduce_vowels(syllables, augment)
+        syllables = self.resolve_vowel_hiatus(syllables)
+        syllables = self.resolve_offglides(syllables)
+        syllables = self.remove_short_vowels(syllables)
+        syllables = self.resolve_offglides(syllables)
+        syllables = self.convert_vowels(syllables)
+
+        lv_syllables, accent_position = self.degenericize(syllables)
+
+        lv_sf = LauvinkoSurfaceForm(
+            syllables=lv_syllables,
+            accent_position=accent_position,
+            falling_accent=falling_accent,
+        )
+
+        assert (lv_sf.accent_position is None) == (pk_sf.stress_position is None)
+        assert (lv_sf.accent_position is None) == (lv_sf.falling_accent is None)
+
+        return lv_sf
+
+    @staticmethod
+    def genericize(pk_sf: PKSurfaceForm) -> List[GenericCVCSyllable]:
+        return [
+            GenericCVCSyllable(onset=syllable.onset, vowel=syllable.vowel, coda=None,
+                               stressed=(i == pk_sf.stress_position))
+            for i, syllable in enumerate(pk_sf.syllables)
+        ]
+
+    @staticmethod
+    def break_diphthongs(syllables: Iterable[GenericCVCSyllable]):
+        for syllable in syllables:
+            if syllable.vowel in {ProtoKasanicVowel.AI, ProtoKasanicVowel.AU}:
+                yield GenericCVCSyllable(onset=syllable.onset, vowel=ProtoKasanicVowel.AA, coda=None, stressed=False)
+                yield GenericCVCSyllable(onset=None, vowel=DIPHTHONG_END[syllable.vowel], coda=None, stressed=syllable.stressed)
+            else:
+                yield syllable
+
+    @staticmethod
+    def remove_h(syllables: Iterable[GenericCVCSyllable]):
+        for i, syllable in enumerate(syllables):
+            if syllable.onset is LauvinkoConsonant.H and i > 0:
+                syllable.onset = None
+            yield syllable
+
+    @staticmethod
+    def transform_consonants(syllables: Iterable[GenericCVCSyllable], augment: bool):
+        syllables = list(syllables)
+        out_syllables = []
+        falling_accent = None
+
+        for i, syllable in enumerate(syllables):
+            if syllables[i].stressed:
+                falling_accent = not augment
+
+            poststress = i > 0 and syllables[i - 1].stressed
+
+            if syllable.onset is ProtoKasanicOnset.NC:
+                if i == 0:
+                    out_syllables.append(GenericCVCSyllable(
+                        onset=None,
+                        vowel=ProtoKasanicVowel.AA,
+                        coda=LauvinkoConsonant.N,
+                        stressed=False,
+                    ))
+                else:
+                    assert syllables[i-1].coda is None
+                    syllables[i-1].coda = LauvinkoConsonant.N
+
+                syllable.onset = ProtoKasanicOnset.C
+
+            if poststress and not augment:
+                mutated = syllable.onset and ProtoKasanicMutation.LENITION.mutate(syllable.onset)
+                falling_accent = mutated is syllable.onset
+                syllable.onset = mutated and PK_TO_LV_ONSETS[mutated]
+                out_syllables.append(syllable)
+                continue
+
+            elif syllable.onset and (syllable.onset.moa is MannerOfArticulation.PRENASALIZED_STOP and i > 0):
+                syllables[i - 1].coda = LauvinkoConsonant.N
+                syllable.onset = ProtoKasanicOnset.find_by(poa=syllable.onset.poa, moa=MannerOfArticulation.PLAIN_STOP)
+
+            elif syllable.onset and (syllable.onset.moa is MannerOfArticulation.PREGLOTTALIZED_STOP and i > 0):
+                if syllable.onset is ProtoKasanicOnset.CC:
+                    syllables[i-1].coda = LauvinkoConsonant.T
+                else:
+                    syllables[i - 1].coda = PK_TO_LV_ONSETS[syllable.onset]
+
+                syllable.onset = ProtoKasanicOnset.find_by(poa=syllable.onset.poa, moa=MannerOfArticulation.PLAIN_STOP)
+
+            syllable.onset = syllable.onset and PK_TO_LV_ONSETS[syllable.onset]
+
+            out_syllables.append(syllable)
+
+        return out_syllables, falling_accent
+
+    @staticmethod
+    def reduce_vowels(syllables: Iterable[GenericCVCSyllable], augment: bool):
+        syllables = list(syllables)
+
+        for i in range(1, len(syllables)):
+            if syllables[i - 1].stressed and not augment:
+                syllables[i].vowel = ProtoKasanicVowel.shift_height(syllables[i].vowel, low=False)
+
+        assert syllables[-1].coda is None
+        if not syllables[-1].stressed:
+            syllables[-1].vowel = ProtoKasanicVowel.shift_height(syllables[-1].vowel, low=False)
+
+        return syllables
+
+    @staticmethod
+    def resolve_vowel_hiatus(syllables: Iterable[GenericCVCSyllable]):
+        syllables = list(syllables)
+
+        i = 0
+        while i < len(syllables):
+            if (i + 1 < len(syllables)) and syllables[i + 1].onset is None:
+                assert syllables[i].coda is None
+
+                if (i + 2 < len(syllables)) and syllables[i + 2].onset is None:
+                    assert syllables[i+1].coda is None
+
+                    if syllables[i+1].stressed:
+                        syllables[i+1].stressed = False
+                        syllables[i].stressed = True
+
+                    if syllables[i+1].vowel.frontness is not VowelFrontness.MID:
+                        syllables[i+2].onset = OFFGLIDES[syllables[i+1].vowel.frontness]
+
+                    del syllables[i+1]
+                    continue
+
+                v1, v2, has_coda = syllables[i].vowel, syllables[i+1].vowel, syllables[i+1].coda is not None
+
+                if (syllables[i].stressed or ((not v2.low) and not syllables[i+1].stressed)) and not has_coda:
+                    syllables[i].coda = OFFGLIDES[v2.frontness]
+                    yield syllables[i]
+
+                elif v1.frontness is v2.frontness and not v2.low:
+                    yield GenericCVCSyllable(
+                        onset=syllables[i].onset,
+                        vowel=syllables[i].vowel,
+                        coda=syllables[i+1].coda,
+                        stressed=syllables[i].stressed or syllables[i+1].stressed,
+                    )
+
+                else:
+                    if v1 is ProtoKasanicVowel.A:
+                        yield GenericCVCSyllable(
+                            onset=syllables[i].onset,
+                            vowel=ProtoKasanicVowel.shift_height(v2, low=True),
+                            coda=syllables[i+1].coda,
+                            stressed=syllables[i].stressed or syllables[i+1].stressed,
+                        )
+
+                    else:
+                        if v1 is ProtoKasanicVowel.AA:
+                            syllables[i+1].onset = OFFGLIDES[v2.frontness]
+                        else:
+                            syllables[i+1].onset = OFFGLIDES[v1.frontness]
+
+                        yield syllables[i]
+                        yield syllables[i+1]
+
+                i += 2
+
+            else:
+                yield syllables[i]
+                i += 1
+
+    @staticmethod
+    def resolve_offglides(syllables: Iterable[GenericCVCSyllable]):
+        for syllable in syllables:
+            if syllable.vowel is ProtoKasanicVowel.A and syllable.coda is LauvinkoConsonant.V:
+                syllable.vowel = ProtoKasanicVowel.O
+                syllable.coda = None
+
+            elif syllable.vowel is ProtoKasanicVowel.A and syllable.coda is LauvinkoConsonant.Y:
+                syllable.vowel = ProtoKasanicVowel.E
+                syllable.coda = None
+
+            elif syllable.coda is OFFGLIDES[syllable.vowel.frontness]:
+                syllable.coda = None
+
+            yield syllable
+
+    @staticmethod
+    def remove_short_vowels(syllables: Iterable[GenericCVCSyllable]):
+        syllables = list(syllables)
+        out_syllables = []
+
+        i = len(syllables) - 1
+        while i >= 0:
+            if i - 1 >= 0:
+                if syllables[i].vowel in {ProtoKasanicVowel.A, ProtoKasanicVowel.U} and \
+                        (not syllables[i].stressed) and syllables[i-1].coda is None \
+                        and syllables[i].coda is None:
+                    out_syllables.append(GenericCVCSyllable(
+                        onset=syllables[i-1].onset,
+                        vowel=syllables[i-1].vowel,
+                        coda=syllables[i].onset,
+                        stressed=syllables[i-1].stressed,
+                    ))
+                    i -= 2
+                    continue
+
+                elif syllables[i].onset is OFFGLIDES[syllables[i].vowel.frontness] and not syllables[i].vowel.low:
+                    if syllables[i-1].coda is None and syllables[i].coda is None:
+                        syllables[i-1].coda = syllables[i].onset
+                        syllables[i-1].stressed = syllables[i-1].stressed or syllables[i].stressed
+                        out_syllables.append(syllables[i-1])
+                        i -= 2
+                        continue
+
+                    elif syllables[i-1].coda is None and syllables[i-1].vowel.frontness is syllables[i].vowel.frontness:
+                        syllables[i-1].coda = syllables[i].coda
+                        assert not syllables[i].stressed
+                        out_syllables.append(syllables[i-1])
+                        i -= 2
+                        continue
+
+            out_syllables.append(syllables[i])
+            i -= 1
+
+        out_syllables.reverse()
+        return out_syllables
+
+    @staticmethod
+    def convert_vowels(syllables: Iterable[GenericCVCSyllable]):
+        for syllable in syllables:
+            if syllable.vowel is ProtoKasanicVowel.U:
+                syllable.vowel = LauvinkoVowel.O if syllable.stressed else LauvinkoVowel.A
+            elif syllable.vowel is ProtoKasanicVowel.A:
+                syllable.vowel = LauvinkoVowel.E if syllable.stressed else LauvinkoVowel.A
+            else:
+                syllable.vowel = LauvinkoVowel.find_by(syllable.vowel.low, syllable.vowel.frontness)
+
+            yield syllable
+
+    @staticmethod
+    def degenericize(syllables: Iterable[GenericCVCSyllable]) -> tuple[List[LauvinkoSyllable], Optional[bool]]:
+        lv_syllables, accent_position = [], None
+
+        for i, syllable in enumerate(syllables):
+            lv_syllables.append(LauvinkoSyllable(
+                onset=syllable.onset,
+                vowel=syllable.vowel,
+                coda=syllable.coda,
+            ))
+
+            if syllable.stressed:
+                accent_position = i
+
+        return lv_syllables, accent_position

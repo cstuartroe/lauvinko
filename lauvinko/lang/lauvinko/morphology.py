@@ -69,10 +69,15 @@ class LauvinkoLemma(Lemma):
     forms: dict[tuple[PrimaryTenseAspect, bool], LauvinkoMorpheme]
     origin: LauvinkoLemmaOrigin
 
+    def __post_init__(self):
+        for primary_ta, _ in self.forms.keys():
+            if primary_ta not in self.category.primary_aspects:
+                raise Lemma.NonexistentForm
+
     def form(self, primary_ta: PrimaryTenseAspect, augment: bool):
         self.check_form_allowed(primary_ta)
 
-        if primary_ta not in self.forms:
+        if (primary_ta, augment) not in self.forms:
             self.forms[(primary_ta, augment)] = self._generate_form(primary_ta, augment)
 
         return self.forms[(primary_ta, augment)]
@@ -92,11 +97,12 @@ class LauvinkoLemma(Lemma):
         return self.form(self.category.citation_form, augment)
 
     @classmethod
-    def from_pk(cls, pk_lemma: ProtoKasanicLemma) -> "LauvinkoLemma":
+    def from_pk(cls, pk_lemma: ProtoKasanicLemma, definition: Optional[str] = None,
+                forms: Optional[dict[tuple[PrimaryTenseAspect, bool], LauvinkoMorpheme]] = None) -> "LauvinkoLemma":
         return cls(
-            definition=pk_lemma.definition,
+            definition=(definition or pk_lemma.definition),
             category=pk_lemma.category,
-            forms={},
+            forms=forms or {},
             origin=ProtoKasanicOrigin(pk_lemma),
         )
 

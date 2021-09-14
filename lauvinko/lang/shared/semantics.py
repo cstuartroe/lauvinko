@@ -15,6 +15,9 @@ class PrimaryTenseAspect(Enum):
 
 
 class StemCategory:
+    class InvalidStemCategory(ValueError):
+        pass
+
     def __init__(self, title: str, primary_aspects: Set[PrimaryTenseAspect], citation_form: PrimaryTenseAspect):
         assert citation_form in primary_aspects
 

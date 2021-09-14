@@ -8,3 +8,6 @@ class LauvinkoLemmaOrigin:
             -> tuple[LauvinkoSurfaceForm, ProtoKasanicOnset, ProtoKasanicMutation, str]:
         raise NotImplementedError
 
+    class InvalidOrigin(ValueError):
+        pass
+

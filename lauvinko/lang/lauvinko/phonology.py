@@ -228,15 +228,20 @@ class LauvinkoSurfaceForm(SurfaceForm):
         for i in range(len(self.syllables)):
             vowel, coda = self.syllables[i].vowel, self.syllables[i].coda
 
-            if coda is not None:
+            has_coda, accented = (coda is not None), (i == self.accent_position)
+
+            if has_coda:
                 out += CLOSED_VOWELS[vowel]
-            elif i == self.accent_position:
-                out += ACCENTED_OPEN_VOWELS[vowel] + 'ː'
+            elif accented:
+                out += ACCENTED_OPEN_VOWELS[vowel]
             else:
                 out += UNACCENTED_OPEN_VOWELS[vowel]
 
-            if i == self.accent_position:
+            if accented:
                 out += accent_ipa(self.falling_accent)
+
+                if not has_coda:
+                    out += 'ː'
 
             if i == len(self.syllables) - 1:
                 out += narrow_coda_ipa(coda)

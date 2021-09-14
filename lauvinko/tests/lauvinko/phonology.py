@@ -9,12 +9,12 @@ lm = LauvinkoMorpheme.from_informal_transcription
 
 TESTS: list[tuple[LauvinkoMorpheme, str, str, str, ProtoKasanicOnset, ProtoKasanicMutation]] = [
     (lm("se\\anor+F"), 'sêɐ̯.nol', 'sêɐ̯.nol', 'sɛ̂ɐ̯nʊɽ', ProtoKasanicOnset.S, ProtoKasanicMutation.FORTITION),
-    (lm("nca/ye+L"), 'an.t͡sá.je', 'an.t͡sá.je', 'ɐnt͡sɑː́jɪ', ProtoKasanicOnset.NC, ProtoKasanicMutation.LENITION),
+    (lm("nca/ye+L"), 'an.t͡sá.je', 'an.t͡sá.je', 'ɐnt͡sɑ́ːjɪ', ProtoKasanicOnset.NC, ProtoKasanicMutation.LENITION),
     (lm('ttayno+N'), 'taj.no', 'taj.no', 'tɐjnʊ', ProtoKasanicOnset.TT, ProtoKasanicMutation.NASALIZATION),
     (lm('socya\\ng+N'), 'sot͡s.jâŋ', 'sot͡s.jân', 'sʊtt͡ɕɐ̂ŋ', ProtoKasanicOnset.S, ProtoKasanicMutation.NASALIZATION),
     (lm('voh'), 'ʋok', 'ʋoh', 'ʋʊʔ', ProtoKasanicOnset.W, None),
     (lm('lahma'), 'lak.ma', 'lah.ma', 'lɐɦmɐ', ProtoKasanicOnset.R, None),
-    (lm('allo/'), 'al.ló', 'al.ló', 'ɐɭɭoː́', None, None),
+    (lm('allo/'), 'al.ló', 'al.ló', 'ɐɭɭóː', None, None),
     (lm('arna'), 'al.na', 'al.na', 'ɐɳɳɐ', None, None),
     (lm('apsa'), 'ap.sa', 'ah.sa', 'ɐssɐ', None, None),
     (lm('acca'), 'at͡s.t͡sa', 'at͡s.t͡sa', 'ɐst͡sɐ', None, None),

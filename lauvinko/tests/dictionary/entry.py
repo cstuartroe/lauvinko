@@ -60,5 +60,5 @@ class DictEntryTests(unittest.TestCase):
 
         self.assertEqual(
             lv_lemma.form(PrimaryTenseAspect.INCEPTIVE, augment=False).surface_form().narrow_transcription(),
-            "seː́jʊ",
+            "séːjʊ",
         )

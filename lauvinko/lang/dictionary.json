@@ -1,0 +1,1928 @@
+{
+  "$1excl$.$sg$": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "I, me.",
+        "forms": {
+          "gn.au": {
+            "falavay": "OXG",
+            "phonemic": "o/y"
+          },
+          "gn.na": {
+            "falavay": "OX",
+            "phonemic": "o\\y"
+          }
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "$1excl$.$pl$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "We, us (not including the listener).",
+        "forms": {
+          "gn": "saa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "$1incl$.$du$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "You and I.",
+        "forms": {
+          "gn": "peca"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "$1incl$.$pl$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "We, us (including the listener).",
+        "forms": {
+          "gn": "pai"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "$2fam$.$sg$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "You (informal, singular). cf {{2p}}.",
+        "forms": {
+          "gn": "re"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "$2fml$.$sg$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "You (formal, singular). cf {{2p}}.",
+        "forms": {
+          "gn": "ko"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "$2fml$.$du$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "You (formal, dual). cf {{2p}}.",
+        "forms": {
+          "gn": "koca"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "$2fml$.$pl$": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "forms": {
+          "gn.au": {
+            "phonemic": "yo/ve"
+          },
+          "gn.na": {
+            "phonemic": "ya\\"
+          }
+        }
+      },
+      "pk": {
+        "definition": "You (formal, plural). cf {{2p}}.",
+        "forms": {
+          "gn": "yu'a"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "$2hon$": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "You (singular or plural, honorific). cf. {{2p}}.",
+        "forms": {
+          "gn.na": {
+            "phonemic": "a/t",
+            "written_like": "aattaa"
+          }
+        }
+      },
+      "pk": {
+        "definition": "Master, owner, landlord.",
+        "forms": {
+          "gn": "naama"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "$3rd$.$sg$": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "He, him; she, her; they, them (animate, singular).",
+        "forms": {
+          "gn.au": {
+            "phonemic": "li/",
+            "written_like": "ri"
+          },
+          "gn.na": {
+            "phonemic": "si\\",
+            "written_like": "si"
+          }
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "$3rd$.$du$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "They, them (animate, dual).",
+        "forms": {
+          "gn": "hica"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "$3rd$.$pl$": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "forms": {
+          "gn.au": {
+            "phonemic": "lo/ve"
+          },
+          "gn.na": {
+            "phonemic": "la\\"
+          }
+        }
+      },
+      "pk": {
+        "definition": "They, them (animate, plural)..",
+        "forms": {
+          "gn": "ru'a"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "$hea$.$sg$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "(measure word) human, animal, god (singular).",
+        "forms": {
+          "gn": "tu"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "$hea$.$du$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "(measure word) human, animal, god (dual).",
+        "forms": {
+          "gn": "tuca"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "$hea$.$pl$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "(measure word) human, animal, god (dual).",
+        "forms": {
+          "gn": "ta"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "$bra$.$sg$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Branch @ (measure word) long, thin object, plant (singular).",
+        "forms": {
+          "gn": "itaa"
+        }
+      },
+      "lv": {
+        "definition": "(measure word) thin object, plant, tool, food (singular). cf {{branch}}"
+      }
+    },
+    "origin": "kasanic"
+  },
+  "$bra$.$du$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Branch @ (measure word) long, thin object, plant (dual).",
+        "forms": {
+          "gn": "me"
+        }
+      },
+      "lv": {
+        "definition": "(measure word) thin object, plant, tool, food (dual). cf {{branch}}"
+      }
+    },
+    "origin": "kasanic"
+  },
+  "$bra$.$pl$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Branch @ (measure word) long, thin object, plant (plural).",
+        "forms": {
+          "gn": "otaa"
+        }
+      },
+      "lv": {
+        "definition": "(measure word) thin object, plant, tool, food (plural). cf {{branch}}"
+      }
+    },
+    "origin": "kasanic"
+  },
+  "$lea$.$sg$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "(measure word) flat thing, location (singular).",
+        "forms": {
+          "gn": "opaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "$lea$.$pl$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "(measure word) flat thing, location (singular).",
+        "forms": {
+          "gn": "epaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "$sea$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Sea.",
+        "forms": {
+          "gn": "aanti"
+        }
+      },
+      "lv": {
+        "definition": "(measure word) uncountable noun, e.g. substance, abstract noun"
+      }
+    },
+    "origin": "kasanic"
+  },
+  "$vol$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "([volitive](/lauvinko/volitive) postposition)",
+        "forms": {
+          "gn": "maa"
+        }
+      },
+      "lv": {
+        "definition": "([volitive](/lauvinko/volitive) applicative prefix)"
+      }
+    },
+    "origin": "kasanic"
+  },
+  "$ins$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "With, using, by.",
+        "forms": {
+          "gn": "okka"
+        }
+      },
+      "lv": {
+        "definition": "([instrumental](/lauvinko/instrumental) applicative prefix)"
+      }
+    },
+    "origin": "kasanic"
+  },
+  "$dat$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "To, for.",
+        "forms": {
+          "gn": "ni"
+        }
+      },
+      "lv": {
+        "definition": "([dative](/lauvinko/dative) applicative prefix)"
+      }
+    },
+    "origin": "kasanic"
+  },
+  "$all$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "To, towards.",
+        "forms": {
+          "gn": "ai"
+        }
+      },
+      "lv": {
+        "definition": "([allative](/lauvinko/adpositional) applicative prefix)"
+      }
+    },
+    "origin": "kasanic"
+  },
+  "$loc$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "At, in, on.",
+        "forms": {
+          "gn": "po"
+        }
+      },
+      "lv": {
+        "definition": "([locative](/lauvinko/adpositional) applicative prefix)"
+      }
+    },
+    "origin": "kasanic"
+  },
+  "$abl$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "From, off of, away from.",
+        "forms": {
+          "gn": "aapo"
+        }
+      },
+      "lv": {
+        "definition": "([ablative](/lauvinko/adpositional) applicative prefix)",
+        "forms": {
+          "gn.na": {
+            "phonemic": "a\\po"
+          }
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "$prl$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Through, across, over.",
+        "forms": {
+          "gn": "moko"
+        }
+      },
+      "lv": {
+        "definition": "([perlative](/lauvinko/adpositional) applicative prefix)",
+        "forms": {
+          "gn.na": {
+            "phonemic": "mo\\ko"
+          }
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "$par$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "([partitive](/lauvinko/partitive) postposition)",
+        "forms": {
+          "gn": "e"
+        }
+      },
+      "lv": {
+        "definition": "([partitive](/lauvinko/partitive) applicative prefix)"
+      }
+    },
+    "origin": "kasanic"
+  },
+  "add": {
+    "category": "punctual",
+    "languages": {
+      "lv": {
+        "definition": "$vol$ adds $pat$ onto $all$. @ (reflexive) $ins$ grows, increases. (frequentative) $vol$ loads $pat$, cargo."
+      },
+      "pk": {
+        "definition": "To add.",
+        "forms": {
+          "gn": "kw~rentaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "agitate": {
+    "category": "fientive",
+    "languages": {
+      "lv": {
+        "definition": "$pat$ is boiling. @ $vol$ cooks, boils $pat$. @ $vol$ bothers, startles $pat$."
+      },
+      "pk": {
+        "definition": "To agitate.",
+        "forms": {
+          "gn": "c@ntesaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "air": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Air, weather, environment, conditions.",
+        "forms": {
+          "gn": "tokkwo"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "all": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "All, every, each."
+      },
+      "pk": {
+        "definition": "All, every.",
+        "forms": {
+          "gn": "nyaisaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "auncle": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Aunt, uncle. @ Any indirect relative of an older generation."
+      },
+      "pk": {
+        "definition": "Aunt, uncle, older relative.",
+        "forms": {
+          "gn": "ppesa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "aunt": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "(reflexive) $pat$ and $pat$ are of the same clan."
+      },
+      "pk": {
+        "definition": "Kin, clanmate, sister, aunt.",
+        "forms": {
+          "gn": "aatari"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "basa": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Basa fish, shark catfish.",
+        "forms": {
+          "gn": "yauppami"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "bite": {
+    "category": "punctual",
+    "languages": {
+      "lv": {
+        "definition": "$vol$ bites $pat$. @ (frequentative) $vol$ chews, eats $pat$."
+      },
+      "pk": {
+        "definition": "To bite, chew.",
+        "forms": {
+          "gn": "c~kki"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "brother": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Non-eldest brother, male friend."
+      },
+      "pk": {
+        "definition": "Brother.",
+        "forms": {
+          "gn": "taaro"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "build": {
+    "category": "fientive",
+    "languages": {
+      "lv": {
+        "definition": "$vol$ builds $pat$, a building or ship. @ (inchoative) $vol$ establishes, founds, begins construction on $pat$ @ $vol$ nominates $dat$ for public office."
+      },
+      "pk": {
+        "definition": "To build, establish, appoint.",
+        "forms": {
+          "gn": "@kaaye"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "carry": {
+    "category": "fientive",
+    "languages": {
+      "lv": {
+        "definition": "$vol$ carries, holds $pat$ with difficulty. @ $vol$/$loc$ contains, is pregnant with $pat$. @ $pat$ is heavy, serious, burdensome. @ $pat$ is difficult for $vol$. @ (perfective) $vol$ gives birth to $pat$. @ $vol$ conceives $pat$."
+      },
+      "pk": {
+        "definition": "To carry, bear.",
+        "forms": {
+          "gn": "nkw@kkaye"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "cart": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Cart, wagon, vehicle.",
+        "forms": {
+          "gn": "yaana"
+        }
+      },
+      "sa": {
+        "definition": "Carriage, vehicle, journey.",
+        "native": "यान",
+        "transcription": "yā́na"
+      }
+    },
+    "origin": "sanskrit"
+  },
+  "clan": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "[Lauvinko clan.](/lauvinko/clans)"
+      },
+      "pk": {
+        "definition": "Clan (family group).",
+        "forms": {
+          "gn": "sehaanyaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "cross": {
+    "category": "punctual",
+    "languages": {
+      "lv": {
+        "definition": "$vol$ crosses, passes over $pat$. @ (frequentative) $vol$ migrates, wanders."
+      },
+      "pk": {
+        "definition": "To cross, go over.",
+        "forms": {
+          "gn": "@kkungi"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "chaiya": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Chaiya, a region in modern Thailand which hosted an important seaport during the Srivijaya empire. Some Kasanic people migrated there, eventually becoming the Botharu.",
+        "forms": {
+          "gn": "caahaayaa"
+        }
+      },
+      "lv": {
+        "definition": "Chaiya."
+      },
+      "bt": {
+        "definition": "Chaiya."
+      },
+      "ms": {
+        "definition": "Chaiya.",
+        "native": null,
+        "transcription": "cahaya"
+      }
+    },
+    "origin": "malay"
+  },
+  "dark": {
+    "category": "stative",
+    "languages": {
+      "lv": {
+        "definition": "To be dark. Night."
+      },
+      "pk": {
+        "definition": "To be dark.",
+        "forms": {
+          "gn": "kaamengaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "daughter1": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Father's daughter. @ (literary) Treasure, precious, darling."
+      },
+      "pk": {
+        "definition": "Father's daughter.",
+        "forms": {
+          "gn": "irohi"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "daughter2": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Mother's daughter."
+      },
+      "pk": {
+        "definition": "Mother's daughter.",
+        "forms": {
+          "gn": "seno"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "day": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Day (period of 24 hours)."
+      },
+      "pk": {
+        "definition": "Day (period of 24 hours).",
+        "forms": {
+          "gn": "tteso"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "dog": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Dog."
+      },
+      "pk": {
+        "definition": "Dog.",
+        "forms": {
+          "gn": "ngoyangu"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "drape": {
+    "category": "stative",
+    "languages": {
+      "lv": {
+        "definition": "To cover, to hang, to drape. Cloud; curtain; spider's web."
+      },
+      "pk": {
+        "definition": "To cover, to hang, to drape.",
+        "forms": {
+          "gn": "taici"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "drink": {
+    "category": "punctual",
+    "languages": {
+      "lv": {
+        "definition": "$vol$ drinks, swallows $pat$. @ $vol$ inhales, smokes $pat$. @ (frequentative) $vol$ slurps, sucks $pat$. @ (vulgar) $vol$ performs oral sex on $pat$."
+      },
+      "pk": {
+        "definition": "To drink.",
+        "forms": {
+          "gn": "ng@pikwi"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "eat": {
+    "category": "fientive",
+    "languages": {
+      "lv": {
+        "definition": "$vol$ eats $pat$. @ (frequentative) $pat$ is a part of $vol$'s diet."
+      },
+      "pk": {
+        "definition": "To eat, consume.",
+        "forms": {
+          "gn": "m@nange"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "egg": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Egg, testicle."
+      },
+      "pk": {
+        "definition": "Egg.",
+        "forms": {
+          "gn": "kwaintaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "father": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Father."
+      },
+      "pk": {
+        "definition": "Father.",
+        "forms": {
+          "gn": "oppaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "fight": {
+    "category": "fientive",
+    "languages": {
+      "lv": {
+        "definition": "$vol$ fights. @ (reflexive) $vol$ and $vol$ fight against one another. @ (frequentative, literary) $vol$ struggles against, slaughters $pat$."
+      },
+      "pk": {
+        "definition": "To fight.",
+        "forms": {
+          "gn": "h@naacawi"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "finger": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Finger."
+      },
+      "pk": {
+        "definition": "Finger.",
+        "forms": {
+          "gn": "cokine"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "go": {
+    "category": "fientive",
+    "languages": {
+      "lv": {
+        "definition": "$vol$ goes."
+      },
+      "pk": {
+        "definition": "To go.",
+        "forms": {
+          "gn": "w@ki"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "grow": {
+    "category": "fientive",
+    "languages": {
+      "lv": {
+        "definition": "(reflexive) $ins$ grows, ages. @ $pat$ expands in size. @ (reflexive) $ins$ ripens. @ $vol$ cultivates, rears $ins$, an agricultural product."
+      },
+      "pk": {
+        "definition": "To grow, expand, mature.",
+        "forms": {
+          "gn": "s@hitu"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "gust": {
+    "category": "punctual",
+    "languages": {
+      "lv": {
+        "definition": "$vol$ (a person) blows, exhales on $all$. @ (frequentative) $vol$ (a wind) blows, gusts."
+      },
+      "pk": {
+        "definition": "To blow, gust.",
+        "forms": {
+          "gn": "k~nkaakwiru"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "hand": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Arm, hand. @ Ownership, possession."
+      },
+      "pk": {
+        "definition": "Hand.",
+        "forms": {
+          "gn": "maaccopo"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "heel": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Heel. @ With, together (used in positional constructions). @ (modal prefix) Together."
+      },
+      "pk": {
+        "definition": "Heel.",
+        "forms": {
+          "gn": "kwai"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "heir": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Eldest brother, heir. @ Boss, big-man, chief."
+      },
+      "pk": {
+        "definition": "Eldest brother, eldest son.",
+        "forms": {
+          "gn": "raango"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "hot": {
+    "category": "stative",
+    "languages": {
+      "pk": {
+        "definition": "Hot, warm.",
+        "forms": {
+          "gn": "saiwe"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "hut": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Shelter, space, room, living quarters."
+      },
+      "pk": {
+        "definition": "Hut, shelter.",
+        "forms": {
+          "gn": "karaawi"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "insert": {
+    "category": "punctual",
+    "languages": {
+      "lv": {
+        "definition": "$vol$ pierces, stings, stabs $pat$ with $ins$. @ $vol$ inserts $ins$ into $all$. @ (vulgar) $vol$ penetrates $pat$."
+      },
+      "pk": {
+        "definition": "To insert, pierce.",
+        "forms": {
+          "gn": "@ppai"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "keng": {
+    "category": "uninflected",
+    "languages": {
+      "pk":{
+        "definition": "The Bird [clan](/lauvinko/clans).",
+        "forms": {
+          "gn": "kanka"
+        }
+      },
+      "sa": {
+        "definition": "Bird.",
+        "native": "खग",
+        "transcription": "khaga"
+      }
+    },
+    "origin": "sanskrit"
+  },
+  "kesang": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Kesang, a historical region around the modern Malaysian town of Tangkak. Considered the ancestral homeland of the Lauvìnko, it is the namesake of the Kasanic language family.",
+        "forms": {
+          "gn": "kasaanaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "kin": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "(reflexive) $pat$ and $pat$ are kin, related."
+      },
+      "pk": {
+        "definition": "Kin, sameblooded.",
+        "forms": {
+          "gn": "aute"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "knife": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Knife."
+      },
+      "pk": {
+        "definition": "Knife.",
+        "forms": {
+          "gn": "mahika"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "kolang": {
+    "category": "uninflected",
+    "languages": {
+      "pk":{
+        "definition": "The Turtle [clan](/lauvinko/clans).",
+        "forms": {
+          "gn": "kurama"
+        }
+      },
+      "sa": {
+        "definition": "Turtle.",
+        "native": "कूर्म",
+        "transcription": "kūrma"
+      }
+    },
+    "origin": "sanskrit"
+  },
+  "kotti": {
+    "category": "uninflected",
+    "languages": {
+      "pk":{
+        "definition": "The Chicken [clan](/lauvinko/clans).",
+        "forms": {
+          "gn": "kukkuti"
+        }
+      },
+      "sa": {
+        "definition": "Hen.",
+        "native": "कुक्कुट",
+        "transcription": "kukkuṭa"
+      }
+    },
+    "origin": "sanskrit"
+  },
+  "learn": {
+    "category": "fientive",
+    "languages": {
+      "lv": {
+        "definition": "(reflexive) $vol$ studies $dat$. @ (reflexive) $ins$ learns $dat$ through experience. @ $vol$ teaches $ins$ about $dat$."
+      },
+      "pk": {
+        "definition": "To learn, teach.",
+        "forms": {
+          "gn": "r@ppaayo"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "lie": {
+    "category": "stative",
+    "languages": {
+      "pk": {
+        "definition": "To lie, to be (with prepositional phrase)",
+        "forms": {
+          "gn": "konco"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "man": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Man. @ $vol$ initiates $pat$ into manhood."
+      },
+      "pk": {
+        "definition": "Man, male.",
+        "forms": {
+          "gn": "reccaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "mango": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Mango."
+      },
+      "pk": {
+        "definition": "Mango.",
+        "forms": {
+          "gn": "naatami"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "manner": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Way, manner."
+      },
+      "pk": {
+        "definition": "Custom, manner, appearance.",
+        "forms": {
+          "gn": "aakkaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "mesi": {
+    "category": "uninflected",
+    "languages": {
+      "pk":{
+        "definition": "The Fish [clan](/lauvinko/clans).",
+        "forms": {
+          "gn": "maci"
+        }
+      },
+      "sa": {
+        "definition": "Fish.",
+        "native": "मत्स्य",
+        "transcription": "mátsya"
+      }
+    },
+    "origin": "sanskrit"
+  },
+  "mighty": {
+    "category": "fientive",
+    "languages": {
+      "lv": {
+        "definition": "(frequentative) $vol$ is great, mighty."
+      },
+      "pk": {
+        "definition": "To be great, mighty.",
+        "forms": {
+          "gn": "kw@niki"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "mild": {
+    "category": "stative",
+    "languages": {
+      "lv": {
+        "definition": "$ins$ (inanimate) is warm, mild. @ $pat$ (animate) feels warm, comfortable. @ $vol$ (animate) is affectionate, friendly, relaxed."
+      },
+      "pk": {
+        "definition": "Mild, easy.",
+        "forms": {
+          "gn": "mentawau"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "mosah": {
+    "category": "uninflected",
+    "languages": {
+      "pk":{
+        "definition": "The Mouse [clan](/lauvinko/clans).",
+        "forms": {
+          "gn": "musaka"
+        }
+      },
+      "sa": {
+        "definition": "Mouse.",
+        "native": "मूषक",
+        "transcription": "mūṣaka"
+      }
+    },
+    "origin": "sanskrit"
+  },
+  "mother": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Mother."
+      },
+      "pk": {
+        "definition": "Mother.",
+        "forms": {
+          "gn": "maamaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "much": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Much, many, a lot, very."
+      },
+      "pk": {
+        "definition": "Much, many.",
+        "forms": {
+          "gn": "koro"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "need": {
+    "category": "stative",
+    "languages": {
+      "lv": {
+        "definition": "$pat$ needs $dat$."
+      },
+      "pk": {
+        "definition": "To need.",
+        "forms": {
+          "gn": "nyowipi"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "ngensa": {
+    "category": "uninflected",
+    "languages": {
+      "pk":{
+        "definition": "The Elephant [clan](/lauvinko/clans).",
+        "forms": {
+          "gn": "nkanca"
+        }
+      },
+      "sa": {
+        "definition": "Elephant.",
+        "native": "गज",
+        "transcription": "gaja"
+      }
+    },
+    "origin": "sanskrit"
+  },
+  "ngeng": {
+    "category": "uninflected",
+    "languages": {
+      "pk":{
+        "definition": "The Rhinoceros [clan](/lauvinko/clans).",
+        "forms": {
+          "gn": "nkanta"
+        }
+      },
+      "sa": {
+        "definition": "Rhinoceros.",
+        "native": "गण्ड",
+        "transcription": "gaṇḍa"
+      }
+    },
+    "origin": "sanskrit"
+  },
+  "none": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Nothing, zero."
+      },
+      "pk": {
+        "definition": "None, nothing.",
+        "forms": {
+          "gn": "saaye"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "north": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "North."
+      },
+      "pk": {
+        "definition": "North.",
+        "forms": {
+          "gn": "kamaanau"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "not": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Not, don't."
+      },
+      "pk": {
+        "definition": "Not, no.",
+        "forms": {
+          "gn": "era"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "oasang": {
+    "category": "uninflected",
+    "languages": {
+      "pk":{
+        "definition": "The Banteng [clan](/lauvinko/clans).",
+        "forms": {
+          "gn": "ukasana"
+        }
+      },
+      "sa": {
+        "definition": "Bull.",
+        "native": "उक्षन्",
+        "transcription": "ukṣán"
+      }
+    },
+    "origin": "sanskrit"
+  },
+  "pandan": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Pandan."
+      },
+      "pk": {
+        "definition": "Pandan.",
+        "forms": {
+          "gn": "maatoce"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "parent": {
+    "category": "stative",
+    "languages": {
+      "lv": {
+        "definition": "$vol$ is the parent of $pat$."
+      },
+      "pk": {
+        "definition": "To parent, procreate.",
+        "forms": {
+          "gn": "saattu"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "part": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Part, component. @ (modal prefix) Partially, incompletely, somewhat."
+      },
+      "pk": {
+        "definition": "Part, piece.",
+        "forms": {
+          "gn": "kwau"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "put": {
+    "category": "fientive",
+    "languages": {
+      "lv": {
+        "definition": "To put, place."
+      },
+      "pk": {
+        "definition": "To put, place.",
+        "forms": {
+          "gn": "s~hai"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "reach": {
+    "category": "stative",
+    "languages": {
+      "lv": {
+        "definition": "$pat$ reaches, attains $all$"
+      },
+      "pk": {
+        "definition": "To reach, to stretch",
+        "forms": {
+          "gn": "pesawai"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "red": {
+    "category": "stative",
+    "languages": {
+      "lv": {
+        "definition": "$pat$ is red."
+      },
+      "pk": {
+        "definition": "Red.",
+        "forms": {
+          "gn": "settongwi"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "release": {
+    "category": "punctual",
+    "languages": {
+      "lv": {
+        "definition": "$vol$ opens, unlocks, $pat$. @ $vol$ releases, turns loose $pat$. $vol$ frees, surrenders $pat$."
+      },
+      "pk": {
+        "definition": "Open, release.",
+        "forms": {
+          "gn": "r@seki"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "republic": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "forms": {
+          "gn.au": {
+            "falavay": "jumhZlXGyt",
+            "phonemic": "comoli´yat"
+          },
+          "gn.na": {
+            "falavay": "jumhZlXyt",
+            "phonemic": "comoli`yat"
+          }
+        }
+      },
+      "ar": {
+        "definition": "Republic.",
+        "native": "جمهورية",
+        "transcription": "jumhūriyya"
+      }
+    },
+    "origin": "arabic"
+  },
+  "rice": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Rice."
+      },
+      "pk": {
+        "definition": "Rice.",
+        "forms": {
+          "gn": "hekwe"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "selah": {
+    "category": "uninflected",
+    "languages": {
+      "pk":{
+        "definition": "The Snake [clan](/clans).",
+        "forms": {
+          "gn": "sarapa"
+        }
+      },
+      "sa": {
+        "definition": "Snake.",
+        "native": "सर्प",
+        "transcription": "sarpá"
+      }
+    },
+    "origin": "sanskrit"
+  },
+  "search": {
+    "category": "fientive",
+    "languages": {
+      "lv": {
+        "definition": "$vol$ searches for $dat$. @ $vol$ wants $dat$. @ (perfective) $vol$ finds $dat$. @ $vol$ meets, meets up with $dat$. @ $vol$ invents, creates $pat$. @ $vol$ receives $pat$."
+      },
+      "pk": {
+        "definition": "To search, find.",
+        "forms": {
+          "gn": "cc@nko"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "see": {
+    "category": "fientive",
+    "languages": {
+      "lv": {
+        "definition": "$vol$ looks at, watches $dat$. @ (vulgar) $vol$ has sex with, fucks $pat$. @ (inceptive) $vol$ catches sight of $dat$. @ $vol$ meets $dat$. @ (frequentative) $vol$ understands, comprehends, empathizes with $dat$, a person or idea."
+      },
+      "pk": {
+        "definition": "To see.",
+        "forms": {
+          "gn": "y@hingaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "singa": {
+    "category": "uninflected",
+    "languages": {
+      "pk":{
+        "definition": "The Lion [clan](/lauvinko/clans).",
+        "forms": {
+          "gn": "singaha"
+        }
+      },
+      "sa": {
+        "definition": "Lion.",
+        "native": "सिंह",
+        "transcription": "siṃhá"
+      }
+    },
+    "origin": "sanskrit"
+  },
+  "sister": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Sister, female friend."
+      },
+      "pk": {
+        "definition": "Sister.",
+        "forms": {
+          "gn": "miro"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "sleep": {
+    "category": "stative",
+    "languages": {
+      "lv": {
+        "definition": "(reflexive) $ins$ sleeps. @ (frequentative reflexive) $ins$ inhabits, resides in $loc$."
+      },
+      "pk": {
+        "definition": "To sleep.",
+        "forms": {
+          "gn": "waahingaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "soala": {
+    "category": "uninflected",
+    "languages": {
+      "pk":{
+        "definition": "The Pig [clan](/lauvinko/clans).",
+        "forms": {
+          "gn": "sukara"
+        }
+      },
+      "sa": {
+        "definition": "Pig.",
+        "native": "सूकर",
+        "transcription": "sūkara"
+      }
+    },
+    "origin": "sanskrit"
+  },
+  "son1": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Father's son. @ Heir, beneficiary (of estate), successor."
+      },
+      "pk": {
+        "definition": "Father's son.",
+        "forms": {
+          "gn": "kaankaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "son2": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Mother's son. @ (literary) Life's work, oeuvre."
+      },
+      "pk": {
+        "definition": "Mother's son.",
+        "forms": {
+          "gn": "kaarepaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "sonka": {
+    "category": "uninflected",
+    "languages": {
+      "pk":{
+        "definition": "The Dog [clan](/lauvinko/clans).",
+        "forms": {
+          "gn": "sunaka"
+        }
+      },
+      "sa": {
+        "definition": "Young dog.",
+        "native": "शुनक",
+        "transcription": "śunaka"
+      }
+    },
+    "origin": "sanskrit"
+  },
+  "speak": {
+    "category": "fientive",
+    "languages": {
+      "lv": {
+        "definition": "$vol$ speaks, says $pat$, a word (not a whole phrase). @ $vol$ speaks about $dat$. @ $vol$ speaks to, tells $all$. @ (frequentative) $vol$ commands, is in charge."
+      },
+      "pk": {
+        "definition": "To speak, say.",
+        "forms": {
+          "gn": "k@ppotaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "stand": {
+    "category": "stative",
+    "languages": {
+      "lv": {
+        "definition": "$pat$ stands. @ $pat$, a formally animate noun, exists (used with adpositional statements)."
+      },
+      "pk": {
+        "definition": "To stand.",
+        "forms": {
+          "gn": "ntittoka"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "sun": {
+    "category": "stative",
+    "languages": {
+      "lv": {
+        "definition": "$pat$ shines, is bright. @ The sun."
+      },
+      "pk": {
+        "definition": "Sun.",
+        "forms": {
+          "gn": "tuhisa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "sutra": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Sutra, scripture",
+        "forms": {
+          "gn": "sutta"
+        }
+      },
+      "sa": {
+        "definition": "Thread, wire; Aphorism, collection of aphorisms.",
+        "native": "सूत्र",
+        "transcription": "sū́tra"
+      }
+    },
+    "origin": "sanskrit"
+  },
+  "tenah": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "The Tapir [clan](/lauvinko/clans).",
+        "forms": {
+          "gn": "tenuka"
+        }
+      },
+      "ms": {
+        "definition": "Tapir.",
+        "native": null,
+        "transcription": "tenuk"
+      }
+    },
+    "origin": "malay"
+  },
+  "this": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "This, that.",
+        "forms": {
+          "gn": "kisu"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "timi": {
+    "category": "uninflected",
+    "languages": {
+      "pk":{
+        "definition": "The Whale [clan](/lauvinko/clans).",
+        "forms": {
+          "gn": "timi"
+        }
+      },
+      "sa": {
+        "definition": "Whale.",
+        "native": "तिमि",
+        "transcription": "timi"
+      }
+    },
+    "origin": "sanskrit"
+  },
+  "toe": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Toe."
+      },
+      "pk": {
+        "definition": "Toe.",
+        "forms": {
+          "gn": "homuma"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "touch": {
+    "category": "fientive",
+    "languages": {
+      "lv": {
+        "definition": "$vol$ touches, feels $pat$. @ $vol$ affects, disturbs $pat$. @ (frequentative) $vol$ strikes, hits $pat$."
+      },
+      "pk": {
+        "definition": "To touch, strike.",
+        "forms": {
+          "gn": "p@soru"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "trade": {
+    "category": "punctual",
+    "languages": {
+      "lv": {
+        "definition": "$vol$ trades, exchanges $pat$."
+      },
+      "pk": {
+        "definition": "To trade.",
+        "forms": {
+          "gn": "nc@ki"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "treeshrew": {
+    "category": "uninflected",
+    "languages": {
+      "pk":{
+        "definition": "The Treeshrew [clan](/lauvinko/clans).",
+        "forms": {
+          "gn": "tupai"
+        }
+      },
+      "ms": {
+        "definition": "Squirrel, treeshrew.",
+        "native": null,
+        "transcription": "tupai"
+      }
+    },
+    "origin": "malay"
+  },
+  "vanar": {
+    "category": "uninflected",
+    "languages": {
+      "pk":{
+        "definition": "The Monkey [clan](/lauvinko/clans).",
+        "forms": {
+          "gn": "waanara"
+        }
+      },
+      "sa": {
+        "definition": "Monkey.",
+        "native": "वानर",
+        "transcription": "vānara"
+      }
+    },
+    "origin": "sanskrit"
+  },
+  "water": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Water."
+      },
+      "pk": {
+        "definition": "Water.",
+        "forms": {
+          "gn": "heho"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "weave": {
+    "category": "fientive",
+    "languages": {
+      "lv": {
+        "definition": "$vol$ weaves, intersperses $pat$."
+      },
+      "pk": {
+        "definition": "To weave, interlay.",
+        "forms": {
+          "gn": "y@mpa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "what": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Some, any, what, which."
+      },
+      "pk": {
+        "definition": "What, which.",
+        "forms": {
+          "gn": "raase"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "wise": {
+    "category": "stative",
+    "languages": {
+      "lv": {
+        "definition": "$vol$ is wise. @ (inchoative, typically religious) $vol$ instructs or presents a revelation to $ins$."
+      },
+      "pk": {
+        "definition": "Wise, intelligent.",
+        "forms": {
+          "gn": "ncaaye"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "woman": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Woman. @ (inchoative) $pat$ reaches menarche."
+      },
+      "pk": {
+        "definition": "Woman, female.",
+        "forms": {
+          "gn": "mokaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "yellow": {
+    "category": "stative",
+    "languages": {
+      "lv": {
+        "definition": "$pat$ is yellow. @ $pat$ is exuberant, spontaneous, fun. @ (inchoative) $pat$ cuts loose, gets high."
+      },
+      "pk": {
+        "definition": "Yellow.",
+        "forms": {
+          "gn": "nkimaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  }
+}

@@ -3,7 +3,8 @@ from enum import Enum
 from typing import List, Optional
 from ..shared.semantics import PrimaryTenseAspect, KasanicStemCategory
 from ..shared.morphology import Morpheme, Lemma, Word
-from ..proto_kasanic.phonology import ProtoKasanicOnset, ProtoKasanicMutation
+from ..proto_kasanic.phonology import ProtoKasanicOnset, ProtoKasanicMutation, PKSurfaceForm
+from ..proto_kasanic.transcribe import falavay as pk_falavay
 from .phonology import (
     LauvinkoSyllable,
     LauvinkoSurfaceForm,

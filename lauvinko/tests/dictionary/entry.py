@@ -1,6 +1,7 @@
 import unittest
 from lauvinko.lang.shared.semantics import KasanicStemCategory, PrimaryTenseAspect
 from lauvinko.lang.proto_kasanic.morphology import ProtoKasanicLemma
+from lauvinko.lang.proto_kasanic.transcribe import falavay as pk_falavay
 from lauvinko.lang.lauvinko.morphology import LauvinkoLemma
 from lauvinko.lang.dictionary.entry import DictEntry
 
@@ -23,7 +24,9 @@ class DictEntryTests(unittest.TestCase):
                     "lv": {
                         "definition": "baz",
                         "forms": {
-                            "inc.na": "se/yo",
+                            "inc.na": {
+                                "phonemic": "se/yo",
+                            }
                         },
                     },
                 },
@@ -61,4 +64,9 @@ class DictEntryTests(unittest.TestCase):
         self.assertEqual(
             lv_lemma.form(PrimaryTenseAspect.INCEPTIVE, augment=False).surface_form().narrow_transcription(),
             "séːjʊ",
+        )
+
+        self.assertEqual(
+            lv_lemma.form(PrimaryTenseAspect.INCEPTIVE, augment=False).falavay,
+            pk_falavay(pk_lemma.form(PrimaryTenseAspect.INCEPTIVE).surface_form(), False),
         )

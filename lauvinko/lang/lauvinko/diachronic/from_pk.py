@@ -63,6 +63,26 @@ OFFGLIDES = {
 }
 
 
+def break_onset(consonant: ProtoKasanicOnset) -> tuple[LauvinkoConsonant, LauvinkoConsonant]:
+    coda = None
+
+    if consonant and (consonant.moa is MannerOfArticulation.PRENASALIZED_STOP):
+        coda = LauvinkoConsonant.N
+        consonant = ProtoKasanicOnset.find_by(poa=consonant.poa, moa=MannerOfArticulation.PLAIN_STOP)
+
+    elif consonant and (consonant.moa is MannerOfArticulation.PREGLOTTALIZED_STOP):
+        if consonant is ProtoKasanicOnset.CC:
+            coda = LauvinkoConsonant.T
+        else:
+            coda = PK_TO_LV_ONSETS[consonant]
+
+        consonant = ProtoKasanicOnset.find_by(poa=consonant.poa, moa=MannerOfArticulation.PLAIN_STOP)
+
+    onset = consonant and PK_TO_LV_ONSETS[consonant]
+
+    return onset, coda
+
+
 class ProtoKasanicOrigin(LauvinkoLemmaOrigin):
     """Ye gods what a mess of duct tape and brimstone this class is.
     Heaven forbid the need ever arises to change it again.
@@ -83,20 +103,22 @@ class ProtoKasanicOrigin(LauvinkoLemmaOrigin):
 
         return lv_sf, original_initial_consonant, end_mutation, falavay
 
-    def evolve_surface_form(self, pk_sf: PKSurfaceForm, augment: bool) -> LauvinkoSurfaceForm:
-        syllables: Iterable[GenericCVCSyllable] = self.genericize(pk_sf)
+    @classmethod
+    def evolve_surface_form(cls, pk_sf: PKSurfaceForm, augment: bool, proclitic: bool) -> LauvinkoSurfaceForm:
+        syllables: Iterable[GenericCVCSyllable] = cls.genericize(pk_sf)
 
-        syllables = self.break_diphthongs(syllables)
-        syllables, falling_accent = self.transform_consonants(syllables, augment)
-        syllables = self.remove_h(syllables)
-        syllables = self.reduce_vowels(syllables, augment)
-        syllables = self.resolve_vowel_hiatus(syllables)
-        syllables = self.resolve_offglides(syllables)
-        syllables = self.remove_short_vowels(syllables)
-        syllables = self.resolve_offglides(syllables)
-        syllables = self.convert_vowels(syllables)
+        syllables = cls.break_diphthongs(syllables)
+        syllables, falling_accent = cls.transform_consonants(syllables, augment)
+        syllables = cls.remove_h(syllables)
+        if proclitic:
+            syllables = cls.reduce_vowels(syllables, augment)
+        syllables = cls.resolve_vowel_hiatus(syllables)
+        syllables = cls.resolve_offglides(syllables)
+        syllables = cls.remove_short_vowels(syllables)
+        syllables = cls.resolve_offglides(syllables)
+        syllables = cls.convert_vowels(syllables)
 
-        lv_syllables, accent_position = self.degenericize(syllables)
+        lv_syllables, accent_position = cls.degenericize(syllables)
 
         lv_sf = LauvinkoSurfaceForm(
             syllables=lv_syllables,
@@ -144,41 +166,34 @@ class ProtoKasanicOrigin(LauvinkoLemmaOrigin):
                 falling_accent = not augment
 
             poststress = i > 0 and syllables[i - 1].stressed
+            should_reduce = poststress and not augment
 
-            if syllable.onset is ProtoKasanicOnset.NC:
-                if i == 0:
+            if i == 0:
+                if syllable.onset is ProtoKasanicOnset.NC:
                     out_syllables.append(GenericCVCSyllable(
                         onset=None,
                         vowel=ProtoKasanicVowel.AA,
                         coda=LauvinkoConsonant.N,
                         stressed=False,
                     ))
+                    syllable.onset = LauvinkoConsonant.C
+
                 else:
-                    assert syllables[i-1].coda is None
-                    syllables[i-1].coda = LauvinkoConsonant.N
+                    syllable.onset = syllable.onset and PK_TO_LV_ONSETS[syllable.onset]
 
-                syllable.onset = ProtoKasanicOnset.C
+            elif should_reduce:
+                if syllable.onset is ProtoKasanicOnset.NC:
+                    out_syllables[-1].coda = LauvinkoConsonant.N
+                    falling_accent = False
+                    syllable.onset = LauvinkoConsonant.S
 
-            if poststress and not augment:
-                mutated = syllable.onset and ProtoKasanicMutation.LENITION.mutate(syllable.onset)
-                falling_accent = mutated is syllable.onset
-                syllable.onset = mutated and PK_TO_LV_ONSETS[mutated]
-                out_syllables.append(syllable)
-                continue
-
-            elif syllable.onset and (syllable.onset.moa is MannerOfArticulation.PRENASALIZED_STOP and i > 0):
-                syllables[i - 1].coda = LauvinkoConsonant.N
-                syllable.onset = ProtoKasanicOnset.find_by(poa=syllable.onset.poa, moa=MannerOfArticulation.PLAIN_STOP)
-
-            elif syllable.onset and (syllable.onset.moa is MannerOfArticulation.PREGLOTTALIZED_STOP and i > 0):
-                if syllable.onset is ProtoKasanicOnset.CC:
-                    syllables[i-1].coda = LauvinkoConsonant.T
                 else:
-                    syllables[i - 1].coda = PK_TO_LV_ONSETS[syllable.onset]
+                    mutated = syllable.onset and ProtoKasanicMutation.LENITION.mutate(syllable.onset)
+                    falling_accent = mutated is syllable.onset
+                    syllable.onset = mutated and PK_TO_LV_ONSETS[mutated]
 
-                syllable.onset = ProtoKasanicOnset.find_by(poa=syllable.onset.poa, moa=MannerOfArticulation.PLAIN_STOP)
-
-            syllable.onset = syllable.onset and PK_TO_LV_ONSETS[syllable.onset]
+            else:
+                syllable.onset, out_syllables[-1].coda = break_onset(syllable.onset)
 
             out_syllables.append(syllable)
 

@@ -1,6 +1,6 @@
 from random import randrange
 from ..shared.semantics import PrimaryTenseAspect, KasanicStemCategory
-from .phonology import ProtoKasanicOnset, ProtoKasanicVowel, ProtoKasanicSyllable
+from .phonology import ProtoKasanicOnset, ProtoKasanicVowel, ProtoKasanicMutation, ProtoKasanicSyllable
 from .morphology import ProtoKasanicMorpheme, ProtoKasanicLemma
 
 
@@ -89,6 +89,14 @@ syllable_count_raffle = WeightedRandomizer({
 })
 
 
+mutation_raffle = WeightedRandomizer({
+    ProtoKasanicMutation.NASALIZATION: 1,
+    ProtoKasanicMutation.LENITION: 1,
+    ProtoKasanicMutation.FORTITION: 1,
+    None: 3,
+})
+
+
 def random_pk_lemma(category: KasanicStemCategory) -> ProtoKasanicLemma:
     syllables = []
     syllable_count = syllable_count_raffle.draw()
@@ -111,10 +119,10 @@ def random_pk_lemma(category: KasanicStemCategory) -> ProtoKasanicLemma:
 
     return ProtoKasanicLemma(
         category=category,
-        definition=None,
+        definition="",
         forms={},
         generic_morph=ProtoKasanicMorpheme(
             syllables=syllables,
-            end_mutation=None,
+            end_mutation=mutation_raffle.draw(),
         )
     )

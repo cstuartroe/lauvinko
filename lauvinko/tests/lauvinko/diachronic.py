@@ -121,7 +121,7 @@ class LauvinkoDiachronicTests(unittest.TestCase):
                     lv_morpheme.original_initial_consonant,
                 )
 
-    def test_test_aspect(self):
+    def test_tense_aspect(self):
         for pk_morpheme, *forms in FULL_TENSE_ASPECT_TESTS:
             pk_lemma = ProtoKasanicLemma(
                 definition="",

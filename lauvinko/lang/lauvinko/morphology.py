@@ -3,15 +3,15 @@ from enum import Enum
 from typing import List, Optional
 from ..shared.semantics import PrimaryTenseAspect, KasanicStemCategory
 from ..shared.morphology import Morpheme, Lemma, Word
-from ..proto_kasanic.phonology import ProtoKasanicOnset, ProtoKasanicMutation, PKSurfaceForm
-from ..proto_kasanic.transcribe import falavay as pk_falavay
+from ..proto_kasanic.phonology import ProtoKasanicOnset, ProtoKasanicMutation
 from .phonology import (
+    LauvinkoVowel,
     LauvinkoSyllable,
-    LauvinkoSurfaceForm,
+    LauvinkoSurfaceForm, LauvinkoConsonant,
 )
 from ..proto_kasanic.morphology import ProtoKasanicLemma
 from .diachronic.base import LauvinkoLemmaOrigin
-from .diachronic.from_pk import ProtoKasanicOrigin
+from .diachronic.from_pk import ProtoKasanicOrigin, break_onset
 from .diachronic.from_transcription import TranscriptionReader
 
 
@@ -60,7 +60,57 @@ class LauvinkoMorpheme(Morpheme):
 
     @staticmethod
     def join(morphemes: List["LauvinkoMorpheme"], accented: Optional[int]) -> LauvinkoSurfaceForm:
-        pass
+        syllables: List[LauvinkoSyllable] = []
+        accent_position = None
+        falling_accent = None
+        active_mutation: Optional[ProtoKasanicMutation] = None
+
+        for i, morpheme in enumerate(morphemes):
+            sf = morpheme.surface_form()
+
+            pk_initial = morpheme.original_initial_consonant
+            if active_mutation is not None:
+                pk_initial = active_mutation.mutate(pk_initial)
+
+            new_onset, new_coda = break_onset(pk_initial)
+
+            lv_syllables = []
+
+            if new_coda:
+                lv_syllables.append(
+                    LauvinkoSyllable(
+                        onset=None,
+                        vowel=LauvinkoVowel.A,
+                        coda=new_coda,
+                    )
+                )
+
+            lv_syllables.append(
+                LauvinkoSyllable(
+                    onset=new_onset,
+                    vowel=sf.syllables[0].vowel,
+                    coda=sf.syllables[0].coda,
+                ),
+            )
+
+            lv_syllables += morpheme.surface_form().syllables[1:]
+
+            if lv_syllables[0].onset is None:
+                first_syllable_accented = sf.accent_position == 0 and (new_coda is not None)
+                lv_syllables[0].onset = LauvinkoConsonant.Y
+                syllables += lv_syllables
+            else:
+                syllables += lv_syllables
+
+            if accented == i:
+                accent_position = len(syllables) - (len(sf.syllables) - sf.accent_position)
+                falling_accent = sf.falling_accent
+
+        return LauvinkoSurfaceForm(
+            syllables=syllables,
+            accent_position=accent_position,
+            falling_accent=falling_accent,
+        )
 
 
 @dataclass

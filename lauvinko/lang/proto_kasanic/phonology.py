@@ -99,7 +99,13 @@ class ProtoKasanicMutation(Enum):
         MannerOfArticulation.PLAIN_STOP: MannerOfArticulation.PRENASALIZED_STOP,
     }
 
-    def mutate(self, c: ProtoKasanicOnset) -> ProtoKasanicOnset:
+    def mutate(self, c: Optional[ProtoKasanicOnset]) -> Optional[ProtoKasanicOnset]:
+        if c is None:
+            if self is ProtoKasanicMutation.NASALIZATION:
+                return ProtoKasanicOnset.N
+            else:
+                return None
+
         if c in self.value:
             return self.value[c]
 

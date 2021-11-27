@@ -1,7 +1,8 @@
 from enum import Enum
-from typing import Optional
-from lauvinko.lang.proto_kasanic.phonology import ProtoKasanicOnset, ProtoKasanicMutation
-from lauvinko.lang.proto_kasanic.morphology import MUTATION_NOTATION
+from typing import Optional, List
+from lauvinko.lang.proto_kasanic.phonology import ProtoKasanicOnset, ProtoKasanicMutation, PKSurfaceForm, \
+    ProtoKasanicSyllable, ProtoKasanicVowel
+from lauvinko.lang.proto_kasanic.morphology import MUTATION_NOTATION, ProtoKasanicMorpheme
 from lauvinko.lang.lauvinko.phonology import LauvinkoConsonant, LauvinkoVowel, LauvinkoSyllable, LauvinkoSurfaceForm
 from .from_pk import PK_TO_LV_ONSETS
 
@@ -57,11 +58,23 @@ class TranscriptionReader:
         if len(self.transcription) >= self.i + n:
             return self.transcription[self.i: self.i + n]
 
-    def read(self) -> tuple[LauvinkoSurfaceForm, ProtoKasanicOnset, ProtoKasanicMutation]:
+    def read(self) -> tuple[LauvinkoSurfaceForm, ProtoKasanicMorpheme]:
         self.get_end_mutation()
         self.get_initial_consonant()
         self.main_loop()
         self.resolve_final_consonant()
+
+        virtual_syllables: List[ProtoKasanicSyllable] = []
+        for i, syllable in enumerate(self.syllables):
+            s = ProtoKasanicSyllable(
+                onset=self.original_initial_consonant if i == 0 else None, # TODO?
+                vowel=ProtoKasanicVowel.find_by(
+                    frontness=syllable.vowel.frontness,
+                    low=syllable.vowel.low,
+                )
+            )
+
+            virtual_syllables.append(s)
 
         return (
             LauvinkoSurfaceForm(
@@ -69,8 +82,13 @@ class TranscriptionReader:
                 accent_position=self.accent_position,
                 falling_accent=self.falling_accent,
             ),
-            self.original_initial_consonant,
-            self.end_mutation,
+            ProtoKasanicMorpheme(
+                surface_form=PKSurfaceForm(
+                    syllables=virtual_syllables,
+                    stress_position=self.accent_position,
+                ),
+                end_mutation=self.end_mutation,
+            ),
         )
 
     def get_end_mutation(self):

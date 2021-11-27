@@ -16,6 +16,6 @@ class PKGenerationTests(unittest.TestCase):
 
             print(
                 pk_transcribe(pk_lemma.form(PrimaryTenseAspect.GENERAL).surface_form()),
-                lv_transcribe(lv_lemma.form(PrimaryTenseAspect.GENERAL, context=MorphemeContext.AUGMENTED).surface_form()),
-                lv_transcribe(lv_lemma.form(PrimaryTenseAspect.GENERAL, context=MorphemeContext.NONAUGMENTED).surface_form()),
+                lv_transcribe(lv_lemma.form(PrimaryTenseAspect.GENERAL, context=MorphemeContext.AUGMENTED).surface_form),
+                lv_transcribe(lv_lemma.form(PrimaryTenseAspect.GENERAL, context=MorphemeContext.NONAUGMENTED).surface_form),
             )

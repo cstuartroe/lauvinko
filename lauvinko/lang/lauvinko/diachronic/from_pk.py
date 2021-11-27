@@ -1,5 +1,5 @@
 from typing import Optional, List, Iterable
-from lauvinko.lang.proto_kasanic.morphology import ProtoKasanicLemma
+from lauvinko.lang.proto_kasanic.morphology import ProtoKasanicLemma, ProtoKasanicMorpheme
 from lauvinko.lang.shared.semantics import PrimaryTenseAspect
 from lauvinko.lang.shared.phonology import (
     MannerOfArticulation,
@@ -91,17 +91,15 @@ class ProtoKasanicOrigin(LauvinkoLemmaOrigin):
         self.derived_from = derived_from
 
     def generate_form(self, primary_ta: PrimaryTenseAspect, context: MorphemeContext) \
-            -> tuple[LauvinkoSurfaceForm, ProtoKasanicOnset, ProtoKasanicVowel, ProtoKasanicMutation, str]:
-        pk_morpheme = self.derived_from.form(primary_ta)
-        pk_sf = pk_morpheme.surface_form()
+            -> tuple[LauvinkoSurfaceForm, ProtoKasanicMorpheme, str]:
+        pk_stem = self.derived_from.form(primary_ta)
+        pk_sf = pk_stem.surface_form()
 
         lv_sf = self.evolve_surface_form(pk_sf, context)
-        original_initial_consonant = pk_sf.syllables[0].onset
-        original_final_vowel = pk_sf.syllables[-1].vowel
-        end_mutation = pk_morpheme.main_morpheme.end_mutation
+
         falavay = pk_falavay(pk_sf, augment=context is MorphemeContext.AUGMENTED)
 
-        return lv_sf, original_initial_consonant, original_final_vowel, end_mutation, falavay
+        return lv_sf, pk_stem.main_morpheme, falavay
 
     @classmethod
     def evolve_surface_form(cls, pk_sf: PKSurfaceForm, context: MorphemeContext) -> LauvinkoSurfaceForm:

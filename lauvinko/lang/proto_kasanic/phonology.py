@@ -120,17 +120,21 @@ class ProtoKasanicMutation(Enum):
 class PKSurfaceForm(SurfaceForm):
     syllables: List[ProtoKasanicSyllable]
     stress_position: Optional[int]
+    validated: bool = False
 
     class InvalidStress(ValueError):
         pass
 
     def __post_init__(self):
         if self.stress_position is not None and self.stress_position >= len(self.syllables):
-            raise PKSurfaceForm.InvalidStress
+            if not self.validated and self.stress_position == 0:
+                pass  # This is an edge case that's permitted
+            else:
+                raise PKSurfaceForm.InvalidStress
 
-        for syllable in self.syllables:
+        for syllable in self.syllables[1:]:
             if syllable.vowel.frontness is VowelFrontness.UNDERSPECIFIED:
-                raise ProtoKasanicSyllable.InvalidSyllable(f"Surface form cannot have underspecified vowel")
+                raise ProtoKasanicSyllable.InvalidSyllable(f"Non-initial vowel is underspecified: {self.syllables}")
 
     def broad_transcription(self) -> str:
         syllables_ipa = []

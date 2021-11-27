@@ -54,17 +54,17 @@ class DictEntryTests(unittest.TestCase):
         )
 
         self.assertEqual(
-            lv_lemma.form(PrimaryTenseAspect.PERFECTIVE, context=MorphemeContext.NONAUGMENTED).surface_form().narrow_transcription(),
+            lv_lemma.form(PrimaryTenseAspect.PERFECTIVE, context=MorphemeContext.NONAUGMENTED).surface_form.narrow_transcription(),
             "sɪ́ʔ",
         )
 
         self.assertEqual(
-            lv_lemma.form(PrimaryTenseAspect.IMPERFECTIVE_PAST, context=MorphemeContext.NONAUGMENTED).surface_form().narrow_transcription(),
+            lv_lemma.form(PrimaryTenseAspect.IMPERFECTIVE_PAST, context=MorphemeContext.NONAUGMENTED).surface_form.narrow_transcription(),
             "pʊ̂ɽ",
         )
 
         self.assertEqual(
-            lv_lemma.form(PrimaryTenseAspect.INCEPTIVE, context=MorphemeContext.NONAUGMENTED).surface_form().narrow_transcription(),
+            lv_lemma.form(PrimaryTenseAspect.INCEPTIVE, context=MorphemeContext.NONAUGMENTED).surface_form.narrow_transcription(),
             "ɪsɛ́ʔ",
         )
 

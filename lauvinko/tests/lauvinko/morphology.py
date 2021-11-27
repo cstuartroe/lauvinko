@@ -50,13 +50,13 @@ class LauvinkoMorphologyTests(unittest.TestCase):
                 context=MorphemeContext.PREFIXED
             )
 
-            print(lv_form_1.surface_form().historical_transcription())
+            print(lv_form_1.surface_form.historical_transcription())
 
             lv_form_2 = LauvinkoLemma.from_pk(pk_lemma_2).citation_form(
                 context=MorphemeContext.AUGMENTED if augment else MorphemeContext.NONAUGMENTED
             )
 
-            print(lv_form_2.surface_form().historical_transcription())
+            print(lv_form_2.surface_form.historical_transcription())
 
             evolved_then_joined = LauvinkoMorpheme.join(
                 [lv_form_1, lv_form_2],

@@ -11,11 +11,6 @@ class Morpheme:
     It will usually have a valid surface form in isolation (though dependent morphemes may refrain from implementing
     surface_form), but may still undergo sandhi with adjacent morphemes.
     """
-    syllables: List[Syllable]
-
-    def surface_form(self, *args, **kwargs) -> Optional[SurfaceForm]:
-        raise NotImplementedError
-
     class InvalidTranscription(ValueError):
         pass
 
@@ -26,10 +21,10 @@ class Morpheme:
 
     @classmethod
     def from_informal_transcription(cls, transcription: str):
-        return cls(*cls._from_informal_transcription(transcription))
+        raise NotImplementedError
 
     @staticmethod
-    def join(*args, **kwargs) -> SurfaceForm:
+    def join(*args, **kwargs):
         raise NotImplementedError
 
 

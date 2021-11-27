@@ -20,7 +20,7 @@ TRANSCRIPTIONS = [
 class TranscriptionTests(unittest.TestCase):
     def test_transcription(self):
         for informal_transcription, transcription, augmented_falavay_spelling, falavay_spelling in TRANSCRIPTIONS:
-            form = pkm(informal_transcription).surface_form()
+            form = pkm(informal_transcription).surface_form
 
             self.assertEqual(transcribe(form), transcription)
             self.assertEqual(falavay(form), falavay_spelling)

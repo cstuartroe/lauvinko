@@ -13,24 +13,24 @@ from lauvinko.lang.proto_kasanic.morphology import pkm, ProtoKasanicMorpheme
 class ProtoKasanicPhonologyTests(unittest.TestCase):
     def test_phonemes(self):
         m = pkm("siruwai+N")
-        self.assertIs(m.syllables[1].onset, ProtoKasanicOnset.R)
-        self.assertIs(m.syllables[2].vowel, ProtoKasanicVowel.AI)
+        self.assertIs(m.surface_form.syllables[1].onset, ProtoKasanicOnset.R)
+        self.assertIs(m.surface_form.syllables[2].vowel, ProtoKasanicVowel.AI)
 
         m = pkm("kwaasa")
-        self.assertIs(m.syllables[0].vowel, ProtoKasanicVowel.AA)
-        self.assertIs(m.syllables[1].vowel, ProtoKasanicVowel.A)
+        self.assertIs(m.surface_form.syllables[0].vowel, ProtoKasanicVowel.AA)
+        self.assertIs(m.surface_form.syllables[1].vowel, ProtoKasanicVowel.A)
 
         m = pkm("tt@+L")
-        self.assertIs(m.syllables[0].onset, ProtoKasanicOnset.TT)
-        self.assertIs(m.syllables[0].vowel, ProtoKasanicVowel.LOW)
+        self.assertIs(m.surface_form.syllables[0].onset, ProtoKasanicOnset.TT)
+        self.assertIs(m.surface_form.syllables[0].vowel, ProtoKasanicVowel.LOW)
 
         m = pkm("ngw~")
-        self.assertIs(m.syllables[0].onset, ProtoKasanicOnset.NGW)
-        self.assertIs(m.syllables[0].vowel, ProtoKasanicVowel.HIGH)
+        self.assertIs(m.surface_form.syllables[0].onset, ProtoKasanicOnset.NGW)
+        self.assertIs(m.surface_form.syllables[0].vowel, ProtoKasanicVowel.HIGH)
 
         m = pkm("a'a")
-        self.assertIs(m.syllables[0].onset, None)
-        self.assertIs(m.syllables[1].onset, None)
+        self.assertIs(m.surface_form.syllables[0].onset, None)
+        self.assertIs(m.surface_form.syllables[1].onset, None)
 
     def test_mutation_parsing(self):
         m = pkm("ma+L")
@@ -44,11 +44,11 @@ class ProtoKasanicPhonologyTests(unittest.TestCase):
 
     def test_zero_morpheme(self):
         m = pkm("")
-        self.assertEqual(m.syllables, [])
+        self.assertEqual(m.surface_form.syllables, [])
         self.assertIs(m.end_mutation, None)
 
         m = pkm("+F")
-        self.assertEqual(m.syllables, [])
+        self.assertEqual(m.surface_form.syllables, [])
         self.assertIs(m.end_mutation, ProtoKasanicMutation.FORTITION)
 
     def test_invalid_transcriptions(self):
@@ -78,21 +78,21 @@ class ProtoKasanicPhonologyTests(unittest.TestCase):
             1,
         )
 
-        self.assertEqual(sf, pkm("iso'aro", stress_position=2).surface_form())
+        self.assertEqual(sf, pkm("iso'aro", stress_position=2).surface_form)
 
         sf = ProtoKasanicMorpheme.join(
             [pkm("yo"), pkm("yo")],
             None,
         )
 
-        self.assertEqual(sf, pkm("yoyo", stress_position=None).surface_form())
+        self.assertEqual(sf, pkm("yoyo", stress_position=None).surface_form)
 
     def test_invalid_stress(self):
         with self.assertRaises(PKSurfaceForm.InvalidStress):
-            pkm("a", stress_position=1).surface_form()
+            pkm("a", stress_position=1)
 
         with self.assertRaises(PKSurfaceForm.InvalidStress):
-            pkm("").surface_form()
+            pkm("", stress_position=1)
 
     def test_mutations(self):
         mutations = [
@@ -124,14 +124,14 @@ class ProtoKasanicPhonologyTests(unittest.TestCase):
                 0,
             )
 
-            self.assertEqual(sf, pkm(joined).surface_form())
+            self.assertEqual(sf, pkm(joined).surface_form)
 
     def test_phonemic_transcription(self):
         m = pkm("mpaari'okka")
-        self.assertEqual(m.surface_form().broad_transcription(), "ˈᵐpa.ri.o.ˀkə")
+        self.assertEqual(m.surface_form.broad_transcription(), "ˈᵐpa.ri.o.ˀkə")
 
         m = pkm("ncewi", stress_position=1)
-        self.assertEqual(m.surface_form().broad_transcription(), "ᶮt͡ɕe.ˈwi")
+        self.assertEqual(m.surface_form.broad_transcription(), "ᶮt͡ɕe.ˈwi")
 
         m = pkm("tti", stress_position=None)
-        self.assertEqual(m.surface_form().broad_transcription(), "ˀti")
+        self.assertEqual(m.surface_form.broad_transcription(), "ˀti")

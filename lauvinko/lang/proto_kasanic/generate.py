@@ -2,7 +2,7 @@ from random import randrange
 from typing import List
 
 from ..shared.semantics import PrimaryTenseAspect, KasanicStemCategory
-from .phonology import ProtoKasanicOnset, ProtoKasanicVowel, ProtoKasanicSyllable, ProtoKasanicMutation
+from .phonology import ProtoKasanicOnset, ProtoKasanicVowel, ProtoKasanicSyllable, ProtoKasanicMutation, PKSurfaceForm
 from .morphology import ProtoKasanicMorpheme, ProtoKasanicLemma
 
 
@@ -122,20 +122,24 @@ def _random_pk_syllables(category: KasanicStemCategory) -> List[ProtoKasanicSyll
 
 def random_pk_morpheme() -> ProtoKasanicMorpheme:
     return ProtoKasanicMorpheme(
-        syllables=_random_pk_syllables(KasanicStemCategory.UNINFLECTED),
+        surface_form=PKSurfaceForm(
+            syllables=_random_pk_syllables(KasanicStemCategory.UNINFLECTED),
+            stress_position=None,
+        ),
         end_mutation=mutation_raffle.draw(),
-        stress_position=None,
     )
 
 
 def random_pk_lemma(category: KasanicStemCategory) -> ProtoKasanicLemma:
     return ProtoKasanicLemma(
         category=category,
-        definition=None,
+        definition="",
         forms={},
         generic_morph=ProtoKasanicMorpheme(
-            syllables=_random_pk_syllables(category),
+            surface_form=PKSurfaceForm(
+                syllables=_random_pk_syllables(category),
+                stress_position=0,
+            ),
             end_mutation=None,
-            stress_position=0,
         )
     )

@@ -25,10 +25,10 @@ class ProtoKasanicMorphologyTests(unittest.TestCase):
         )
 
         form_inc: ProtoKasanicStem = lemma.form(PrimaryTenseAspect.INCEPTIVE)
-        self.assertEqual(form_inc.surface_form(), pkm("intaru", stress_position=1).surface_form())
+        self.assertEqual(form_inc.surface_form(), pkm("intaru", stress_position=1).surface_form)
 
         form_fqnp: ProtoKasanicStem = lemma.form(PrimaryTenseAspect.FREQUENTATIVE_NONPAST)
-        self.assertEqual(form_fqnp.surface_form(), pkm("titiru", stress_position=1).surface_form())
+        self.assertEqual(form_fqnp.surface_form(), pkm("titiru", stress_position=1).surface_form)
 
         with self.assertRaises(lemma.NonexistentForm):
             lemma.form(PrimaryTenseAspect.GENERAL)
@@ -42,10 +42,10 @@ class ProtoKasanicMorphologyTests(unittest.TestCase):
         )
 
         form_np: ProtoKasanicStem = lemma.form(PrimaryTenseAspect.NONPAST)
-        self.assertEqual(form_np.surface_form(), pkm("kke").surface_form())
+        self.assertEqual(form_np.surface_form(), pkm("kke").surface_form)
 
         form_fqpt: ProtoKasanicStem = lemma.form(PrimaryTenseAspect.FREQUENTATIVE_PAST)
-        self.assertEqual(form_fqpt.surface_form(), pkm("kkokko", stress_position=1).surface_form())
+        self.assertEqual(form_fqpt.surface_form(), pkm("kkokko", stress_position=1).surface_form)
 
         with self.assertRaises(lemma.NonexistentForm):
             lemma.form(PrimaryTenseAspect.INCEPTIVE)
@@ -73,10 +73,10 @@ class ProtoKasanicMorphologyTests(unittest.TestCase):
         )
 
         form_impt: ProtoKasanicStem = lemma.form(PrimaryTenseAspect.IMPERFECTIVE_PAST)
-        self.assertEqual(form_impt.surface_form(), pkm("to").surface_form())
+        self.assertEqual(form_impt.surface_form(), pkm("to").surface_form)
 
         form_imnp: ProtoKasanicStem = lemma.form(PrimaryTenseAspect.IMPERFECTIVE_NONPAST)
-        self.assertEqual(form_imnp.surface_form(), pkm("tai").surface_form())
+        self.assertEqual(form_imnp.surface_form(), pkm("tai").surface_form)
 
         with self.assertRaises(Lemma.NonexistentForm):
             ProtoKasanicLemma(

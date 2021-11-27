@@ -83,6 +83,6 @@ class LauvinkoTranscriptionTests(unittest.TestCase):
     def test_transcription(self):
         for morpheme, transcription in TESTS:
             self.assertEqual(
-                transcribe(morpheme.surface_form()),
+                transcribe(morpheme.surface_form),
                 transcription,
             )

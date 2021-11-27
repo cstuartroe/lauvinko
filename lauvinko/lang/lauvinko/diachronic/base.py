@@ -1,10 +1,6 @@
 from enum import Enum
 from lauvinko.lang.lauvinko.phonology import LauvinkoSurfaceForm
-from lauvinko.lang.proto_kasanic.phonology import (
-    ProtoKasanicOnset,
-    ProtoKasanicVowel,
-    ProtoKasanicMutation,
-)
+from lauvinko.lang.proto_kasanic.morphology import ProtoKasanicMorpheme
 from lauvinko.lang.shared.semantics import PrimaryTenseAspect
 
 
@@ -16,7 +12,7 @@ class MorphemeContext(Enum):
 
 class LauvinkoLemmaOrigin:
     def generate_form(self, primary_ta: PrimaryTenseAspect, context: MorphemeContext) \
-            -> tuple[LauvinkoSurfaceForm, ProtoKasanicOnset, ProtoKasanicVowel, ProtoKasanicMutation, str]:
+            -> tuple[LauvinkoSurfaceForm, ProtoKasanicMorpheme, str]:
         raise NotImplementedError
 
     class InvalidOrigin(ValueError):

@@ -78,24 +78,21 @@ class ProtoKasanicPhonologyTests(unittest.TestCase):
             1,
         )
 
-        self.assertEqual(sf, pkm("iso'aro").surface_form(2))
+        self.assertEqual(sf, pkm("iso'aro", stress_position=2).surface_form())
 
         sf = ProtoKasanicMorpheme.join(
             [pkm("yo"), pkm("yo")],
             None,
         )
 
-        self.assertEqual(sf, pkm("yoyo").surface_form(None))
+        self.assertEqual(sf, pkm("yoyo", stress_position=None).surface_form())
 
     def test_invalid_stress(self):
         with self.assertRaises(PKSurfaceForm.InvalidStress):
-            pkm("a").surface_form(1)
+            pkm("a", stress_position=1).surface_form()
 
         with self.assertRaises(PKSurfaceForm.InvalidStress):
-            pkm("").surface_form(0)
-
-        with self.assertRaises(PKSurfaceForm.InvalidStress):
-            pkm("").surface_form(None)
+            pkm("").surface_form()
 
     def test_mutations(self):
         mutations = [
@@ -133,8 +130,8 @@ class ProtoKasanicPhonologyTests(unittest.TestCase):
         m = pkm("mpaari'okka")
         self.assertEqual(m.surface_form().broad_transcription(), "ˈᵐpa.ri.o.ˀkə")
 
-        m = pkm("ncewi")
-        self.assertEqual(m.surface_form(1).broad_transcription(), "ᶮt͡ɕe.ˈwi")
+        m = pkm("ncewi", stress_position=1)
+        self.assertEqual(m.surface_form().broad_transcription(), "ᶮt͡ɕe.ˈwi")
 
-        m = pkm("tti")
-        self.assertEqual(m.surface_form(None).broad_transcription(), "ˀti")
+        m = pkm("tti", stress_position=None)
+        self.assertEqual(m.surface_form().broad_transcription(), "ˀti")

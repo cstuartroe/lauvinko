@@ -91,8 +91,9 @@ class DictEntry:
             elif "written_like" in form_json:
                 morpheme.falavay = pk_falavay(
                     ProtoKasanicMorpheme.from_informal_transcription(
-                        form_json["written_like"]
-                    ).surface_form(0)
+                        form_json["written_like"],
+                        stress_position=0,
+                    ).surface_form()
                 )
 
             lv_forms[(primary_ta, augment)] = morpheme

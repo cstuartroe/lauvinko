@@ -25,10 +25,10 @@ class ProtoKasanicMorphologyTests(unittest.TestCase):
         )
 
         form_inc: ProtoKasanicStem = lemma.form(PrimaryTenseAspect.INCEPTIVE)
-        self.assertEqual(form_inc.surface_form(), pkm("intaru").surface_form(1))
+        self.assertEqual(form_inc.surface_form(), pkm("intaru", stress_position=1).surface_form())
 
         form_fqnp: ProtoKasanicStem = lemma.form(PrimaryTenseAspect.FREQUENTATIVE_NONPAST)
-        self.assertEqual(form_fqnp.surface_form(), pkm("titiru").surface_form(1))
+        self.assertEqual(form_fqnp.surface_form(), pkm("titiru", stress_position=1).surface_form())
 
         with self.assertRaises(lemma.NonexistentForm):
             lemma.form(PrimaryTenseAspect.GENERAL)
@@ -45,7 +45,7 @@ class ProtoKasanicMorphologyTests(unittest.TestCase):
         self.assertEqual(form_np.surface_form(), pkm("kke").surface_form())
 
         form_fqpt: ProtoKasanicStem = lemma.form(PrimaryTenseAspect.FREQUENTATIVE_PAST)
-        self.assertEqual(form_fqpt.surface_form(), pkm("kkokko").surface_form(1))
+        self.assertEqual(form_fqpt.surface_form(), pkm("kkokko", stress_position=1).surface_form())
 
         with self.assertRaises(lemma.NonexistentForm):
             lemma.form(PrimaryTenseAspect.INCEPTIVE)

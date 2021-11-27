@@ -79,11 +79,14 @@ class ProtoKasanicSyllable(Syllable):
 
 class ProtoKasanicMutation(Enum):
     FORTITION = {
+        None: None,
         ProtoKasanicOnset.S: ProtoKasanicOnset.C,
         MannerOfArticulation.PLAIN_STOP: MannerOfArticulation.PREGLOTTALIZED_STOP,
     }
 
     LENITION = {
+        None: None,
+
         ProtoKasanicOnset.P: ProtoKasanicOnset.W,
         ProtoKasanicOnset.T: ProtoKasanicOnset.R,
         ProtoKasanicOnset.C: ProtoKasanicOnset.S,
@@ -95,11 +98,13 @@ class ProtoKasanicMutation(Enum):
     }
 
     NASALIZATION = {
+        None: ProtoKasanicOnset.N,
+
         MannerOfArticulation.APPROXIMANT: MannerOfArticulation.NASAL,
         MannerOfArticulation.PLAIN_STOP: MannerOfArticulation.PRENASALIZED_STOP,
     }
 
-    def mutate(self, c: ProtoKasanicOnset) -> ProtoKasanicOnset:
+    def mutate(self, c: Optional[ProtoKasanicOnset]) -> ProtoKasanicOnset:
         if c in self.value:
             return self.value[c]
 

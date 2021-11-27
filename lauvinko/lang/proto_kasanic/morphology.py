@@ -30,27 +30,25 @@ UNDERSPECIFIED_VOWELS = {
 class ProtoKasanicMorpheme(Morpheme):
     syllables: List[ProtoKasanicSyllable]
     end_mutation: Optional[ProtoKasanicMutation]
+    stress_position: Optional[int]
 
     def __post_init__(self):
         for syllable in self.syllables[1:]:
             if syllable.vowel.frontness is VowelFrontness.UNDERSPECIFIED:
                 raise ProtoKasanicSyllable.InvalidSyllable(f"Non-initial vowel is underspecified: {self.syllables}")
 
-    def surface_form(self, stress_position=0) -> PKSurfaceForm:
-        sf = ProtoKasanicMorpheme.join([self], 0)
-        if stress_position != 0:
-            return PKSurfaceForm(syllables=sf.syllables, stress_position=stress_position)
-        return sf
+    def surface_form(self) -> PKSurfaceForm:
+        return ProtoKasanicMorpheme.join([self], None if self.stress_position is None else 0)
 
     class InvalidTranscription(ValueError):
         pass
 
     @classmethod
-    def from_informal_transcription(cls, transcription: str) -> "ProtoKasanicMorpheme":
-        return cls(*cls._from_informal_transcription(transcription))
+    def from_informal_transcription(cls, transcription: str, stress_position: Optional[int] = 0) -> "ProtoKasanicMorpheme":
+        return cls(*cls._from_informal_transcription(transcription, stress_position=stress_position))
 
     @staticmethod
-    def _from_informal_transcription(transcription: str):
+    def _from_informal_transcription(transcription: str, stress_position: Optional[int] = 0):
         m = regex.fullmatch("(([mngptckshryw']{0,3})([aeiou@~]{1,2}))*(\\+[FLN])?", transcription)
 
         if m is None:
@@ -76,7 +74,7 @@ class ProtoKasanicMorpheme(Morpheme):
         mutation = MUTATION_NOTATION.get(m.group(4))
 
         # I need a separate function
-        return syllables, mutation
+        return syllables, mutation, stress_position
 
     @staticmethod
     def join(morphemes: List["ProtoKasanicMorpheme"], stressed: Optional[int]) -> PKSurfaceForm:
@@ -86,7 +84,7 @@ class ProtoKasanicMorpheme(Morpheme):
 
         for i, morpheme in enumerate(morphemes):
             if stressed == i:
-                stress_position = len(syllables)
+                stress_position = len(syllables) + morpheme.stress_position
 
             if morpheme is REDUPLICATOR:
                 syllables_to_add = morphemes[i + 1].syllables[:1]
@@ -146,7 +144,7 @@ class AblautMismatch(ValueError):
 
 
 # A special nonce morpheme that represents reduplication of the following syllable
-REDUPLICATOR = ProtoKasanicMorpheme([], None)
+REDUPLICATOR = ProtoKasanicMorpheme([], end_mutation=None, stress_position=None)
 
 TENSE_ASPECT_PREFIXES = {
     PrimaryTenseAspect.INCEPTIVE: pkm("i+N"),
@@ -167,7 +165,12 @@ class ProtoKasanicStem:
             return [self.primary_prefix, self.main_morpheme]
 
     def surface_form(self) -> PKSurfaceForm:
-        return ProtoKasanicMorpheme.join(self.morphemes(), int(self.primary_prefix is not None))
+        if self.main_morpheme.stress_position is None:
+            stressed = None
+        else:
+            stressed = int(self.primary_prefix is not None)
+
+        return ProtoKasanicMorpheme.join(self.morphemes(), stressed=stressed)
 
 
 @dataclass
@@ -214,6 +217,7 @@ class ProtoKasanicLemma(Lemma):
         main = ProtoKasanicMorpheme(
             syllables=([form_first_syllable, *self.generic_morph.syllables[1:]]),
             end_mutation=self.generic_morph.end_mutation,
+            stress_position=self.generic_morph.stress_position,
         )
 
         prefix: Optional[ProtoKasanicMorpheme] = TENSE_ASPECT_PREFIXES.get(primary_ta, None)

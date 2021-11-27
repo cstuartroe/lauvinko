@@ -3,6 +3,7 @@ from .proto_kasanic.transcribe import TranscriptionTests
 from .proto_kasanic.morphology import ProtoKasanicMorphologyTests
 from .proto_kasanic.generate import PKGenerationTests
 from .lauvinko.phonology import LauvinkoPhonologyTests
+from .lauvinko.morphology import LauvinkoMorphologyTests
 from .lauvinko.diachronic import LauvinkoDiachronicTests
 from .lauvinko.transcribe import LauvinkoTranscriptionTests
 from .dictionary.entry import DictEntryTests

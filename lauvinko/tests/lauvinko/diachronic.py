@@ -1,5 +1,6 @@
 import unittest
 
+from lauvinko.lang.lauvinko.diachronic.base import MorphemeContext
 from lauvinko.lang.shared.semantics import KasanicStemCategory, PrimaryTenseAspect
 from lauvinko.lang.proto_kasanic.morphology import ProtoKasanicMorpheme, pkm, ProtoKasanicLemma
 from lauvinko.lang.lauvinko.morphology import LauvinkoMorpheme, LauvinkoLemma
@@ -105,8 +106,11 @@ class LauvinkoDiachronicTests(unittest.TestCase):
             )
             lv_lemma = LauvinkoLemma.from_pk(pk_lemma)
 
-            for augment, lv_morpheme in [(True, lv_morpheme_au), (False, lv_morpheme_na)]:
-                evolved_form = lv_lemma.form(PrimaryTenseAspect.GENERAL, augment)
+            for augment, lv_morpheme in [
+                (MorphemeContext.AUGMENTED, lv_morpheme_au),
+                (MorphemeContext.NONAUGMENTED, lv_morpheme_na),
+            ]:
+                evolved_form = lv_lemma.form(PrimaryTenseAspect.GENERAL, context=augment)
 
                 self.assertEqual(
                     evolved_form.surface_form().historical_transcription(),
@@ -132,7 +136,7 @@ class LauvinkoDiachronicTests(unittest.TestCase):
             lv_lemma = LauvinkoLemma.from_pk(pk_lemma)
 
             for primary_ta, lv_morpheme in zip(TA_TEST_ORDER, forms):
-                evolved_form = lv_lemma.form(primary_ta, False)
+                evolved_form = lv_lemma.form(primary_ta, MorphemeContext.NONAUGMENTED)
 
                 self.assertEqual(
                     evolved_form.surface_form().historical_transcription(),

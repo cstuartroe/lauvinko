@@ -1,6 +1,8 @@
 from random import randrange
+from typing import List
+
 from ..shared.semantics import PrimaryTenseAspect, KasanicStemCategory
-from .phonology import ProtoKasanicOnset, ProtoKasanicVowel, ProtoKasanicSyllable
+from .phonology import ProtoKasanicOnset, ProtoKasanicVowel, ProtoKasanicSyllable, ProtoKasanicMutation
 from .morphology import ProtoKasanicMorpheme, ProtoKasanicLemma
 
 
@@ -85,11 +87,17 @@ underspecified_vowel_raffle = WeightedRandomizer({
 syllable_count_raffle = WeightedRandomizer({
     2: 3,
     3: 7,
-    4: 2,
 })
 
 
-def random_pk_lemma(category: KasanicStemCategory) -> ProtoKasanicLemma:
+mutation_raffle = WeightedRandomizer({
+    ProtoKasanicMutation.LENITION: 1,
+    ProtoKasanicMutation.FORTITION: 1,
+    ProtoKasanicMutation.NASALIZATION: 1,
+})
+
+
+def _random_pk_syllables(category: KasanicStemCategory) -> List[ProtoKasanicSyllable]:
     syllables = []
     syllable_count = syllable_count_raffle.draw()
 
@@ -109,12 +117,25 @@ def random_pk_lemma(category: KasanicStemCategory) -> ProtoKasanicLemma:
         except ProtoKasanicSyllable.InvalidSyllable:
             pass  # no big deal if the onset and vowel don't match up, try try again (should be rare)
 
+    return syllables
+
+
+def random_pk_morpheme() -> ProtoKasanicMorpheme:
+    return ProtoKasanicMorpheme(
+        syllables=_random_pk_syllables(KasanicStemCategory.UNINFLECTED),
+        end_mutation=mutation_raffle.draw(),
+        stress_position=None,
+    )
+
+
+def random_pk_lemma(category: KasanicStemCategory) -> ProtoKasanicLemma:
     return ProtoKasanicLemma(
         category=category,
         definition=None,
         forms={},
         generic_morph=ProtoKasanicMorpheme(
-            syllables=syllables,
+            syllables=_random_pk_syllables(category),
             end_mutation=None,
+            stress_position=0,
         )
     )

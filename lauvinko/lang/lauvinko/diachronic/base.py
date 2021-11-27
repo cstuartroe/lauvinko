@@ -1,12 +1,22 @@
 from enum import Enum
 from lauvinko.lang.lauvinko.phonology import LauvinkoSurfaceForm
-from lauvinko.lang.proto_kasanic.phonology import ProtoKasanicOnset, ProtoKasanicMutation, PKSurfaceForm
+from lauvinko.lang.proto_kasanic.phonology import (
+    ProtoKasanicOnset,
+    ProtoKasanicVowel,
+    ProtoKasanicMutation,
+)
 from lauvinko.lang.shared.semantics import PrimaryTenseAspect
 
 
+class MorphemeContext(Enum):
+    AUGMENTED = "AUGMENTED"
+    NONAUGMENTED = "NONAUGMENTED"
+    PREFIXED = "PREFIXED"
+
+
 class LauvinkoLemmaOrigin:
-    def generate_form(self, primary_ta: PrimaryTenseAspect, augment: bool) \
-            -> tuple[LauvinkoSurfaceForm, ProtoKasanicOnset, ProtoKasanicMutation, str]:
+    def generate_form(self, primary_ta: PrimaryTenseAspect, context: MorphemeContext) \
+            -> tuple[LauvinkoSurfaceForm, ProtoKasanicOnset, ProtoKasanicVowel, ProtoKasanicMutation, str]:
         raise NotImplementedError
 
     class InvalidOrigin(ValueError):
@@ -26,7 +36,7 @@ class OriginLanguage(Enum):
 
 
 class UnspecifiedOrigin(LauvinkoLemmaOrigin):
-    def generate_form(self, primary_ta: PrimaryTenseAspect, augment: bool):
+    def generate_form(self, primary_ta: PrimaryTenseAspect, context: MorphemeContext):
         raise LauvinkoLemmaOrigin.InvalidOrigin(
             "A lemma with unspecified origin must have all forms explicitly specified"
         )

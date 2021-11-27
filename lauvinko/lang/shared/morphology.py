@@ -1,7 +1,7 @@
 from dataclasses import dataclass
-from typing import List, Optional, Any
+from typing import List, Any
 from lauvinko.lang.shared.semantics import PrimaryTenseAspect, KasanicStemCategory
-from .phonology import Syllable, SurfaceForm
+from .phonology import SurfaceForm
 
 
 @dataclass

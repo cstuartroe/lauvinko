@@ -5,7 +5,7 @@ from typing import List, Optional
 from ..shared.phonology import VowelFrontness
 from ..shared.semantics import PrimaryTenseAspect, KasanicStemCategory
 from ..shared.morphology import Morpheme, Lemma, Word
-from ..proto_kasanic.phonology import ProtoKasanicVowel
+from ..proto_kasanic.phonology import ProtoKasanicVowel, PKSurfaceForm
 from .phonology import (
     LauvinkoSyllable,
     LauvinkoSurfaceForm,
@@ -57,8 +57,16 @@ class LauvinkoMorpheme(Morpheme):
         )
 
     @staticmethod
-    def join(morphemes: List["LauvinkoMorpheme"], accented: Optional[int]) -> LauvinkoSurfaceForm:
-        return morphemes[0].surface_form
+    def join(morphemes: List["LauvinkoMorpheme"], accented: Optional[int], context: MorphemeContext) -> LauvinkoSurfaceForm:
+        virtual_combined_form = ProtoKasanicMorpheme.join([
+            m.virtual_original_form
+            for m in morphemes
+        ], stressed=accented)
+
+        return ProtoKasanicOrigin.evolve_surface_form(
+            pk_sf=virtual_combined_form,
+            context=context
+        )
 
 
 @dataclass

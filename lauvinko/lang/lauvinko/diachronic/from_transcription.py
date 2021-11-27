@@ -1,7 +1,11 @@
 from enum import Enum
 from typing import Optional, List
-from lauvinko.lang.proto_kasanic.phonology import ProtoKasanicOnset, ProtoKasanicMutation, PKSurfaceForm, \
-    ProtoKasanicSyllable, ProtoKasanicVowel
+from lauvinko.lang.proto_kasanic.phonology import (
+    ProtoKasanicOnset,
+    PKSurfaceForm,
+    ProtoKasanicSyllable,
+    ProtoKasanicVowel,
+)
 from lauvinko.lang.proto_kasanic.morphology import MUTATION_NOTATION, ProtoKasanicMorpheme
 from lauvinko.lang.lauvinko.phonology import LauvinkoConsonant, LauvinkoVowel, LauvinkoSyllable, LauvinkoSurfaceForm
 from .from_pk import PK_TO_LV_ONSETS

@@ -12,7 +12,7 @@ class MorphemeContext(Enum):
 
 class LauvinkoLemmaOrigin:
     def generate_form(self, primary_ta: PrimaryTenseAspect, context: MorphemeContext) \
-            -> tuple[LauvinkoSurfaceForm, ProtoKasanicMorpheme, str]:
+            -> tuple[LauvinkoSurfaceForm, ProtoKasanicMorpheme]:
         raise NotImplementedError
 
     class InvalidOrigin(ValueError):

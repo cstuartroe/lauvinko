@@ -123,10 +123,7 @@ class GlossSyntacticWord:
             raise NotImplementedError
 
     def falavay(self) -> str:
-        return "".join(
-            m.falavay
-            for m in self.word.morphemes()
-        )
+        return self.word.falavay()
 
 
 @dataclass

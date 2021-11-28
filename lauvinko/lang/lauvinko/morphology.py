@@ -2,10 +2,11 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import List, Optional
 
+from ..proto_kasanic.romanize import falavay
 from ..shared.phonology import VowelFrontness
 from ..shared.semantics import PrimaryTenseAspect, KasanicStemCategory
 from ..shared.morphology import Morpheme, Lemma, Word, MorphosyntacticType, bucket_kasanic_prefixes
-from ..proto_kasanic.phonology import ProtoKasanicVowel, PKSurfaceForm
+from ..proto_kasanic.phonology import ProtoKasanicVowel, PKSurfaceForm, ProtoKasanicSyllable, ProtoKasanicOnset
 from .phonology import (
     LauvinkoSyllable,
     LauvinkoSurfaceForm,
@@ -36,13 +37,21 @@ class LauvinkoMorpheme(Morpheme):
     lemma: Optional["LauvinkoLemma"]
     surface_form: LauvinkoSurfaceForm
     virtual_original_form: ProtoKasanicMorpheme
-    falavay: str
 
     class InvalidAccent(ValueError):
         pass
 
     def original_initial_consonant(self):
         return self.virtual_original_form.surface_form.syllables[0].onset
+
+    def original_final_vowel(self):
+        return self.virtual_original_form.surface_form.syllables[-1].vowel
+
+    def end_mutation(self):
+        return self.virtual_original_form.end_mutation
+
+    def falavay(self):
+        return falavay(self.virtual_original_form.surface_form)  # TODO: augment?
 
     @classmethod
     def from_informal_transcription(cls, transcription: str) -> "LauvinkoMorpheme":
@@ -55,19 +64,144 @@ class LauvinkoMorpheme(Morpheme):
             "lemma": None,
             "surface_form": sf,
             "virtual_original_form": vof,
-            "falavay": None,
         }
 
     @staticmethod
-    def join(morphemes: List["LauvinkoMorpheme"], accented: Optional[int], context: MorphemeContext) -> LauvinkoSurfaceForm:
-        virtual_combined_form = ProtoKasanicMorpheme.join([
-            m.virtual_original_form
-            for m in morphemes
-        ], stressed=accented)
+    def join(morphemes: List["LauvinkoMorpheme"], accented: Optional[int]) -> "LauvinkoMorpheme":
+        syllables: List[LauvinkoSyllable] = []
+        pk_syllables: List[ProtoKasanicSyllable] = []
+        accent_position = None
+        falling_accent = None
 
-        return ProtoKasanicOrigin.evolve_surface_form(
-            pk_sf=virtual_combined_form,
-            context=context
+        for i, morpheme in enumerate(morphemes):
+            ms = [
+                LauvinkoSyllable(
+                    onset=s.onset,
+                    vowel=s.vowel,
+                    coda=s.coda,
+                )
+                for s in morpheme.surface_form.syllables
+            ]
+
+            False and print(
+                "".join(
+                    f"{s.onset}{s.vowel}{s.coda or ''}"
+                    for s in ms
+                )
+            )
+
+            if len(syllables) > 0:
+                pk_consonant = morpheme.original_initial_consonant()
+
+                if morphemes[i - 1].end_mutation() is not None:
+                    pk_consonant = morphemes[i - 1].end_mutation().mutate(pk_consonant)
+
+                if pk_consonant is not None and pk_consonant is not ProtoKasanicOnset.NC:
+                    c1, c2 = break_pk_consonant(pk_consonant)
+
+                    if c1 is not None:
+                        if syllables[-1].coda is None:
+                            syllables[-1].coda = c1
+                        else:
+                            epenthetic_syllable = LauvinkoSyllable(
+                                onset=syllables[-1].coda,
+                                vowel=epenthetic_vowel(syllables[-1].coda),
+                                coda=c1,
+                            )
+
+                            syllables[-1].coda = None
+                            syllables.append(epenthetic_syllable)
+
+                    ms[0].onset = c2 and PK_TO_LV_ONSETS[c2]
+
+                if ms[0].onset is LauvinkoConsonant.H:
+                    ms[0].onset = None
+
+                if ms[0].onset is None:
+                    v1, c1, v2, c2 = syllables[-1].vowel, syllables[-1].coda, ms[0].vowel, ms[0].coda
+
+                    if morphemes[i - 1].original_final_vowel() is ProtoKasanicVowel.A:
+                        merged_vowel = LauvinkoVowel.find_by(
+                            frontness=v2.frontness,
+                            low=True,
+                        )
+                        ms[0].vowel = merged_vowel
+                        v1 = merged_vowel
+
+                    elif morphemes[i - 1].original_final_vowel() is ProtoKasanicVowel.AA and c2 is None and \
+                            not (accented == i and morpheme.surface_form.accent_position == 0):
+                        if v2.frontness is VowelFrontness.FRONT:
+                            ms[0].coda = LauvinkoConsonant.Y
+                        elif v2.frontness is VowelFrontness.BACK:
+                            ms[0].coda = LauvinkoConsonant.V
+
+                        ms[0].vowel = LauvinkoVowel.A
+
+                    v2 = ms[0].vowel
+
+                    if c1 is not None:
+                        print("c1 is not none")
+                        if morphemes[i - 1].original_final_vowel().frontness is VowelFrontness.BACK \
+                                and v2.frontness is not VowelFrontness.BACK:
+                            ms[0].onset = LauvinkoConsonant.V
+
+                        else:
+                            syllables[-1].coda = None
+                            ms[0].onset = c1
+
+                    elif morpheme.surface_form.accent_position != 0 and v2.frontness is VowelFrontness.MID:
+                        print("drop initial vowel")
+                        ms[0].onset = syllables[-1].onset
+                        ms[0].vowel = v1
+                        del syllables[-1]
+
+                    elif v1.frontness is v2.frontness:
+                        print("frontness equal")
+                        ms[0].onset = syllables[-1].onset
+                        del syllables[-1]
+                        ms[0].vowel = LauvinkoVowel.find_by(
+                            frontness=v1.frontness,
+                            low=v1.low or v2.low,
+                        )
+
+                    else:
+                        print("insert glide")
+                        if v1.frontness is VowelFrontness.FRONT:
+                            epenthetic_consonant = LauvinkoConsonant.Y
+                        elif v1.frontness is VowelFrontness.BACK:
+                            epenthetic_consonant = LauvinkoConsonant.V
+                        elif v2.frontness is VowelFrontness.FRONT:
+                            epenthetic_consonant = LauvinkoConsonant.Y
+                        elif v2.frontness is VowelFrontness.BACK:
+                            epenthetic_consonant = LauvinkoConsonant.V
+                        else:
+                            raise RuntimeError
+
+                        ms[0].onset = epenthetic_consonant
+
+            if i == accented:
+                accent_position = len(syllables) + morpheme.surface_form.accent_position
+                falling_accent = morpheme.surface_form.falling_accent
+
+            syllables += ms
+
+        lv_sf = LauvinkoSurfaceForm(
+            syllables=syllables,
+            accent_position=accent_position,
+            falling_accent=falling_accent,
+        )
+
+        return LauvinkoMorpheme(
+            lemma=None,
+            surface_form=lv_sf,
+            virtual_original_form=ProtoKasanicMorpheme(
+                lemma=None,
+                surface_form=PKSurfaceForm(
+                    syllables=pk_syllables,
+                    stress_position=None,  # TODO
+                ),
+                end_mutation=morphemes[-1].end_mutation(),
+            ),
         )
 
 
@@ -93,12 +227,11 @@ class LauvinkoLemma(Lemma):
         return self.forms[(primary_ta, context)]
 
     def _generate_form(self, primary_ta: PrimaryTenseAspect, context: MorphemeContext) -> LauvinkoMorpheme:
-        sf, vof, falavay = self.origin.generate_form(primary_ta, context)
+        sf, vof = self.origin.generate_form(primary_ta, context)
         return LauvinkoMorpheme(
             lemma=self,
             surface_form=sf,
             virtual_original_form=vof,
-            falavay=falavay,
         )
 
     def citation_form(self, context: MorphemeContext = MorphemeContext.NONAUGMENTED):
@@ -142,6 +275,16 @@ class LauvinkoWord(Word):
     topic_case: Optional[LauvinkoMorpheme]
     stem: LauvinkoMorpheme
 
+    def __post_init__(self):
+        LauvinkoMorpheme.join(
+            morphemes=self.morphemes(),
+            accented=len(self.prefixes()),
+        )
+        self._as_morph = LauvinkoMorpheme.join(
+            morphemes=self.morphemes(),
+            accented=len(self.prefixes()),
+        )
+
     def prefixes(self):
         out = [*self.modal_prefixes]
 
@@ -157,12 +300,11 @@ class LauvinkoWord(Word):
             self.stem,
         ]
 
+    def falavay(self):
+        return self._as_morph.falavay()
+
     def surface_form(self) -> LauvinkoSurfaceForm:
-        return LauvinkoMorpheme.join(
-            morphemes=self.morphemes(),
-            accented=len(self.prefixes()),
-            context=MorphemeContext.NONAUGMENTED,  # TODO
-        )
+        return self._as_morph.surface_form
 
     @classmethod
     def from_morphemes(cls, morphemes: List[LauvinkoMorpheme]) -> "LauvinkoWord":

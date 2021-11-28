@@ -15,7 +15,10 @@ seed(3)
 
 class LauvinkoMorphologyTests(unittest.TestCase):
     def test_join_equivalence(self):
-        for _ in range(50):
+        num_trials = 250
+        num_mismatched = 0
+
+        for _ in range(num_trials):
             pk_lemma_1 = random_pk_lemma(KasanicStemCategory.UNINFLECTED)
             pk_lemma_2 = random_pk_lemma(KasanicStemCategory.UNINFLECTED)
             augment = randrange(2) == 0
@@ -44,15 +47,21 @@ class LauvinkoMorphologyTests(unittest.TestCase):
             evolved_then_joined = LauvinkoMorpheme.join(
                 [lv_form_1, lv_form_2],
                 accented=1,
-                context=MorphemeContext.AUGMENTED if augment else MorphemeContext.NONAUGMENTED,
-            )
+            ).surface_form
 
-            self.assertEqual(
-                joined_then_evolved.historical_transcription(),
-                evolved_then_joined.historical_transcription(),
-            )
+            if joined_then_evolved.historical_transcription() != evolved_then_joined.historical_transcription():
+                print(f"{pk_lemma_1.citation_form().main_morpheme.surface_form.broad_transcription()} and "
+                      f"{pk_lemma_2.citation_form().main_morpheme.surface_form.broad_transcription()} became")
+                print(f"{joined_then_evolved.historical_transcription()} when evolved as a single word and")
+                print(f"{lv_form_1.surface_form.historical_transcription()} + "
+                      f"{lv_form_2.surface_form.historical_transcription()} = "
+                      f"{evolved_then_joined.historical_transcription()} when joined synchronically")
+                print()
+                num_mismatched += 1
 
             # self.assertEqual(
             #     pk_falavay(joined_pk_form, augment=augment),
             #     lv_form_1.falavay + lv_form_2.falavay,
             # )
+
+        print(f"{num_mismatched}/{num_trials} words are different synchronically than diachronically")

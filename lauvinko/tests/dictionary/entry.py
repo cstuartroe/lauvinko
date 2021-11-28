@@ -69,6 +69,6 @@ class DictEntryTests(unittest.TestCase):
         )
 
         self.assertEqual(
-            lv_lemma.form(PrimaryTenseAspect.INCEPTIVE, context=MorphemeContext.NONAUGMENTED).falavay,
+            lv_lemma.form(PrimaryTenseAspect.INCEPTIVE, context=MorphemeContext.NONAUGMENTED).falavay(),
             pk_falavay(pk_lemma.form(PrimaryTenseAspect.INCEPTIVE).surface_form(), False),
         )

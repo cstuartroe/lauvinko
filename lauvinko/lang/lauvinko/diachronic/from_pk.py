@@ -91,19 +91,17 @@ class ProtoKasanicOrigin(LauvinkoLemmaOrigin):
         self.derived_from = derived_from
 
     def generate_form(self, primary_ta: PrimaryTenseAspect, context: MorphemeContext) \
-            -> tuple[LauvinkoSurfaceForm, ProtoKasanicMorpheme, str]:
+            -> tuple[LauvinkoSurfaceForm, ProtoKasanicMorpheme]:
         pk_stem = self.derived_from.form(primary_ta)
         pk_sf = pk_stem.surface_form()
 
         lv_sf = self.evolve_surface_form(pk_sf, context)
 
-        falavay = pk_falavay(pk_sf, augment=context is MorphemeContext.AUGMENTED)
-
-        return lv_sf, pk_stem.main_morpheme, falavay
+        return lv_sf, pk_stem.main_morpheme
 
     @classmethod
     def evolve_surface_form(cls, pk_sf: PKSurfaceForm, context: MorphemeContext) -> LauvinkoSurfaceForm:
-        syllables: Iterable[GenericCVCSyllable] = cls.genericize(pk_sf)
+        syllables: Iterable[GenericCVCSyllable] = cls.genericize(pk_sf, context)
 
         syllables = cls.break_diphthongs(syllables)
         syllables, falling_accent = cls.transform_consonants(syllables, context)
@@ -123,16 +121,19 @@ class ProtoKasanicOrigin(LauvinkoLemmaOrigin):
             falling_accent=falling_accent,
         )
 
-        assert (lv_sf.accent_position is None) == (pk_sf.stress_position is None)
-        assert (lv_sf.accent_position is None) == (lv_sf.falling_accent is None)
+        if context is MorphemeContext.PREFIXED:
+            assert lv_sf.accent_position is None
+        else:
+            assert (lv_sf.accent_position is None) == (pk_sf.stress_position is None)
+            assert (lv_sf.accent_position is None) == (lv_sf.falling_accent is None)
 
         return lv_sf
 
     @staticmethod
-    def genericize(pk_sf: PKSurfaceForm) -> List[GenericCVCSyllable]:
+    def genericize(pk_sf: PKSurfaceForm, context: MorphemeContext) -> List[GenericCVCSyllable]:
         return [
             GenericCVCSyllable(onset=syllable.onset, vowel=syllable.vowel, coda=None,
-                               stressed=(i == pk_sf.stress_position))
+                               stressed=(i == pk_sf.stress_position and context != MorphemeContext.PREFIXED))
             for i, syllable in enumerate(pk_sf.syllables)
         ]
 

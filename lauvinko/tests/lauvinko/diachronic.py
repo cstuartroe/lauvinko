@@ -1,6 +1,7 @@
 import unittest
 
 from lauvinko.lang.lauvinko.diachronic.base import MorphemeContext
+from lauvinko.lang.shared.morphology import MorphosyntacticType
 from lauvinko.lang.shared.semantics import KasanicStemCategory, PrimaryTenseAspect
 from lauvinko.lang.proto_kasanic.morphology import ProtoKasanicMorpheme, pkm, ProtoKasanicLemma
 from lauvinko.lang.lauvinko.morphology import LauvinkoMorpheme, LauvinkoLemma
@@ -101,6 +102,7 @@ class LauvinkoDiachronicTests(unittest.TestCase):
             pk_lemma = ProtoKasanicLemma(
                 definition="",
                 category=KasanicStemCategory.UNINFLECTED,
+                mstype=MorphosyntacticType.INDEPENDENT,
                 forms={},
                 generic_morph=pk_morpheme,
             )
@@ -130,6 +132,7 @@ class LauvinkoDiachronicTests(unittest.TestCase):
             pk_lemma = ProtoKasanicLemma(
                 definition="",
                 category=KasanicStemCategory.FIENTIVE,
+                mstype=MorphosyntacticType.INDEPENDENT,
                 forms={},
                 generic_morph=pk_morpheme,
             )

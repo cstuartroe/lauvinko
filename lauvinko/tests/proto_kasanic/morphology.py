@@ -1,16 +1,12 @@
 import unittest
 
 from lauvinko.lang.shared.semantics import PrimaryTenseAspect, KasanicStemCategory
-from lauvinko.lang.shared.morphology import Lemma
+from lauvinko.lang.shared.morphology import Lemma, MorphosyntacticType
 from lauvinko.lang.proto_kasanic.morphology import (
     pkm,
     ProtoKasanicStem,
     ProtoKasanicLemma,
     AblautMismatch,
-    PKModalPrefix,
-    PKTertiaryAspectPrefix,
-    PKTopicAgreementPrefix,
-    PKTopicCasePrefix,
     PKWord,
 )
 
@@ -20,6 +16,7 @@ class ProtoKasanicMorphologyTests(unittest.TestCase):
         lemma = ProtoKasanicLemma(
             definition="",
             category=KasanicStemCategory.FIENTIVE,
+            mstype=MorphosyntacticType.INDEPENDENT,
             generic_morph=pkm("t~ru"),
             forms={},
         )
@@ -37,6 +34,7 @@ class ProtoKasanicMorphologyTests(unittest.TestCase):
         lemma = ProtoKasanicLemma(
             definition="",
             category=KasanicStemCategory.PUNCTUAL,
+            mstype=MorphosyntacticType.INDEPENDENT,
             generic_morph=pkm("kk@"),
             forms={},
         )
@@ -63,6 +61,7 @@ class ProtoKasanicMorphologyTests(unittest.TestCase):
         lemma = ProtoKasanicLemma(
             definition="",
             category=KasanicStemCategory.FIENTIVE,
+            mstype=MorphosyntacticType.INDEPENDENT,
             generic_morph=pkm("t@"),
             forms={
                 PrimaryTenseAspect.IMPERFECTIVE_NONPAST: ProtoKasanicStem(
@@ -82,6 +81,7 @@ class ProtoKasanicMorphologyTests(unittest.TestCase):
             ProtoKasanicLemma(
                 definition="",
                 category=KasanicStemCategory.FIENTIVE,
+                mstype=MorphosyntacticType.INDEPENDENT,
                 generic_morph=pkm("t@"),
                 forms={
                     PrimaryTenseAspect.NONPAST: ProtoKasanicStem(
@@ -96,6 +96,7 @@ class ProtoKasanicMorphologyTests(unittest.TestCase):
             ProtoKasanicLemma(
                 definition="",
                 category=KasanicStemCategory.FIENTIVE,
+                mstype=MorphosyntacticType.INDEPENDENT,
                 generic_morph=pkm("ta"),
                 forms={}
             )
@@ -104,43 +105,7 @@ class ProtoKasanicMorphologyTests(unittest.TestCase):
             ProtoKasanicLemma(
                 definition="",
                 category=KasanicStemCategory.STATIVE,
+                mstype=MorphosyntacticType.INDEPENDENT,
                 generic_morph=pkm("t@"),
                 forms={}
             )
-
-    def test_bucket_prefixes(self):
-        bucketed = PKWord.bucket_prefixes([
-            PKModalPrefix.AFTER,
-            PKModalPrefix.SWRF_,
-            PKTertiaryAspectPrefix.PRO_,
-            PKTopicAgreementPrefix.T3AP_,
-            PKTopicCasePrefix.TDAT_,
-        ])
-
-        self.assertEqual(bucketed, {
-            "modal_prefixes": [PKModalPrefix.AFTER, PKModalPrefix.SWRF_],
-            "tertiary_aspect": PKTertiaryAspectPrefix.PRO_,
-            "topic_agreement": PKTopicAgreementPrefix.T3AP_,
-            "topic_case": PKTopicCasePrefix.TDAT_,
-        })
-
-        bucketed = PKWord.bucket_prefixes([
-            PKModalPrefix.IF,
-            PKTopicAgreementPrefix.T1S_,
-        ])
-
-        self.assertEqual(bucketed, {
-            "modal_prefixes": [PKModalPrefix.IF],
-            "tertiary_aspect": None,
-            "topic_agreement": PKTopicAgreementPrefix.T1S_,
-            "topic_case": None,
-        })
-
-        with self.assertRaises(PKWord.MorphemeOrderError):
-            PKWord.bucket_prefixes([PKTopicCasePrefix.DEP_, PKTopicAgreementPrefix.T3IS_])
-
-        with self.assertRaises(PKWord.MorphemeOrderError):
-            PKWord.bucket_prefixes([PKTertiaryAspectPrefix.EXP_, PKModalPrefix.MUST])
-
-    def test_gloss_keyword(self):
-        self.assertEqual(PKTopicAgreementPrefix.T2P_.gloss_keyname(), "$t2p$")

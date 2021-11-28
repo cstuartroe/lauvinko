@@ -1,7 +1,7 @@
 import unittest
 
 from lauvinko.lang.lauvinko.morphology import LauvinkoMorpheme
-from lauvinko.lang.lauvinko.transcribe import transcribe
+from lauvinko.lang.lauvinko.romanize import romanize
 
 
 lm = LauvinkoMorpheme.from_informal_transcription
@@ -83,6 +83,6 @@ class LauvinkoTranscriptionTests(unittest.TestCase):
     def test_transcription(self):
         for morpheme, transcription in TESTS:
             self.assertEqual(
-                transcribe(morpheme.surface_form),
+                romanize(morpheme.surface_form),
                 transcription,
             )

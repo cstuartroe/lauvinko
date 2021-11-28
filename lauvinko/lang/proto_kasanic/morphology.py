@@ -3,7 +3,7 @@ from enum import Enum
 from typing import List, Optional
 import regex
 from lauvinko.lang.shared.semantics import PrimaryTenseAspect, KasanicStemCategory
-from lauvinko.lang.shared.morphology import Morpheme, Lemma, Word
+from lauvinko.lang.shared.morphology import Morpheme, Lemma, Word, bucket_kasanic_prefixes, MorphosyntacticType
 from .phonology import (
     ProtoKasanicOnset,
     VowelFrontness,
@@ -28,6 +28,7 @@ UNDERSPECIFIED_VOWELS = {
 
 @dataclass
 class ProtoKasanicMorpheme(Morpheme):
+    lemma: Optional["ProtoKasanicLemma"]
     surface_form: PKSurfaceForm
     end_mutation: Optional[ProtoKasanicMutation]
 
@@ -36,7 +37,10 @@ class ProtoKasanicMorpheme(Morpheme):
 
     @classmethod
     def from_informal_transcription(cls, transcription: str, stress_position: Optional[int] = 0) -> "ProtoKasanicMorpheme":
-        return cls(*cls._from_informal_transcription(transcription, stress_position=stress_position))
+        return cls(
+            lemma=None,
+            **cls._from_informal_transcription(transcription, stress_position=stress_position),
+        )
 
     @staticmethod
     def _from_informal_transcription(transcription: str, stress_position: Optional[int] = 0):
@@ -64,11 +68,13 @@ class ProtoKasanicMorpheme(Morpheme):
 
         mutation = MUTATION_NOTATION.get(m.group(4))
 
-        # I need a separate function
-        return PKSurfaceForm(
-            syllables=syllables,
-            stress_position=stress_position
-        ), mutation
+        return {
+            "surface_form": PKSurfaceForm(
+                syllables=syllables,
+                stress_position=stress_position
+            ),
+            "end_mutation": mutation,
+        }
 
     @staticmethod
     def join(morphemes: List["ProtoKasanicMorpheme"], stressed: Optional[int]) -> PKSurfaceForm:
@@ -140,7 +146,11 @@ class AblautMismatch(ValueError):
 
 
 # A special nonce morpheme that represents reduplication of the following syllable
-REDUPLICATOR = ProtoKasanicMorpheme(surface_form=PKSurfaceForm(syllables=[], stress_position=None), end_mutation=None)
+REDUPLICATOR = ProtoKasanicMorpheme(
+    surface_form=PKSurfaceForm(syllables=[], stress_position=None),
+    end_mutation=None,
+    lemma=None,
+)
 
 TENSE_ASPECT_PREFIXES = {
     PrimaryTenseAspect.INCEPTIVE: pkm("i+N"),
@@ -172,6 +182,7 @@ class ProtoKasanicStem:
 @dataclass
 class ProtoKasanicLemma(Lemma):
     category: KasanicStemCategory
+    mstype: MorphosyntacticType
     generic_morph: ProtoKasanicMorpheme
     definition: str
     forms: dict[PrimaryTenseAspect, ProtoKasanicStem]
@@ -179,12 +190,17 @@ class ProtoKasanicLemma(Lemma):
     def __post_init__(self):
         super().__post_init__()
 
+        if len(self.generic_morph.surface_form.syllables) > 0:
+            first_vowel = self.generic_morph.surface_form.syllables[0].vowel
+        else:
+            first_vowel = None
+
         if PrimaryTenseAspect.GENERAL in self.category.primary_aspects:
-            if self.generic_morph.surface_form.syllables[0].vowel.frontness is VowelFrontness.UNDERSPECIFIED:
+            if first_vowel and (first_vowel.frontness is VowelFrontness.UNDERSPECIFIED):
                 raise AblautMismatch(f"{self.category} generic form must not include ablaut vowel: {self.generic_morph}")
 
         else:
-            if self.generic_morph.surface_form.syllables[0].vowel.frontness is not VowelFrontness.UNDERSPECIFIED:
+            if (first_vowel is None) or (first_vowel.frontness is not VowelFrontness.UNDERSPECIFIED):
                 raise AblautMismatch(f"{self.category} generic form must include ablaut vowel: {self.generic_morph}")
 
         self.forms = self.forms or {}
@@ -211,6 +227,7 @@ class ProtoKasanicLemma(Lemma):
             )
 
         main = ProtoKasanicMorpheme(
+            lemma=self,
             surface_form=PKSurfaceForm(
                 syllables=([form_first_syllable, *self.generic_morph.surface_form.syllables[1:]]),
                 stress_position=self.generic_morph.surface_form.stress_position,
@@ -226,68 +243,18 @@ class ProtoKasanicLemma(Lemma):
         return self.form(self.category.citation_form)
 
 
-class PKPrefix(ProtoKasanicMorpheme, Enum):
-    def gloss_keyname(self) -> str:
-        if self.name.endswith("_"):
-            return f"${self.name[:-1].lower()}$"
-        else:
-            return self.name.lower()
-
-
-class PKModalPrefix(PKPrefix):
-    IF = _pkm("tti+L")
-    IN_ORDER = _pkm("ki+L")
-    THUS = _pkm("iwo+F")
-    AFTER = _pkm("nyinyi")
-    SWRF_ = _pkm("o+N")
-    NOT = _pkm("aara")
-    AGAIN = _pkm("tere")
-    WANT = _pkm("ewa")
-    LIKE = _pkm("mika")
-    CAN = _pkm("so+N")
-    MUST = _pkm("nosa+L")
-    VERY = _pkm("kora")
-    BUT = _pkm("caa")
-
-
-class PKTertiaryAspectPrefix(PKPrefix):
-    PRO_ = _pkm("mpi")
-    EXP_ = _pkm("raa+F")
-
-
-class PKTopicAgreementPrefix(PKPrefix):
-    T1S_ = _pkm("na")
-    T1P_ = _pkm("ta")
-    T2S_ = _pkm("i+F")
-    T2P_ = _pkm("e+F")
-    T3AS_ = _pkm("")
-    T3AP_ = _pkm("aa")
-    T3IS_ = _pkm("sa")
-    T3IP_ = _pkm("aasa")
-
-
-class PKTopicCasePrefix(PKPrefix):
-    TVOL_ = _pkm("")
-    TDAT_ = _pkm("pa+N")
-    TLOC_ = _pkm("posa")
-    DEP_ = _pkm("eta")
-
-
 @dataclass
 class PKWord(Word):
-    modal_prefixes: List[PKModalPrefix]
-    tertiary_aspect: Optional[PKTertiaryAspectPrefix]
-    topic_agreement: Optional[PKTopicAgreementPrefix]
-    topic_case: Optional[PKTopicCasePrefix]
+    modal_prefixes: List[ProtoKasanicMorpheme]
+    tertiary_aspect: Optional[ProtoKasanicMorpheme]
+    topic_agreement: Optional[ProtoKasanicMorpheme]
+    topic_case: Optional[ProtoKasanicMorpheme]
     stem: ProtoKasanicStem
-
-    class MorphemeOrderError(ValueError):
-        pass
 
     def morphemes(self) -> List[ProtoKasanicMorpheme]:
         out = [*self.modal_prefixes]
 
-        for m in self.tertiary_aspect, self.topic_agreement, self.topic_agreement:
+        for m in self.tertiary_aspect, self.topic_agreement, self.topic_case:
             if m is not None:
                 out.append(m)
 
@@ -302,36 +269,16 @@ class PKWord(Word):
         )
 
     @staticmethod
-    def bucket_prefixes(prefixes: List[PKPrefix]) -> dict:
-        modal_prefixes: List[PKModalPrefix] = []
-        tertiary_aspect: Optional[PKTertiaryAspectPrefix] = None
-        topic_agreement: Optional[PKTopicAgreementPrefix] = None
-        topic_case: Optional[PKTopicCasePrefix] = None
+    def from_morphemes(stems: List[ProtoKasanicStem]) -> "PKWord":
+        prefixes, stem = stems[:-1], stems[-1]
 
-        i = 0
-        while (i < len(prefixes)) and (prefixes[i] in PKModalPrefix):
-            modal_prefixes.append(prefixes[i])
-            i += 1
+        prefix_morphemes = [
+            prefix.main_morpheme
+            for prefix in prefixes
+        ]
 
-        if i < len(prefixes) and prefixes[i] in PKTertiaryAspectPrefix:
-            tertiary_aspect = prefixes[i]
-            i += 1
-
-        if i < len(prefixes) and prefixes[i] in PKTopicAgreementPrefix:
-            topic_agreement = prefixes[i]
-            i += 1
-
-        if i < len(prefixes) and prefixes[i] in PKTopicCasePrefix:
-            topic_case = prefixes[i]
-            i += 1
-
-        if i < len(prefixes):
-            raise PKWord.MorphemeOrderError("Invalid or out of order prefix: " + prefixes[i].gloss_keyname())
-
-        return {
-            "modal_prefixes": modal_prefixes,
-            "tertiary_aspect": tertiary_aspect,
-            "topic_agreement": topic_agreement,
-            "topic_case": topic_case,
-        }
+        return PKWord(
+            stem=stem,
+            **bucket_kasanic_prefixes(prefix_morphemes),
+        )
 

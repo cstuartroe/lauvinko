@@ -110,7 +110,7 @@ def falavay(form: PKSurfaceForm, augment: bool = False) -> str:
     return out
 
 
-def transcribe_onset(onset: ProtoKasanicOnset) -> str:
+def romanize_onset(onset: ProtoKasanicOnset) -> str:
     if onset is None:
         return ""
 
@@ -133,7 +133,7 @@ def transcribe_onset(onset: ProtoKasanicOnset) -> str:
     return cons_str
 
 
-def transcribe_vowel(vowel: ProtoKasanicVowel) -> str:
+def romanize_vowel(vowel: ProtoKasanicVowel) -> str:
     if vowel is ProtoKasanicVowel.AA:
         return "a"
     elif vowel is ProtoKasanicVowel.A:
@@ -142,15 +142,15 @@ def transcribe_vowel(vowel: ProtoKasanicVowel) -> str:
         return vowel.name.lower()
 
 
-def transcribe_syllable(syllable: ProtoKasanicSyllable) -> str:
-    return transcribe_onset(syllable.onset) + transcribe_vowel(syllable.vowel)
+def romanize_syllable(syllable: ProtoKasanicSyllable) -> str:
+    return romanize_onset(syllable.onset) + romanize_vowel(syllable.vowel)
 
 
-def transcribe(form: PKSurfaceForm, show_stress: bool = False) -> str:
+def romanize(form: PKSurfaceForm, show_stress: bool = False) -> str:
     out = ""
 
     for i, syllable in enumerate(form.syllables):
-        out += transcribe_syllable(syllable)
+        out += romanize_syllable(syllable)
         if i == form.stress_position and show_stress:
             out += "\u0301" # Combining acute accent
 

@@ -1,9 +1,9 @@
 import unittest
 
 from lauvinko.lang.lauvinko.diachronic.base import MorphemeContext
-from lauvinko.lang.shared.semantics import KasanicStemCategory, PrimaryTenseAspect
+from lauvinko.lang.shared.semantics import KasanicStemCategory, PrimaryTenseAspect, Language
 from lauvinko.lang.proto_kasanic.morphology import ProtoKasanicLemma
-from lauvinko.lang.proto_kasanic.transcribe import falavay as pk_falavay
+from lauvinko.lang.proto_kasanic.romanize import falavay as pk_falavay
 from lauvinko.lang.lauvinko.morphology import LauvinkoLemma
 from lauvinko.lang.dictionary.entry import DictEntry
 
@@ -35,8 +35,8 @@ class DictEntryTests(unittest.TestCase):
             },
         )
 
-        pk_lemma: ProtoKasanicLemma = entry.languages["pk"]
-        lv_lemma: LauvinkoLemma = entry.languages["lv"]
+        pk_lemma: ProtoKasanicLemma = entry.languages[Language.PK]
+        lv_lemma: LauvinkoLemma = entry.languages[Language.LAUVINKO]
 
         self.assertEqual(entry.ident, "foo")
         self.assertIs(entry.category, KasanicStemCategory.FIENTIVE)
@@ -65,7 +65,7 @@ class DictEntryTests(unittest.TestCase):
 
         self.assertEqual(
             lv_lemma.form(PrimaryTenseAspect.INCEPTIVE, context=MorphemeContext.NONAUGMENTED).surface_form.narrow_transcription(),
-            "ɪsɛ́ʔ",
+            "séːjʊ",
         )
 
         self.assertEqual(

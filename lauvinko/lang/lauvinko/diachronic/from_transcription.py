@@ -87,6 +87,7 @@ class TranscriptionReader:
                 falling_accent=self.falling_accent,
             ),
             ProtoKasanicMorpheme(
+                lemma=None,
                 surface_form=PKSurfaceForm(
                     syllables=virtual_syllables,
                     stress_position=self.accent_position,

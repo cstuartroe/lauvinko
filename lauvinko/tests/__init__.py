@@ -8,3 +8,4 @@ from .lauvinko.diachronic import LauvinkoDiachronicTests
 from .lauvinko.transcribe import LauvinkoTranscriptionTests
 from .dictionary.entry import DictEntryTests
 from .dictionary.dictionary import DictionaryTests
+from .gloss.gloss import GlossingTests

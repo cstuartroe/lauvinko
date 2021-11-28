@@ -2,6 +2,7 @@ import unittest
 from random import randrange, seed
 
 from lauvinko.lang.lauvinko.diachronic.base import MorphemeContext
+from lauvinko.lang.shared.morphology import MorphosyntacticType
 from lauvinko.lang.shared.semantics import KasanicStemCategory
 from lauvinko.lang.proto_kasanic.morphology import ProtoKasanicMorpheme, ProtoKasanicLemma
 from lauvinko.lang.proto_kasanic.generate import random_pk_lemma, random_pk_morpheme
@@ -15,12 +16,7 @@ seed(3)
 class LauvinkoMorphologyTests(unittest.TestCase):
     def test_join_equivalence(self):
         for _ in range(50):
-            pk_lemma_1 = ProtoKasanicLemma(
-                generic_morph=random_pk_morpheme(),
-                category=KasanicStemCategory.UNINFLECTED,
-                definition="",
-                forms={},
-            )
+            pk_lemma_1 = random_pk_lemma(KasanicStemCategory.UNINFLECTED)
             pk_lemma_2 = random_pk_lemma(KasanicStemCategory.UNINFLECTED)
             augment = randrange(2) == 0
 

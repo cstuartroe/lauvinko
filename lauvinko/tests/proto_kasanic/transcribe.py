@@ -1,7 +1,7 @@
 import unittest
 
 from lauvinko.lang.proto_kasanic.morphology import pkm
-from lauvinko.lang.proto_kasanic.transcribe import transcribe, falavay
+from lauvinko.lang.proto_kasanic.romanize import romanize, falavay
 
 
 TRANSCRIPTIONS = [
@@ -22,6 +22,6 @@ class TranscriptionTests(unittest.TestCase):
         for informal_transcription, transcription, augmented_falavay_spelling, falavay_spelling in TRANSCRIPTIONS:
             form = pkm(informal_transcription).surface_form
 
-            self.assertEqual(transcribe(form), transcription)
+            self.assertEqual(romanize(form), transcription)
             self.assertEqual(falavay(form), falavay_spelling)
             self.assertEqual(falavay(form, augment=True), augmented_falavay_spelling)

@@ -2,7 +2,7 @@ from lauvinko.lang.shared.phonology import MannerOfArticulation, PlaceOfArticula
 from lauvinko.lang.lauvinko.phonology import LauvinkoConsonant, LauvinkoSurfaceForm
 
 
-def coda_transcription(coda: LauvinkoConsonant, next_onset: LauvinkoConsonant) -> str:
+def coda_romanization(coda: LauvinkoConsonant, next_onset: LauvinkoConsonant) -> str:
     if coda is None:
         return ''
 
@@ -41,7 +41,7 @@ def coda_transcription(coda: LauvinkoConsonant, next_onset: LauvinkoConsonant) -
         return coda.name.lower()
 
 
-def transcribe(sf: LauvinkoSurfaceForm):
+def romanize(sf: LauvinkoSurfaceForm):
     out = ""
 
     for i, syllable in enumerate(sf.syllables):
@@ -54,6 +54,6 @@ def transcribe(sf: LauvinkoSurfaceForm):
 
         next_onset = sf.syllables[i+1].onset if i + 1 < len(sf.syllables) else None
 
-        out += coda_transcription(syllable.coda, next_onset)
+        out += coda_romanization(syllable.coda, next_onset)
 
     return out

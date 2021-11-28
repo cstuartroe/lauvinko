@@ -14,6 +14,19 @@ class PrimaryTenseAspect(Enum):
     FREQUENTATIVE_PAST = "past frequentative"
 
 
+PRIMARY_TA_ABBREVIATIONS = {
+    "gn": PrimaryTenseAspect.GENERAL,
+    "np": PrimaryTenseAspect.NONPAST,
+    "pt": PrimaryTenseAspect.PAST,
+    "imnp": PrimaryTenseAspect.IMPERFECTIVE_NONPAST,
+    "impt": PrimaryTenseAspect.IMPERFECTIVE_PAST,
+    "pf": PrimaryTenseAspect.PERFECTIVE,
+    "inc": PrimaryTenseAspect.INCEPTIVE,
+    "fqnp": PrimaryTenseAspect.FREQUENTATIVE_NONPAST,
+    "fqpt": PrimaryTenseAspect.FREQUENTATIVE_PAST,
+}
+
+
 class StemCategory:
     class InvalidStemCategory(ValueError):
         pass
@@ -77,3 +90,14 @@ class KasanicStemCategory(StemCategory, Enum):
         },
         PrimaryTenseAspect.GENERAL,
     )
+
+
+STEM_CATEGORIES = {
+    category.name.lower(): category
+    for category in KasanicStemCategory
+}
+
+
+class Language(Enum):
+    PK = "pk"
+    LAUVINKO = "lv"

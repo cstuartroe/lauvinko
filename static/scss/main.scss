@@ -4,7 +4,7 @@
 }*/
 
 p, .paragraph, input[type="text"] {
-  font-size: 2.25vh;
+  font-size: 1.75vh;
   text-align: justify;
   padding: 1em;
   margin: 0;
@@ -15,15 +15,15 @@ p, .paragraph, input[type="text"] {
 }
 
 span.falavay {
-  font-size: 2vh;
+  font-size: 1.6vh;
 }
 
 td.falavay {
-  font-size: 2.5vh;
+  font-size: 2vh;
 }
 
 h1.falavay {
-  font-size: 4vh;
+  font-size: 3.25vh;
 }
 
 h1, h2, h3, p, .paragraph, li, td, th, input[type="text"] {
@@ -35,16 +35,16 @@ h1, h2 {
 }
 
 h1 {
-  font-size: 4vh;
+  font-size: 3.25vh;
 }
 
 h2 {
-  font-size: 3.25vh;
+  font-size: 2.5vh;
   margin: 15px 0;
 }
 
 h3, li, td, th {
-  font-size: 2.5vh;
+  font-size: 2vh;
   margin: 10px 0;
 }
 
@@ -84,7 +84,7 @@ div.go-down div {
 
 @media only screen and (min-width: 768px) {
   div.go-down div {
-    height: 16vh;
+    height: 10vh;
   }
 }
 
@@ -146,11 +146,19 @@ div.go-down div:hover h3, a:hover li {
   text-align: center;
 }
 
-img {
-  max-width: 100%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+.image-inset {
+  padding: 0 calc(20vw - 12vh);
+  font-size: 1.5vh;
+  color: #444;
+  text-align: center;
+
+  img {
+    max-width: 100%;
+    max-height: 40vh;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .entry {
@@ -183,7 +191,7 @@ th, .bold {
 }
 
 .analysis {
-  font-size: 2vh;
+  font-size: 1.6vh;
 }
 
 table {

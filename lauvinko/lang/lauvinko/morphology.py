@@ -74,6 +74,8 @@ class LauvinkoMorpheme(Morpheme):
         falling_accent = None
 
         for i, morpheme in enumerate(morphemes):
+            pk_syllables += morpheme.virtual_original_form.surface_form.syllables
+
             ms = [
                 LauvinkoSyllable(
                     onset=s.onset,

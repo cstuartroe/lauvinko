@@ -1,13 +1,22 @@
 import React, { Component } from "react";
 import {InlineCode, MarkdownPreformatted} from "./types";
 
-type GlossRow = "analysis" | "transcription" | "falavay" | "ipa";
+type GlossRow = "analysis" | "romanization" | "falavay" | "narrow_transcription" | "broad_transcription";
 
 const ROW_ABBREVS: {[key: string]: GlossRow} = {
   a: "analysis",
-  t: "transcription",
+  r: "romanization",
   f: "falavay",
-  i: "ipa",
+  n: "narrow_transcription",
+  b: "broad_transcription",
+}
+
+const ROW_CLASSES: {[key in GlossRow]: string} = {
+  analysis: "analysis",
+  romanization: "romanization",
+  falavay: "falavay",
+  narrow_transcription: "ipa",
+  broad_transcription: "ipa",
 }
 
 type Language = "lv" | "pk";
@@ -31,7 +40,7 @@ export function parseGlossSpec(spec: string): {language: Language, rows: GlossRo
   if (spec === "") {
     return {
       language: "lv",
-      rows: ["falavay", "transcription", "analysis"],
+      rows: ["falavay", "romanization", "analysis"],
     };
   } else if (spec.includes(';')) {
     const [language, row_abbrevs] = splitOnce(spec, ';');
@@ -43,21 +52,22 @@ export function parseGlossSpec(spec: string): {language: Language, rows: GlossRo
   } else {
     return {
       language: spec as Language,
-      rows: ["falavay", "transcription", "analysis"],
+      rows: ["falavay", "romanization", "analysis"],
     };
   }
 }
 
 function getGlossJson(params: GlossParams): Promise<GlossResponse> {
-  return fetch('/gloss?' + new URLSearchParams(params))
+  return fetch('/api/gloss?' + new URLSearchParams(params))
     .then(response => response.json());
 }
 
 type GlossResponse = {
   analysis: string[],
-  transcription: string[],
+  romanization: string[],
   falavay: string[],
-  ipa: string[],
+  narrow_transcription: string[],
+  broad_transcription: string[],
 }
 
 type InlineGlossProps = GlossParams & {
@@ -84,32 +94,37 @@ class InlineGloss extends Component<InlineGlossProps, GlossState> {
   render() {
     return (
       <>
-        {this.props.rows.map(row => this.renderRow(row))}
+        {this.props.rows.map((row, i) => this.renderRow(row, i))}
       </>
     );
   }
 
-  renderRow(row: GlossRow) {
+  renderRow(row: GlossRow, key: number) {
     if (this.state.content === undefined) {
       return null;
     }
 
     const {
       analysis,
-      transcription,
+      romanization,
       falavay,
-      ipa,
+      narrow_transcription,
+      broad_transcription,
     } = this.state.content;
+
+    const className = ROW_CLASSES[row];
 
     switch (row) {
       case "analysis":
-        return <span className={"analysis"}>{analysis.join(' ')}</span>;
-      case "transcription":
-        return <span className={'transcription'}>{transcription.join(' ')}</span>;
+        return <span className={className} key={key}>{analysis.join(' ')} </span>;
+      case "romanization":
+        return <span className={className} key={key}>{romanization.join(' ')} </span>;
       case "falavay":
-        return <span className={'falavay'}>{falavay.join('')}</span>;
-      case "ipa":
-        return <span className={'ipa'}>{'[' + ipa.join(' ') + ']'}</span>;
+        return <span className={className} key={key}>{falavay.join('')} </span>;
+      case "narrow_transcription":
+        return <span className={className} key={key}>{'[' + narrow_transcription.join(' ') + ']'} </span>;
+      case "broad_transcription":
+        return <span className={className} key={key}>{'/' + broad_transcription.join(' ') + '/'} </span>;
     }
   }
 }
@@ -117,7 +132,7 @@ class InlineGloss extends Component<InlineGlossProps, GlossState> {
 function AugmentPair({outline}: {outline: string}) {
   const sharedProps: Omit<InlineGlossProps, "outline"> = {
     language: "lv",
-    rows: ["falavay", "transcription"],
+    rows: ["falavay", "romanization"],
   };
 
   return (
@@ -165,14 +180,16 @@ class BlockGloss extends Component<BlockGlossProps, GlossState> {
     getGlossJson({language, outline}).then(gr => this.setState({content: gr}))
   }
 
+  length = () => this.state.content?.analysis.length || 0;
+
   render() {
     return (
       <div className={"gloss"}>
         <table>
           <tbody>
-            {this.props.rows.map(row => this.renderRow(row))}
+            {this.props.rows.map((row, i) => this.renderRow(row, i))}
             <tr>
-              <td colSpan={this.state.content?.analysis.length || 1}>
+              <td colSpan={this.length() || 1}>
                 {'"' + this.props.translation + '"'}
               </td>
             </tr>
@@ -182,62 +199,31 @@ class BlockGloss extends Component<BlockGlossProps, GlossState> {
     );
   }
 
-  renderRow(row: GlossRow) {
+  renderRow(row: GlossRow, key: number) {
     if (this.state.content === undefined) {
       return null;
     }
 
-    const {
-      analysis,
-      transcription,
-      falavay,
-      ipa,
-    } = this.state.content;
-
-    switch (row) {
-      case "analysis":
-        return (
-          <tr>
-            {analysis.map((word, i) =>
-              <td className={"analysis"} key={i}>{word}</td>
-            )}
-          </tr>
-        );
-
-      case "transcription":
-        return (
-          <tr>
-            {transcription.map((word, i) =>
-              <td className={'transcription'} key={i}>{word}</td>
-            )}
-          </tr>
-        );
-
-      case "falavay":
-        return (
-          <tr>
-            {falavay.map((word, i) =>
-              <td className="falavay" key={i}>{word}</td>
-            )}
-          </tr>
-        );
-
-      case "ipa":
-        return (
-          <tr>
-            {ipa.map((word, i) =>
-              <td className={'ipa'} key={i}>{word}</td>
-            )}
-          </tr>
-        );
-    }
+    return (
+      <tr key={key}>
+        {this.state.content[row].map((word, col) =>
+          <td className={ROW_CLASSES[row]} key={col}>
+            {row === "broad_transcription" && col === 0 && '/'}
+            {row === "narrow_transcription" && col === 0 && '[ '}
+            {word}
+            {row === "broad_transcription" && col === this.length() - 1 && '/'}
+            {row === "narrow_transcription" && col === this.length() - 1 && ' ]'}
+          </td>
+        )}
+      </tr>
+    );
   }
 }
 
 function renderMarkdownPreformatted(pre: MarkdownPreformatted) {
   const {language, rows} = parseGlossSpec(pre.language);
 
-  const lines = pre.children[0].content.split("\n");
+  const lines = pre.children[0].content.split("\n").filter(s => s !== "");
 
   return <BlockGloss outline={lines[0]} translation={lines[1]} {...{language, rows}}/>;
 }

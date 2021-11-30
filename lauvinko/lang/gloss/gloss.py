@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from typing import List, Optional
 
-from ..shared.semantics import PrimaryTenseAspect, PRIMARY_TA_ABBREVIATIONS
-from ..shared.morphology import Morpheme, Word
+from ..shared.semantics import PrimaryTenseAspect, PRIMARY_TA_ABBREVIATIONS, KasanicStemCategory, PTA2ABBREV
+from ..shared.morphology import Morpheme, Word, MorphosyntacticType
 from ..proto_kasanic.morphology import PKWord
 from ..proto_kasanic.romanize import romanize as pk_romanize
 from ..lauvinko.morphology import LauvinkoWord
@@ -18,14 +18,25 @@ class InvalidGloss(ValueError):
     pass
 
 
+MC_ABBREVS = {
+    MorphemeContext.AUGMENTED: "au",
+    MorphemeContext.NONAUGMENTED: "na",
+    MorphemeContext.PREFIXED: "prefix",
+}
+
+
 @dataclass
 class MorphemeSource:
     name: str
     primary_ta: Optional[PrimaryTenseAspect]
     context: Optional[MorphemeContext]
+    language: Language
+
+    def __post_init__(self):
+        self.value = self.resolve()
 
     @classmethod
-    def parse(cls, source: str):
+    def parse(cls, source: str, language: Language):
         pieces = source.split(".")
 
         name = pieces[0]
@@ -47,10 +58,11 @@ class MorphemeSource:
             name,
             primary_ta,
             context,
+            language=language,
         )
 
-    def resolve(self, language: Language) -> Morpheme:
-        if language is Language.LAUVINKO:
+    def resolve(self) -> Morpheme:
+        if self.language is Language.LAUVINKO:
             return self.resolve_lauvinko()
         else:
             raise NotImplementedError
@@ -64,6 +76,17 @@ class MorphemeSource:
             primary_ta=primary_ta,
             context=context,
         )
+
+    def as_str(self):
+        out = self.name
+
+        if self.value.lemma.category is not KasanicStemCategory.UNINFLECTED:
+            out += f".${PTA2ABBREV[self.primary_ta]}$"
+
+        if self.value.lemma.mstype is MorphosyntacticType.INDEPENDENT:
+            out += f".${MC_ABBREVS[self.context]}$"
+
+        return out
 
 
 WORD_CLASSES = {
@@ -81,12 +104,12 @@ class GlossSyntacticWord:
     @classmethod
     def parse(cls, source: str, language: Language):
         ms = [
-            MorphemeSource.parse(s)
+            MorphemeSource.parse(s, language)
             for s in source.split("-")
         ]
 
         morphemes = [
-            m.resolve(language)
+            m.value
             for m in ms
         ]
 
@@ -99,7 +122,7 @@ class GlossSyntacticWord:
         )
 
     def analysis(self) -> str:
-        return "-".join(str(ms) for ms in self.morpheme_sources)
+        return "-".join(ms.as_str() for ms in self.morpheme_sources)
 
     def broad_transcription(self) -> str:
         sf = self.word.surface_form()
@@ -172,17 +195,26 @@ class Gloss:
             language=language,
         )
 
-    def analysis(self) -> str:
-        return " ".join(pword.analysis() for pword in self.pwords)
+    def analysis(self) -> List[str]:
+        return [pword.analysis() for pword in self.pwords]
 
-    def broad_transcription(self) -> str:
-        return " ".join(pword.broad_transcription() for pword in self.pwords)
+    def broad_transcription(self) -> List[str]:
+        return [pword.broad_transcription() for pword in self.pwords]
 
-    def narrow_transcription(self) -> str:
-        return " ".join(pword.narrow_transcription() for pword in self.pwords)
+    def narrow_transcription(self) -> List[str]:
+        return [pword.narrow_transcription() for pword in self.pwords]
 
-    def romanization(self) -> str:
-        return " ".join(pword.romanization() for pword in self.pwords)
+    def romanization(self) -> List[str]:
+        return [pword.romanization() for pword in self.pwords]
 
-    def falavay(self) -> str:
-        return "".join(pword.falavay() for pword in self.pwords)
+    def falavay(self) -> List[str]:
+        return [pword.falavay() for pword in self.pwords]
+
+    def as_json(self):
+        return {
+            "analysis": self.analysis(),
+            "broad_transcription": self.broad_transcription(),
+            "narrow_transcription": self.narrow_transcription(),
+            "romanization": self.romanization(),
+            "falavay": self.falavay(),
+        }

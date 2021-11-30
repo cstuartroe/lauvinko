@@ -115,7 +115,7 @@ class Page extends Component<Props, State> {
       <div>
         <PageHeader name={this.props.name}/>
         {this.renderContent()}
-        <SectionLinks sections={PageManager.get(this.props.name).subsections}/>
+        <SectionLinks sections={PageManager.get(this.props.name)?.subsections || []}/>
       </div>
     );
   }

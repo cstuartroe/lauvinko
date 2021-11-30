@@ -14,12 +14,12 @@ class PageHeader extends Component<Props> {
     const pageIndex = PageManager.indexOf(name);
 
     const prev = PageManager.byIndex(pageIndex - 1);
-    const next = PageManager.byIndex(pageIndex + 1);
-    const parent = section.parent ? PageManager.get(section.parent) : undefined;
+    const next = pageIndex === -1 ? undefined : PageManager.byIndex(pageIndex + 1);
+    const parent = section?.parent ? PageManager.get(section.parent) : undefined;
 
     return (
       <div>
-        <h1 style={{marginTop: "3vh"}}>{section.title}</h1>
+        {section && <h1 style={{marginTop: "3vh"}}>{section.title}</h1>}
         <div className="row">
           <div className="col-12 col-md-4">
             {prev ?

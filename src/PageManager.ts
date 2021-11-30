@@ -53,10 +53,10 @@ class PageManager {
 
   pushSection(name: string) {
     this.orderedPages.push(name);
-    this.get(name).subsections.map(s => this.pushSection(s));
+    this.get(name)?.subsections.map(s => this.pushSection(s));
   }
 
-  get(name: string) {
+  get(name: string): SectionDefinition | undefined {
     return this.pageDirectory[name];
   }
 

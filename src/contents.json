@@ -457,7 +457,8 @@
       "name": "lessons", 
       "subsections": [
         {
-          "name": "class_words", 
+          "name": "lesson1",
+          "title": "Lesson 1: Class Words",
           "subsections": [
             {
               "name": "readings1", 
@@ -474,7 +475,8 @@
           ]
         }, 
         {
-          "name": "dative_and_partitive_cases", 
+          "name": "lesson2",
+          "title": "Lesson 2: Dative and Partitive Cases",
           "subsections": [
             {
               "name": "readings2", 
@@ -491,7 +493,8 @@
           ]
         }, 
         {
-          "name": "positionals", 
+          "name": "lesson3",
+          "title": "Lesson 3: Positionals",
           "subsections": [
             {
               "name": "readings3", 

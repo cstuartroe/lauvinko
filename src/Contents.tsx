@@ -12,7 +12,11 @@ function SectionLinkList({subsections, section_number}: SLLProps) {
   return (
     <ul>
       {subsections.map((name, i) => {
-        const section: SectionDefinition = PageManager.get(name)
+        const section = PageManager.get(name);
+        if (section === undefined) {
+          return null;
+        }
+
         const subsection_number = section_number.concat([i + 1]);
 
         const link_text = subsection_number.join('.') + " " + section.title;

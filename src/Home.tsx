@@ -28,7 +28,7 @@ class Home extends Component {
 
         <SectionLinks sections={[
           "introduction",
-          "class_words",
+          "lesson1",
           "north_wind",
         ]}/>
 

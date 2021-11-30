@@ -27,7 +27,7 @@ export default function SectionLinks({sections}: Props) {
         <div key={i} className={"go-down col-12 col-md-" + width}>
           <Link to={"/" + section} >
             <div>
-              <h3>{PageManager.get(section).title}</h3>
+              <h3>{PageManager.get(section)?.title}</h3>
             </div>
           </Link>
         </div>

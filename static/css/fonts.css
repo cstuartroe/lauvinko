@@ -1,0 +1,20 @@
+@font-face {
+  font-family: "Gentium";
+  src: url("/static/font/GentiumPlus-R.ttf") format('truetype'),
+       url("/static/font/GentiumPlus-R.svg") format('svg');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Lauvinko Smooth Serif";
+  src: url("/static/font/lavvinko-smooth-serif.ttf") format('truetype'),
+       url("/static/font/lavvinko-smooth-serif.svg") format('svg');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Lauvinko Bubble";
+  src: url("/static/font/lauvinko-bubble.ttf") format('truetype'),
+       url("/static/font/lauvinko-bubble.svg") format('svg');
+  font-weight: normal;
+}

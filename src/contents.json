@@ -1,0 +1,547 @@
+{
+  "subsections": [
+    {
+      "name": "introduction", 
+      "subsections": [
+        {
+          "name": "overview"
+        }, 
+        {
+          "name": "glossing", 
+          "title": "A Note on Glossing Conventions"
+        }
+      ]
+    }, 
+    {
+      "name": "people", 
+      "subsections": [
+        {
+          "name": "history", 
+          "subsections": [
+            {
+              "name": "prehistory", 
+              "title": "Prehistory (until 800s CE)"
+            }, 
+            {
+              "name": "early_history", 
+              "title": "Early History (800s - 1400s)"
+            }, 
+            {
+              "name": "sultanate", 
+              "title": "Sultanate (1400s - 1511)"
+            }, 
+            {
+              "name": "portuguese_rule", 
+              "title": "Portuguese Rule (1511 - 1641)"
+            }, 
+            {
+              "name": "dutch_rule", 
+              "title": "Dutch Rule (1641 - 1824)"
+            }, 
+            {
+              "name": "british_rule", 
+              "title": "British Rule (1824 -)"
+            }
+          ]
+        }, 
+        {
+          "name": "culture", 
+          "subsections": [
+            {
+              "name": "food", 
+              "title": "Food, Drink, and Drugs"
+            }, 
+            {
+              "name": "material", 
+              "title": "Material Culture"
+            }, 
+            {
+              "name": "clans"
+            }, 
+            {
+              "name": "society"
+            }, 
+            {
+              "name": "religion"
+            },
+            {
+              "name": "octagram",
+              "title": "The Eight-Pointed Star"
+            }
+          ]
+        }
+      ], 
+      "title": "The Lauv\u00ecnko People"
+    }, 
+    {
+      "name": "phonorth", 
+      "subsections": [
+        {
+          "name": "phonology", 
+          "subsections": [
+            {
+              "name": "consonants"
+            }, 
+            {
+              "name": "vowels"
+            }, 
+            {
+              "name": "word_structure"
+            }, 
+            {
+              "name": "pitch_accent"
+            }, 
+            {
+              "name": "consonant_sandhi"
+            }, 
+            {
+              "name": "vowel_sandhi"
+            }
+          ]
+        }, 
+        {
+          "name": "morphophonology", 
+          "subsections": [
+            {
+              "name": "mutations", 
+              "title": "Stem-Initial Consonant Mutations"
+            }, 
+            {
+              "name": "augment"
+            }
+          ], 
+          "title": "Morphophonological Processes"
+        }, 
+        {
+          "name": "orthography", 
+          "subsections": [
+            {
+              "name": "palavaytolis", 
+              "title": "Palavayt\u00f2lis Abugida"
+            }, 
+            {
+              "name": "latin", 
+              "title": "Latin Alphabet Orthography"
+            }, 
+            {
+              "name": "transcription", 
+              "title": "Transcription used in this document"
+            }
+          ]
+        }
+      ], 
+      "title": "Phonology and Orthography"
+    }, 
+    {
+      "name": "nouns", 
+      "subsections": [
+        {
+          "name": "class", 
+          "subsections": [
+            {
+              "name": "head", 
+              "title": "Head Class"
+            }, 
+            {
+              "name": "branch", 
+              "title": "Branch Class"
+            }, 
+            {
+              "name": "leaf", 
+              "title": "Leaf Class"
+            }, 
+            {
+              "name": "rock", 
+              "title": "Rock Class"
+            }, 
+            {
+              "name": "sea", 
+              "title": "Sea Class"
+            }, 
+            {
+              "name": "number"
+            }
+          ], 
+          "title": "Noun Class and Number"
+        }, 
+        {
+          "name": "personal_pronouns", 
+          "subsections": [
+            {
+              "name": "case_suffixes"
+            }, 
+            {
+              "name": "independent_forms"
+            }, 
+            {
+              "name": "dependent_forms"
+            }, 
+            {
+              "name": "2p", 
+              "title": "Second Person Pronouns"
+            }
+          ], 
+          "title": "Personal Pronouns and Nominal Inflection"
+        }, 
+        {
+          "name": "other_pronouns", 
+          "subsections": [
+            {
+              "name": "reflexive"
+            }, 
+            {
+              "name": "demonstrative"
+            }, 
+            {
+              "name": "indefinite", 
+              "title": "Indefinite and Interrogative"
+            }
+          ]
+        }, 
+        {
+          "name": "cases", 
+          "subsections": [
+            {
+              "name": "volitive", 
+              "title": "Volitive Case"
+            }, 
+            {
+              "name": "instrumental", 
+              "title": "Instrumental Case"
+            }, 
+            {
+              "name": "patientive", 
+              "title": "Patientive Case"
+            }, 
+            {
+              "name": "dative", 
+              "title": "Dative Case"
+            }, 
+            {
+              "name": "adpositional", 
+              "title": "Adpositional Cases"
+            }, 
+            {
+              "name": "partitive", 
+              "title": "Partitive Case"
+            }
+          ], 
+          "title": "Cases and Argument Structure"
+        }, 
+        {
+          "name": "derivation", 
+          "title": "Noun Derivation"
+        }, 
+        {
+          "name": "positionals"
+        }
+      ], 
+      "title": "Nominal Morphology"
+    }, 
+    {
+      "name": "verbs", 
+      "subsections": [
+        {
+          "name": "stem_changes", 
+          "subsections": [
+            {
+              "name": "primary", 
+              "title": "Primary Tense and Aspect"
+            }, 
+            {
+              "name": "secondary", 
+              "title": "Secondary Aspect"
+            }, 
+            {
+              "name": "modern_forms"
+            }
+          ], 
+          "title": "Tense and Aspect Stem Changes"
+        }, 
+        {
+          "name": "applicatives"
+        }, 
+        {
+          "name": "modals", 
+          "subsections": [
+            {
+              "name": "tertiary", 
+              "title": "Tertiary Aspect"
+            }, 
+            {
+              "name": "other_modals"
+            }
+          ], 
+          "title": "Modal Prefixes"
+        }, 
+        {
+          "name": "agreement", 
+          "subsections": [
+            {
+              "name": "topic_agreement"
+            }, 
+            {
+              "name": "patient_agreement"
+            }
+          ], 
+          "title": "Core Argument Agreement"
+        }, 
+        {
+          "name": "case_aspect_interaction", 
+          "subsections": [
+            {
+              "name": "inchoative_ablative", 
+              "title": "Inchoative and Ablative"
+            }, 
+            {
+              "name": "imperfect_locative", 
+              "title": "Imperfect and Locative"
+            }, 
+            {
+              "name": "experiential_perlative", 
+              "title": "Experiential and Perlative"
+            }, 
+            {
+              "name": "prospective_allative", 
+              "title": "Prospective and Allative"
+            }
+          ]
+        }, 
+        {
+          "name": "noun_incorporation"
+        }
+      ], 
+      "title": "Verbal Morphology"
+    }, 
+    {
+      "name": "syntax", 
+      "subsections": [
+        {
+          "name": "argument_order", 
+          "title": "Core Argument Order"
+        }, 
+        {
+          "name": "np", 
+          "subsections": [
+            {
+              "name": "adjectives"
+            }, 
+            {
+              "name": "appositives"
+            }, 
+            {
+              "name": "possession"
+            }, 
+            {
+              "name": "numerals"
+            }
+          ], 
+          "title": "Noun Phrase Order"
+        }, 
+        {
+          "name": "dependent_clauses", 
+          "subsections": [
+            {
+              "name": "adverbial_clauses"
+            }, 
+            {
+              "name": "relative_clauses"
+            }, 
+            {
+              "name": "noun_clauses"
+            }
+          ]
+        }, 
+        {
+          "name": "discourse", 
+          "subsections": [
+            {
+              "name": "questions"
+            }, 
+            {
+              "name": "coordinating_conjunctions"
+            }, 
+            {
+              "name": "discourse_particles"
+            }
+          ], 
+          "title": "Sentences and Discourse"
+        }
+      ]
+    }, 
+    {
+      "name": "semantics", 
+      "subsections": [
+        {
+          "name": "colors"
+        }, 
+        {
+          "name": "conceptual_metaphor"
+        }, 
+        {
+          "name": "numbers", 
+          "subsections": [
+            {
+              "name": "up_to_twenty"
+            }, 
+            {
+              "name": "bases"
+            }, 
+            {
+              "name": "writing_numerals"
+            }
+          ]
+        }, 
+        {
+          "name": "kinship"
+        }, 
+        {
+          "name": "naming", 
+          "subsections": [
+            {
+              "name": "name_order"
+            }, 
+            {
+              "name": "family_names"
+            }, 
+            {
+              "name": "given_names"
+            }, 
+            {
+              "name": "clan_names"
+            }, 
+            {
+              "name": "style_names"
+            }
+          ]
+        }
+      ]
+    }, 
+    {
+      "name": "kasanic_family", 
+      "subsections": [
+        {
+          "name": "related_languages", 
+          "subsections": [
+            {
+              "name": "proto", 
+              "title": "Reconstructed Proto-Kasanic"
+            }, 
+            {
+              "name": "old_lauvinko", 
+              "title": "Old Lauv\u00ecnko"
+            }, 
+            {
+              "name": "diachronic_development"
+            }, 
+            {
+              "name": "botharu"
+            }
+          ]
+        }, 
+        {
+          "name": "dialects", 
+          "subsections": [
+            {
+              "name": "accent_isoglosses"
+            }, 
+            {
+              "name": "semantic_differences"
+            }
+          ]
+        }
+      ], 
+      "title": "Diachronics and Dialectology"
+    }, 
+    {
+      "name": "lessons", 
+      "subsections": [
+        {
+          "name": "class_words", 
+          "subsections": [
+            {
+              "name": "readings1", 
+              "title": "Readings"
+            }, 
+            {
+              "name": "vocab1", 
+              "title": "Vocabulary"
+            }, 
+            {
+              "name": "notes1", 
+              "title": "Grammar and Usage Notes"
+            }
+          ]
+        }, 
+        {
+          "name": "dative_and_partitive_cases", 
+          "subsections": [
+            {
+              "name": "readings2", 
+              "title": "Readings"
+            }, 
+            {
+              "name": "vocab2", 
+              "title": "Vocabulary"
+            }, 
+            {
+              "name": "notes2", 
+              "title": "Grammar and Usage Notes"
+            }
+          ]
+        }, 
+        {
+          "name": "positionals", 
+          "subsections": [
+            {
+              "name": "readings3", 
+              "title": "Readings"
+            }, 
+            {
+              "name": "vocab3", 
+              "title": "Vocabulary"
+            }, 
+            {
+              "name": "notes3", 
+              "title": "Grammar and Usage Notes"
+            }
+          ]
+        }
+      ]
+    }, 
+    {
+      "name": "primary_sources", 
+      "subsections": [
+        {
+          "name": "north_wind", 
+          "title": "The North Wind and the Sun"
+        }, 
+        {
+          "name": "bhagavad_gita"
+        }
+      ]
+    }, 
+    {
+      "name": "dictionary", 
+      "subsections": [
+        {
+          "name": "kasanic_dictionary", 
+          "title": "Kasanic Root Dictionary"
+        }, 
+        {
+          "name": "loanword_dictionary"
+        },
+        {
+          "name": "derived",
+          "title": "Dictionary of Derived and Compound Words"
+        },
+        {
+          "name": "ideophones"
+        }, 
+        {
+          "name": "phrasebook"
+        }
+      ]
+    }
+  ]
+}

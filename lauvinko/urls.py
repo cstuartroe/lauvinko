@@ -5,5 +5,6 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('page/<slug:name>', views.page_content, name="page_content"),
     re_path(r'^.*$', views.react_index, name="react_index")
 ]

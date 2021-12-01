@@ -68,7 +68,7 @@ p.go-up {
   text-align: center;
 }
 
-div.go-down div {
+div.go-down div, button {
   border-style: solid;
   border-width: 2px;
   border-color: #f0f0f0;
@@ -93,7 +93,7 @@ div.go-down div h3 {
   vertical-align: middle;
 }
 
-div.go-down div h3 {
+div.go-down div h3, button {
   font-weight: 900;
 }
 
@@ -118,12 +118,12 @@ li, td, th, hr, input[type="text"] {
   border-color: transparent;
 }
 
-div.go-down div:hover, a:hover li {
+div.go-down div:hover, a:hover li, button:hover {
   background-color: #8fc78f;
   border-color: black;
 }
 
-div.go-down div:hover h3, a:hover li {
+div.go-down div:hover h3, a:hover li, button:hover {
   color: white;
   font-weight: 900;
 }
@@ -169,7 +169,7 @@ div.go-down div:hover h3, a:hover li {
   text-align: left;
 }
 
-th, td , hr, div.gloss-wrapper, input[type="text"] {
+th, td , hr, input[type="text"] {
   border-color: #f0f0f0;
 }
 
@@ -209,6 +209,8 @@ div.gloss {
   padding: 10px;
   border: 2px solid #007f00;
   border-radius: 5px;
+  width: fit-content;
+  display: inline-block;
 }
 
 .gloss table td {
@@ -219,4 +221,10 @@ div.gloss {
 
 .romanization {
   font-style: italic;
+}
+
+.gloss {
+  .falavay {
+    font-size: 200%;
+  }
 }

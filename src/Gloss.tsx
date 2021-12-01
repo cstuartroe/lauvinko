@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {InlineCode, MarkdownPreformatted} from "./types";
 
-type GlossRow = "analysis" | "romanization" | "falavay" | "narrow_transcription" | "broad_transcription";
+export type GlossRow = "analysis" | "romanization" | "falavay" | "narrow_transcription" | "broad_transcription";
 
 const ROW_ABBREVS: {[key: string]: GlossRow} = {
   a: "analysis",
@@ -19,9 +19,9 @@ const ROW_CLASSES: {[key in GlossRow]: string} = {
   broad_transcription: "ipa",
 }
 
-type Language = "lv" | "pk";
+export type Language = "lv" | "pk";
 
-type GlossParams = {
+export type GlossParams = {
   outline: string,
   language: Language,
 }
@@ -57,12 +57,12 @@ export function parseGlossSpec(spec: string): {language: Language, rows: GlossRo
   }
 }
 
-function getGlossJson(params: GlossParams): Promise<GlossResponse> {
+export function getGlossJson(params: GlossParams): Promise<GlossResponse> {
   return fetch('/api/gloss?' + new URLSearchParams(params))
     .then(response => response.json());
 }
 
-type GlossResponse = {
+export type GlossData = {
   analysis: string[],
   romanization: string[],
   falavay: string[],
@@ -70,12 +70,21 @@ type GlossResponse = {
   broad_transcription: string[],
 }
 
+export type GlossResponse = {
+  success: true,
+  response: GlossData,
+} | {
+  success: false,
+  message: string,
+}
+
 type InlineGlossProps = GlossParams & {
   rows: GlossRow[],
 }
 
 type GlossState = {
-  content?: GlossResponse
+  content?: GlossData,
+  errorMessage?: string,
 }
 
 class InlineGloss extends Component<InlineGlossProps, GlossState> {
@@ -88,7 +97,11 @@ class InlineGloss extends Component<InlineGlossProps, GlossState> {
   componentDidMount() {
     const { language, outline } = this.props;
 
-    getGlossJson({language, outline}).then(gr => this.setState({content: gr}))
+    getGlossJson({language, outline}).then(gr => {
+      if (gr.success) {
+        this.setState({content: gr.response});
+      }
+    });
   }
 
   render() {
@@ -177,7 +190,13 @@ class BlockGloss extends Component<BlockGlossProps, GlossState> {
   componentDidMount() {
     const { language, outline } = this.props;
 
-    getGlossJson({language, outline}).then(gr => this.setState({content: gr}))
+    getGlossJson({language, outline}).then(gr => {
+      if (gr.success) {
+        this.setState({content: gr.response});
+      } else {
+        this.setState({errorMessage: gr.message});
+      }
+    });
   }
 
   length = () => this.state.content?.analysis.length || 0;
@@ -188,13 +207,20 @@ class BlockGloss extends Component<BlockGlossProps, GlossState> {
         <table>
           <tbody>
             {this.props.rows.map((row, i) => this.renderRow(row, i))}
-            <tr>
-              <td colSpan={this.length() || 1}>
-                {'"' + this.props.translation + '"'}
-              </td>
-            </tr>
+            {this.props.translation.length > 0 && (
+              <tr>
+                <td colSpan={this.length() || 1}>
+                  {'"' + this.props.translation + '"'}
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
+        {this.state.errorMessage && (
+          <p style={{color: "red"}}>
+            {this.state.errorMessage}
+          </p>
+        )}
       </div>
     );
   }

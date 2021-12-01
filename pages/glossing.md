@@ -5,6 +5,8 @@ morphological breakdown, morpheme-by-morpheme gloss, and finally a
 translation. The four representations of each word are left-aligned together.
 
 ```
+
+
 cart.$na$-$all$ mango.$na$ $1st$.$sg$-add.$fqpt$.$na$=$bra$.$pl$.$na$-$pat$
 
 I loaded the mangoes into the cart.

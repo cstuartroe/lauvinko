@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Home from "./Home";
 import Page from "./Page";
+import Builder from "./Builder";
 // import Dictionary from "./Dictionary";
 
 import "../static/scss/main.scss";
@@ -42,6 +43,7 @@ class App extends Component<{}, State> {
                         <Router>
                             <Switch>
                                 <Route exact={true} path="/" component={Home}/>
+                                <Route exact={true} path="/build" component={Builder}/>
                                 {/*<Route*/}
                                 {/*  exact={true}*/}
                                 {/*  path="/kasanic_dictionary"*/}

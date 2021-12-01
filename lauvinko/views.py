@@ -9,8 +9,12 @@ from lauvinko.lang.lauvinko.morphology import InvalidSyntacticWordSequence
 from lauvinko.lang.shared.semantics import Language
 
 
+def json_success(response: dict):
+    return JsonResponse({"success": True, "response": response}, status=200)
+
+
 def unprocessable_entity(message: str):
-    return JsonResponse({"message": message}, status=422)
+    return JsonResponse({"success": False, "message": message}, status=422)
 
 
 def react_index(request: HttpRequest):
@@ -39,7 +43,7 @@ def gloss(request: HttpRequest):
 
     try:
         gloss = Gloss.parse(outline, language=language)
-        return JsonResponse(gloss.as_json())
+        return json_success(gloss.as_json())
 
     except InvalidGloss as e:
         return unprocessable_entity(f"Invalid gloss: {e}")

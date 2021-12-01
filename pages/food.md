@@ -35,4 +35,4 @@ Alcohol consumption was not very widespread in Lauvìnko society due to the
 influence of the predominantly Muslim Malay society. There is some evidence
 that use of cannabis, opium, and nutmeg snuff as psychoactive drugs existed
 in Lauvìnko society. In later history, drinking black or green tea became
-popular among the affluent.
+popular among the affluent.sc

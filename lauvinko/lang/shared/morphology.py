@@ -11,6 +11,9 @@ class MorphosyntacticType(Enum):
     TERTIARY_ASPECT_PREFIX = "tertiary aspect prefix"
     TOPIC_AGREEMENT_PREFIX = "topic agreement prefix"
     TOPIC_CASE_PREFIX = "topic case prefix"
+    CLASS_WORD = "class word"
+    CASE_MARKER = "case marker"
+    ADPOSITION = "adposition"
 
 
 @dataclass

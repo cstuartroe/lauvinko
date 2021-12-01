@@ -255,4 +255,41 @@ class LauvinkoSurfaceForm(SurfaceForm):
 
         return out
 
+    @classmethod
+    def cliticize(cls, sfs: List["LauvinkoSurfaceForm"], accented: int) -> "LauvinkoSurfaceForm":
+        syllables = []
+        accent_position = None
+        falling_accent = None
+
+        for i, sf in enumerate(sfs):
+            if accented == i:
+                accent_position = len(syllables) + sf.accent_position
+                falling_accent = sf.falling_accent
+
+            if len(sf.syllables) == 0:
+                continue
+
+            ms = [
+                LauvinkoSyllable(
+                    onset=s.onset,
+                    vowel=s.vowel,
+                    coda=s.coda,
+                )
+                for s in sf.syllables
+            ]
+
+            if ms[0].onset is None:
+                pass
+
+            syllables += ms
+
+        if accent_position is None:
+            raise ValueError
+
+        return cls(
+            syllables=syllables,
+            accent_position=accent_position,
+            falling_accent=falling_accent,
+        )
+
 

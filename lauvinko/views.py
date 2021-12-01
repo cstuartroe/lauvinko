@@ -5,6 +5,7 @@ import mistletoe
 from mistletoe.ast_renderer import ASTRenderer
 
 from lauvinko.lang.gloss.gloss import Gloss, InvalidGloss
+from lauvinko.lang.lauvinko.morphology import InvalidSyntacticWordSequence
 from lauvinko.lang.shared.semantics import Language
 
 
@@ -42,4 +43,7 @@ def gloss(request: HttpRequest):
 
     except InvalidGloss as e:
         return unprocessable_entity(f"Invalid gloss: {e}")
+
+    except InvalidSyntacticWordSequence as e:
+        return unprocessable_entity(f"Invalid syntactic word sequence: {e}")
 

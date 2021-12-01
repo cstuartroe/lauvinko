@@ -1,7 +1,8 @@
 from dataclasses import dataclass
 from typing import List, Optional
+import re
 
-from ..shared.semantics import PrimaryTenseAspect, PRIMARY_TA_ABBREVIATIONS, KasanicStemCategory, PTA2ABBREV
+from ..shared.semantics import PrimaryTenseAspect, PRIMARY_TA_ABBREVIATIONS, KasanicStemCategory
 from ..shared.morphology import Morpheme, Word, MorphosyntacticType
 from ..proto_kasanic.morphology import PKWord
 from ..proto_kasanic.romanize import romanize as pk_romanize
@@ -19,9 +20,15 @@ class InvalidGloss(ValueError):
 
 
 MC_ABBREVS = {
-    MorphemeContext.AUGMENTED: "au",
-    MorphemeContext.NONAUGMENTED: "na",
-    MorphemeContext.PREFIXED: "prefix",
+    MorphemeContext.AUGMENTED: "$au$",
+    MorphemeContext.NONAUGMENTED: "$na$",
+    MorphemeContext.PREFIXED: "$prefix$",
+}
+
+
+PTA2ABBREV = {
+    f"${value}$": key
+    for key, value in PRIMARY_TA_ABBREVIATIONS.items()
 }
 
 
@@ -33,6 +40,12 @@ class MorphemeSource:
     language: Language
 
     def __post_init__(self):
+        if self.primary_ta is None:
+            lemma = dictionary.by_id(self.name)
+            if lemma.category is not KasanicStemCategory.UNINFLECTED:
+                raise InvalidGloss(f"Must include primary tense/aspect for {lemma.category.title} stem")
+            self.primary_ta = PrimaryTenseAspect.GENERAL
+
         self.value = self.resolve()
 
     @classmethod
@@ -41,17 +54,21 @@ class MorphemeSource:
 
         name = pieces[0]
 
-        if len(pieces) > 1:
-            primary_ta = PRIMARY_TA_ABBREVIATIONS[pieces[1]]
+        i = 1
+
+        if len(pieces) > i and pieces[i] in PRIMARY_TA_ABBREVIATIONS:
+            primary_ta = PRIMARY_TA_ABBREVIATIONS[pieces[i]]
+            i += 1
         else:
             primary_ta = None
 
-        if len(pieces) > 2:
-            context = parse_context(pieces[2])
+        if len(pieces) > i:
+            context = parse_context(re.fullmatch("\\$([a-z]+)\\$", pieces[i]).group(1))
+            i += 1
         else:
             context = None
 
-        if len(pieces) > 3:
+        if len(pieces) > i:
             raise InvalidGloss(f"Too many pieces: {source}")
 
         return cls(
@@ -70,10 +87,9 @@ class MorphemeSource:
     def resolve_lauvinko(self) -> Morpheme:
         entry = dictionary.by_id(self.name)
         lemma = entry.languages[Language.LAUVINKO]
-        primary_ta = self.primary_ta or PrimaryTenseAspect.GENERAL
         context = self.context or MorphemeContext.PREFIXED
         return lemma.form(
-            primary_ta=primary_ta,
+            primary_ta=self.primary_ta,
             context=context,
         )
 
@@ -81,10 +97,10 @@ class MorphemeSource:
         out = self.name
 
         if self.value.lemma.category is not KasanicStemCategory.UNINFLECTED:
-            out += f".${PTA2ABBREV[self.primary_ta]}$"
+            out += f".{PTA2ABBREV[self.primary_ta]}"
 
         if self.value.lemma.mstype is MorphosyntacticType.INDEPENDENT:
-            out += f".${MC_ABBREVS[self.context]}$"
+            out += f".{MC_ABBREVS[self.context]}"
 
         return out
 
@@ -124,27 +140,6 @@ class GlossSyntacticWord:
     def analysis(self) -> str:
         return "-".join(ms.as_str() for ms in self.morpheme_sources)
 
-    def broad_transcription(self) -> str:
-        sf = self.word.surface_form()
-
-        if self.language is Language.LAUVINKO:
-            return sf.historical_transcription()
-        else:
-            return sf.broad_transcription()
-
-    def narrow_transcription(self) -> str:
-        return self.word.surface_form().narrow_transcription()
-
-    def romanization(self) -> str:
-        sf = self.word.surface_form()
-
-        if self.language is Language.LAUVINKO:
-            return lv_romanize(sf)
-        elif self.language is Language.PK:
-            return pk_romanize(sf)
-        else:
-            raise NotImplementedError
-
     def falavay(self) -> str:
         return self.word.falavay()
 
@@ -153,6 +148,17 @@ class GlossSyntacticWord:
 class GlossPhonologicalWord:
     swords: List[GlossSyntacticWord]
     language: Language
+
+    def __post_init__(self):
+        if self.language is Language.LAUVINKO:
+            self.surface_form = LauvinkoWord.join_syntactic_words(
+                words=[
+                    sword.word
+                    for sword in self.swords
+                ],
+            )
+        else:
+            raise NotImplementedError
 
     @classmethod
     def parse(cls, source: str, language: Language):
@@ -168,13 +174,21 @@ class GlossPhonologicalWord:
         return "=".join(sword.analysis() for sword in self.swords)
 
     def broad_transcription(self) -> str:
-        return "".join(sword.broad_transcription() for sword in self.swords)
+        if self.language is Language.LAUVINKO:
+            return self.surface_form.historical_transcription()
+        else:
+            return self.surface_form.broad_transcription()
 
     def narrow_transcription(self) -> str:
-        return "".join(sword.narrow_transcription() for sword in self.swords)
+        return self.surface_form.narrow_transcription()
 
     def romanization(self) -> str:
-        return "".join(sword.romanization() for sword in self.swords)
+        if self.language is Language.LAUVINKO:
+            return lv_romanize(self.surface_form)
+        elif self.language is Language.PK:
+            return pk_romanize(self.surface_form)
+        else:
+            raise NotImplementedError
 
     def falavay(self) -> str:
         return "".join(sword.falavay() for sword in self.swords)

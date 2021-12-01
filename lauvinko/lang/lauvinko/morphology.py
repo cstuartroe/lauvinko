@@ -269,23 +269,90 @@ class LauvinkoCase(Case, Enum):
     PARTITIVE = ("par", False)
 
 
+class LauvinkoWordType(Enum):
+    CONTENT_WORD = "content word"
+    DETERMINER = "determiner"
+    ADPOSITION = "adposition"
+
+
+class InvalidSyntacticWordSequence(ValueError):
+    pass
+
+
 @dataclass
 class LauvinkoWord(Word):
+    def __post_init__(self):
+        self._as_morph = LauvinkoMorpheme.join(
+            morphemes=self.morphemes(),
+            accented=self._get_accented(),
+        )
+
+    def _get_accented(self):
+        raise NotImplementedError
+
+    def morphemes(self) -> List[LauvinkoMorpheme]:
+        raise NotImplementedError
+
+    def falavay(self):
+        return self._as_morph.falavay()
+
+    def surface_form(self) -> LauvinkoSurfaceForm:
+        return self._as_morph.surface_form
+
+    def word_type(self) -> LauvinkoWordType:
+        raise NotImplementedError
+
+    @classmethod
+    def from_morphemes(cls, morphemes: List[LauvinkoMorpheme]) -> "LauvinkoWord":
+        if morphemes[-1].lemma.mstype is MorphosyntacticType.INDEPENDENT:
+            return LauvinkoContentWord.from_morphemes(morphemes)
+
+        else:
+            raise NotImplementedError
+
+    @staticmethod
+    def join_syntactic_words(words: List["LauvinkoWord"]) -> "LauvinkoSurfaceForm":
+        if len(words) == 1:
+            return words[0].surface_form()
+
+        accented = 0
+        i = 0
+        found = False
+
+        if words[i].word_type() is LauvinkoWordType.CONTENT_WORD:
+            accented += 1
+            i += 1
+
+        if words[i:] and words[i].word_type() is LauvinkoWordType.ADPOSITION:
+            accented += 1
+            i += 1
+
+        if words[i:] and words[i].word_type() is LauvinkoWordType.CONTENT_WORD:
+            found = True
+            i += 1
+
+        if words[i:] and words[i].word_type() is LauvinkoWordType.DETERMINER:
+            i += 1
+
+        if not found or i != len(words):
+            raise InvalidSyntacticWordSequence(str([w.word_type().value for w in words]))
+
+        return LauvinkoSurfaceForm.cliticize(
+            sfs=[w.surface_form() for w in words],
+            accented=accented,
+        )
+
+
+@dataclass
+class LauvinkoContentWord(LauvinkoWord):
     modal_prefixes: List[LauvinkoMorpheme]
     tertiary_aspect: Optional[LauvinkoMorpheme]
     topic_agreement: Optional[LauvinkoMorpheme]
     topic_case: Optional[LauvinkoMorpheme]
     stem: LauvinkoMorpheme
 
-    def __post_init__(self):
-        LauvinkoMorpheme.join(
-            morphemes=self.morphemes(),
-            accented=len(self.prefixes()),
-        )
-        self._as_morph = LauvinkoMorpheme.join(
-            morphemes=self.morphemes(),
-            accented=len(self.prefixes()),
-        )
+    def _get_accented(self):
+        return len(self.prefixes())
 
     def prefixes(self):
         out = [*self.modal_prefixes]
@@ -302,11 +369,8 @@ class LauvinkoWord(Word):
             self.stem,
         ]
 
-    def falavay(self):
-        return self._as_morph.falavay()
-
-    def surface_form(self) -> LauvinkoSurfaceForm:
-        return self._as_morph.surface_form
+    def word_type(self) -> LauvinkoWordType:
+        return LauvinkoWordType.CONTENT_WORD
 
     @classmethod
     def from_morphemes(cls, morphemes: List[LauvinkoMorpheme]) -> "LauvinkoWord":
@@ -315,6 +379,3 @@ class LauvinkoWord(Word):
             stem=stem,
             **bucket_kasanic_prefixes(prefixes),
         )
-
-
-

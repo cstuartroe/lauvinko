@@ -26,11 +26,6 @@ PRIMARY_TA_ABBREVIATIONS = {
     "fqpt": PrimaryTenseAspect.FREQUENTATIVE_PAST,
 }
 
-PTA2ABBREV = {
-    value: key
-    for key, value in PRIMARY_TA_ABBREVIATIONS.items()
-}
-
 
 class StemCategory:
     class InvalidStemCategory(ValueError):

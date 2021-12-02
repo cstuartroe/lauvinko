@@ -59,7 +59,8 @@ export function parseGlossSpec(spec: string): {language: Language, rows: GlossRo
 
 export function getGlossJson(params: GlossParams): Promise<GlossResponse> {
   return fetch('/api/gloss?' + new URLSearchParams(params))
-    .then(response => response.json());
+    .then(response => response.json())
+    .catch(_e => ({success: false, message: "Unknown error"}));
 }
 
 export type GlossData = {
@@ -175,6 +176,58 @@ function renderInlineCode(code: InlineCode) {
   }
 }
 
+type CopyLinkProps = {
+  link: string,
+}
+
+type CopyLinkState = {
+  copiedPosition: number;
+}
+
+const maxCopiedPosition = 30;
+
+class CopyLink extends Component<CopyLinkProps, CopyLinkState> {
+  constructor(props: CopyLinkProps) {
+    super(props);
+
+    this.state = {
+      copiedPosition: maxCopiedPosition,
+    }
+  }
+
+  render() {
+    const opacity = 100 - Math.round(this.state.copiedPosition * 100 / maxCopiedPosition);
+
+    return (
+      <span style={{position: "relative"}}>
+        <a onClick={() => this.onClick()}>Copy link</a>
+        <span style={{
+          color: `rgba(127, 127, 127, ${opacity}%)`,
+          position: "absolute",
+          bottom: this.state.copiedPosition,
+          left: 0,
+        }}>
+          Copied!
+        </span>
+      </span>
+    );
+  }
+
+  onClick() {
+    navigator.clipboard.writeText(this.props.link).then(_ => {
+      this.setState({copiedPosition: 0});
+      this.moveCopied();
+    });
+  }
+
+  moveCopied() {
+    if (this.state.copiedPosition < maxCopiedPosition) {
+      this.setState({copiedPosition: this.state.copiedPosition + 1});
+      setTimeout(() => this.moveCopied(), 10);
+    }
+  }
+}
+
 type BlockGlossProps = GlossParams & {
   rows: GlossRow[],
   translation: string,
@@ -203,24 +256,31 @@ class BlockGloss extends Component<BlockGlossProps, GlossState> {
 
   render() {
     return (
-      <div className={"gloss"}>
-        <table>
-          <tbody>
-            {this.props.rows.map((row, i) => this.renderRow(row, i))}
-            {this.props.translation.length > 0 && (
-              <tr>
-                <td colSpan={this.length() || 1}>
-                  {'"' + this.props.translation + '"'}
-                </td>
-              </tr>
+      <div>
+        <div className={"gloss"}>
+          <div>
+            {this.state.errorMessage && (
+              <p style={{color: "red"}}>
+                {this.state.errorMessage}
+              </p>
             )}
-          </tbody>
-        </table>
-        {this.state.errorMessage && (
-          <p style={{color: "red"}}>
-            {this.state.errorMessage}
+            <table>
+              <tbody>
+              {this.props.rows.map((row, i) => this.renderRow(row, i))}
+              {this.props.translation.length > 0 && (
+                <tr>
+                  <td colSpan={this.length() || 1}>
+                    {'"' + this.props.translation + '"'}
+                  </td>
+                </tr>
+              )}
+              </tbody>
+            </table>
+          </div>
+          <p style={{textAlign: "right"}}>
+            {this.renderFooter()}
           </p>
-        )}
+        </div>
       </div>
     );
   }
@@ -243,6 +303,24 @@ class BlockGloss extends Component<BlockGlossProps, GlossState> {
         )}
       </tr>
     );
+  }
+
+  renderFooter() {
+    const { outline, language, translation } = this.props;
+
+    const path = "/build?" + new URLSearchParams({
+      outline,
+      language,
+      translation
+    });
+
+    const link = (new URL(path, window.location.toString())).toString();
+
+    if (window.location.pathname === "/build") {
+      return <CopyLink link={link}/>
+    } else {
+      return <a target="_blank" href={link}>Open in builder</a>;
+    }
   }
 }
 

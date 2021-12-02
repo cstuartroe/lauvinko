@@ -204,13 +204,20 @@ table.inline {
 
 div.gloss {
   max-width: 100%;
-  overflow-x: scroll;
-  margin: 1em;
+  margin: 1em 0;
   padding: 10px;
   border: 2px solid #007f00;
   border-radius: 5px;
   width: fit-content;
   display: inline-block;
+}
+
+.gloss div {
+  overflow-x: scroll;
+}
+
+.gloss p {
+  padding: 0;
 }
 
 .gloss table td {

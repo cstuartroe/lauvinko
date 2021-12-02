@@ -27,9 +27,13 @@ MC_ABBREVS = {
 
 
 PTA2ABBREV = {
-    f"${value}$": key
-    for key, value in PRIMARY_TA_ABBREVIATIONS.items()
+    pta: key
+    for key, pta in PRIMARY_TA_ABBREVIATIONS.items()
 }
+
+
+def parse_gloss_tag(gloss_tag: str):
+    return re.fullmatch("\\$([a-z]+)\\$", gloss_tag).group(1)
 
 
 @dataclass
@@ -56,14 +60,14 @@ class MorphemeSource:
 
         i = 1
 
-        if len(pieces) > i and pieces[i] in PRIMARY_TA_ABBREVIATIONS:
-            primary_ta = PRIMARY_TA_ABBREVIATIONS[pieces[i]]
+        if len(pieces) > i and parse_gloss_tag(pieces[i]) in PRIMARY_TA_ABBREVIATIONS:
+            primary_ta = PRIMARY_TA_ABBREVIATIONS[parse_gloss_tag(pieces[i])]
             i += 1
         else:
             primary_ta = None
 
         if len(pieces) > i:
-            context = parse_context(re.fullmatch("\\$([a-z]+)\\$", pieces[i]).group(1))
+            context = parse_context(parse_gloss_tag(pieces[i]))
             i += 1
         else:
             context = None

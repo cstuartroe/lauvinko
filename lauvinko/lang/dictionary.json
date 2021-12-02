@@ -947,6 +947,18 @@
     },
     "origin": "kasanic"
   },
+  "hurry": {
+    "category": "stative",
+    "languages": {
+      "pk": {
+        "definition": "To crush, squeeze @ to hurry, rush",
+        "forms": {
+          "gn": "nkaawokku"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "hut": {
     "category": "uninflected",
     "languages": {

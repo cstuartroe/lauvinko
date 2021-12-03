@@ -18,6 +18,7 @@ const languageNames: {[key in language]: string} = {
 
 const ORIGIN_LANGUAGES = {
     "kasanic": "pk",
+    "sanskrit": "pk",  // TODO
 };
 
 type Origin = keyof typeof ORIGIN_LANGUAGES;
@@ -271,7 +272,7 @@ type DictionaryApiResponse = ApiResponse<{
 }>
 
 type DictionaryProps = {
-    page_name: string,
+    page_name: string,  // TODO this prop can be done away with
     origin_languages: Origin[],
 }
 
@@ -321,8 +322,8 @@ class Dictionary extends Component<DictionaryProps, DictionaryState> {
         if (this.props.page_name === "loanword_dictionary") {
             return (
               <p>
-                  All information about source languages adapted from
-                  <a href="https://en.wiktionary.org/">English Wiktionary</a> and
+                  All information about source languages adapted from{' '}
+                  <a href="https://en.wiktionary.org/">English Wiktionary</a> and{' '}
                   <a href="https://sanskritdictionary.com/">sanskritdictionary.com</a>.
               </p>
             );
@@ -378,8 +379,6 @@ class Dictionary extends Component<DictionaryProps, DictionaryState> {
             <div>
                 <PageHeader name={this.props.page_name}/>
 
-                {this.citation()}
-
                 <p>This dictionary has {language_entry_ids.length} entries!</p>
 
                 <input
@@ -399,6 +398,8 @@ class Dictionary extends Component<DictionaryProps, DictionaryState> {
                     key={origin}
                   />
                 ))}
+
+                {this.citation()}
             </div>
         );
     }

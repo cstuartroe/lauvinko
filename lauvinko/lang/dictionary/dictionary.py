@@ -73,7 +73,7 @@ class Dictionary:
         entries = {
             ident: DictEntry.from_json_entry(ident=ident, json_entry=json_entry)
             for ident, json_entry in entries_dict.items()
-            if json_entry["origin"] == "kasanic"  # TODO support other languages
+            if json_entry["origin"] in ["kasanic", "sanskrit"]  # TODO support other languages
         }
 
         return cls(entries)

@@ -55,17 +55,17 @@ class App extends Component<{}, State> {
                                     />
                                   )}
                                 />
-                                {/*<Route*/}
-                                {/*  exact={true}*/}
-                                {/*  path="/loanword_dictionary"*/}
-                                {/*  render={(props) => (*/}
-                                {/*    <Dictionary*/}
-                                {/*      {...props}*/}
-                                {/*      origins={["sanskrit", "malay", "arabic", "tamil", "hokkien", "portuguese", "dutch", "english"]}*/}
-                                {/*      page_id="loanword_dictionary"*/}
-                                {/*    />*/}
-                                {/*  )}*/}
-                                {/*/>*/}
+                                <Route
+                                  exact={true}
+                                  path="/loanword_dictionary"
+                                  render={(props) => (
+                                    <Dictionary
+                                      {...props}
+                                      origin_languages={["sanskrit"]}
+                                      page_name="loanword_dictionary"
+                                    />
+                                  )}
+                                />
                                 <Route path="/:name" render={({match}) => (
                                   <Page name={match.params.name}/>
                                 )}/>

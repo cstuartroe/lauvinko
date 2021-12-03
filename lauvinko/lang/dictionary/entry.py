@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-import itertools
 from lauvinko.lang.shared.semantics import (
     PrimaryTenseAspect,
     PRIMARY_TA_ABBREVIATIONS,
@@ -9,7 +8,6 @@ from lauvinko.lang.shared.semantics import (
 )
 from lauvinko.lang.shared.morphology import Lemma, MorphosyntacticType
 from lauvinko.lang.proto_kasanic.morphology import ProtoKasanicMorpheme, ProtoKasanicStem, ProtoKasanicLemma
-from lauvinko.lang.proto_kasanic.romanize import falavay as pk_falavay
 from lauvinko.lang.lauvinko.morphology import LauvinkoLemma, LauvinkoMorpheme
 from lauvinko.lang.lauvinko.diachronic.base import LauvinkoLemmaOrigin, OriginLanguage, UnspecifiedOrigin, \
     MorphemeContext
@@ -69,7 +67,7 @@ class DictEntry:
         else:
             raise KasanicStemCategory.InvalidStemCategory("Invalid stem category: " + json_entry["category"])
 
-        if origin is OriginLanguage.KASANIC:
+        if origin is OriginLanguage.KASANIC or origin is OriginLanguage.SANSKRIT:  # TODO: separately handle sanskrit
             languages = DictEntry.languages_from_pk_json(json_entry["languages"], category=category)
         else:
             raise NotImplementedError

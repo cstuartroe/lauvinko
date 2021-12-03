@@ -5,7 +5,7 @@ from lauvinko.lang.shared.semantics import (
     PRIMARY_TA_ABBREVIATIONS,
     KasanicStemCategory,
     STEM_CATEGORIES,
-    Language,
+    Language, PTA2ABBREV,
 )
 from lauvinko.lang.shared.morphology import Lemma, MorphosyntacticType
 from lauvinko.lang.proto_kasanic.morphology import ProtoKasanicMorpheme, ProtoKasanicStem, ProtoKasanicLemma
@@ -42,6 +42,20 @@ class DictEntry:
 
     class MissingData(ValueError):
         pass
+
+    # meant to produce json for the api, not meant to be the reverse of from_json_entry
+    def to_json(self):
+        languages = {
+            language.value: lemma.to_json()
+            for language, lemma in self.languages.items()
+        }
+
+        return {
+            "languages": languages,
+            "citation_form": PTA2ABBREV[self.category.citation_form],
+            "alphabetization": None,
+            "origin": self.origin.value,
+        }
 
     @staticmethod
     def from_json_entry(ident: str, json_entry: dict):
@@ -82,15 +96,10 @@ class DictEntry:
             )
 
             if "falavay" in form_json:
-                morpheme.falavay = form_json["falavay"]
+                print("Warning: 'falavay' deprecated")
 
             elif "written_like" in form_json:
-                morpheme.falavay = pk_falavay(
-                    ProtoKasanicMorpheme.from_informal_transcription(
-                        form_json["written_like"],
-                        stress_position=0,
-                    ).surface_form
-                )
+                print("Warning: 'written_like deprecated'")
 
             lv_forms[(primary_ta, context)] = morpheme
 
@@ -128,12 +137,6 @@ class DictEntry:
 
             if "forms" in languages_json[Language.LAUVINKO.value]:
                 lv_forms = DictEntry.lv_forms_from_json(languages_json[Language.LAUVINKO.value]["forms"])
-                for (primary_ta, context), form in lv_forms.items():
-                    if form.falavay is None:
-                        form.falavay = pk_falavay(
-                            pk_lemma.form(primary_ta).surface_form(),
-                            augment=context is MorphemeContext.AUGMENTED,
-                        )
 
         languages[Language.LAUVINKO] = LauvinkoLemma.from_pk(
             pk_lemma=languages[Language.PK],
@@ -148,8 +151,15 @@ class DictEntry:
             -> dict[Language, Lemma]:
         forms_given = DictEntry.lv_forms_from_json(languages_json[Language.LAUVINKO.value]["forms"])
 
-        # if set(forms_given.keys()) != set(itertools.product(category.primary_aspects, MorphemeContext)):
-        #     raise DictEntry.MissingData("Not all forms given")
+        expected_forms = {
+            (pta, context)
+            for pta in category.primary_aspects
+            for context in MorphemeContext
+            if context is not MorphemeContext.PREFIXED  # TODO is this a good assumption?
+        }
+
+        if set(forms_given.keys()) != expected_forms:
+            raise DictEntry.MissingData("Not all forms given")
 
         return {
             Language.LAUVINKO: LauvinkoLemma(

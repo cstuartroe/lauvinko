@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {InlineCode, MarkdownPreformatted} from "./types";
+import {ApiFailure, ApiResponse, InlineCode, MarkdownPreformatted} from "./types";
 
 export type GlossRow = "analysis" | "romanization" | "falavay" | "narrow_transcription" | "broad_transcription";
 
@@ -71,13 +71,7 @@ export type GlossData = {
   broad_transcription: string[],
 }
 
-export type GlossResponse = {
-  success: true,
-  response: GlossData,
-} | {
-  success: false,
-  message: string,
-}
+export type GlossResponse = ApiResponse<GlossData>;
 
 type InlineGlossProps = GlossParams & {
   rows: GlossRow[],

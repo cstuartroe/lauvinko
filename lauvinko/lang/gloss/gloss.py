@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import List, Optional
 import re
 
-from ..shared.semantics import PrimaryTenseAspect, PRIMARY_TA_ABBREVIATIONS, KasanicStemCategory
+from ..shared.semantics import PrimaryTenseAspect, PRIMARY_TA_ABBREVIATIONS, KasanicStemCategory, PTA2ABBREV
 from ..shared.morphology import Morpheme, Word, MorphosyntacticType
 from ..proto_kasanic.morphology import PKWord
 from ..proto_kasanic.romanize import romanize as pk_romanize
@@ -23,12 +23,6 @@ MC_ABBREVS = {
     MorphemeContext.AUGMENTED: "$au$",
     MorphemeContext.NONAUGMENTED: "$na$",
     MorphemeContext.PREFIXED: "$prefix$",
-}
-
-
-PTA2ABBREV = {
-    pta: key
-    for key, pta in PRIMARY_TA_ABBREVIATIONS.items()
 }
 
 

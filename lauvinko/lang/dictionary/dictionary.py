@@ -122,3 +122,10 @@ class Dictionary:
                 mstype=mstype,
                 origin=OriginLanguage.KASANIC
             )
+
+    def to_json(self):
+        return {
+            ident: entry.to_json()
+            for ident, entry in self.entries.items()
+            if entry.mstype is MorphosyntacticType.INDEPENDENT
+        }

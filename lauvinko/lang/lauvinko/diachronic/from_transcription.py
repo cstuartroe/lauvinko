@@ -80,6 +80,8 @@ class TranscriptionReader:
 
             virtual_syllables.append(s)
 
+            # TODO: this doesn't really work lol, what about codas n whatnot
+
         return (
             LauvinkoSurfaceForm(
                 syllables=self.syllables,

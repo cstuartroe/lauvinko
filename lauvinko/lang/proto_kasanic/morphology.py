@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import List, Optional
 import regex
-from lauvinko.lang.shared.semantics import PrimaryTenseAspect, KasanicStemCategory
+from lauvinko.lang.shared.semantics import PrimaryTenseAspect, KasanicStemCategory, PTA2ABBREV
 from lauvinko.lang.shared.morphology import Morpheme, Lemma, Word, bucket_kasanic_prefixes, MorphosyntacticType
 from .phonology import (
     ProtoKasanicOnset,
@@ -12,6 +12,7 @@ from .phonology import (
     ProtoKasanicMutation,
     PKSurfaceForm,
 )
+from .romanize import falavay, romanize
 
 
 MUTATION_NOTATION = {
@@ -178,6 +179,14 @@ class ProtoKasanicStem:
 
         return ProtoKasanicMorpheme.join(self.morphemes(), stressed=stressed)
 
+    def to_json(self):
+        sf = self.surface_form()
+
+        return {
+            "romanization": romanize(sf),
+            "falavay": falavay(sf),
+        }
+
 
 @dataclass
 class ProtoKasanicLemma(Lemma):
@@ -241,6 +250,16 @@ class ProtoKasanicLemma(Lemma):
 
     def citation_form(self) -> ProtoKasanicStem:
         return self.form(self.category.citation_form)
+
+    def to_json(self):
+        return {
+            "forms": {
+                PTA2ABBREV[pta]: self.form(pta).to_json()
+                for pta in self.category.primary_aspects
+            },
+            "definition": self.definition,
+            "category": self.category.title,
+        }
 
 
 @dataclass

@@ -46,6 +46,10 @@ class Lemma:
     def citation_form(self):
         return self.form(self.category.citation_form)
 
+    # for API
+    def to_json(self) -> dict:
+        raise NotImplementedError
+
 
 @dataclass
 class Morpheme:

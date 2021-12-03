@@ -1,301 +1,407 @@
-// import React, { Component } from "react";
-// const qs = require('query-string');
-//
-// import { parse_md_line } from "./Page";
-// import PageHeader from "./PageHeader";
-//
-// const aspects = {
-//     fientive: ["Imperfective", "Perfective", "Frequentative", "Inceptive"],
-//     punctual: ["Perfective", "Frequentative"],
-//     stative:  ["Imperfective", "Inceptive"]
-// }
-//
-// const aspect_tenses = {
-//     fientive: {
-//         Imperfective: ["imnp", "impt"],
-//         Perfective: ["pf"],
-//         Frequentative: ["fqnp", "fqpt"],
-//         Inceptive: ["inc"]
-//     },
-//     punctual: {
-//         Perfective: ["np", "pt"],
-//         Frequentative: ["fqnp", "fqpt"]
-//     },
-//     stative: {
-//         Imperfective: ["gn", "pt"],
-//         Inceptive: ["inc"]
-//     }
-// }
-//
-// function InflectionRow(props) {
-//     let aspect = props.aspect;
-//     let aspect_tense = aspect_tenses[props.entry.category][aspect];
-//     let forms = props.entry.languages[props.lang].forms;
-//     let lang = props.lang;
-//
-//     return <tr>
-//         <td>{aspect}</td>
-//         {aspect_tense.map(tense =>
-//             <td colSpan={3 - aspect_tense.length} key={tense} style={{textAlign: "center"}}>
-//                 <span className="lauvinko">{forms["$" + tense + "$" + ((lang === "lv") ? ".$na$" : "")].falavay}</span>
-//                 <br/>
-//                 <span style={{fontStyle: "italic"}}>{(lang === "lv") ?
-//                     forms["$" + tense + "$.$au$"].transcription + ", " + forms["$" + tense + "$.$na$"].transcription :
-//                     forms["$" + tense + "$"].transcription
-//                 }</span>
-//             </td>
-//         )}
-//     </tr>
-// }
-//
-// class LanguageEntry extends Component {
-//     state = {
-//         shown: false
-//     }
-//
-//     render() {
-//         const lang = this.props.lang;
-//         const langname = this.props.langname;
-//         const entry = this.props.entry;
-//         let falavay_title = (lang == "lv") ?
-//             entry.languages[lang].forms[entry.citation_form + ".$au$"].falavay
-//             + " , " + entry.languages[lang].forms[entry.citation_form + ".$na$"].falavay :
-//             null;
-//
-//         let title = (lang == "lv") ?
-//             entry.languages[lang].forms[entry.citation_form + ".$au$"].transcription
-//             + ", " + entry.languages[lang].forms[entry.citation_form + ".$na$"].transcription :
-//             entry.languages[lang].forms[entry.citation_form].transcription;
-//
-//         return (
-//             <div>
-//                 <h2 style={{textAlign: "left"}}>{langname}</h2>
-//
-//                 {(lang === "lv") ?
-//                 <h3><span className={"lauvinko"}>{falavay_title}</span></h3>
-//                 : null}
-//
-//                 <h3><span style={{fontStyle: "italic"}}>{title}</span></h3>
-//
-//                 <p>{parse_md_line(entry.languages[lang].definition)}</p>
-//                 {entry.category === "uninflected" ? null :
-//                     <table>
-//                         <thead>
-//                         <tr>
-//                             <th colSpan="3">
-//                                 {langname} Inflection - <a
-//                                 onClick={() => this.setState({shown: !this.state.shown})}>
-//                                     {this.state.shown ? "Hide" : "Show"}
-//                                 </a>
-//                             </th>
-//                         </tr>
-//                         </thead>
-//                         {this.state.shown ?
-//                             <tbody>
-//                             <tr>
-//                                 <th></th>
-//                                 <th>Nonpast</th>
-//                                 <th>Past</th>
-//                             </tr>
-//                             {aspects[entry.category].map(aspect => <InflectionRow entry={entry} aspect={aspect}
-//                                                                                   lang={lang}
-//                                                                                   key={aspect}/>)}
-//                             </tbody>
-//                             : null}
-//                     </table>
-//                 }
-//             </div>
-//         );
-//     }
-// }
-//
-// const languages = [["pk", "Classical Kasanic"], ["lv", "Lauvìnko"], ["bt", "Botharu"]];
-//
-// const ORIGIN_LANGUAGES = {
-//     "kasanic": "pk",
-//     "sanskrit": "sa",
-//     "malay": "ms",
-//     "arabic": "ar",
-//     "tamil": "ta",
-//     "hokkien": "hk",
-//     "portuguese": "pt",
-//     "dutch": "nl",
-//     "english": "en"
-// };
-//
-// function capitalize(s) {
-//     return s[0].toUpperCase() + s.substring(1).toLowerCase();
-// }
-//
-// class DictionaryEntry extends Component {
-//     state = {
-//         copied_opacity: 0
-//     }
-//
-//     fadeLink() {
-//         if (this.state.copied_opacity > 0) {
-//             this.setState({copied_opacity: this.state.copied_opacity - 1}, () => {
-//                 setTimeout(this.fadeLink.bind(this), 30);
-//             });
-//         }
-//     }
-//
-//     copylink() {
-//         let copyText = document.getElementById(this.props.id + "-link");
-//         copyText.select();
-//         copyText.setSelectionRange(0, 99999);
-//         document.execCommand("copy");
-//
-//         this.setState({copied_opacity: 50}, this.fadeLink.bind(this));
-//     }
-//
-//     render() {
-//         const entry = this.props.entry;
-//         const citation_form = entry.languages.lv.forms[entry.citation_form + ".$na$"];
-//         const origin_lang = ORIGIN_LANGUAGES[entry.origin];
-//
-//         return (
-//             <div className="entry">
-//                 <h1 className="lauvinko">{citation_form.falavay}</h1>
-//                 <p style={{position: "absolute", top: 0, right: 0, textAlign: "right"}}>
-//                     <a onClick={this.copylink.bind(this)}>
-//                         copy link
-//                     </a><br/>
-//                     <span id={this.props.id + "-copied"} style={{opacity: this.state.copied_opacity + "%"}}>
-//                         link copied!
-//                     </span><br/>
-//                     <input type="text"
-//                            value={document.location.protocol + "//" +
-//                            document.location.host + "/lauvinko/" + this.props.page_id + "?q=@" + this.props.id}
-//                            id={this.props.id + "-link"} style={{opacity: 0}} onChange={() => null}/>
-//                 </p>
-//
-//                 {(entry.origin !== "kasanic") ?
-//                     <p>
-//                         From {capitalize(entry.origin)} {entry.languages[origin_lang].forms["$gn$"].native} {}
-//                         <span style={{fontStyle: "italic"}}>{entry.languages[origin_lang].forms["$gn$"].transcription}</span>
-//                         {' "' + entry.languages[origin_lang].definition + '"'}
-//                     </p>
-//                 : null}
-//
-//                 {languages.map(pair => entry.languages[pair[0]] ?
-//                     <LanguageEntry lang={pair[0]} langname={pair[1]} entry={entry} key={pair[0]}/> : null
-//                 )}
-//                 <hr/>
-//             </div>
-//         );
-//     }
-// }
-//
-// const blurbs = {
-//     "kasanic": "This is a list of Proto-Kasanic stems which became ",
-//     "sanskrit": "",
-//     "malay": "",
-//     "arabic": ""
-// }
-//
-// class LanguageSection extends Component {
-//     render() {
-//         return (this.props.entry_ids.length > 0) ? <div>
-//             {this.props.title ? <h1>{capitalize(this.props.origin)}</h1> : null}
-//             <p>{blurbs[this.props.origin]}</p>
-//             {this.props.entry_ids.map(id =>
-//                 <DictionaryEntry id={id} entry={this.props.entries[id]} key={id} page_id={this.props.page_id}/>
-//                 )}
-//         </div> : null;
-//     }
-// }
-//
-// function removeAccents(s) {
-//     return s.replace(/á/g, 'a').replace(/à/g, 'a').replace(/é/g, 'e').replace(/è/g, 'e')
-//         .replace(/í/g, 'i').replace(/ì/g, 'i').replace(/ó/g, 'o').replace(/ò/g, 'o');
-// }
-//
-// function entryMatch(entry, ident, q) {
-//     if (q.startsWith('@')) {
-//         return ident.startsWith(q.substring(1));
-//     }
-//
-//     for (const lang of Object.keys(entry.languages)) {
-//         if (entry.languages[lang].definition.toLowerCase().includes(q)) {
-//             return true;
-//         }
-//         for (const form of Object.keys(entry.languages[lang].forms)) {
-//             let t = entry.languages[lang].forms[form].transcription.toLowerCase();
-//             if (t.includes(q) || removeAccents(t).includes(q)) {
-//                 return true;
-//             }
-//         }
-//     }
-//
-//     return false;
-// }
-//
-// class Dictionary extends Component {
-//     state = {
-//         status: "pending",
-//         length: null,
-//         entries: {},
-//         q: ""
-//     };
-//
-//     componentDidMount() {
-//         let q = qs.parse(this.props.location.search).q;
-//         if (q) {
-//             this.setState({q: q});
-//         }
-//
-//         fetch('/lauvinko/dict')
-//             .then(response => {
-//                 if (response.status !== 200) {
-//                     return {};
-//                 }
-//                 return response.json();
-//             })
-//             .then(data => this.setState(data));
-//     }
-//
-//     getAlph(id) {
-//         let entry = this.state.entries[id];
-//         return entry.languages.lv.forms[entry.citation_form + ".$na$"].transcription;
-//     }
-//
-//     compareKeys(a, b) {
-//         if (this.getAlph(a) > this.getAlph(b)) {
-//             return 1;
-//         } else {
-//             return -1;
-//         }
-//     }
-//
-//     render() {
-//         let entry_ids = Object.keys(this.state.entries);
-//         entry_ids = entry_ids.filter(id => this.props.origins.includes(this.state.entries[id].origin));
-//         let dict_size = entry_ids.length;
-//         entry_ids = entry_ids.filter(id => entryMatch(this.state.entries[id], id, this.state.q.toLowerCase()));
-//         entry_ids = entry_ids.sort(this.compareKeys.bind(this));
-//
-//         return (
-//             <div>
-//                 <PageHeader contents={this.props.contents} id={this.props.page_id}/>
-//                 {this.props.page_id === "loanword_dictionary" ?
-//                     <p>All information about source languages adapted from {}
-//                         <a href="https://en.wiktionary.org/">English Wiktionary</a> and {}
-//                         <a href="https://sanskritdictionary.com/">sanskritdictionary.com</a>.</p>
-//                     : null}
-//                 <p>This dictionary has {dict_size} entries!</p>
-//                 <input type="text" value={this.state.q}
-//                        onChange={event => this.setState({q: event.target.value})}/>
-//                 <hr/>
-//                 {this.props.origins.map(origin => <LanguageSection origin={origin} entries={this.state.entries}
-//                                                                    entry_ids={entry_ids.filter(id => (this.state.entries[id].origin === origin))}
-//                                                                    title={this.props.origins.length !== 1}
-//                                                                    page_id={this.props.page_id} key={origin}/>)}
-//             </div>
-//         );
-//     }
-// }
-//
-// export default Dictionary;
+import React, { Component } from "react";
 
-export default null;
+import PageHeader from "./PageHeader";
+import {ApiResponse} from "./types";
+
+type stem_category = "fientive" | "punctual" | "stative" | "uninflected";
+type pta_abbrev = "gn" | "np" | "pt" | "pf" | "impt" | "imnp" | "fqnp" | "fqpt" | "inc";
+type aspect = "Imperfective" | "Perfective" | "Frequentative" | "Inceptive";
+type language = "pk" | "lv";
+
+const languages_in_order: language[] = ["pk", "lv"];
+
+
+const languageNames: {[key in language]: string} = {
+    pk: "Classical Kasanic",
+    lv: "Lauvìnko",
+};
+
+const ORIGIN_LANGUAGES = {
+    "kasanic": "pk",
+};
+
+type Origin = keyof typeof ORIGIN_LANGUAGES;
+
+type Form = {
+    romanization: string,
+    falavay: string,
+}
+
+type LangEntry = {
+    forms: {[key: string]: Form},
+    definition: string,
+    category: stem_category,
+}
+
+type DictEntry = {
+    languages: {[key in language]?: LangEntry},
+    citation_form: pta_abbrev,
+    alphabetization: string,
+    origin: Origin,
+}
+
+const aspects: {[key in stem_category]: aspect[]} = {
+    fientive: ["Imperfective", "Perfective", "Frequentative", "Inceptive"],
+    punctual: ["Perfective", "Frequentative"],
+    stative:  ["Imperfective", "Inceptive"],
+    uninflected: [],
+}
+
+const aspect_tenses: {[key in stem_category]: {[key2 in aspect]: pta_abbrev[]}} = {
+    fientive: {
+        Imperfective: ["imnp", "impt"],
+        Perfective: ["pf"],
+        Frequentative: ["fqnp", "fqpt"],
+        Inceptive: ["inc"]
+    },
+    punctual: {
+        Imperfective: [],
+        Perfective: ["np", "pt"],
+        Frequentative: ["fqnp", "fqpt"],
+        Inceptive: [],
+    },
+    stative: {
+        Imperfective: ["gn", "pt"],
+        Perfective: [],
+        Frequentative: [],
+        Inceptive: ["inc"],
+    },
+    uninflected: {
+        Imperfective: [],
+        Perfective: [],
+        Frequentative: [],
+        Inceptive: [],
+    }
+}
+
+type InflectionRowProps = {
+    entry: LangEntry,
+    aspect: aspect,
+    lang: language,
+}
+
+function InflectionRow(props: InflectionRowProps) {
+    const { entry, aspect, lang } = props;
+
+    const aspect_tense = aspect_tenses[entry.category][aspect];
+    const forms = entry.forms;
+
+    return <tr>
+        <td>{aspect}</td>
+        {aspect_tense.map(pta => (
+            <td colSpan={3 - aspect_tense.length} key={pta} style={{textAlign: "center"}}>
+                <span className="falavay">{forms[pta + ((lang === "lv") ? ".na" : "")].falavay}</span>
+                <br/>
+                <span style={{fontStyle: "italic"}}>{(lang === "lv") ?
+                    forms[pta + ".au"].romanization + ", " + forms[pta + ".na"].romanization :
+                    forms[pta].romanization
+                }</span>
+            </td>
+        ))}
+    </tr>
+}
+
+type LanguageEntryProps = {
+    lang: language,
+    entry: DictEntry,
+}
+
+type LanguageEntryState = {
+    shown: boolean,
+}
+
+class LanguageEntry extends Component<LanguageEntryProps, LanguageEntryState> {
+    constructor(props: LanguageEntryProps) {
+        super(props);
+
+        this.state = {
+            shown: true,
+        }
+    }
+
+    render() {
+        const { lang, entry } = this.props;
+
+        if (entry.languages[lang] === undefined) {
+            return null;
+        }
+
+        const langEntry = entry.languages[lang] as LangEntry;
+
+        const langname = languageNames[lang];
+
+        let falavay_title = (lang == "lv") ?
+          langEntry.forms[entry.citation_form + ".au"].falavay
+          + " , " + langEntry.forms[entry.citation_form + ".na"].falavay :
+          null;
+
+        let title = (lang == "lv") ?
+            langEntry.forms[entry.citation_form + ".au"].romanization
+            + ", " + langEntry.forms[entry.citation_form + ".na"].romanization :
+            langEntry.forms[entry.citation_form].romanization;
+
+        return (
+            <div>
+                <h2 style={{textAlign: "left"}}>{langname}</h2>
+
+                {(lang === "lv") ?
+                <h3><span className={"falavay"}>{falavay_title}</span></h3>
+                : null}
+
+                <h3><span style={{fontStyle: "italic"}}>{title}</span></h3>
+
+                <p>{langEntry.definition}</p>
+
+                {langEntry.category === "uninflected" ? null :
+                    <table>
+                        <thead>
+                        <tr>
+                            <th colSpan={3}>
+                                {langname} Inflection -{' '}
+                                <a onClick={() => this.setState({shown: !this.state.shown})}>
+                                    {this.state.shown ? "Hide" : "Show"}
+                                </a>
+                            </th>
+                        </tr>
+                        </thead>
+                        {this.state.shown ? (
+                            <tbody>
+                                <tr>
+                                    <th/>
+                                    <th>Nonpast</th>
+                                    <th>Past</th>
+                                </tr>
+                                {aspects[langEntry.category].map(aspect => (
+                                  <InflectionRow
+                                    entry={langEntry}
+                                    aspect={aspect}
+                                    lang={lang}
+                                    key={aspect}
+                                  />
+                                ))}
+                            </tbody>
+                        ) : null}
+                    </table>
+                }
+            </div>
+        );
+    }
+}
+
+function capitalize(s: string) {
+    return s[0].toUpperCase() + s.substring(1).toLowerCase();
+}
+
+type DictionaryEntryProps = {
+    entry: DictEntry,
+}
+
+class DictionaryEntry extends Component<DictionaryEntryProps> {
+    render() {
+        const { entry } = this.props;
+
+        if (entry.languages.lv === undefined) {
+            return null; // ought not to happen?
+        }
+
+        const citation_form = entry.languages.lv.forms[entry.citation_form + ".na"];
+
+        return (
+            <div className="entry">
+                <h1 className="falavay">{citation_form.falavay}</h1>
+
+                {/* TODO: copy link */}
+
+                {/* TODO: source language */}
+
+                {languages_in_order.map(lang => (
+                  <LanguageEntry lang={lang} entry={entry} key={lang}/>
+                ))}
+
+                <hr/>
+            </div>
+        );
+    }
+}
+
+
+// TODO: wtf was this?
+const blurbs: {[key in Origin]?: string} = {
+    // kasanic: "This is a list of Proto-Kasanic stems which became ",
+}
+
+type LanguageSectionProps = {
+    origin: Origin,
+    entries: {[key: string]: DictEntry},
+    entry_ids: string[],
+    showTitle: boolean,
+}
+
+class LanguageSection extends Component<LanguageSectionProps> {
+    render() {
+        const language_entry_ids = this.props.entry_ids.filter(id => (
+          this.props.entries[id].origin === this.props.origin
+        ));
+
+        if (language_entry_ids.length === 0) {
+            return null;
+        }
+
+        return (
+          <div>
+            {this.props.showTitle && (
+              <h1>{capitalize(this.props.origin)}</h1>
+            )}
+
+            <p>{blurbs[this.props.origin]}</p>
+
+            {this.props.entry_ids.map(id => (
+                <DictionaryEntry
+                  entry={this.props.entries[id]}
+                  key={id}
+                />
+            ))}
+          </div>
+        );
+    }
+}
+
+type DictionaryApiResponse = ApiResponse<{
+    entries: {[key: string]: DictEntry},
+}>
+
+type DictionaryProps = {
+    page_name: string,
+    origin_languages: Origin[],
+}
+
+type DictionaryState = {
+    status: "pending",
+    q: string | null,
+    entries: {[key: string]: DictEntry},
+}
+
+class Dictionary extends Component<DictionaryProps, DictionaryState> {
+    constructor(props: DictionaryProps) {
+        super(props);
+
+        this.state = {
+            status: "pending",
+            entries: {},
+            q: null,
+        }
+    }
+
+    componentDidMount() {
+        const sp = new URLSearchParams(window.location.search);
+        this.setState({q: sp.get('q')});
+
+        fetch('/api/dict')
+            .then(response => response.json())
+            .then((data: DictionaryApiResponse) => {
+                if (data.success) {
+                    this.setState({entries: data.response.entries});
+                }
+            });
+    }
+
+    getAlph(name: string) {
+        return this.state.entries[name].alphabetization;
+    }
+
+    compareKeys(name1: string, name2: string) {
+        if (this.getAlph(name1) > this.getAlph(name2)) {
+            return 1;
+        } else {
+            return -1;
+        }
+    }
+
+    citation() {
+        if (this.props.page_name === "loanword_dictionary") {
+            return (
+              <p>
+                  All information about source languages adapted from
+                  <a href="https://en.wiktionary.org/">English Wiktionary</a> and
+                  <a href="https://sanskritdictionary.com/">sanskritdictionary.com</a>.
+              </p>
+            );
+        } else {
+            return null;
+        }
+    }
+
+    languageEntries(): string[] {
+        const all_entry_ids = Object.keys(this.state.entries);
+        const language_entry_ids = all_entry_ids.filter(id => (
+          this.props.origin_languages.includes(this.state.entries[id].origin)
+        ));
+
+        return language_entry_ids.sort((n1, n2) => this.compareKeys(n1, n2));
+    }
+
+    matchingEntries(entry_ids: string[]) {
+        const { q } = this.state;
+
+        if (q === null) { return entry_ids; }
+
+        return entry_ids.filter(id => {
+            const entry = this.state.entries[id];
+
+            if (q.startsWith('@')) {
+                return id.startsWith(q.substring(1));
+            }
+
+            for (const lang of Object.keys(entry.languages)) {
+                const langEntry = entry.languages[lang as language];
+
+                if (langEntry === undefined) {
+                    continue;
+                }
+
+                if (langEntry.definition.toLowerCase().includes(q)) {
+                    return true;
+                }
+
+                // TODO: other matches
+            }
+
+            return false;
+        });
+    }
+
+    render() {
+        const language_entry_ids = this.languageEntries();
+        const entry_ids_to_show = this.matchingEntries(language_entry_ids);
+
+        return (
+            <div>
+                <PageHeader name={this.props.page_name}/>
+
+                {this.citation()}
+
+                <p>This dictionary has {language_entry_ids.length} entries!</p>
+
+                <input
+                  type="text"
+                  value={this.state.q || ""}
+                  onChange={event => this.setState({q: event.target.value})}
+                />
+
+                <hr/>
+
+                {this.props.origin_languages.map(origin => (
+                  <LanguageSection
+                    origin={origin}
+                    entries={this.state.entries}
+                    entry_ids={entry_ids_to_show}
+                    showTitle={this.props.origin_languages.length !== 1}
+                    key={origin}
+                  />
+                ))}
+            </div>
+        );
+    }
+}
+
+export default Dictionary;

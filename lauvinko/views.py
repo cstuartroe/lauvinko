@@ -4,6 +4,7 @@ import json
 import mistletoe
 from mistletoe.ast_renderer import ASTRenderer
 
+from lauvinko.lang.dictionary import Dictionary
 from lauvinko.lang.gloss.gloss import Gloss, InvalidGloss
 from lauvinko.lang.lauvinko.morphology import InvalidSyntacticWordSequence
 from lauvinko.lang.shared.semantics import Language
@@ -51,3 +52,6 @@ def gloss(request: HttpRequest):
     except InvalidSyntacticWordSequence as e:
         return unprocessable_entity(f"Invalid syntactic word sequence: {e}")
 
+
+def dictionary(_request: HttpRequest):
+    return json_success({"entries": Dictionary.from_file().to_json()})

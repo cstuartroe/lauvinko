@@ -4,7 +4,7 @@ from typing import List, Optional
 
 from ..proto_kasanic.romanize import falavay
 from ..shared.phonology import VowelFrontness
-from ..shared.semantics import PrimaryTenseAspect, KasanicStemCategory
+from ..shared.semantics import PrimaryTenseAspect, KasanicStemCategory, PTA2ABBREV
 from ..shared.morphology import Morpheme, Lemma, Word, MorphosyntacticType, bucket_kasanic_prefixes
 from ..proto_kasanic.phonology import ProtoKasanicVowel, PKSurfaceForm, ProtoKasanicSyllable, ProtoKasanicOnset
 from .phonology import (
@@ -17,6 +17,7 @@ from ..proto_kasanic.morphology import ProtoKasanicLemma, ProtoKasanicMorpheme
 from .diachronic.base import LauvinkoLemmaOrigin, MorphemeContext
 from .diachronic.from_pk import ProtoKasanicOrigin, break_pk_consonant, PK_TO_LV_ONSETS
 from .diachronic.from_transcription import TranscriptionReader
+from .romanize import romanize
 
 
 def epenthetic_vowel(c: LauvinkoConsonant) -> LauvinkoVowel:
@@ -52,6 +53,15 @@ class LauvinkoMorpheme(Morpheme):
 
     def falavay(self):
         return falavay(self.virtual_original_form.surface_form)  # TODO: augment?
+
+    def romanization(self):
+        return romanize(self.surface_form)
+
+    def to_json(self):
+        return {
+            "romanization": self.romanization(),
+            "falavay": self.falavay(),
+        }
 
     @classmethod
     def from_informal_transcription(cls, transcription: str) -> "LauvinkoMorpheme":
@@ -216,9 +226,11 @@ class LauvinkoLemma(Lemma):
     origin: LauvinkoLemmaOrigin
 
     def __post_init__(self):
-        for primary_ta, _ in self.forms.keys():
+        for (primary_ta, context), form in self.forms.items():
             if primary_ta not in self.category.primary_aspects:
                 raise Lemma.NonexistentForm
+
+            form.lemma = self
 
     def form(self, primary_ta: PrimaryTenseAspect, context: MorphemeContext):
         self.check_form_allowed(primary_ta)
@@ -249,6 +261,29 @@ class LauvinkoLemma(Lemma):
             forms=forms or {},
             origin=ProtoKasanicOrigin(pk_lemma),
         )
+
+    # for API
+    def to_json(self):
+        forms = {}
+
+        for pta in self.category.primary_aspects:
+            abbrev = PTA2ABBREV[pta]
+
+            forms[abbrev + ".au"] = self.form(
+                pta,
+                MorphemeContext.AUGMENTED,
+            ).to_json()
+
+            forms[abbrev + ".na"] = self.form(
+                pta,
+                MorphemeContext.NONAUGMENTED,
+            ).to_json()
+
+        return {
+            "forms": forms,
+            "definition": self.definition,
+            "category": self.category.title,
+        }
 
 
 @dataclass

@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./Home";
 import Page from "./Page";
 import Builder from "./Builder";
-// import Dictionary from "./Dictionary";
+import Dictionary from "./Dictionary";
 
 import "../static/scss/main.scss";
 
@@ -44,16 +44,17 @@ class App extends Component<{}, State> {
                             <Switch>
                                 <Route exact={true} path="/" component={Home}/>
                                 <Route exact={true} path="/build" component={Builder}/>
-                                {/*<Route*/}
-                                {/*  exact={true}*/}
-                                {/*  path="/kasanic_dictionary"*/}
-                                {/*  render={(props) => (*/}
-                                {/*    <Dictionary*/}
-                                {/*      {...props}*/}
-                                {/*      origins={["kasanic"]} page_id="kasanic_dictionary"*/}
-                                {/*    />*/}
-                                {/*  )}*/}
-                                {/*/>*/}
+                                <Route
+                                  exact={true}
+                                  path="/kasanic_dictionary"
+                                  render={(props) => (
+                                    <Dictionary
+                                      {...props}
+                                      origin_languages={["kasanic"]}
+                                      page_name="kasanic_dictionary"
+                                    />
+                                  )}
+                                />
                                 {/*<Route*/}
                                 {/*  exact={true}*/}
                                 {/*  path="/loanword_dictionary"*/}

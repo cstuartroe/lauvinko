@@ -4,9 +4,15 @@ from unittest import TestCase
 from lauvinko.lang.shared.semantics import Language
 from lauvinko.lang.gloss.gloss import Gloss
 
-TESTS: List[Tuple[str, str, str, str, str]] = [
+TESTS: List[Tuple[str, List[str], List[str], List[str], List[str]]] = [
     # ("see.impt.na", "jôj.ŋa", "jʊ̂jŋɐ", "eyohqXga", "yòynga"),
-    ("if-want-$pro$-$t1s$-$tdat$-cross.fqnp.na", "ti.je.ʋan.pi.nap.nék.ŋi", "tɪjɪʋɐmpɪnɐɦnɛ́ɦŋɪ", "HtqXEvMpinpEEHkZgi", "tiyevampinahnéhngi"),
+    (
+        "if-want-$pro$-$t1s$-$tdat$-cross.$fqnp$.$na$",
+        ["ti.je.ʋan.pi.nap.nék.ŋi"],
+        ["tɪjɪʋɐmpɪnɐɦnɛ́ɦŋɪ"],
+        ["HtqXEvMpinpEEHkZgi"],
+        ["tiyevampinahnéhngi"],
+    ),
 ]
 
 

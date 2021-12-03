@@ -72,3 +72,15 @@ export type MarkdownPreformatted = {
   language: string,
   children: RawText[],
 }
+
+export type ApiFailure = {
+  success: false,
+  message: string,
+}
+
+export type ApiSuccess<T> = {
+  success: true,
+  response: T,
+}
+
+export type ApiResponse<T> = ApiFailure | ApiSuccess<T>;

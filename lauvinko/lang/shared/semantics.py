@@ -27,6 +27,12 @@ PRIMARY_TA_ABBREVIATIONS = {
 }
 
 
+PTA2ABBREV = {
+    pta: key
+    for key, pta in PRIMARY_TA_ABBREVIATIONS.items()
+}
+
+
 class StemCategory:
     class InvalidStemCategory(ValueError):
         pass

@@ -1722,6 +1722,23 @@
     },
     "origin": "sanskrit"
   },
+  "teach": {
+    "category": "stative",
+    "languages": {
+      "pk":{
+        "definition": "To teach, to give religious instruction.",
+        "forms": {
+          "gn": "upatisa"
+        }
+      },
+      "sa": {
+        "definition": "To advise, instruct, teach.",
+        "native": "उपदिश्",
+        "transcription": "upadiś"
+      }
+    },
+    "origin": "sanskrit"
+  },
   "tenah": {
     "category": "uninflected",
     "languages": {

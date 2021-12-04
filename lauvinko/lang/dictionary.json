@@ -1821,6 +1821,21 @@
     },
     "origin": "kasanic"
   },
+  "tongue": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Tongue."
+      },
+      "pk": {
+        "definition": "Tongue.",
+        "forms": {
+          "gn": "ngaataanaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "touch": {
     "category": "fientive",
     "languages": {

@@ -13,7 +13,6 @@ from lauvinko.lang.proto_kasanic.phonology import (
     ProtoKasanicMutation,
     ProtoKasanicVowel,
 )
-from lauvinko.lang.proto_kasanic.romanize import falavay as pk_falavay
 from lauvinko.lang.lauvinko.phonology import LauvinkoConsonant, LauvinkoVowel, LauvinkoSyllable, LauvinkoSurfaceForm
 from .base import LauvinkoLemmaOrigin, MorphemeContext
 

@@ -67,8 +67,15 @@ class DictEntry:
         else:
             raise KasanicStemCategory.InvalidStemCategory("Invalid stem category: " + json_entry["category"])
 
+        mstype_name = json_entry.get("mstype", "independent").upper().replace(' ', '_')
+
+        if mstype_name not in MorphosyntacticType.__members__:
+            raise MorphosyntacticType.InvalidMSType(f"Invalid morphosyntactic type: {mstype_name}")
+
+        mstype = MorphosyntacticType[mstype_name]
+
         if origin is OriginLanguage.KASANIC or origin is OriginLanguage.SANSKRIT:  # TODO: separately handle sanskrit
-            languages = DictEntry.languages_from_pk_json(json_entry["languages"], category=category)
+            languages = DictEntry.languages_from_pk_json(json_entry["languages"], category=category, mstype=mstype)
         else:
             raise NotImplementedError
 
@@ -78,7 +85,7 @@ class DictEntry:
             languages=languages,
             ident=ident,
             category=category,
-            mstype=MorphosyntacticType.INDEPENDENT,
+            mstype=mstype,
             origin=origin,
         )
 
@@ -105,14 +112,14 @@ class DictEntry:
 
 
     @staticmethod
-    def languages_from_pk_json(languages_json: dict, category: KasanicStemCategory):
+    def languages_from_pk_json(languages_json: dict, category: KasanicStemCategory, mstype: MorphosyntacticType):
         if Language.PK.value not in languages_json:
-            return DictEntry.languages_from_json_no_source(languages_json, category=category)
+            return DictEntry.languages_from_json_no_source(languages_json, category=category, mstype=mstype)
 
         pk_lemma = ProtoKasanicLemma(
             definition=languages_json[Language.PK.value]["definition"],
             category=category,
-            mstype=MorphosyntacticType.INDEPENDENT,
+            mstype=mstype,
             generic_morph=ProtoKasanicMorpheme.from_informal_transcription(languages_json[Language.PK.value]["forms"]["gn"]),
             forms={
                 PRIMARY_TA_ABBREVIATIONS[pta]: ProtoKasanicStem(
@@ -145,7 +152,7 @@ class DictEntry:
         return languages
 
     @staticmethod
-    def languages_from_json_no_source(languages_json: dict, category: KasanicStemCategory)\
+    def languages_from_json_no_source(languages_json: dict, category: KasanicStemCategory, mstype: MorphosyntacticType)\
             -> dict[Language, Lemma]:
         forms_given = DictEntry.lv_forms_from_json(languages_json[Language.LAUVINKO.value]["forms"])
 
@@ -163,7 +170,7 @@ class DictEntry:
             Language.LAUVINKO: LauvinkoLemma(
                 definition=languages_json[Language.LAUVINKO.value]["definition"],
                 category=category,
-                mstype=MorphosyntacticType.INDEPENDENT,
+                mstype=mstype,
                 forms=forms_given,
                 origin=UnspecifiedOrigin(),
             )

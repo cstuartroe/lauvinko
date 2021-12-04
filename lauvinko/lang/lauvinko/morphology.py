@@ -342,6 +342,9 @@ class LauvinkoWord(Word):
         if morphemes[-1].lemma.mstype is MorphosyntacticType.INDEPENDENT:
             return LauvinkoContentWord.from_morphemes(morphemes)
 
+        elif morphemes[0].lemma.mstype is MorphosyntacticType.CLASS_WORD:
+            return LauvinkoClassWord.from_morphemes(morphemes)
+
         else:
             raise NotImplementedError
 
@@ -355,15 +358,17 @@ class LauvinkoWord(Word):
         found = False
 
         if words[i].word_type() is LauvinkoWordType.CONTENT_WORD:
-            accented += 1
+            found = True
             i += 1
 
         if words[i:] and words[i].word_type() is LauvinkoWordType.ADPOSITION:
+            found = False
             accented += 1
             i += 1
 
         if words[i:] and words[i].word_type() is LauvinkoWordType.CONTENT_WORD:
             found = True
+            accented += 1
             i += 1
 
         if words[i:] and words[i].word_type() is LauvinkoWordType.DETERMINER:
@@ -389,6 +394,10 @@ class LauvinkoContentWord(LauvinkoWord):
     def _get_accented(self):
         return len(self.prefixes())
 
+    def __post_init__(self):
+        super().__post_init__()
+        assert self.stem.lemma.mstype is MorphosyntacticType.INDEPENDENT
+
     def prefixes(self):
         out = [*self.modal_prefixes]
 
@@ -408,9 +417,42 @@ class LauvinkoContentWord(LauvinkoWord):
         return LauvinkoWordType.CONTENT_WORD
 
     @classmethod
-    def from_morphemes(cls, morphemes: List[LauvinkoMorpheme]) -> "LauvinkoWord":
+    def from_morphemes(cls, morphemes: List[LauvinkoMorpheme]) -> "LauvinkoContentWord":
         prefixes, stem = morphemes[:-1], morphemes[-1]
         return cls(
             stem=stem,
             **bucket_kasanic_prefixes(prefixes),
         )
+
+
+@dataclass
+class LauvinkoClassWord(LauvinkoWord):
+    class_word: LauvinkoMorpheme
+    case_suffix: Optional[LauvinkoMorpheme]
+
+    def __post_init__(self):
+        super().__post_init__()
+        assert self.class_word.lemma.mstype is MorphosyntacticType.CLASS_WORD
+        if self.case_suffix is not None:
+            assert self.case_suffix.lemma.mstype is MorphosyntacticType.CASE_MARKER
+
+    def _get_accented(self):
+        return 1
+
+    def morphemes(self) -> List[LauvinkoMorpheme]:
+        if self.case_suffix is None:
+            return [self.class_word]
+        else:
+            return [self.class_word, self.case_suffix]
+
+    def word_type(self) -> LauvinkoWordType:
+        return LauvinkoWordType.DETERMINER
+
+    @classmethod
+    def from_morphemes(cls, morphemes: List[LauvinkoMorpheme]) -> "LauvinkoClassWord":
+        if len(morphemes) == 1:
+            return cls(morphemes[0], None)
+        elif len(morphemes) == 2:
+            return cls(*morphemes)
+        else:
+            raise ValueError

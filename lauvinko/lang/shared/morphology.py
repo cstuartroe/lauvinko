@@ -15,6 +15,9 @@ class MorphosyntacticType(Enum):
     CASE_MARKER = "case marker"
     ADPOSITION = "adposition"
 
+    class InvalidMSType(ValueError):
+        pass
+
 
 @dataclass
 class Lemma:

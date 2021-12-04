@@ -50,9 +50,12 @@ class MorphemeSource:
     def parse(cls, source: str, language: Language):
         pieces = source.split(".")
 
-        name = pieces[0]
-
-        i = 1
+        if len(pieces) > 1 and pieces[1] in {"$sg$", "$du$", "$pl$"}:
+            name = '.'.join(pieces[:2])
+            i = 2
+        else:
+            name = pieces[0]
+            i = 1
 
         if len(pieces) > i and parse_gloss_tag(pieces[i]) in PRIMARY_TA_ABBREVIATIONS:
             primary_ta = PRIMARY_TA_ABBREVIATIONS[parse_gloss_tag(pieces[i])]

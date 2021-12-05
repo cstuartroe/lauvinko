@@ -866,6 +866,18 @@
     },
     "origin": "kasanic"
   },
+  "float": {
+    "category": "stative",
+    "languages": {
+      "pk": {
+        "definition": "Tending to say upright, capable of carrying weight, buoyant on water.",
+        "forms": {
+          "gn": "naasaci"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "go": {
     "category": "fientive",
     "languages": {

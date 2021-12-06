@@ -279,9 +279,21 @@ class LauvinkoSurfaceForm(SurfaceForm):
             ]
 
             if ms[0].onset is None:
-                if syllables[-1].coda is not None:
+                if len(syllables) == 0:
+                    pass
+
+                elif syllables[-1].coda is not None:
                     ms[0].onset = syllables[-1].coda
                     syllables[-1].coda = None
+
+                elif syllables[-1].vowel is LauvinkoVowel.A and accent_position != len(syllables):
+                    ms[0].onset = syllables[-1].onset
+                    del syllables[-1]
+
+                elif ms[0].vowel.frontness == syllables[-1].vowel.frontness and not ms[0].vowel.low:
+                    ms[0].vowel = syllables[-1].vowel
+                    ms[0].onset = syllables[-1].onset
+                    del syllables[-1]
 
                 elif syllables[-1].vowel.frontness is VowelFrontness.FRONT:
                     ms[0].onset = LauvinkoConsonant.Y

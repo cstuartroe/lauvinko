@@ -878,6 +878,18 @@
     },
     "origin": "kasanic"
   },
+  "fruit": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Fruit, sweet thing.",
+        "forms": {
+          "gn": "intengi"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "go": {
     "category": "fientive",
     "languages": {
@@ -918,6 +930,18 @@
         "definition": "To blow, gust.",
         "forms": {
           "gn": "k~nkaakwiru"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "hair": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Hair (of the head)",
+        "forms": {
+          "gn": "kintaata"
         }
       }
     },

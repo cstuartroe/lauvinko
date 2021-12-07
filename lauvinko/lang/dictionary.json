@@ -633,6 +633,18 @@
     },
     "origin": "kasanic"
   },
+  "chicken": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Chicken",
+        "forms": {
+          "gn": "iccaakaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "clan": {
     "category": "uninflected",
     "languages": {

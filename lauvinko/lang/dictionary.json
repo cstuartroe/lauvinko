@@ -571,6 +571,21 @@
     },
     "origin": "kasanic"
   },
+  "bright": {
+    "category": "stative",
+    "languages": {
+      "lv": {
+        "definition": "$pat$ shines, is bright. @ The sun."
+      },
+      "pk": {
+        "definition": "Sun.",
+        "forms": {
+          "gn": "tuhisa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "brother": {
     "category": "uninflected",
     "languages": {
@@ -1270,6 +1285,18 @@
     },
     "origin": "kasanic"
   },
+  "moon": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Moon.",
+        "forms": {
+          "gn": "naayona"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "mosah": {
     "category": "uninflected",
     "languages": {
@@ -1754,21 +1781,6 @@
         "definition": "To stand.",
         "forms": {
           "gn": "ntittoka"
-        }
-      }
-    },
-    "origin": "kasanic"
-  },
-  "sun": {
-    "category": "stative",
-    "languages": {
-      "lv": {
-        "definition": "$pat$ shines, is bright. @ The sun."
-      },
-      "pk": {
-        "definition": "Sun.",
-        "forms": {
-          "gn": "tuhisa"
         }
       }
     },

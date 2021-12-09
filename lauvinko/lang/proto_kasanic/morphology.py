@@ -98,6 +98,16 @@ class ProtoKasanicMorpheme(Morpheme):
 
                 continue
 
+            elif i > 0 and morphemes[i-1] is REDUPLICATOR and ms[0].onset is None:
+                syllables_to_add = [
+                    ProtoKasanicSyllable(
+                        onset=ms[1].onset,
+                        vowel=ms[0].vowel,
+                    ),
+                    *ms[1:],
+                ]
+
+
             else:
                 syllables_to_add = [*ms]
 

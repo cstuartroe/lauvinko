@@ -342,7 +342,8 @@ class ProtoKasanicOrigin(LauvinkoLemmaOrigin):
     def convert_vowels(syllables: Iterable[GenericCVCSyllable]):
         for syllable in syllables:
             if syllable.vowel is ProtoKasanicVowel.U:
-                syllable.vowel = LauvinkoVowel.O if syllable.stressed else LauvinkoVowel.A
+                use_o = syllable.stressed or syllable.coda is LauvinkoConsonant.A
+                syllable.vowel = LauvinkoVowel.O if use_o else LauvinkoVowel.A
             elif syllable.vowel is ProtoKasanicVowel.A:
                 syllable.vowel = LauvinkoVowel.E if syllable.stressed else LauvinkoVowel.A
             else:

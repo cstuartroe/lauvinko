@@ -571,6 +571,21 @@
     },
     "origin": "kasanic"
   },
+  "borrow": {
+    "category": "punctual",
+    "languages": {
+      "lv": {
+        "definition": "(archaic) $vol$ borrows $pat$ from $abl$."
+      },
+      "pk": {
+        "definition": "To borrow.",
+        "forms": {
+          "gn": "~merau"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "bright": {
     "category": "stative",
     "languages": {
@@ -768,6 +783,18 @@
         "definition": "Day (period of 24 hours).",
         "forms": {
           "gn": "tteso"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "deep": {
+    "category": "stative",
+    "languages": {
+      "pk": {
+        "definition": "Deep, long (of containers or holes with a single opening).",
+        "forms": {
+          "gn": "uwengwa"
         }
       }
     },
@@ -989,6 +1016,18 @@
     },
     "origin": "kasanic"
   },
+  "head": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Head",
+        "forms": {
+          "gn": "toroha"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "heel": {
     "category": "uninflected",
     "languages": {
@@ -1176,6 +1215,21 @@
         "definition": "To learn, teach.",
         "forms": {
           "gn": "r@ppaayo"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "lend": {
+    "category": "fientive",
+    "languages": {
+      "lv": {
+        "definition": "$vol$ casts a fishing lure $pat$. @ $vol$ lends $pat$ to $dat$."
+      },
+      "pk": {
+        "definition": "To throw.",
+        "forms": {
+          "gn": "r@nowi"
         }
       }
     },
@@ -1959,6 +2013,21 @@
       }
     },
     "origin": "sanskrit"
+  },
+  "visit": {
+    "category": "fientive",
+    "languages": {
+      "lv": {
+        "definition": "$vol$ is a guest of $loc$."
+      },
+      "pk": {
+        "definition": "To visit, to be a guest.",
+        "forms": {
+          "gn": "w@naita"
+        }
+      }
+    },
+    "origin": "kasanic"
   },
   "water": {
     "category": "uninflected",

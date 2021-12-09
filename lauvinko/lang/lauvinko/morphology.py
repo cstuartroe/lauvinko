@@ -366,12 +366,11 @@ class LauvinkoWord(Word):
 
         if words[i:] and words[i].word_type() is LauvinkoWordType.ADPOSITION:
             found = False
-            accented += 1
             i += 1
+            accented = i
 
         if words[i:] and words[i].word_type() is LauvinkoWordType.CONTENT_WORD:
             found = True
-            accented += 1
             i += 1
 
         if words[i:] and words[i].word_type() is LauvinkoWordType.DETERMINER:

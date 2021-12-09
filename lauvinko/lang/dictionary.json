@@ -340,6 +340,7 @@
         "definition": "([volitive](/lauvinko/volitive) applicative prefix)"
       }
     },
+    "mstype": "adposition",
     "origin": "kasanic"
   },
   "$ins$": {
@@ -355,6 +356,7 @@
         "definition": "([instrumental](/lauvinko/instrumental) applicative prefix)"
       }
     },
+    "mstype": "adposition",
     "origin": "kasanic"
   },
   "$dat$": {
@@ -370,6 +372,7 @@
         "definition": "([dative](/lauvinko/dative) applicative prefix)"
       }
     },
+    "mstype": "adposition",
     "origin": "kasanic"
   },
   "$all$": {
@@ -385,6 +388,7 @@
         "definition": "([allative](/lauvinko/adpositional) applicative prefix)"
       }
     },
+    "mstype": "adposition",
     "origin": "kasanic"
   },
   "$loc$": {
@@ -400,6 +404,7 @@
         "definition": "([locative](/lauvinko/adpositional) applicative prefix)"
       }
     },
+    "mstype": "adposition",
     "origin": "kasanic"
   },
   "$abl$": {
@@ -420,6 +425,7 @@
         }
       }
     },
+    "mstype": "adposition",
     "origin": "kasanic"
   },
   "$prl$": {
@@ -440,6 +446,7 @@
         }
       }
     },
+    "mstype": "adposition",
     "origin": "kasanic"
   },
   "$par$": {
@@ -455,6 +462,7 @@
         "definition": "([partitive](/lauvinko/partitive) applicative prefix)"
       }
     },
+    "mstype": "adposition",
     "origin": "kasanic"
   },
   "add": {

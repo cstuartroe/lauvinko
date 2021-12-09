@@ -345,6 +345,9 @@ class LauvinkoWord(Word):
         elif morphemes[0].lemma.mstype is MorphosyntacticType.CLASS_WORD:
             return LauvinkoClassWord.from_morphemes(morphemes)
 
+        elif morphemes[0].lemma.mstype is MorphosyntacticType.ADPOSITION:
+            return LauvinkoPostposition.from_morphemes(morphemes)
+
         else:
             raise NotImplementedError
 
@@ -453,6 +456,30 @@ class LauvinkoClassWord(LauvinkoWord):
         if len(morphemes) == 1:
             return cls(morphemes[0], None)
         elif len(morphemes) == 2:
+            return cls(*morphemes)
+        else:
+            raise ValueError
+
+@dataclass
+class LauvinkoPostposition(LauvinkoWord):
+    postposition: LauvinkoMorpheme
+
+    def __post_init__(self):
+        super().__post_init__()
+        assert self.postposition.lemma.mstype is MorphosyntacticType.ADPOSITION
+
+    def _get_accented(self):
+        return None
+
+    def morphemes(self) -> List[LauvinkoMorpheme]:
+        return [self.postposition]
+
+    def word_type(self) -> LauvinkoWordType:
+        return LauvinkoWordType.ADPOSITION
+
+    @classmethod
+    def from_morphemes(cls, morphemes: List[LauvinkoMorpheme]) -> "LauvinkoPostposition":
+        if len(morphemes) == 1:
             return cls(*morphemes)
         else:
             raise ValueError

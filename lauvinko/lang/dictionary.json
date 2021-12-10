@@ -1745,6 +1745,18 @@
     },
     "origin": "kasanic"
   },
+  "sing": {
+    "category": "fientive",
+    "languages": {
+      "pk": {
+        "definition": "To sing.",
+        "forms": {
+          "gn": "tt~tana"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "singa": {
     "category": "uninflected",
     "languages": {

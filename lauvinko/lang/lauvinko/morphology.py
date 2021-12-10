@@ -384,7 +384,7 @@ class LauvinkoWord(Word):
             found = True
             i += 1
 
-        if words[:i] and words[i].word_type() is LauvinkoWordType.NUMBER_SUFFIX:
+        if words[i:] and words[i].word_type() is LauvinkoWordType.NUMBER_SUFFIX:
             i += 1
 
         if not found or i != len(words):

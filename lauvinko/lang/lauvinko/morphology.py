@@ -308,10 +308,17 @@ class LauvinkoWordType(Enum):
     CONTENT_WORD = "content word"
     DETERMINER = "determiner"
     ADPOSITION = "adposition"
+    NUMBER_SUFFIX = "number suffix"
 
 
 class InvalidSyntacticWordSequence(ValueError):
     pass
+
+
+PARTICLE_MSTYPES = {
+    MorphosyntacticType.ADPOSITION: LauvinkoWordType.ADPOSITION,
+    MorphosyntacticType.NUMBER_SUFFIX: LauvinkoWordType.NUMBER_SUFFIX,
+}
 
 
 @dataclass
@@ -345,8 +352,8 @@ class LauvinkoWord(Word):
         elif morphemes[0].lemma.mstype is MorphosyntacticType.CLASS_WORD:
             return LauvinkoClassWord.from_morphemes(morphemes)
 
-        elif morphemes[0].lemma.mstype is MorphosyntacticType.ADPOSITION:
-            return LauvinkoPostposition.from_morphemes(morphemes)
+        elif morphemes[0].lemma.mstype in PARTICLE_MSTYPES:
+            return LauvinkoParticle.from_morphemes(morphemes)
 
         else:
             raise NotImplementedError
@@ -374,6 +381,10 @@ class LauvinkoWord(Word):
             i += 1
 
         if words[i:] and words[i].word_type() is LauvinkoWordType.DETERMINER:
+            found = True
+            i += 1
+
+        if words[:i] and words[i].word_type() is LauvinkoWordType.NUMBER_SUFFIX:
             i += 1
 
         if not found or i != len(words):
@@ -439,7 +450,7 @@ class LauvinkoClassWord(LauvinkoWord):
             assert self.case_suffix.lemma.mstype is MorphosyntacticType.CASE_MARKER
 
     def _get_accented(self):
-        return 1
+        return 0
 
     def morphemes(self) -> List[LauvinkoMorpheme]:
         if self.case_suffix is None:
@@ -460,24 +471,24 @@ class LauvinkoClassWord(LauvinkoWord):
             raise ValueError
 
 @dataclass
-class LauvinkoPostposition(LauvinkoWord):
-    postposition: LauvinkoMorpheme
+class LauvinkoParticle(LauvinkoWord):
+    morpheme: LauvinkoMorpheme
 
     def __post_init__(self):
         super().__post_init__()
-        assert self.postposition.lemma.mstype is MorphosyntacticType.ADPOSITION
+        assert self.morpheme.lemma.mstype in PARTICLE_MSTYPES
 
     def _get_accented(self):
         return None
 
     def morphemes(self) -> List[LauvinkoMorpheme]:
-        return [self.postposition]
+        return [self.morpheme]
 
     def word_type(self) -> LauvinkoWordType:
-        return LauvinkoWordType.ADPOSITION
+        return PARTICLE_MSTYPES[self.morpheme.lemma.mstype]
 
     @classmethod
-    def from_morphemes(cls, morphemes: List[LauvinkoMorpheme]) -> "LauvinkoPostposition":
+    def from_morphemes(cls, morphemes: List[LauvinkoMorpheme]) -> "LauvinkoParticle":
         if len(morphemes) == 1:
             return cls(*morphemes)
         else:

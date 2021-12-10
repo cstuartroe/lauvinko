@@ -14,6 +14,7 @@ class MorphosyntacticType(Enum):
     CLASS_WORD = "class word"
     CASE_MARKER = "case marker"
     ADPOSITION = "adposition"
+    NUMBER_SUFFIX = "number suffix"
 
     class InvalidMSType(ValueError):
         pass

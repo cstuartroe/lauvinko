@@ -465,6 +465,32 @@
     "mstype": "adposition",
     "origin": "kasanic"
   },
+  "$coll1$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "collective suffix",
+        "forms": {
+          "gn": "erayaa"
+        }
+      }
+    },
+    "mstype": "number suffix",
+    "origin": "kasanic"
+  },
+  "$coll2$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "collective suffix",
+        "forms": {
+          "gn": "nai"
+        }
+      }
+    },
+    "mstype": "number suffix",
+    "origin": "kasanic"
+  },
   "add": {
     "category": "punctual",
     "languages": {
@@ -1100,6 +1126,18 @@
         "definition": "Hut, shelter.",
         "forms": {
           "gn": "karaawi"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "insect": {
+    "category": "uninflected",
+    "languages": {
+      "pk":{
+        "definition": "Bug, insect.",
+        "forms": {
+          "gn": "cinci"
         }
       }
     },
@@ -1958,6 +1996,18 @@
     },
     "origin": "kasanic"
   },
+  "tooth": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Tooth.",
+        "forms": {
+          "gn": "ucauwe"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "touch": {
     "category": "fientive",
     "languages": {
@@ -1983,6 +2033,18 @@
         "definition": "To trade.",
         "forms": {
           "gn": "nc@ki"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "tree": {
+    "category": "uninflected",
+    "languages": {
+      "pk":{
+        "definition": "Tree.",
+        "forms": {
+          "gn": "kaunaa"
         }
       }
     },

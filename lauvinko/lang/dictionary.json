@@ -1830,6 +1830,18 @@
     },
     "origin": "kasanic"
   },
+  "shrimp": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Shrimp.",
+        "forms": {
+          "gn": "saittaiwa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "sing": {
     "category": "fientive",
     "languages": {

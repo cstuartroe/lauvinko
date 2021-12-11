@@ -192,6 +192,9 @@ class LauvinkoMorpheme(Morpheme):
                         ms[0].onset = epenthetic_consonant
 
             if i == accented:
+                if morpheme.surface_form.accent_position is None:
+                    raise LauvinkoMorpheme.InvalidAccent(f"Morpheme bears no accent: {morpheme}")
+
                 accent_position = len(syllables) + morpheme.surface_form.accent_position
                 falling_accent = morpheme.surface_form.falling_accent
 

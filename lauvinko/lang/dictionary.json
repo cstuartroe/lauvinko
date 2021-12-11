@@ -697,6 +697,18 @@
     },
     "origin": "kasanic"
   },
+  "catfish": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Catfish.",
+        "forms": {
+          "gn": "kkeyeco"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "chicken": {
     "category": "uninflected",
     "languages": {
@@ -894,6 +906,18 @@
     },
     "origin": "kasanic"
   },
+  "eel": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Eel.",
+        "forms": {
+          "gn": "nukkawi"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "egg": {
     "category": "uninflected",
     "languages": {
@@ -949,6 +973,21 @@
         "definition": "Finger.",
         "forms": {
           "gn": "cokine"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "fish": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Fish (teleost of typical body construction; not cartilaginous fish, eel, sunfish, catfish, or seahorse)."
+      },
+      "pk": {
+        "definition": "Fish.",
+        "forms": {
+          "gn": "eteto"
         }
       }
     },
@@ -1555,6 +1594,30 @@
     },
     "origin": "sanskrit"
   },
+  "ocean": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Ocean, body of saltwater.",
+        "forms": {
+          "gn": "aanti"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "octopus": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Octopus.",
+        "forms": {
+          "gn": "nesunai"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "pandan": {
     "category": "uninflected",
     "languages": {
@@ -1745,6 +1808,28 @@
     },
     "origin": "kasanic"
   },
+  "shark": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "forms": {
+          "gn.au": {
+            "phonemic": "ma/yna"
+          },
+          "gn.na": {
+            "phonemic": "ma\\yna"
+          }
+        }
+      },
+      "pk": {
+        "definition": "Cartilaginous fish (shark, ray, sawfish).",
+        "forms": {
+          "gn": "mainaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "sing": {
     "category": "fientive",
     "languages": {
@@ -1878,6 +1963,18 @@
         "definition": "To speak, say.",
         "forms": {
           "gn": "k@ppotaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "squid": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Squid.",
+        "forms": {
+          "gn": "cimpino"
         }
       }
     },

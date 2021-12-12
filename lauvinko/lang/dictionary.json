@@ -605,6 +605,18 @@
     },
     "origin": "kasanic"
   },
+  "black": {
+    "category": "stative",
+    "languages": {
+      "pk": {
+        "definition": "Black, dark.",
+        "forms": {
+          "gn": "yokaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "borrow": {
     "category": "punctual",
     "languages": {
@@ -645,6 +657,18 @@
         "definition": "Brother.",
         "forms": {
           "gn": "taaro"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "brown": {
+    "category": "stative",
+    "languages": {
+      "pk": {
+        "definition": "Brown.",
+        "forms": {
+          "gn": "nyutere"
         }
       }
     },
@@ -736,6 +760,18 @@
     },
     "origin": "kasanic"
   },
+  "color": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Color.",
+        "forms": {
+          "gn": "ttehaame"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "cross": {
     "category": "punctual",
     "languages": {
@@ -784,6 +820,18 @@
         "definition": "To be dark.",
         "forms": {
           "gn": "kaamengaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "darkblue": {
+    "category": "stative",
+    "languages": {
+      "pk": {
+        "definition": "Dark blue.",
+        "forms": {
+          "gn": "ngongipu"
         }
       }
     },
@@ -846,6 +894,21 @@
     },
     "origin": "kasanic"
   },
+  "depict": {
+    "category": "fientive",
+    "languages": {
+      "lv": {
+        "definition": "To depict, describe, draw. @ To plan."
+      },
+      "pk": {
+        "definition": "To show.",
+        "forms": {
+          "gn": "~ntaukke"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "dog": {
     "category": "uninflected",
     "languages": {
@@ -871,6 +934,21 @@
         "definition": "To cover, to hang, to drape.",
         "forms": {
           "gn": "taici"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "draw": {
+    "category": "fientive",
+    "languages": {
+      "lv": {
+        "definition": "To scratch. @ To plow. @ To write, draw (esp. line drawings)."
+      },
+      "pk": {
+        "definition": "To scrape, scratch.",
+        "forms": {
+          "gn": "c~saakaa"
         }
       }
     },
@@ -1027,6 +1105,18 @@
         "definition": "To go.",
         "forms": {
           "gn": "w@ki"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "green": {
+    "category": "stative",
+    "languages": {
+      "pk": {
+        "definition": "Green.",
+        "forms": {
+          "gn": "nerau"
         }
       }
     },
@@ -1327,6 +1417,18 @@
         "definition": "To lie, to be (with prepositional phrase)",
         "forms": {
           "gn": "konco"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "lightblue": {
+    "category": "stative",
+    "languages": {
+      "pk": {
+        "definition": "Light blue.",
+        "forms": {
+          "gn": "sosi"
         }
       }
     },
@@ -2260,6 +2362,18 @@
         "definition": "What, which.",
         "forms": {
           "gn": "raase"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "white": {
+    "category": "stative",
+    "languages": {
+      "pk": {
+        "definition": "White.",
+        "forms": {
+          "gn": "sontaasa"
         }
       }
     },

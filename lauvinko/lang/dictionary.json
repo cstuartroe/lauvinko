@@ -1287,6 +1287,18 @@
     },
     "origin": "kasanic"
   },
+  "kendhang": {
+    "category": "uninflected",
+    "languages": {
+      "pk":{
+        "definition": "Kendhang (two headed drum used to set tempo in a musical ensemble).",
+        "forms": {
+          "gn": "kantaanga"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "keng": {
     "category": "uninflected",
     "languages": {

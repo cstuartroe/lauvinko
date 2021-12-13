@@ -867,6 +867,108 @@
     },
     "origin": "kasanic"
   },
+  "candra": {
+    "category": "uninflected",
+    "languages": {
+      "pk":{
+        "definition": "Chandra.",
+        "forms": {
+          "gn": "canta"
+        }
+      },
+      "sa": {
+        "definition": "Chandra, the moon.",
+        "native": "चन्द्र",
+        "transcription": "candra"
+      }
+    },
+    "origin": "sanskrit"
+  },
+  "budha": {
+    "category": "uninflected",
+    "languages": {
+      "pk":{
+        "definition": "Budha.",
+        "forms": {
+          "gn": "puta"
+        }
+      },
+      "sa": {
+        "definition": "Budha, Mercury.",
+        "native": "बुध",
+        "transcription": "budha"
+      }
+    },
+    "origin": "sanskrit"
+  },
+  "shukra": {
+    "category": "uninflected",
+    "languages": {
+      "pk":{
+        "definition": "Shukra.",
+        "forms": {
+          "gn": "sukka"
+        }
+      },
+      "sa": {
+        "definition": "Shukra, Venus.",
+        "native": "शुक्र",
+        "transcription": "śukra"
+      }
+    },
+    "origin": "sanskrit"
+  },
+  "mangala": {
+    "category": "uninflected",
+    "languages": {
+      "pk":{
+        "definition": "Mangala.",
+        "forms": {
+          "gn": "mankara"
+        }
+      },
+      "sa": {
+        "definition": "Mangala, Mars.",
+        "native": "मङ्गल",
+        "transcription": "maṅgala"
+      }
+    },
+    "origin": "sanskrit"
+  },
+  "brihaspati": {
+    "category": "uninflected",
+    "languages": {
+      "pk":{
+        "definition": "Brihaspati.",
+        "forms": {
+          "gn": "parihasapati"
+        }
+      },
+      "sa": {
+        "definition": "Brihaspati, Jupiter.",
+        "native": "बृहस्पति",
+        "transcription": "bṛhaspati"
+      }
+    },
+    "origin": "sanskrit"
+  },
+  "shani": {
+    "category": "uninflected",
+    "languages": {
+      "pk":{
+        "definition": "Shani.",
+        "forms": {
+          "gn": "sani"
+        }
+      },
+      "sa": {
+        "definition": "Shani, Saturn.",
+        "native": "शनि",
+        "transcription": "śani"
+      }
+    },
+    "origin": "sanskrit"
+  },
   "day": {
     "category": "uninflected",
     "languages": {
@@ -2120,6 +2222,23 @@
       }
     },
     "origin": "kasanic"
+  },
+  "surya": {
+    "category": "uninflected",
+    "languages": {
+      "pk":{
+        "definition": "Surya.",
+        "forms": {
+          "gn": "suraya"
+        }
+      },
+      "sa": {
+        "definition": "Surya, the sun.",
+        "native": "सूर्य",
+        "transcription": "sūrya"
+      }
+    },
+    "origin": "sanskrit"
   },
   "sutra": {
     "category": "uninflected",

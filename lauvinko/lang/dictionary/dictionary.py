@@ -49,6 +49,8 @@ TOPIC_CASE_PREFIXES = {
     "dep": "eta",
 }
 
+DICTIONARY_FILENAME = "lauvinko/lang/dictionary.json"
+
 
 class Dictionary:
     def __init__(self, entries: dict[str, DictEntry]):
@@ -66,7 +68,7 @@ class Dictionary:
         })
 
     @classmethod
-    def from_file(cls, filename="lauvinko/lang/dictionary.json"):
+    def from_file(cls, filename=DICTIONARY_FILENAME):
         with open(filename, "r") as fh:
             entries_dict = json.load(fh)
 

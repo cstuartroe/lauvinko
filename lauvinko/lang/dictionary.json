@@ -1,4 +1,17 @@
 {
+  "$1excl$.$pl$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "We, us (not including the listener).",
+        "forms": {
+          "gn": "saa"
+        }
+      }
+    },
+    "mstype": "class word",
+    "origin": "kasanic"
+  },
   "$1excl$.$sg$": {
     "category": "uninflected",
     "languages": {
@@ -13,19 +26,6 @@
             "falavay": "OX",
             "phonemic": "o\\y"
           }
-        }
-      }
-    },
-    "mstype": "class word",
-    "origin": "kasanic"
-  },
-  "$1excl$.$pl$": {
-    "category": "uninflected",
-    "languages": {
-      "pk": {
-        "definition": "We, us (not including the listener).",
-        "forms": {
-          "gn": "saa"
         }
       }
     },
@@ -71,19 +71,6 @@
     "mstype": "class word",
     "origin": "kasanic"
   },
-  "$2fml$.$sg$": {
-    "category": "uninflected",
-    "languages": {
-      "pk": {
-        "definition": "You (formal, singular). cf {{2p}}.",
-        "forms": {
-          "gn": "ko"
-        }
-      }
-    },
-    "mstype": "class word",
-    "origin": "kasanic"
-  },
   "$2fml$.$du$": {
     "category": "uninflected",
     "languages": {
@@ -120,6 +107,19 @@
     "mstype": "class word",
     "origin": "kasanic"
   },
+  "$2fml$.$sg$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "You (formal, singular). cf {{2p}}.",
+        "forms": {
+          "gn": "ko"
+        }
+      }
+    },
+    "mstype": "class word",
+    "origin": "kasanic"
+  },
   "$2hon$": {
     "category": "uninflected",
     "languages": {
@@ -136,26 +136,6 @@
         "definition": "Master, owner, landlord.",
         "forms": {
           "gn": "naama"
-        }
-      }
-    },
-    "mstype": "class word",
-    "origin": "kasanic"
-  },
-  "$3rd$.$sg$": {
-    "category": "uninflected",
-    "languages": {
-      "lv": {
-        "definition": "He, him; she, her; they, them (animate, singular).",
-        "forms": {
-          "gn.au": {
-            "phonemic": "li/",
-            "written_like": "ri"
-          },
-          "gn.na": {
-            "phonemic": "si\\",
-            "written_like": "si"
-          }
         }
       }
     },
@@ -198,17 +178,151 @@
     "mstype": "class word",
     "origin": "kasanic"
   },
-  "$hea$.$sg$": {
+  "$3rd$.$sg$": {
     "category": "uninflected",
     "languages": {
-      "pk": {
-        "definition": "(measure word) human, animal, god (singular).",
+      "lv": {
+        "definition": "He, him; she, her; they, them (animate, singular).",
         "forms": {
-          "gn": "tu"
+          "gn.au": {
+            "phonemic": "li/",
+            "written_like": "ri"
+          },
+          "gn.na": {
+            "phonemic": "si\\",
+            "written_like": "si"
+          }
         }
       }
     },
     "mstype": "class word",
+    "origin": "kasanic"
+  },
+  "$abl$": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "([ablative](/lauvinko/adpositional) applicative prefix)",
+        "forms": {
+          "gn.na": {
+            "phonemic": "a\\po"
+          }
+        }
+      },
+      "pk": {
+        "definition": "From, off of, away from.",
+        "forms": {
+          "gn": "aapo"
+        }
+      }
+    },
+    "mstype": "adposition",
+    "origin": "kasanic"
+  },
+  "$all$": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "([allative](/lauvinko/adpositional) applicative prefix)"
+      },
+      "pk": {
+        "definition": "To, towards.",
+        "forms": {
+          "gn": "ai"
+        }
+      }
+    },
+    "mstype": "adposition",
+    "origin": "kasanic"
+  },
+  "$bra$.$du$": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "(measure word) thin object, plant, tool, food (dual). cf {{branch}}"
+      },
+      "pk": {
+        "definition": "Branch @ (measure word) long, thin object, plant (dual).",
+        "forms": {
+          "gn": "me"
+        }
+      }
+    },
+    "mstype": "class word",
+    "origin": "kasanic"
+  },
+  "$bra$.$pl$": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "(measure word) thin object, plant, tool, food (plural). cf {{branch}}"
+      },
+      "pk": {
+        "definition": "Branch @ (measure word) long, thin object, plant (plural).",
+        "forms": {
+          "gn": "otaa"
+        }
+      }
+    },
+    "mstype": "class word",
+    "origin": "kasanic"
+  },
+  "$bra$.$sg$": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "(measure word) thin object, plant, tool, food (singular). cf {{branch}}"
+      },
+      "pk": {
+        "definition": "Branch @ (measure word) long, thin object, plant (singular).",
+        "forms": {
+          "gn": "itaa"
+        }
+      }
+    },
+    "mstype": "class word",
+    "origin": "kasanic"
+  },
+  "$coll1$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "collective suffix",
+        "forms": {
+          "gn": "erayaa"
+        }
+      }
+    },
+    "mstype": "number suffix",
+    "origin": "kasanic"
+  },
+  "$coll2$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "collective suffix",
+        "forms": {
+          "gn": "nai"
+        }
+      }
+    },
+    "mstype": "number suffix",
+    "origin": "kasanic"
+  },
+  "$dat$": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "([dative](/lauvinko/dative) applicative prefix)"
+      },
+      "pk": {
+        "definition": "To, for.",
+        "forms": {
+          "gn": "ni"
+        }
+      }
+    },
+    "mstype": "adposition",
     "origin": "kasanic"
   },
   "$hea$.$du$": {
@@ -237,49 +351,43 @@
     "mstype": "class word",
     "origin": "kasanic"
   },
-  "$bra$.$sg$": {
+  "$hea$.$sg$": {
     "category": "uninflected",
     "languages": {
       "pk": {
-        "definition": "Branch @ (measure word) long, thin object, plant (singular).",
+        "definition": "(measure word) human, animal, god (singular).",
         "forms": {
-          "gn": "itaa"
+          "gn": "tu"
         }
-      },
-      "lv": {
-        "definition": "(measure word) thin object, plant, tool, food (singular). cf {{branch}}"
       }
     },
     "mstype": "class word",
     "origin": "kasanic"
   },
-  "$bra$.$du$": {
+  "$ins$": {
     "category": "uninflected",
     "languages": {
-      "pk": {
-        "definition": "Branch @ (measure word) long, thin object, plant (dual).",
-        "forms": {
-          "gn": "me"
-        }
-      },
       "lv": {
-        "definition": "(measure word) thin object, plant, tool, food (dual). cf {{branch}}"
+        "definition": "([instrumental](/lauvinko/instrumental) applicative prefix)"
+      },
+      "pk": {
+        "definition": "With, using, by.",
+        "forms": {
+          "gn": "okka"
+        }
       }
     },
-    "mstype": "class word",
+    "mstype": "adposition",
     "origin": "kasanic"
   },
-  "$bra$.$pl$": {
+  "$lea$.$pl$": {
     "category": "uninflected",
     "languages": {
       "pk": {
-        "definition": "Branch @ (measure word) long, thin object, plant (plural).",
+        "definition": "(measure word) flat thing, location (singular).",
         "forms": {
-          "gn": "otaa"
+          "gn": "epaa"
         }
-      },
-      "lv": {
-        "definition": "(measure word) thin object, plant, tool, food (plural). cf {{branch}}"
       }
     },
     "mstype": "class word",
@@ -298,151 +406,16 @@
     "mstype": "class word",
     "origin": "kasanic"
   },
-  "$lea$.$pl$": {
-    "category": "uninflected",
-    "languages": {
-      "pk": {
-        "definition": "(measure word) flat thing, location (singular).",
-        "forms": {
-          "gn": "epaa"
-        }
-      }
-    },
-    "mstype": "class word",
-    "origin": "kasanic"
-  },
-  "$sea$": {
-    "category": "uninflected",
-    "languages": {
-      "pk": {
-        "definition": "Sea.",
-        "forms": {
-          "gn": "aanti"
-        }
-      },
-      "lv": {
-        "definition": "(measure word) uncountable noun, e.g. substance, abstract noun"
-      }
-    },
-    "mstype": "class word",
-    "origin": "kasanic"
-  },
-  "$vol$": {
-    "category": "uninflected",
-    "languages": {
-      "pk": {
-        "definition": "([volitive](/lauvinko/volitive) postposition)",
-        "forms": {
-          "gn": "maa"
-        }
-      },
-      "lv": {
-        "definition": "([volitive](/lauvinko/volitive) applicative prefix)"
-      }
-    },
-    "mstype": "adposition",
-    "origin": "kasanic"
-  },
-  "$ins$": {
-    "category": "uninflected",
-    "languages": {
-      "pk": {
-        "definition": "With, using, by.",
-        "forms": {
-          "gn": "okka"
-        }
-      },
-      "lv": {
-        "definition": "([instrumental](/lauvinko/instrumental) applicative prefix)"
-      }
-    },
-    "mstype": "adposition",
-    "origin": "kasanic"
-  },
-  "$dat$": {
-    "category": "uninflected",
-    "languages": {
-      "pk": {
-        "definition": "To, for.",
-        "forms": {
-          "gn": "ni"
-        }
-      },
-      "lv": {
-        "definition": "([dative](/lauvinko/dative) applicative prefix)"
-      }
-    },
-    "mstype": "adposition",
-    "origin": "kasanic"
-  },
-  "$all$": {
-    "category": "uninflected",
-    "languages": {
-      "pk": {
-        "definition": "To, towards.",
-        "forms": {
-          "gn": "ai"
-        }
-      },
-      "lv": {
-        "definition": "([allative](/lauvinko/adpositional) applicative prefix)"
-      }
-    },
-    "mstype": "adposition",
-    "origin": "kasanic"
-  },
   "$loc$": {
     "category": "uninflected",
     "languages": {
+      "lv": {
+        "definition": "([locative](/lauvinko/adpositional) applicative prefix)"
+      },
       "pk": {
         "definition": "At, in, on.",
         "forms": {
           "gn": "po"
-        }
-      },
-      "lv": {
-        "definition": "([locative](/lauvinko/adpositional) applicative prefix)"
-      }
-    },
-    "mstype": "adposition",
-    "origin": "kasanic"
-  },
-  "$abl$": {
-    "category": "uninflected",
-    "languages": {
-      "pk": {
-        "definition": "From, off of, away from.",
-        "forms": {
-          "gn": "aapo"
-        }
-      },
-      "lv": {
-        "definition": "([ablative](/lauvinko/adpositional) applicative prefix)",
-        "forms": {
-          "gn.na": {
-            "phonemic": "a\\po"
-          }
-        }
-      }
-    },
-    "mstype": "adposition",
-    "origin": "kasanic"
-  },
-  "$prl$": {
-    "category": "uninflected",
-    "languages": {
-      "pk": {
-        "definition": "Through, across, over.",
-        "forms": {
-          "gn": "moko"
-        }
-      },
-      "lv": {
-        "definition": "([perlative](/lauvinko/adpositional) applicative prefix)",
-        "forms": {
-          "gn.na": {
-            "phonemic": "mo\\ko"
-          }
         }
       }
     },
@@ -452,43 +425,70 @@
   "$par$": {
     "category": "uninflected",
     "languages": {
+      "lv": {
+        "definition": "([partitive](/lauvinko/partitive) applicative prefix)"
+      },
       "pk": {
         "definition": "([partitive](/lauvinko/partitive) postposition)",
         "forms": {
           "gn": "e"
         }
-      },
-      "lv": {
-        "definition": "([partitive](/lauvinko/partitive) applicative prefix)"
       }
     },
     "mstype": "adposition",
     "origin": "kasanic"
   },
-  "$coll1$": {
+  "$prl$": {
     "category": "uninflected",
     "languages": {
-      "pk": {
-        "definition": "collective suffix",
+      "lv": {
+        "definition": "([perlative](/lauvinko/adpositional) applicative prefix)",
         "forms": {
-          "gn": "erayaa"
+          "gn.na": {
+            "phonemic": "mo\\ko"
+          }
+        }
+      },
+      "pk": {
+        "definition": "Through, across, over.",
+        "forms": {
+          "gn": "moko"
         }
       }
     },
-    "mstype": "number suffix",
+    "mstype": "adposition",
     "origin": "kasanic"
   },
-  "$coll2$": {
+  "$sea$": {
     "category": "uninflected",
     "languages": {
+      "lv": {
+        "definition": "(measure word) uncountable noun, e.g. substance, abstract noun"
+      },
       "pk": {
-        "definition": "collective suffix",
+        "definition": "Sea.",
         "forms": {
-          "gn": "nai"
+          "gn": "aanti"
         }
       }
     },
-    "mstype": "number suffix",
+    "mstype": "class word",
+    "origin": "kasanic"
+  },
+  "$vol$": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "([volitive](/lauvinko/volitive) applicative prefix)"
+      },
+      "pk": {
+        "definition": "([volitive](/lauvinko/volitive) postposition)",
+        "forms": {
+          "gn": "maa"
+        }
+      }
+    },
+    "mstype": "adposition",
     "origin": "kasanic"
   },
   "add": {
@@ -647,6 +647,23 @@
     },
     "origin": "kasanic"
   },
+  "brihaspati": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Brihaspati.",
+        "forms": {
+          "gn": "parihasapati"
+        }
+      },
+      "sa": {
+        "definition": "Brihaspati, Jupiter.",
+        "native": "\u092c\u0943\u0939\u0938\u094d\u092a\u0924\u093f",
+        "transcription": "b\u1e5bhaspati"
+      }
+    },
+    "origin": "sanskrit"
+  },
   "brother": {
     "category": "uninflected",
     "languages": {
@@ -674,6 +691,23 @@
     },
     "origin": "kasanic"
   },
+  "budha": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Budha.",
+        "forms": {
+          "gn": "puta"
+        }
+      },
+      "sa": {
+        "definition": "Budha, Mercury.",
+        "native": "\u092c\u0941\u0927",
+        "transcription": "budha"
+      }
+    },
+    "origin": "sanskrit"
+  },
   "build": {
     "category": "fientive",
     "languages": {
@@ -688,6 +722,23 @@
       }
     },
     "origin": "kasanic"
+  },
+  "candra": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Chandra.",
+        "forms": {
+          "gn": "canta"
+        }
+      },
+      "sa": {
+        "definition": "Chandra, the moon.",
+        "native": "\u091a\u0928\u094d\u0926\u094d\u0930",
+        "transcription": "candra"
+      }
+    },
+    "origin": "sanskrit"
   },
   "carry": {
     "category": "fientive",
@@ -715,8 +766,8 @@
       },
       "sa": {
         "definition": "Carriage, vehicle, journey.",
-        "native": "यान",
-        "transcription": "yā́na"
+        "native": "\u092f\u093e\u0928",
+        "transcription": "y\u0101\u0301na"
       }
     },
     "origin": "kasanic"
@@ -732,6 +783,29 @@
       }
     },
     "origin": "kasanic"
+  },
+  "chaiya": {
+    "category": "uninflected",
+    "languages": {
+      "bt": {
+        "definition": "Chaiya."
+      },
+      "lv": {
+        "definition": "Chaiya."
+      },
+      "ms": {
+        "definition": "Chaiya.",
+        "native": null,
+        "transcription": "cahaya"
+      },
+      "pk": {
+        "definition": "Chaiya, a region in modern Thailand which hosted an important seaport during the Srivijaya empire. Some Kasanic people migrated there, eventually becoming the Botharu.",
+        "forms": {
+          "gn": "caahaayaa"
+        }
+      }
+    },
+    "origin": "malay"
   },
   "chicken": {
     "category": "uninflected",
@@ -786,29 +860,6 @@
       }
     },
     "origin": "kasanic"
-  },
-  "chaiya": {
-    "category": "uninflected",
-    "languages": {
-      "pk": {
-        "definition": "Chaiya, a region in modern Thailand which hosted an important seaport during the Srivijaya empire. Some Kasanic people migrated there, eventually becoming the Botharu.",
-        "forms": {
-          "gn": "caahaayaa"
-        }
-      },
-      "lv": {
-        "definition": "Chaiya."
-      },
-      "bt": {
-        "definition": "Chaiya."
-      },
-      "ms": {
-        "definition": "Chaiya.",
-        "native": null,
-        "transcription": "cahaya"
-      }
-    },
-    "origin": "malay"
   },
   "dark": {
     "category": "stative",
@@ -866,108 +917,6 @@
       }
     },
     "origin": "kasanic"
-  },
-  "candra": {
-    "category": "uninflected",
-    "languages": {
-      "pk":{
-        "definition": "Chandra.",
-        "forms": {
-          "gn": "canta"
-        }
-      },
-      "sa": {
-        "definition": "Chandra, the moon.",
-        "native": "चन्द्र",
-        "transcription": "candra"
-      }
-    },
-    "origin": "sanskrit"
-  },
-  "budha": {
-    "category": "uninflected",
-    "languages": {
-      "pk":{
-        "definition": "Budha.",
-        "forms": {
-          "gn": "puta"
-        }
-      },
-      "sa": {
-        "definition": "Budha, Mercury.",
-        "native": "बुध",
-        "transcription": "budha"
-      }
-    },
-    "origin": "sanskrit"
-  },
-  "shukra": {
-    "category": "uninflected",
-    "languages": {
-      "pk":{
-        "definition": "Shukra.",
-        "forms": {
-          "gn": "sukka"
-        }
-      },
-      "sa": {
-        "definition": "Shukra, Venus.",
-        "native": "शुक्र",
-        "transcription": "śukra"
-      }
-    },
-    "origin": "sanskrit"
-  },
-  "mangala": {
-    "category": "uninflected",
-    "languages": {
-      "pk":{
-        "definition": "Mangala.",
-        "forms": {
-          "gn": "mankara"
-        }
-      },
-      "sa": {
-        "definition": "Mangala, Mars.",
-        "native": "मङ्गल",
-        "transcription": "maṅgala"
-      }
-    },
-    "origin": "sanskrit"
-  },
-  "brihaspati": {
-    "category": "uninflected",
-    "languages": {
-      "pk":{
-        "definition": "Brihaspati.",
-        "forms": {
-          "gn": "parihasapati"
-        }
-      },
-      "sa": {
-        "definition": "Brihaspati, Jupiter.",
-        "native": "बृहस्पति",
-        "transcription": "bṛhaspati"
-      }
-    },
-    "origin": "sanskrit"
-  },
-  "shani": {
-    "category": "uninflected",
-    "languages": {
-      "pk":{
-        "definition": "Shani.",
-        "forms": {
-          "gn": "sani"
-        }
-      },
-      "sa": {
-        "definition": "Shani, Saturn.",
-        "native": "शनि",
-        "transcription": "śani"
-      }
-    },
-    "origin": "sanskrit"
   },
   "day": {
     "category": "uninflected",
@@ -1365,7 +1314,7 @@
   "insect": {
     "category": "uninflected",
     "languages": {
-      "pk":{
+      "pk": {
         "definition": "Bug, insect.",
         "forms": {
           "gn": "cinci"
@@ -1392,7 +1341,7 @@
   "kendhang": {
     "category": "uninflected",
     "languages": {
-      "pk":{
+      "pk": {
         "definition": "Kendhang (two headed drum used to set tempo in a musical ensemble).",
         "forms": {
           "gn": "kantaanga"
@@ -1404,7 +1353,7 @@
   "keng": {
     "category": "uninflected",
     "languages": {
-      "pk":{
+      "pk": {
         "definition": "The Bird [clan](/lauvinko/clans).",
         "forms": {
           "gn": "kanka"
@@ -1412,7 +1361,7 @@
       },
       "sa": {
         "definition": "Bird.",
-        "native": "खग",
+        "native": "\u0916\u0917",
         "transcription": "khaga"
       }
     },
@@ -1422,7 +1371,7 @@
     "category": "uninflected",
     "languages": {
       "pk": {
-        "definition": "Kesang, a historical region around the modern Malaysian town of Tangkak. Considered the ancestral homeland of the Lauvìnko, it is the namesake of the Kasanic language family.",
+        "definition": "Kesang, a historical region around the modern Malaysian town of Tangkak. Considered the ancestral homeland of the Lauv\u00ecnko, it is the namesake of the Kasanic language family.",
         "forms": {
           "gn": "kasaanaa"
         }
@@ -1463,7 +1412,7 @@
   "kolang": {
     "category": "uninflected",
     "languages": {
-      "pk":{
+      "pk": {
         "definition": "The Turtle [clan](/lauvinko/clans).",
         "forms": {
           "gn": "kurama"
@@ -1471,8 +1420,8 @@
       },
       "sa": {
         "definition": "Turtle.",
-        "native": "कूर्म",
-        "transcription": "kūrma"
+        "native": "\u0915\u0942\u0930\u094d\u092e",
+        "transcription": "k\u016brma"
       }
     },
     "origin": "sanskrit"
@@ -1480,7 +1429,7 @@
   "kotti": {
     "category": "uninflected",
     "languages": {
-      "pk":{
+      "pk": {
         "definition": "The Chicken [clan](/lauvinko/clans).",
         "forms": {
           "gn": "kukkuti"
@@ -1488,8 +1437,8 @@
       },
       "sa": {
         "definition": "Hen.",
-        "native": "कुक्कुट",
-        "transcription": "kukkuṭa"
+        "native": "\u0915\u0941\u0915\u094d\u0915\u0941\u091f",
+        "transcription": "kukku\u1e6da"
       }
     },
     "origin": "sanskrit"
@@ -1563,6 +1512,23 @@
     },
     "origin": "kasanic"
   },
+  "mangala": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Mangala.",
+        "forms": {
+          "gn": "mankara"
+        }
+      },
+      "sa": {
+        "definition": "Mangala, Mars.",
+        "native": "\u092e\u0919\u094d\u0917\u0932",
+        "transcription": "ma\u1e45gala"
+      }
+    },
+    "origin": "sanskrit"
+  },
   "mango": {
     "category": "uninflected",
     "languages": {
@@ -1596,7 +1562,7 @@
   "mesi": {
     "category": "uninflected",
     "languages": {
-      "pk":{
+      "pk": {
         "definition": "The Fish [clan](/lauvinko/clans).",
         "forms": {
           "gn": "maci"
@@ -1604,8 +1570,8 @@
       },
       "sa": {
         "definition": "Fish.",
-        "native": "मत्स्य",
-        "transcription": "mátsya"
+        "native": "\u092e\u0924\u094d\u0938\u094d\u092f",
+        "transcription": "m\u00e1tsya"
       }
     },
     "origin": "sanskrit"
@@ -1655,7 +1621,7 @@
   "mosah": {
     "category": "uninflected",
     "languages": {
-      "pk":{
+      "pk": {
         "definition": "The Mouse [clan](/lauvinko/clans).",
         "forms": {
           "gn": "musaka"
@@ -1663,8 +1629,8 @@
       },
       "sa": {
         "definition": "Mouse.",
-        "native": "मूषक",
-        "transcription": "mūṣaka"
+        "native": "\u092e\u0942\u0937\u0915",
+        "transcription": "m\u016b\u1e63aka"
       }
     },
     "origin": "sanskrit"
@@ -1714,27 +1680,10 @@
     },
     "origin": "kasanic"
   },
-  "ngensa": {
-    "category": "uninflected",
-    "languages": {
-      "pk":{
-        "definition": "The Elephant [clan](/lauvinko/clans).",
-        "forms": {
-          "gn": "nkanca"
-        }
-      },
-      "sa": {
-        "definition": "Elephant.",
-        "native": "गज",
-        "transcription": "gaja"
-      }
-    },
-    "origin": "sanskrit"
-  },
   "ngeng": {
     "category": "uninflected",
     "languages": {
-      "pk":{
+      "pk": {
         "definition": "The Rhinoceros [clan](/lauvinko/clans).",
         "forms": {
           "gn": "nkanta"
@@ -1742,8 +1691,25 @@
       },
       "sa": {
         "definition": "Rhinoceros.",
-        "native": "गण्ड",
-        "transcription": "gaṇḍa"
+        "native": "\u0917\u0923\u094d\u0921",
+        "transcription": "ga\u1e47\u1e0da"
+      }
+    },
+    "origin": "sanskrit"
+  },
+  "ngensa": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "The Elephant [clan](/lauvinko/clans).",
+        "forms": {
+          "gn": "nkanca"
+        }
+      },
+      "sa": {
+        "definition": "Elephant.",
+        "native": "\u0917\u091c",
+        "transcription": "gaja"
       }
     },
     "origin": "sanskrit"
@@ -1796,7 +1762,7 @@
   "oasang": {
     "category": "uninflected",
     "languages": {
-      "pk":{
+      "pk": {
         "definition": "The Banteng [clan](/lauvinko/clans).",
         "forms": {
           "gn": "ukasana"
@@ -1804,8 +1770,8 @@
       },
       "sa": {
         "definition": "Bull.",
-        "native": "उक्षन्",
-        "transcription": "ukṣán"
+        "native": "\u0909\u0915\u094d\u0937\u0928\u094d",
+        "transcription": "uk\u1e63\u00e1n"
       }
     },
     "origin": "sanskrit"
@@ -1942,22 +1908,22 @@
   "republic": {
     "category": "uninflected",
     "languages": {
+      "ar": {
+        "definition": "Republic.",
+        "native": "\u062c\u0645\u0647\u0648\u0631\u064a\u0629",
+        "transcription": "jumh\u016briyya"
+      },
       "lv": {
         "forms": {
           "gn.au": {
             "falavay": "jumhZlXGyt",
-            "phonemic": "comoli´yat"
+            "phonemic": "comoli\u00b4yat"
           },
           "gn.na": {
             "falavay": "jumhZlXyt",
             "phonemic": "comoli`yat"
           }
         }
-      },
-      "ar": {
-        "definition": "Republic.",
-        "native": "جمهورية",
-        "transcription": "jumhūriyya"
       }
     },
     "origin": "arabic"
@@ -1976,23 +1942,6 @@
       }
     },
     "origin": "kasanic"
-  },
-  "selah": {
-    "category": "uninflected",
-    "languages": {
-      "pk":{
-        "definition": "The Snake [clan](/clans).",
-        "forms": {
-          "gn": "sarapa"
-        }
-      },
-      "sa": {
-        "definition": "Snake.",
-        "native": "सर्प",
-        "transcription": "sarpá"
-      }
-    },
-    "origin": "sanskrit"
   },
   "search": {
     "category": "fientive",
@@ -2023,6 +1972,40 @@
       }
     },
     "origin": "kasanic"
+  },
+  "selah": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "The Snake [clan](/clans).",
+        "forms": {
+          "gn": "sarapa"
+        }
+      },
+      "sa": {
+        "definition": "Snake.",
+        "native": "\u0938\u0930\u094d\u092a",
+        "transcription": "sarp\u00e1"
+      }
+    },
+    "origin": "sanskrit"
+  },
+  "shani": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Shani.",
+        "forms": {
+          "gn": "sani"
+        }
+      },
+      "sa": {
+        "definition": "Shani, Saturn.",
+        "native": "\u0936\u0928\u093f",
+        "transcription": "\u015bani"
+      }
+    },
+    "origin": "sanskrit"
   },
   "shark": {
     "category": "uninflected",
@@ -2058,6 +2041,23 @@
     },
     "origin": "kasanic"
   },
+  "shukra": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Shukra.",
+        "forms": {
+          "gn": "sukka"
+        }
+      },
+      "sa": {
+        "definition": "Shukra, Venus.",
+        "native": "\u0936\u0941\u0915\u094d\u0930",
+        "transcription": "\u015bukra"
+      }
+    },
+    "origin": "sanskrit"
+  },
   "sing": {
     "category": "fientive",
     "languages": {
@@ -2073,7 +2073,7 @@
   "singa": {
     "category": "uninflected",
     "languages": {
-      "pk":{
+      "pk": {
         "definition": "The Lion [clan](/lauvinko/clans).",
         "forms": {
           "gn": "singaha"
@@ -2081,8 +2081,8 @@
       },
       "sa": {
         "definition": "Lion.",
-        "native": "सिंह",
-        "transcription": "siṃhá"
+        "native": "\u0938\u093f\u0902\u0939",
+        "transcription": "si\u1e43h\u00e1"
       }
     },
     "origin": "sanskrit"
@@ -2120,7 +2120,7 @@
   "soala": {
     "category": "uninflected",
     "languages": {
-      "pk":{
+      "pk": {
         "definition": "The Pig [clan](/lauvinko/clans).",
         "forms": {
           "gn": "sukara"
@@ -2128,8 +2128,8 @@
       },
       "sa": {
         "definition": "Pig.",
-        "native": "सूकर",
-        "transcription": "sūkara"
+        "native": "\u0938\u0942\u0915\u0930",
+        "transcription": "s\u016bkara"
       }
     },
     "origin": "sanskrit"
@@ -2167,7 +2167,7 @@
   "sonka": {
     "category": "uninflected",
     "languages": {
-      "pk":{
+      "pk": {
         "definition": "The Dog [clan](/lauvinko/clans).",
         "forms": {
           "gn": "sunaka"
@@ -2175,8 +2175,8 @@
       },
       "sa": {
         "definition": "Young dog.",
-        "native": "शुनक",
-        "transcription": "śunaka"
+        "native": "\u0936\u0941\u0928\u0915",
+        "transcription": "\u015bunaka"
       }
     },
     "origin": "sanskrit"
@@ -2226,7 +2226,7 @@
   "surya": {
     "category": "uninflected",
     "languages": {
-      "pk":{
+      "pk": {
         "definition": "Surya.",
         "forms": {
           "gn": "suraya"
@@ -2234,8 +2234,8 @@
       },
       "sa": {
         "definition": "Surya, the sun.",
-        "native": "सूर्य",
-        "transcription": "sūrya"
+        "native": "\u0938\u0942\u0930\u094d\u092f",
+        "transcription": "s\u016brya"
       }
     },
     "origin": "sanskrit"
@@ -2251,8 +2251,8 @@
       },
       "sa": {
         "definition": "Thread, wire; Aphorism, collection of aphorisms.",
-        "native": "सूत्र",
-        "transcription": "sū́tra"
+        "native": "\u0938\u0942\u0924\u094d\u0930",
+        "transcription": "s\u016b\u0301tra"
       }
     },
     "origin": "sanskrit"
@@ -2260,7 +2260,7 @@
   "teach": {
     "category": "stative",
     "languages": {
-      "pk":{
+      "pk": {
         "definition": "To teach, to give religious instruction.",
         "forms": {
           "gn": "upatisa"
@@ -2268,8 +2268,8 @@
       },
       "sa": {
         "definition": "To advise, instruct, teach.",
-        "native": "उपदिश्",
-        "transcription": "upadiś"
+        "native": "\u0909\u092a\u0926\u093f\u0936\u094d",
+        "transcription": "upadi\u015b"
       }
     },
     "origin": "sanskrit"
@@ -2277,16 +2277,16 @@
   "tenah": {
     "category": "uninflected",
     "languages": {
+      "ms": {
+        "definition": "Tapir.",
+        "native": null,
+        "transcription": "tenuk"
+      },
       "pk": {
         "definition": "The Tapir [clan](/lauvinko/clans).",
         "forms": {
           "gn": "tenuka"
         }
-      },
-      "ms": {
-        "definition": "Tapir.",
-        "native": null,
-        "transcription": "tenuk"
       }
     },
     "origin": "malay"
@@ -2306,7 +2306,7 @@
   "timi": {
     "category": "uninflected",
     "languages": {
-      "pk":{
+      "pk": {
         "definition": "The Whale [clan](/lauvinko/clans).",
         "forms": {
           "gn": "timi"
@@ -2314,7 +2314,7 @@
       },
       "sa": {
         "definition": "Whale.",
-        "native": "तिमि",
+        "native": "\u0924\u093f\u092e\u093f",
         "transcription": "timi"
       }
     },
@@ -2395,7 +2395,7 @@
   "tree": {
     "category": "uninflected",
     "languages": {
-      "pk":{
+      "pk": {
         "definition": "Tree.",
         "forms": {
           "gn": "kaunaa"
@@ -2407,16 +2407,16 @@
   "treeshrew": {
     "category": "uninflected",
     "languages": {
-      "pk":{
-        "definition": "The Treeshrew [clan](/lauvinko/clans).",
-        "forms": {
-          "gn": "tupai"
-        }
-      },
       "ms": {
         "definition": "Squirrel, treeshrew.",
         "native": null,
         "transcription": "tupai"
+      },
+      "pk": {
+        "definition": "The Treeshrew [clan](/lauvinko/clans).",
+        "forms": {
+          "gn": "tupai"
+        }
       }
     },
     "origin": "malay"
@@ -2424,7 +2424,7 @@
   "vanar": {
     "category": "uninflected",
     "languages": {
-      "pk":{
+      "pk": {
         "definition": "The Monkey [clan](/lauvinko/clans).",
         "forms": {
           "gn": "waanara"
@@ -2432,8 +2432,8 @@
       },
       "sa": {
         "definition": "Monkey.",
-        "native": "वानर",
-        "transcription": "vānara"
+        "native": "\u0935\u093e\u0928\u0930",
+        "transcription": "v\u0101nara"
       }
     },
     "origin": "sanskrit"

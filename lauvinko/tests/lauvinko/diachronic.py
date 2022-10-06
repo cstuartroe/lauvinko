@@ -1,10 +1,15 @@
 import unittest
+from typing import Iterable
 
 from lauvinko.lang.lauvinko.diachronic.base import MorphemeContext
 from lauvinko.lang.shared.morphology import MorphosyntacticType
+from lauvinko.lang.shared.phonology import VowelFrontness
 from lauvinko.lang.shared.semantics import KasanicStemCategory, PrimaryTenseAspect
+from lauvinko.lang.proto_kasanic.phonology import ProtoKasanicOnset, ProtoKasanicVowel, ProtoKasanicSyllable, PKSurfaceForm
 from lauvinko.lang.proto_kasanic.morphology import ProtoKasanicMorpheme, pkm, ProtoKasanicLemma
+from lauvinko.lang.proto_kasanic.romanize import romanize as pk_romanize
 from lauvinko.lang.lauvinko.morphology import LauvinkoMorpheme, LauvinkoLemma
+from lauvinko.lang.lauvinko.romanize import romanize as lv_romanize
 
 
 lm = LauvinkoMorpheme.from_informal_transcription
@@ -90,10 +95,31 @@ TA_TEST_ORDER = [
 
 FULL_TENSE_ASPECT_TESTS = [
     (pkm("tt@ko"), lm("ta/u"), lm("to/"), lm("te/u"), lm("itta/u"), lm("tette/u"), lm("totto/")),
-    (pkm("kw~ri"), lm("pe\\li"), lm("po\\li"), lm("pi\\li"), lm("inpe\\li"), lm("pipi\\li"), lm("papo\\li")),
+    (pkm("kw~ri"), lm("pe\\li"), lm("ko\\li"), lm("pi\\li"), lm("inpe\\li"), lm("pipi\\li"), lm("kako\\li")),
     (pkm("nc@"), lm("anca\\"), lm("anco\\"), lm("ance\\"), lm("inca\\"), lm("ancence\\"), lm("anconco\\")),
     (pkm("nt~toka"), lm("ne/lak"), lm("no/lak"), lm("ni/lak"), lm("inte/lak"), lm("ninti/lak"), lm("nanto/lak")),
 ]
+
+
+def all_pk_sylls(max_syllables=2) -> Iterable[list[ProtoKasanicSyllable]]:
+    if max_syllables <= 0:
+        yield from []
+
+    else:
+        for onset in (None, *ProtoKasanicOnset):
+            for vowel in ProtoKasanicVowel:
+                if vowel.frontness is VowelFrontness.UNDERSPECIFIED:
+                    continue
+
+                try:
+                    syll = ProtoKasanicSyllable(onset=onset, vowel=vowel)
+                except ProtoKasanicSyllable.InvalidSyllable:
+                    continue
+
+                yield [syll]
+
+                for sylls in all_pk_sylls(max_syllables-1):
+                    yield [syll, *sylls]
 
 
 class LauvinkoDiachronicTests(unittest.TestCase):
@@ -127,7 +153,7 @@ class LauvinkoDiachronicTests(unittest.TestCase):
                     lv_morpheme.original_initial_consonant(),
                 )
 
-    def test_test_aspect(self):
+    def test_tense_aspect(self):
         for pk_morpheme, *forms in FULL_TENSE_ASPECT_TESTS:
             pk_lemma = ProtoKasanicLemma(
                 definition="",
@@ -145,3 +171,42 @@ class LauvinkoDiachronicTests(unittest.TestCase):
                     evolved_form.surface_form.historical_transcription(),
                     lv_morpheme.surface_form.historical_transcription(),
                 )
+
+    def test_information_loss(self):
+        pk_sfs = set()
+        lv_au_sfs = set()
+        lv_na_sfs = set()
+
+        for i, sylls in enumerate(all_pk_sylls(2)):
+            pk_lemma = ProtoKasanicLemma(
+                definition="",
+                category=KasanicStemCategory.UNINFLECTED,
+                mstype=MorphosyntacticType.INDEPENDENT,
+                forms={},
+                generic_morph=ProtoKasanicMorpheme(
+                    lemma=None,
+                    surface_form=PKSurfaceForm(
+                        syllables=sylls,
+                        stress_position=0,
+                    ),
+                    end_mutation=None,
+                ),
+            )
+
+            pkr = pk_romanize(pk_lemma.form(PrimaryTenseAspect.GENERAL).surface_form())
+            pk_sfs.add(pkr)
+
+            lv_lemma = LauvinkoLemma.from_pk(pk_lemma)
+
+            aur = lv_romanize(lv_lemma.form(PrimaryTenseAspect.GENERAL, context=MorphemeContext.AUGMENTED).surface_form)
+            lv_au_sfs.add(aur)
+
+            nar = lv_romanize(lv_lemma.form(PrimaryTenseAspect.GENERAL,
+                                            context=MorphemeContext.NONAUGMENTED).surface_form)
+            lv_na_sfs.add(nar)
+
+        print(f"There are {len(pk_sfs)} Proto-Kasanic surface forms")
+        print(f"There are {len(lv_au_sfs)} Lauvinko augment surface forms")
+        print(f"There are {len(lv_na_sfs)} Lauvinko nonaugment surface forms")
+        print(f"There are {len(lv_au_sfs | lv_na_sfs)} total Lauvinko surface forms")
+        print(f"There are only {len(lv_au_sfs & lv_na_sfs)} surface forms which can be either augment or non-augment")

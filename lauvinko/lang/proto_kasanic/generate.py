@@ -86,8 +86,8 @@ underspecified_vowel_raffle = WeightedRandomizer({
 
 
 syllable_count_raffle = WeightedRandomizer({
-    2: 3,
-    3: 7,
+    2: 7,
+    3: 3,
 })
 
 

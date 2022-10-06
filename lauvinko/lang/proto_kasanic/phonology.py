@@ -45,6 +45,14 @@ class ProtoKasanicOnset(Consonant, Enum):
     W = ("w", PlaceOfArticulation.LABIOVELAR, MannerOfArticulation.APPROXIMANT)
 
 
+DELABIALIZE = {
+    ProtoKasanicOnset.NGW: ProtoKasanicOnset.NG,
+    ProtoKasanicOnset.KW: ProtoKasanicOnset.K,
+    ProtoKasanicOnset.KKW: ProtoKasanicOnset.KK,
+    ProtoKasanicOnset.NKW: ProtoKasanicOnset.NK,
+    ProtoKasanicOnset.W: None,
+}
+
 class ProtoKasanicVowel(Vowel, Enum):
     AA = ('a', True, VowelFrontness.MID)
     E = ('e', True, VowelFrontness.FRONT)
@@ -70,11 +78,22 @@ class ProtoKasanicSyllable(Syllable):
         pass
 
     def __post_init__(self):
-        if self.onset is ProtoKasanicOnset.W and self.vowel is ProtoKasanicVowel.U:
+        if (self.onset is not None and
+                self.onset.poa is PlaceOfArticulation.LABIOVELAR and self.vowel is ProtoKasanicVowel.U):
             raise ProtoKasanicSyllable.InvalidSyllable("wu")
 
         if self.onset is ProtoKasanicOnset.Y and self.vowel is ProtoKasanicVowel.I:
             raise ProtoKasanicSyllable.InvalidSyllable("yi")
+
+    @classmethod
+    def make_valid(cls, onset: Optional[ProtoKasanicOnset], vowel: ProtoKasanicVowel):
+        if vowel is ProtoKasanicVowel.U:
+            onset = DELABIALIZE.get(onset, onset)
+
+        if onset is ProtoKasanicOnset.Y and vowel is ProtoKasanicVowel.I:
+            onset = None
+
+        return cls(onset=onset, vowel=vowel)
 
 
 class ProtoKasanicMutation(Enum):

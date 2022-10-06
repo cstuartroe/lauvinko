@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from enum import Enum
 from typing import List, Optional
 import regex
 from lauvinko.lang.shared.semantics import PrimaryTenseAspect, KasanicStemCategory, PTA2ABBREV
@@ -252,7 +251,7 @@ class ProtoKasanicLemma(Lemma):
         if ablauts[primary_ta] is None:
             form_first_syllable = generic_first_syllable
         else:
-            form_first_syllable = ProtoKasanicSyllable(
+            form_first_syllable = ProtoKasanicSyllable.make_valid(
                 onset=generic_first_syllable.onset,
                 vowel=ablauts[primary_ta],
             )

@@ -10,15 +10,11 @@ MSTYPE_ORDER = [
     for t in MorphosyntacticType
 ]
 
-print(MSTYPE_ORDER)
-
 
 ADPOSITION_ORDER = [
     f"${m.abbreviation}$"
     for m in LauvinkoCase
 ]
-
-print(ADPOSITION_ORDER)
 
 PERSON_ORDER = [
     "$1excl$",

@@ -30,6 +30,15 @@ def parse_lv_form_id(form_id: str):
     return PRIMARY_TA_ABBREVIATIONS[pta], parse_context(con)
 
 
+CLOSED_CLASSES: set[MorphosyntacticType] = {
+    MorphosyntacticType.MODAL_PREFIX,
+    MorphosyntacticType.TERTIARY_ASPECT_PREFIX,
+    MorphosyntacticType.TOPIC_AGREEMENT_PREFIX,
+    MorphosyntacticType.TOPIC_CASE_PREFIX,
+    # TODO: MorphosyntacticType.ADPOSITION,
+}
+
+
 @dataclass
 class DictEntry:
     languages: dict[Language, Lemma]
@@ -73,6 +82,9 @@ class DictEntry:
             raise MorphosyntacticType.InvalidMSType(f"Invalid morphosyntactic type: {mstype_name}")
 
         mstype = MorphosyntacticType[mstype_name]
+
+        if mstype in CLOSED_CLASSES:
+            raise ValueError(f"{mstype} is a closed class")
 
         if origin is OriginLanguage.KASANIC or origin is OriginLanguage.SANSKRIT:  # TODO: separately handle sanskrit
             languages = DictEntry.languages_from_pk_json(json_entry["languages"], category=category, mstype=mstype)

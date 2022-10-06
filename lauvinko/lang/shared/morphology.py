@@ -6,15 +6,15 @@ from .phonology import SurfaceForm
 
 
 class MorphosyntacticType(Enum):
-    INDEPENDENT = "independent"
+    CLASS_WORD = "class word"
+    ADPOSITION = "adposition"
+    CASE_MARKER = "case marker"  # TODO: merge with adposition
     MODAL_PREFIX = "modal prefix"
     TERTIARY_ASPECT_PREFIX = "tertiary aspect prefix"
     TOPIC_AGREEMENT_PREFIX = "topic agreement prefix"
     TOPIC_CASE_PREFIX = "topic case prefix"
-    CLASS_WORD = "class word"
-    CASE_MARKER = "case marker"
-    ADPOSITION = "adposition"
     NUMBER_SUFFIX = "number suffix"
+    INDEPENDENT = "independent"
 
     class InvalidMSType(ValueError):
         pass

@@ -34,5 +34,6 @@ class OriginLanguage(Enum):
 class UnspecifiedOrigin(LauvinkoLemmaOrigin):
     def generate_form(self, primary_ta: PrimaryTenseAspect, context: MorphemeContext):
         raise LauvinkoLemmaOrigin.InvalidOrigin(
-            "A lemma with unspecified origin must have all forms explicitly specified"
+            f"A lemma with unspecified origin must have all forms explicitly specified "
+            f"(missing {primary_ta} {context})"
         )

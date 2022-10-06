@@ -1,17 +1,4 @@
 {
-  "$1excl$.$pl$": {
-    "category": "uninflected",
-    "languages": {
-      "pk": {
-        "definition": "We, us (not including the listener).",
-        "forms": {
-          "gn": "saa"
-        }
-      }
-    },
-    "mstype": "class word",
-    "origin": "kasanic"
-  },
   "$1excl$.$sg$": {
     "category": "uninflected",
     "languages": {
@@ -26,6 +13,19 @@
             "falavay": "OX",
             "phonemic": "o\\y"
           }
+        }
+      }
+    },
+    "mstype": "class word",
+    "origin": "kasanic"
+  },
+  "$1excl$.$pl$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "We, us (not including the listener).",
+        "forms": {
+          "gn": "saa"
         }
       }
     },
@@ -71,6 +71,19 @@
     "mstype": "class word",
     "origin": "kasanic"
   },
+  "$2fml$.$sg$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "You (formal, singular). cf {{2p}}.",
+        "forms": {
+          "gn": "ko"
+        }
+      }
+    },
+    "mstype": "class word",
+    "origin": "kasanic"
+  },
   "$2fml$.$du$": {
     "category": "uninflected",
     "languages": {
@@ -107,19 +120,6 @@
     "mstype": "class word",
     "origin": "kasanic"
   },
-  "$2fml$.$sg$": {
-    "category": "uninflected",
-    "languages": {
-      "pk": {
-        "definition": "You (formal, singular). cf {{2p}}.",
-        "forms": {
-          "gn": "ko"
-        }
-      }
-    },
-    "mstype": "class word",
-    "origin": "kasanic"
-  },
   "$2hon$": {
     "category": "uninflected",
     "languages": {
@@ -136,6 +136,26 @@
         "definition": "Master, owner, landlord.",
         "forms": {
           "gn": "naama"
+        }
+      }
+    },
+    "mstype": "class word",
+    "origin": "kasanic"
+  },
+  "$3rd$.$sg$": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "He, him; she, her; they, them (animate, singular).",
+        "forms": {
+          "gn.au": {
+            "phonemic": "li/",
+            "written_like": "ri"
+          },
+          "gn.na": {
+            "phonemic": "si\\",
+            "written_like": "si"
+          }
         }
       }
     },
@@ -178,61 +198,59 @@
     "mstype": "class word",
     "origin": "kasanic"
   },
-  "$3rd$.$sg$": {
+  "$hea$.$sg$": {
     "category": "uninflected",
     "languages": {
-      "lv": {
-        "definition": "He, him; she, her; they, them (animate, singular).",
+      "pk": {
+        "definition": "(measure word) human, animal, god (singular).",
         "forms": {
-          "gn.au": {
-            "phonemic": "li/",
-            "written_like": "ri"
-          },
-          "gn.na": {
-            "phonemic": "si\\",
-            "written_like": "si"
-          }
+          "gn": "tu"
         }
       }
     },
     "mstype": "class word",
     "origin": "kasanic"
   },
-  "$abl$": {
+  "$hea$.$du$": {
     "category": "uninflected",
     "languages": {
-      "lv": {
-        "definition": "([ablative](/lauvinko/adpositional) applicative prefix)",
-        "forms": {
-          "gn.na": {
-            "phonemic": "a\\po"
-          }
-        }
-      },
       "pk": {
-        "definition": "From, off of, away from.",
+        "definition": "(measure word) human, animal, god (dual).",
         "forms": {
-          "gn": "aapo"
+          "gn": "tuca"
         }
       }
     },
-    "mstype": "adposition",
+    "mstype": "class word",
     "origin": "kasanic"
   },
-  "$all$": {
+  "$hea$.$pl$": {
     "category": "uninflected",
     "languages": {
-      "lv": {
-        "definition": "([allative](/lauvinko/adpositional) applicative prefix)"
-      },
       "pk": {
-        "definition": "To, towards.",
+        "definition": "(measure word) human, animal, god (dual).",
         "forms": {
-          "gn": "ai"
+          "gn": "ta"
         }
       }
     },
-    "mstype": "adposition",
+    "mstype": "class word",
+    "origin": "kasanic"
+  },
+  "$bra$.$sg$": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "(measure word) thin object, plant, tool, food (singular). cf {{branch}}"
+      },
+      "pk": {
+        "definition": "Branch @ (measure word) long, thin object, plant (singular).",
+        "forms": {
+          "gn": "itaa"
+        }
+      }
+    },
+    "mstype": "class word",
     "origin": "kasanic"
   },
   "$bra$.$du$": {
@@ -267,132 +285,6 @@
     "mstype": "class word",
     "origin": "kasanic"
   },
-  "$bra$.$sg$": {
-    "category": "uninflected",
-    "languages": {
-      "lv": {
-        "definition": "(measure word) thin object, plant, tool, food (singular). cf {{branch}}"
-      },
-      "pk": {
-        "definition": "Branch @ (measure word) long, thin object, plant (singular).",
-        "forms": {
-          "gn": "itaa"
-        }
-      }
-    },
-    "mstype": "class word",
-    "origin": "kasanic"
-  },
-  "$coll1$": {
-    "category": "uninflected",
-    "languages": {
-      "pk": {
-        "definition": "collective suffix",
-        "forms": {
-          "gn": "erayaa"
-        }
-      }
-    },
-    "mstype": "number suffix",
-    "origin": "kasanic"
-  },
-  "$coll2$": {
-    "category": "uninflected",
-    "languages": {
-      "pk": {
-        "definition": "collective suffix",
-        "forms": {
-          "gn": "nai"
-        }
-      }
-    },
-    "mstype": "number suffix",
-    "origin": "kasanic"
-  },
-  "$dat$": {
-    "category": "uninflected",
-    "languages": {
-      "lv": {
-        "definition": "([dative](/lauvinko/dative) applicative prefix)"
-      },
-      "pk": {
-        "definition": "To, for.",
-        "forms": {
-          "gn": "ni"
-        }
-      }
-    },
-    "mstype": "adposition",
-    "origin": "kasanic"
-  },
-  "$hea$.$du$": {
-    "category": "uninflected",
-    "languages": {
-      "pk": {
-        "definition": "(measure word) human, animal, god (dual).",
-        "forms": {
-          "gn": "tuca"
-        }
-      }
-    },
-    "mstype": "class word",
-    "origin": "kasanic"
-  },
-  "$hea$.$pl$": {
-    "category": "uninflected",
-    "languages": {
-      "pk": {
-        "definition": "(measure word) human, animal, god (dual).",
-        "forms": {
-          "gn": "ta"
-        }
-      }
-    },
-    "mstype": "class word",
-    "origin": "kasanic"
-  },
-  "$hea$.$sg$": {
-    "category": "uninflected",
-    "languages": {
-      "pk": {
-        "definition": "(measure word) human, animal, god (singular).",
-        "forms": {
-          "gn": "tu"
-        }
-      }
-    },
-    "mstype": "class word",
-    "origin": "kasanic"
-  },
-  "$ins$": {
-    "category": "uninflected",
-    "languages": {
-      "lv": {
-        "definition": "([instrumental](/lauvinko/instrumental) applicative prefix)"
-      },
-      "pk": {
-        "definition": "With, using, by.",
-        "forms": {
-          "gn": "okka"
-        }
-      }
-    },
-    "mstype": "adposition",
-    "origin": "kasanic"
-  },
-  "$lea$.$pl$": {
-    "category": "uninflected",
-    "languages": {
-      "pk": {
-        "definition": "(measure word) flat thing, location (singular).",
-        "forms": {
-          "gn": "epaa"
-        }
-      }
-    },
-    "mstype": "class word",
-    "origin": "kasanic"
-  },
   "$lea$.$sg$": {
     "category": "uninflected",
     "languages": {
@@ -406,57 +298,17 @@
     "mstype": "class word",
     "origin": "kasanic"
   },
-  "$loc$": {
+  "$lea$.$pl$": {
     "category": "uninflected",
     "languages": {
-      "lv": {
-        "definition": "([locative](/lauvinko/adpositional) applicative prefix)"
-      },
       "pk": {
-        "definition": "At, in, on.",
+        "definition": "(measure word) flat thing, location (singular).",
         "forms": {
-          "gn": "po"
+          "gn": "epaa"
         }
       }
     },
-    "mstype": "adposition",
-    "origin": "kasanic"
-  },
-  "$par$": {
-    "category": "uninflected",
-    "languages": {
-      "lv": {
-        "definition": "([partitive](/lauvinko/partitive) applicative prefix)"
-      },
-      "pk": {
-        "definition": "([partitive](/lauvinko/partitive) postposition)",
-        "forms": {
-          "gn": "e"
-        }
-      }
-    },
-    "mstype": "adposition",
-    "origin": "kasanic"
-  },
-  "$prl$": {
-    "category": "uninflected",
-    "languages": {
-      "lv": {
-        "definition": "([perlative](/lauvinko/adpositional) applicative prefix)",
-        "forms": {
-          "gn.na": {
-            "phonemic": "mo\\ko"
-          }
-        }
-      },
-      "pk": {
-        "definition": "Through, across, over.",
-        "forms": {
-          "gn": "moko"
-        }
-      }
-    },
-    "mstype": "adposition",
+    "mstype": "class word",
     "origin": "kasanic"
   },
   "$sea$": {
@@ -489,6 +341,154 @@
       }
     },
     "mstype": "adposition",
+    "origin": "kasanic"
+  },
+  "$ins$": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "([instrumental](/lauvinko/instrumental) applicative prefix)"
+      },
+      "pk": {
+        "definition": "With, using, by.",
+        "forms": {
+          "gn": "okka"
+        }
+      }
+    },
+    "mstype": "adposition",
+    "origin": "kasanic"
+  },
+  "$dat$": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "([dative](/lauvinko/dative) applicative prefix)"
+      },
+      "pk": {
+        "definition": "To, for.",
+        "forms": {
+          "gn": "ni"
+        }
+      }
+    },
+    "mstype": "adposition",
+    "origin": "kasanic"
+  },
+  "$all$": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "([allative](/lauvinko/adpositional) applicative prefix)"
+      },
+      "pk": {
+        "definition": "To, towards.",
+        "forms": {
+          "gn": "ai"
+        }
+      }
+    },
+    "mstype": "adposition",
+    "origin": "kasanic"
+  },
+  "$loc$": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "([locative](/lauvinko/adpositional) applicative prefix)"
+      },
+      "pk": {
+        "definition": "At, in, on.",
+        "forms": {
+          "gn": "po"
+        }
+      }
+    },
+    "mstype": "adposition",
+    "origin": "kasanic"
+  },
+  "$abl$": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "([ablative](/lauvinko/adpositional) applicative prefix)",
+        "forms": {
+          "gn.na": {
+            "phonemic": "a\\po"
+          }
+        }
+      },
+      "pk": {
+        "definition": "From, off of, away from.",
+        "forms": {
+          "gn": "aapo"
+        }
+      }
+    },
+    "mstype": "adposition",
+    "origin": "kasanic"
+  },
+  "$prl$": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "([perlative](/lauvinko/adpositional) applicative prefix)",
+        "forms": {
+          "gn.na": {
+            "phonemic": "mo\\ko"
+          }
+        }
+      },
+      "pk": {
+        "definition": "Through, across, over.",
+        "forms": {
+          "gn": "moko"
+        }
+      }
+    },
+    "mstype": "adposition",
+    "origin": "kasanic"
+  },
+  "$par$": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "([partitive](/lauvinko/partitive) applicative prefix)"
+      },
+      "pk": {
+        "definition": "([partitive](/lauvinko/partitive) postposition)",
+        "forms": {
+          "gn": "e"
+        }
+      }
+    },
+    "mstype": "adposition",
+    "origin": "kasanic"
+  },
+  "$coll1$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "collective suffix",
+        "forms": {
+          "gn": "erayaa"
+        }
+      }
+    },
+    "mstype": "number suffix",
+    "origin": "kasanic"
+  },
+  "$coll2$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "collective suffix",
+        "forms": {
+          "gn": "nai"
+        }
+      }
+    },
+    "mstype": "number suffix",
     "origin": "kasanic"
   },
   "add": {

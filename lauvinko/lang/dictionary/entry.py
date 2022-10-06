@@ -104,7 +104,7 @@ class DictEntry:
                 print("Warning: 'falavay' deprecated")
 
             elif "written_like" in form_json:
-                print("Warning: 'written_like deprecated'")
+                print("Warning: 'written_like' deprecated")
 
             lv_forms[(primary_ta, context)] = morpheme
 

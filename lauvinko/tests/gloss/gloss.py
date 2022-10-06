@@ -8,10 +8,10 @@ TESTS: List[Tuple[str, List[str], List[str], List[str], List[str]]] = [
     # ("see.impt.na", "jôj.ŋa", "jʊ̂jŋɐ", "eyohqXga", "yòynga"),
     (
         "if-want-$pro$-$t1s$-$tdat$-cross.$fqnp$.$na$",
-        ["ti.je.ʋan.pi.nap.nék.ŋi"],
-        ["tɪjɪʋɐmpɪnɐɦnɛ́ɦŋɪ"],
-        ["HtqXEvMpinpEEHkZgi"],
-        ["tiyevampinahnéhngi"],
+        ["ti.je.ʋon.pi.na.pa.nek.kék.ŋi"],
+        ["tɪjɪʋʊmpɪnɐpɐnɛkkɛ́ɦŋɪ"],
+        ["HtqXEvMpinpEHekqHkZgi"],
+        ["tiyevompinapanekkéhngi"],
     ),
 ]
 

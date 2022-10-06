@@ -96,21 +96,24 @@ class ProtoKasanicOrigin(LauvinkoLemmaOrigin):
 
         lv_sf = self.evolve_surface_form(pk_sf, context)
 
-        return lv_sf, pk_stem.main_morpheme
+        return lv_sf, pk_stem.as_morph()
 
     @classmethod
     def evolve_surface_form(cls, pk_sf: PKSurfaceForm, context: MorphemeContext) -> LauvinkoSurfaceForm:
         syllables: Iterable[GenericCVCSyllable] = cls.genericize(pk_sf, context)
 
-        syllables = cls.break_diphthongs(syllables)
-        syllables, falling_accent = cls.transform_consonants(syllables, context)
-        syllables = cls.remove_h(syllables)
-        syllables = cls.reduce_vowels(syllables, context)
-        syllables = cls.resolve_vowel_hiatus(syllables)
-        syllables = cls.resolve_offglides(syllables)
-        syllables = cls.remove_short_vowels(syllables)
-        syllables = cls.resolve_offglides(syllables)
-        syllables = cls.convert_vowels(syllables)
+        if len(list(syllables)) > 0:
+            syllables = cls.break_diphthongs(syllables)
+            syllables, falling_accent = cls.transform_consonants(syllables, context)
+            syllables = cls.remove_h(syllables)
+            syllables = cls.reduce_vowels(syllables, context)
+            syllables = cls.resolve_vowel_hiatus(syllables)
+            syllables = cls.resolve_offglides(syllables)
+            syllables = cls.remove_short_vowels(syllables)
+            syllables = cls.resolve_offglides(syllables)
+            syllables = cls.convert_vowels(syllables)
+        else:
+            falling_accent = None
 
         lv_syllables, accent_position = cls.degenericize(syllables)
 
@@ -153,7 +156,8 @@ class ProtoKasanicOrigin(LauvinkoLemmaOrigin):
             yield syllable
 
     @staticmethod
-    def transform_consonants(syllables: Iterable[GenericCVCSyllable], context: MorphemeContext):
+    def transform_consonants(syllables: Iterable[GenericCVCSyllable], context: MorphemeContext)\
+            -> tuple[List[GenericCVCSyllable], bool]:
         syllables = list(syllables)
         out_syllables = []
         falling_accent = None

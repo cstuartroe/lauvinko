@@ -189,6 +189,13 @@ class ProtoKasanicStem:
 
         return ProtoKasanicMorpheme.join(self.morphemes(), stressed=stressed)
 
+    def as_morph(self) -> ProtoKasanicMorpheme:
+        return ProtoKasanicMorpheme(
+            lemma=self.main_morpheme.lemma,
+            surface_form=self.surface_form(),
+            end_mutation=self.main_morpheme.end_mutation,
+        )
+
     def to_json(self):
         sf = self.surface_form()
 
@@ -232,7 +239,12 @@ class ProtoKasanicLemma(Lemma):
 
         return self.forms[primary_ta]
 
-    def _generate_form(self, primary_ta: PrimaryTenseAspect) -> ProtoKasanicStem:
+    def _generate_surface_form(self, primary_ta: PrimaryTenseAspect) -> PKSurfaceForm:
+        if len(self.generic_morph.surface_form.syllables) == 0:
+            return PKSurfaceForm(
+                syllables=[],
+                stress_position=None,
+            )
 
         generic_first_syllable = self.generic_morph.surface_form.syllables[0]
 
@@ -245,12 +257,15 @@ class ProtoKasanicLemma(Lemma):
                 vowel=ablauts[primary_ta],
             )
 
+        return PKSurfaceForm(
+            syllables=([form_first_syllable, *self.generic_morph.surface_form.syllables[1:]]),
+            stress_position=self.generic_morph.surface_form.stress_position,
+        )
+
+    def _generate_form(self, primary_ta: PrimaryTenseAspect) -> ProtoKasanicStem:
         main = ProtoKasanicMorpheme(
             lemma=self,
-            surface_form=PKSurfaceForm(
-                syllables=([form_first_syllable, *self.generic_morph.surface_form.syllables[1:]]),
-                stress_position=self.generic_morph.surface_form.stress_position,
-            ),
+            surface_form=self._generate_surface_form(primary_ta),
             end_mutation=self.generic_morph.end_mutation,
         )
 

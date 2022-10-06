@@ -118,6 +118,7 @@ class ProtoKasanicMutation(Enum):
 
 @dataclass
 class PKSurfaceForm(SurfaceForm):
+    """Stress position must be None if len(syllables) is 0"""
     syllables: List[ProtoKasanicSyllable]
     stress_position: Optional[int]
     validated: bool = False

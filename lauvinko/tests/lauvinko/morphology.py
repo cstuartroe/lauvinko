@@ -2,20 +2,34 @@ import unittest
 from random import randrange, seed
 
 from lauvinko.lang.lauvinko.diachronic.base import MorphemeContext
-from lauvinko.lang.shared.morphology import MorphosyntacticType
 from lauvinko.lang.shared.semantics import KasanicStemCategory
-from lauvinko.lang.proto_kasanic.morphology import ProtoKasanicMorpheme, ProtoKasanicLemma
-from lauvinko.lang.proto_kasanic.generate import random_pk_lemma, random_pk_morpheme
+from lauvinko.lang.proto_kasanic.morphology import ProtoKasanicMorpheme
+from lauvinko.lang.proto_kasanic.generate import random_pk_lemma
 from lauvinko.lang.lauvinko.morphology import LauvinkoLemma, LauvinkoMorpheme
 from lauvinko.lang.lauvinko.diachronic.from_pk import ProtoKasanicOrigin
 
+lm = LauvinkoMorpheme.from_informal_transcription
 
-seed(3)
+
+# seed(3)
+
+JOINS: list[tuple[LauvinkoMorpheme, LauvinkoMorpheme, int, LauvinkoMorpheme]] = [
+    (lm("po/a"), lm("tta/"), 1, lm("povatta/")),
+]
 
 
 class LauvinkoMorphologyTests(unittest.TestCase):
+    def test_specific_joins(self):
+        for m1, m2, accented, expected_join in JOINS:
+            actual_join = LauvinkoMorpheme.join([m1, m2], accented)
+
+            self.assertEqual(
+                expected_join.romanization(),
+                actual_join.romanization(),
+            )
+
     def test_join_equivalence(self):
-        num_trials = 250
+        num_trials = 1000
         num_mismatched = 0
 
         for _ in range(num_trials):

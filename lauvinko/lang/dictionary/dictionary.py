@@ -1,6 +1,6 @@
 import json
 
-from lauvinko.lang.lauvinko.morphology import LauvinkoLemma
+from lauvinko.lang.lauvinko.morphology import LauvinkoLemma, LauvinkoCase
 from lauvinko.lang.shared.morphology import MorphosyntacticType
 from lauvinko.lang.shared.semantics import KasanicStemCategory, Language
 from lauvinko.lang.proto_kasanic.morphology import pkm, ProtoKasanicLemma
@@ -49,13 +49,25 @@ TOPIC_CASE_PREFIXES = {
     "dep": "eta",
 }
 
+ADPOSITIONS = [
+    (LauvinkoCase.VOLITIVE, "maa"),
+    (LauvinkoCase.INSTRUMENTAL, "oka"),
+    (LauvinkoCase.PATIENTIVE, ""),
+    (LauvinkoCase.DATIVE, "ni"),
+    (LauvinkoCase.ALLATIVE, "ai"),
+    (LauvinkoCase.LOCATIVE, "po"),
+    (LauvinkoCase.ABLATIVE, "aapo"),
+    (LauvinkoCase.PERLATIVE, "moko"),
+    (LauvinkoCase.PARTITIVE, "e"),
+]
+
 DICTIONARY_FILENAME = "lauvinko/lang/dictionary.json"
 
 
 class Dictionary:
     def __init__(self, entries: dict[str, DictEntry]):
         self.entries = entries
-        self.fill_in_prefixes()
+        self.fill_in_closed_classes()
 
     def by_id(self, ident: str) -> DictEntry:
         return self.entries.get(ident)
@@ -80,7 +92,7 @@ class Dictionary:
 
         return cls(entries)
 
-    def fill_in_prefixes(self):
+    def fill_in_closed_classes(self):
         self.fill_in_prefix_set(
             MODAL_PREFIXES,
             MorphosyntacticType.MODAL_PREFIX,
@@ -98,6 +110,8 @@ class Dictionary:
             TOPIC_CASE_PREFIXES,
             MorphosyntacticType.TOPIC_CASE_PREFIX,
         )
+
+        self.fill_in_adpositions()
 
     def fill_in_prefix_set(self, prefix_set: dict[str, str], mstype: MorphosyntacticType, wrap_ident: bool = True):
         for ident, informal_transcription in prefix_set.items():
@@ -123,6 +137,31 @@ class Dictionary:
                 category=KasanicStemCategory.UNINFLECTED,
                 mstype=mstype,
                 origin=OriginLanguage.KASANIC
+            )
+
+    def fill_in_adpositions(self):
+        for case, informal_transcription in ADPOSITIONS:
+            ident = f"${case.abbreviation}$"
+
+            pk_lemma = ProtoKasanicLemma(
+                definition=f"{case.name.title()} adposition",
+                category=KasanicStemCategory.UNINFLECTED,
+                mstype=MorphosyntacticType.ADPOSITION,
+                forms={},
+                generic_morph=pkm(informal_transcription),
+            )
+
+            lv_lemma = LauvinkoLemma.from_pk(pk_lemma)
+
+            self.entries[ident] = DictEntry(
+                languages={
+                    Language.PK: pk_lemma,
+                    Language.LAUVINKO: lv_lemma,
+                },
+                ident=ident,
+                category=KasanicStemCategory.UNINFLECTED,
+                mstype=MorphosyntacticType.ADPOSITION,
+                origin=OriginLanguage.KASANIC,
             )
 
     def to_json(self):

@@ -35,7 +35,7 @@ CLOSED_CLASSES: set[MorphosyntacticType] = {
     MorphosyntacticType.TERTIARY_ASPECT_PREFIX,
     MorphosyntacticType.TOPIC_AGREEMENT_PREFIX,
     MorphosyntacticType.TOPIC_CASE_PREFIX,
-    # TODO: MorphosyntacticType.ADPOSITION,
+    MorphosyntacticType.ADPOSITION,
 }
 
 

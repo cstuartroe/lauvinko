@@ -112,6 +112,9 @@ class ProtoKasanicMutation(Enum):
         ProtoKasanicOnset.K: ProtoKasanicOnset.H,
         ProtoKasanicOnset.KW: ProtoKasanicOnset.W,
 
+        # Quite a few bits of logic depend on this remaining unchanged under lenition, so be careful!
+        ProtoKasanicOnset.NC: ProtoKasanicOnset.NC,
+
         MannerOfArticulation.PRENASALIZED_STOP: MannerOfArticulation.NASAL,
         MannerOfArticulation.PREGLOTTALIZED_STOP: MannerOfArticulation.PLAIN_STOP,
     }
@@ -140,17 +143,14 @@ class PKSurfaceForm(SurfaceForm):
     """Stress position must be None if len(syllables) is 0"""
     syllables: List[ProtoKasanicSyllable]
     stress_position: Optional[int]
-    validated: bool = False
 
     class InvalidStress(ValueError):
         pass
 
     def __post_init__(self):
-        if self.stress_position is not None and self.stress_position >= len(self.syllables):
-            if not self.validated and self.stress_position == 0:
-                pass  # This is an edge case that's permitted
-            else:
-                raise PKSurfaceForm.InvalidStress
+        if (self.stress_position is not None and
+                (self.stress_position >= len(self.syllables) or self.stress_position < 0)):
+            raise PKSurfaceForm.InvalidStress(f"Invalid stress: {self.stress_position} {self.syllables}")
 
         for syllable in self.syllables[1:]:
             if syllable.vowel.frontness is VowelFrontness.UNDERSPECIFIED:

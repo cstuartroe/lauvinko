@@ -46,21 +46,23 @@ class LauvinkoMorpheme(Morpheme):
     lemma: Optional["LauvinkoLemma"]
     surface_form: LauvinkoSurfaceForm
     virtual_original_form: ProtoKasanicMorpheme
+    context: MorphemeContext
 
     class InvalidAccent(ValueError):
         pass
 
     def original_initial_consonant(self):
-        return self.virtual_original_form.surface_form.syllables[0].onset
-
-    def original_final_vowel(self):
-        return self.virtual_original_form.surface_form.syllables[-1].vowel
+        sylls = self.virtual_original_form.surface_form.syllables
+        if len(sylls) == 0:
+            return None
+        else:
+            return sylls[0].onset
 
     def end_mutation(self):
         return self.virtual_original_form.end_mutation
 
     def falavay(self):
-        return falavay(self.virtual_original_form.surface_form)  # TODO: augment?
+        return falavay(self.virtual_original_form.surface_form, augment=self.context is MorphemeContext.AUGMENTED)
 
     def romanization(self):
         return romanize(self.surface_form)
@@ -82,6 +84,7 @@ class LauvinkoMorpheme(Morpheme):
             "lemma": None,
             "surface_form": sf,
             "virtual_original_form": vof,
+            "context": MorphemeContext.NONAUGMENTED,
         }
 
     @staticmethod
@@ -90,6 +93,8 @@ class LauvinkoMorpheme(Morpheme):
         pk_syllables: List[ProtoKasanicSyllable] = []
         accent_position = None
         falling_accent = None
+        pk_stress_position = None
+        active_mutation = None
 
         for i, morpheme in enumerate(morphemes):
             ms = [
@@ -101,14 +106,23 @@ class LauvinkoMorpheme(Morpheme):
                 for s in morpheme.surface_form.syllables
             ]
 
-            if i > 0 and len(ms) > 0:
-                pk_consonant = morpheme.original_initial_consonant()
+            morpheme_pk_syllables = [
+                ProtoKasanicSyllable(
+                    onset=s.onset,
+                    vowel=s.vowel,
+                )
+                for s in morpheme.virtual_original_form.surface_form.syllables
+            ]
 
-                mutation = morphemes[i - 1].end_mutation()
+            pk_consonant = morpheme.original_initial_consonant()
 
-                if mutation is not None:
-                    pk_consonant = mutation.mutate(pk_consonant)
+            if active_mutation is not None and len(ms) > 0:
+                pk_consonant = active_mutation.mutate(pk_consonant)
+                morpheme_pk_syllables[0].onset = pk_consonant
 
+            if len(ms) == 0:
+                pass
+            elif len(syllables) > 0:
                 if pk_consonant is not None and pk_consonant is not ProtoKasanicOnset.NC:
                     c1, c2 = break_pk_consonant(pk_consonant)
 
@@ -135,6 +149,9 @@ class LauvinkoMorpheme(Morpheme):
                             syllables.append(epenthetic_syllable)
 
                     ms[0].onset = c2 and PK_TO_LV_ONSETS[c2]
+            else:
+                if pk_consonant is not ProtoKasanicOnset.NC:
+                    ms[0].onset = pk_consonant and PK_TO_LV_ONSETS[pk_consonant]
 
             if len(syllables) > 0 and len(ms) > 0:
                 if ms[0].onset is LauvinkoConsonant.H:
@@ -190,6 +207,8 @@ class LauvinkoMorpheme(Morpheme):
                         ms[0].onset = ec
 
             if i == accented:
+                pk_stress_position = len(pk_syllables) + morpheme.virtual_original_form.surface_form.stress_position
+
                 if morpheme.surface_form.accent_position is None:
                     raise LauvinkoMorpheme.InvalidAccent(f"Morpheme bears no accent: {morpheme}")
 
@@ -198,7 +217,9 @@ class LauvinkoMorpheme(Morpheme):
 
             syllables += ms
 
-            pk_syllables += morpheme.virtual_original_form.surface_form.syllables
+            pk_syllables += morpheme_pk_syllables
+
+            active_mutation = morpheme.end_mutation()
 
         lv_sf = LauvinkoSurfaceForm(
             syllables=syllables,
@@ -213,10 +234,11 @@ class LauvinkoMorpheme(Morpheme):
                 lemma=None,
                 surface_form=PKSurfaceForm(
                     syllables=pk_syllables,
-                    stress_position=None,  # TODO
+                    stress_position=pk_stress_position,
                 ),
                 end_mutation=morphemes[-1].end_mutation(),
             ),
+            context=morphemes[-1].context,
         )
 
 
@@ -249,6 +271,7 @@ class LauvinkoLemma(Lemma):
             lemma=self,
             surface_form=sf,
             virtual_original_form=vof,
+            context=context,
         )
 
     def citation_form(self, context: MorphemeContext = MorphemeContext.NONAUGMENTED):

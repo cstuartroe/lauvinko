@@ -36,14 +36,14 @@ class ProtoKasanicMorpheme(Morpheme):
         pass
 
     @classmethod
-    def from_informal_transcription(cls, transcription: str, stress_position: Optional[int] = 0) -> "ProtoKasanicMorpheme":
+    def from_informal_transcription(cls, transcription: str, stress_position: Optional[int] = -1) -> "ProtoKasanicMorpheme":
         return cls(
             lemma=None,
             **cls._from_informal_transcription(transcription, stress_position=stress_position),
         )
 
     @staticmethod
-    def _from_informal_transcription(transcription: str, stress_position: Optional[int] = 0):
+    def _from_informal_transcription(transcription: str, stress_position: Optional[int] = -1):
         m = regex.fullmatch("(([mngptckshryw']{0,3})([aeiou@~]{1,2}))*(\\+[FLN])?", transcription)
 
         if m is None:
@@ -67,6 +67,9 @@ class ProtoKasanicMorpheme(Morpheme):
             syllables.append(ProtoKasanicSyllable(onset, vowel))
 
         mutation = MUTATION_NOTATION.get(m.group(4))
+
+        if stress_position == -1:
+            stress_position = None if len(syllables) == 0 else 0
 
         return {
             "surface_form": PKSurfaceForm(

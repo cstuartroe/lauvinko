@@ -111,6 +111,7 @@ class DictEntry:
             morpheme = LauvinkoMorpheme.from_informal_transcription(
                 form_json["phonemic"],
             )
+            morpheme.context = context
 
             if "falavay" in form_json:
                 print("Warning: 'falavay' deprecated")

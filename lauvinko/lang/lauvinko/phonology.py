@@ -44,7 +44,7 @@ class LauvinkoVowel(Vowel, Enum):
 class LauvinkoSyllable(Syllable):
     onset: Optional[LauvinkoConsonant]
     vowel: LauvinkoVowel
-    coda: Optional[LauvinkoConsonant]
+    coda: Optional[LauvinkoConsonant] = None
 
     class InvalidSyllable(ValueError):
         pass
@@ -164,7 +164,8 @@ CLOSED_VOWELS = {
 
 UNACCENTED_OPEN_VOWELS = {
     **CLOSED_VOWELS,
-    LauvinkoVowel.E: CLOSED_VOWELS[LauvinkoVowel.I],
+    # TODO: If I stay happy with commenting the line below, should get rid of this dict altogether
+    # LauvinkoVowel.E: CLOSED_VOWELS[LauvinkoVowel.I],
 }
 
 

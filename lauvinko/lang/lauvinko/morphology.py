@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from enum import Enum
 from typing import List, Optional
-
+import re
 from ..proto_kasanic.romanize import falavay
 from ..shared.phonology import VowelFrontness
 from ..shared.semantics import PrimaryTenseAspect, KasanicStemCategory, PTA2ABBREV
@@ -15,7 +15,7 @@ from .phonology import (
 )
 from ..proto_kasanic.morphology import ProtoKasanicLemma, ProtoKasanicMorpheme
 from .diachronic.base import LauvinkoLemmaOrigin, MorphemeContext
-from .diachronic.from_pk import ProtoKasanicOrigin, break_pk_consonant, PK_TO_LV_ONSETS
+from .diachronic.from_pk import ProtoKasanicOrigin, break_pk_consonant, PK_TO_LV_ONSETS, OFFGLIDES
 from .diachronic.from_transcription import TranscriptionReader
 from .romanize import romanize
 
@@ -244,6 +244,7 @@ class LauvinkoMorpheme(Morpheme):
 
 @dataclass
 class LauvinkoLemma(Lemma):
+    ident: str
     definition: str
     category: KasanicStemCategory
     mstype: MorphosyntacticType
@@ -281,6 +282,7 @@ class LauvinkoLemma(Lemma):
     def from_pk(cls, pk_lemma: ProtoKasanicLemma, definition: Optional[str] = None,
                 forms: Optional[dict[tuple[PrimaryTenseAspect, bool], LauvinkoMorpheme]] = None) -> "LauvinkoLemma":
         return cls(
+            ident=pk_lemma.ident,
             definition=(definition or pk_lemma.definition),
             category=pk_lemma.category,
             mstype=pk_lemma.mstype,
@@ -322,12 +324,18 @@ class LauvinkoCase(Case, Enum):
     VOLITIVE = ("vol", True)
     INSTRUMENTAL = ("ins", False)
     PATIENTIVE = ("pat", False)
-    DATIVE = ("dat", True)
+    DATIVE = ("dat", None)
     ALLATIVE = ("all", False)
     LOCATIVE = ("loc", True)
     ABLATIVE = ("abl", False)
     PERLATIVE = ("prl", False)
     PARTITIVE = ("par", False)
+
+
+CASE_BY_IDENT = {
+    f"${c.abbreviation}$": c
+    for c in LauvinkoCase
+}
 
 
 class LauvinkoWordType(Enum):
@@ -392,9 +400,11 @@ class LauvinkoWord(Word):
         accented = 0
         i = 0
         found = False
+        context: Optional[MorphemeContext] = None
 
         if words[i].word_type() is LauvinkoWordType.CONTENT_WORD:
             found = True
+            context = words[i]._as_morph.context
             i += 1
 
         if words[i:] and words[i].word_type() is LauvinkoWordType.ADPOSITION:
@@ -404,9 +414,12 @@ class LauvinkoWord(Word):
         if words[i:] and words[i].word_type() is LauvinkoWordType.CONTENT_WORD:
             found = True
             accented = i
+            context = words[i]._as_morph.context
             i += 1
 
         if words[i:] and words[i].word_type() is LauvinkoWordType.DETERMINER:
+            if context is not None and context is not words[i]._as_morph.context:
+                raise ValueError("Augment must match between content and class word")
             found = True
             i += 1
 
@@ -464,25 +477,211 @@ class LauvinkoContentWord(LauvinkoWord):
         )
 
 
+PKS = ProtoKasanicSyllable
+PKO = ProtoKasanicOnset
+PKV = ProtoKasanicVowel
+
+LS = LauvinkoSyllable
+LC = LauvinkoConsonant
+LV = LauvinkoVowel
+
+CASE_SPELLING_SYLLABLES: dict[str, Optional[tuple[ProtoKasanicOnset, ProtoKasanicVowel]]] = {
+    LauvinkoCase.VOLITIVE.abbreviation: None,
+    LauvinkoCase.INSTRUMENTAL.abbreviation: (PKO.K, PKV.A),
+    LauvinkoCase.PATIENTIVE.abbreviation: None,
+    LauvinkoCase.DATIVE.abbreviation: (None, PKV.I),
+    LauvinkoCase.ALLATIVE.abbreviation: (None, PKV.I),
+    LauvinkoCase.LOCATIVE.abbreviation: (None, PKV.U),
+    LauvinkoCase.ABLATIVE.abbreviation: (None, PKV.U),
+    LauvinkoCase.PERLATIVE.abbreviation: (PKO.M, PKV.I),
+    LauvinkoCase.PARTITIVE.abbreviation: (None, PKV.E),
+}
+
+
+def get_person(lemma: Lemma):
+    parts = lemma.ident.split(".")
+    print(parts)
+    return re.match(r"\$([0-9a-z]+)\$", parts[0]).group(1)
+
+
+ANIMATES = {"1excl", "1incl", "2fam", "2fml", "2hon", "3rd", "hea"}
+
+IRREGULAR_CLASS_WORDS: dict[tuple[str, str], tuple[Optional[list[ProtoKasanicSyllable]], list[LauvinkoSyllable], bool]] = {
+    ("$1excl$.$sg$", LauvinkoCase.DATIVE.abbreviation): (
+        [PKS(None, PKV.O), PKS(PKO.N, PKV.I)], [LS(None, LV.O), LS(LC.N, LV.I)], False,
+    ),
+    ("$1incl$.$pl$", LauvinkoCase.DATIVE.abbreviation): (
+        [PKS(PKO.P, PKV.AA), PKS(PKO.N, PKV.I)], [LS(LC.P, LV.A), LS(LC.N, LV.I)], False,
+    ),
+    ("$2fam$.$sg$", LauvinkoCase.DATIVE.abbreviation): (
+        None, [LS(LC.L, LV.I)], False,
+    ),
+    # TODO: What's up with the 2nd person plural pronoun?
+    ("$2hon$", LauvinkoCase.DATIVE.abbreviation): (
+        [PKS(PKO.N, PKV.AA), PKS(None, PKV.I)], [LS(LC.N, LV.A, LC.Y)], False,
+    ),
+    ("$3rd$.$sg$", LauvinkoCase.DATIVE.abbreviation): (
+        [PKS(PKO.R, PKV.I), PKS(PKO.N, PKV.A)], [LS(LC.L, LV.I, LC.N)], False,
+    ),
+    # TODO: Also the 3rd person plural?
+    
+
+    ("$bra$.$sg$", LauvinkoCase.INSTRUMENTAL.abbreviation): (
+        [PKS(None, PKV.I), PKS(PKO.K, PKV.A)], [LS(None, LV.I, LC.K)], True,
+    ),
+    ("$bra$.$du$", LauvinkoCase.INSTRUMENTAL.abbreviation): (
+        [PKS(PKO.M, PKV.E), PKS(PKO.K, PKV.A)], [LS(LC.M, LV.E, LC.K)], True,
+    ),
+    ("$bra$.$pl$", LauvinkoCase.INSTRUMENTAL.abbreviation): (
+        [PKS(None, PKV.O), PKS(PKO.K, PKV.A)], [LS(None, LV.O, LC.K)], True,
+    ),
+
+    ("$lea$.$sg$", LauvinkoCase.ABLATIVE.abbreviation): (
+        None, [LS(None, LV.O), LS(LC.V, LV.O)], False,
+    ),
+}
+
+
 @dataclass
 class LauvinkoClassWord(LauvinkoWord):
     class_word: LauvinkoMorpheme
     case_suffix: Optional[LauvinkoMorpheme]
 
     def __post_init__(self):
-        super().__post_init__()
         assert self.class_word.lemma.mstype is MorphosyntacticType.CLASS_WORD
         if self.case_suffix is not None:
-            assert self.case_suffix.lemma.mstype is MorphosyntacticType.CASE_MARKER
+            assert self.case_suffix.lemma.mstype is MorphosyntacticType.ADPOSITION
 
-    def _get_accented(self):
-        return 0
+            expected_augment = self.case().augment
 
-    def morphemes(self) -> List[LauvinkoMorpheme]:
-        if self.case_suffix is None:
-            return [self.class_word]
+            if expected_augment is None:
+                expected_augment = self.animate()
+
+            if expected_augment:
+                assert self.class_word.context is MorphemeContext.AUGMENTED
+            else:
+                assert self.class_word.context is MorphemeContext.NONAUGMENTED
+
+        self._as_morph = self._generate_morph()
+
+    def case(self) -> LauvinkoCase:
+        return CASE_BY_IDENT[self.case_suffix.lemma.ident]
+
+    def animate(self) -> bool:
+        return get_person(self.class_word.lemma) in ANIMATES
+
+    @staticmethod
+    def _add_case_vowel(lv_syllables: list[LauvinkoSyllable], vowel: LauvinkoVowel):
+        if lv_syllables[-1].coda is None:
+            if lv_syllables[-1].vowel.frontness is vowel.frontness:
+                pass
+            else:
+                lv_syllables[-1].coda = OFFGLIDES[vowel.frontness]
+
+        elif lv_syllables[-1].coda is LauvinkoConsonant.A:
+            raise NotImplementedError
+
         else:
-            return [self.class_word, self.case_suffix]
+            syll = LauvinkoSyllable(
+                onset=lv_syllables[-1].coda,
+                vowel=vowel,
+                coda=None,
+            )
+            lv_syllables[-1].coda = None
+            lv_syllables.append(syll)
+
+    @staticmethod
+    def _add_case_consonant(lv_syllables: list[LauvinkoSyllable], consonant: LauvinkoConsonant):
+        if lv_syllables[-1].coda is None:
+            lv_syllables[-1].coda = consonant
+        elif lv_syllables[-1].coda is LauvinkoConsonant.A:
+            raise NotImplementedError
+        else:
+            syll = LauvinkoSyllable(
+                onset=lv_syllables[-1].coda,
+                vowel=LauvinkoVowel.A,
+                coda=consonant,
+            )
+            lv_syllables[-1].coda = None
+            lv_syllables.append(syll)
+
+    def _generate_morph(self) -> "LauvinkoMorpheme":
+        if self.case_suffix is None:
+            return self.class_word
+
+        case = self.case()
+
+        pk_syllables: list[ProtoKasanicSyllable] = [*self.class_word.virtual_original_form.surface_form.syllables]
+        tup = CASE_SPELLING_SYLLABLES[case.abbreviation]
+        if tup is not None:
+            pk_syllables.append(ProtoKasanicSyllable(*tup))
+
+        falling_accent = self.class_word.surface_form.falling_accent
+
+        tup = (self.class_word.lemma.ident, case.abbreviation)
+        if tup in IRREGULAR_CLASS_WORDS:
+            pks, lv_syllables, falling_accent = IRREGULAR_CLASS_WORDS[tup]
+            if pks is not None:
+                pk_syllables = pks
+        else:
+            lv_syllables: list[LauvinkoSyllable] = [
+                LauvinkoSyllable(
+                    onset=s.onset,
+                    vowel=s.vowel,
+                    coda=s.coda,
+                )
+                for s in self.class_word.surface_form.syllables
+            ]
+
+            if case in (LauvinkoCase.VOLITIVE, LauvinkoCase.PATIENTIVE):
+                pass
+            elif case is LauvinkoCase.INSTRUMENTAL:
+                self._add_case_consonant(lv_syllables, LauvinkoConsonant.K)
+            elif case is LauvinkoCase.DATIVE:
+                if self.animate():
+                    # TODO: How attached am I to the stray anusvara?
+                    self._add_case_vowel(lv_syllables, LauvinkoVowel.I)
+                else:
+                    self._add_case_consonant(lv_syllables, LauvinkoConsonant.N)
+            elif case is LauvinkoCase.ALLATIVE:
+                self._add_case_vowel(lv_syllables, LauvinkoVowel.I)
+            elif case in (LauvinkoCase.LOCATIVE, LauvinkoCase.ABLATIVE):
+                self._add_case_vowel(lv_syllables, LauvinkoVowel.O)
+            elif case is LauvinkoCase.PERLATIVE:
+                lv_syllables.append(LauvinkoSyllable(onset=LauvinkoConsonant.M, vowel=LauvinkoVowel.I, coda=None))
+            elif case is LauvinkoCase.PARTITIVE:
+                if lv_syllables[-1].coda is None:
+                    lv_syllables.append(LauvinkoSyllable(onset=LauvinkoConsonant.Y, vowel=LauvinkoVowel.E, coda=None))
+                elif lv_syllables[-1].coda is LauvinkoConsonant.A:
+                    raise NotImplementedError
+                else:
+                    syll = LauvinkoSyllable(
+                        onset=lv_syllables[-1].coda,
+                        vowel=LauvinkoVowel.E,
+                        coda=None,
+                    )
+                    lv_syllables[-1].coda = None
+                    lv_syllables.append(syll)
+            else:
+                raise NotImplementedError
+
+        return LauvinkoMorpheme(
+            lemma=None,
+            surface_form=LauvinkoSurfaceForm(
+                syllables=lv_syllables,
+                accent_position=self.class_word.surface_form.accent_position,
+                falling_accent=falling_accent,
+            ),
+            virtual_original_form=ProtoKasanicMorpheme(
+                lemma=None,
+                surface_form=PKSurfaceForm(
+                    syllables=pk_syllables,
+                    stress_position=self.class_word.virtual_original_form.surface_form.stress_position,
+                ),
+                end_mutation=None,
+            ),
+            context=self.class_word.context,
+        )
 
     def word_type(self) -> LauvinkoWordType:
         return LauvinkoWordType.DETERMINER

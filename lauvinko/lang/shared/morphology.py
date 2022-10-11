@@ -8,7 +8,6 @@ from .phonology import SurfaceForm
 class MorphosyntacticType(Enum):
     CLASS_WORD = "class word"
     ADPOSITION = "adposition"
-    CASE_MARKER = "case marker"  # TODO: merge with adposition
     MODAL_PREFIX = "modal prefix"
     TERTIARY_ASPECT_PREFIX = "tertiary aspect prefix"
     TOPIC_AGREEMENT_PREFIX = "topic agreement prefix"
@@ -25,6 +24,7 @@ class Lemma:
     """A Lemma is like a word but unspecified for inflection
     It is more or less equivalent to a single dictionary entry for a single language
     """
+    ident: str
     definition: str
     category: KasanicStemCategory
     mstype: MorphosyntacticType

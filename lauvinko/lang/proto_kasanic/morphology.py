@@ -209,6 +209,7 @@ class ProtoKasanicStem:
 
 @dataclass
 class ProtoKasanicLemma(Lemma):
+    ident: str
     category: KasanicStemCategory
     mstype: MorphosyntacticType
     generic_morph: ProtoKasanicMorpheme

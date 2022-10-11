@@ -87,7 +87,12 @@ class DictEntry:
             raise ValueError(f"{mstype} is a closed class")
 
         if origin is OriginLanguage.KASANIC or origin is OriginLanguage.SANSKRIT:  # TODO: separately handle sanskrit
-            languages = DictEntry.languages_from_pk_json(json_entry["languages"], category=category, mstype=mstype)
+            languages = DictEntry.languages_from_pk_json(
+                ident,
+                json_entry["languages"],
+                category=category,
+                mstype=mstype,
+            )
         else:
             raise NotImplementedError
 
@@ -123,13 +128,14 @@ class DictEntry:
 
         return lv_forms
 
-
     @staticmethod
-    def languages_from_pk_json(languages_json: dict, category: KasanicStemCategory, mstype: MorphosyntacticType):
+    def languages_from_pk_json(ident: str, languages_json: dict, category: KasanicStemCategory,
+                               mstype: MorphosyntacticType):
         if Language.PK.value not in languages_json:
-            return DictEntry.languages_from_json_no_source(languages_json, category=category, mstype=mstype)
+            return DictEntry.languages_from_json_no_source(ident, languages_json, category=category, mstype=mstype)
 
         pk_lemma = ProtoKasanicLemma(
+            ident=ident,
             definition=languages_json[Language.PK.value]["definition"],
             category=category,
             mstype=mstype,
@@ -165,8 +171,8 @@ class DictEntry:
         return languages
 
     @staticmethod
-    def languages_from_json_no_source(languages_json: dict, category: KasanicStemCategory, mstype: MorphosyntacticType)\
-            -> dict[Language, Lemma]:
+    def languages_from_json_no_source(ident: str, languages_json: dict, category: KasanicStemCategory,
+                                      mstype: MorphosyntacticType) -> dict[Language, Lemma]:
         forms_given = DictEntry.lv_forms_from_json(languages_json[Language.LAUVINKO.value]["forms"])
 
         expected_forms = {
@@ -181,6 +187,7 @@ class DictEntry:
 
         return {
             Language.LAUVINKO: LauvinkoLemma(
+                ident=ident,
                 definition=languages_json[Language.LAUVINKO.value]["definition"],
                 category=category,
                 mstype=mstype,

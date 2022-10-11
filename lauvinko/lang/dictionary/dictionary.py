@@ -119,6 +119,7 @@ class Dictionary:
                 ident = f"${ident}$"
 
             pk_lemma = ProtoKasanicLemma(
+                ident=ident,
                 definition="",
                 category=KasanicStemCategory.UNINFLECTED,
                 mstype=mstype,
@@ -144,6 +145,7 @@ class Dictionary:
             ident = f"${case.abbreviation}$"
 
             pk_lemma = ProtoKasanicLemma(
+                ident=ident,
                 definition=f"{case.name.title()} adposition",
                 category=KasanicStemCategory.UNINFLECTED,
                 mstype=MorphosyntacticType.ADPOSITION,

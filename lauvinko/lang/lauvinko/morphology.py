@@ -524,7 +524,6 @@ IRREGULAR_CLASS_WORDS: dict[tuple[str, str], tuple[Optional[list[ProtoKasanicSyl
         [PKS(PKO.R, PKV.I), PKS(PKO.N, PKV.A)], [LS(LC.L, LV.I, LC.N)], False,
     ),
     # TODO: Also the 3rd person plural?
-    
 
     ("$bra$.$sg$", LauvinkoCase.INSTRUMENTAL.abbreviation): (
         [PKS(None, PKV.I), PKS(PKO.K, PKV.A)], [LS(None, LV.I, LC.K)], True,

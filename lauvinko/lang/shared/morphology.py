@@ -126,6 +126,11 @@ def bucket_kasanic_prefixes(prefixes: List[Morpheme]) -> dict:
     if i < len(prefixes):
         raise MorphemeOrderError("Invalid or out of order prefix: " + repr(prefixes[i]))
 
+    if topic_agreement is not None and topic_case is None:
+        raise MorphemeOrderError("Must have topic case marker")
+    elif topic_case is not None and topic_case.lemma.ident != "$dep$" and topic_agreement is None:
+        raise MorphemeOrderError("Must have topic agreement marker")
+
     return {
         "modal_prefixes": modal_prefixes,
         "tertiary_aspect": tertiary_aspect,

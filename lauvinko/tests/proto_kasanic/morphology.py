@@ -14,6 +14,7 @@ from lauvinko.lang.proto_kasanic.morphology import (
 class ProtoKasanicMorphologyTests(unittest.TestCase):
     def test_fientive_form_generation(self):
         lemma = ProtoKasanicLemma(
+            ident="",
             definition="",
             category=KasanicStemCategory.FIENTIVE,
             mstype=MorphosyntacticType.INDEPENDENT,
@@ -32,6 +33,7 @@ class ProtoKasanicMorphologyTests(unittest.TestCase):
 
     def test_punctual_form_generation(self):
         lemma = ProtoKasanicLemma(
+            ident="",
             definition="",
             category=KasanicStemCategory.PUNCTUAL,
             mstype=MorphosyntacticType.INDEPENDENT,
@@ -59,6 +61,7 @@ class ProtoKasanicMorphologyTests(unittest.TestCase):
 
     def test_form_override(self):
         lemma = ProtoKasanicLemma(
+            ident="",
             definition="",
             category=KasanicStemCategory.FIENTIVE,
             mstype=MorphosyntacticType.INDEPENDENT,
@@ -79,6 +82,7 @@ class ProtoKasanicMorphologyTests(unittest.TestCase):
 
         with self.assertRaises(Lemma.NonexistentForm):
             ProtoKasanicLemma(
+                ident="",
                 definition="",
                 category=KasanicStemCategory.FIENTIVE,
                 mstype=MorphosyntacticType.INDEPENDENT,
@@ -94,6 +98,7 @@ class ProtoKasanicMorphologyTests(unittest.TestCase):
     def test_underspecified_vowels(self):
         with self.assertRaises(AblautMismatch):
             ProtoKasanicLemma(
+                ident="",
                 definition="",
                 category=KasanicStemCategory.FIENTIVE,
                 mstype=MorphosyntacticType.INDEPENDENT,
@@ -103,6 +108,7 @@ class ProtoKasanicMorphologyTests(unittest.TestCase):
 
         with self.assertRaises(AblautMismatch):
             ProtoKasanicLemma(
+                ident="",
                 definition="",
                 category=KasanicStemCategory.STATIVE,
                 mstype=MorphosyntacticType.INDEPENDENT,

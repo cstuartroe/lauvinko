@@ -126,6 +126,7 @@ class LauvinkoDiachronicTests(unittest.TestCase):
     def test_evolution_from_pk(self):
         for pk_morpheme, lv_morpheme_au, lv_morpheme_na in PK_TESTS:
             pk_lemma = ProtoKasanicLemma(
+                ident="",
                 definition="",
                 category=KasanicStemCategory.UNINFLECTED,
                 mstype=MorphosyntacticType.INDEPENDENT,
@@ -156,6 +157,7 @@ class LauvinkoDiachronicTests(unittest.TestCase):
     def test_tense_aspect(self):
         for pk_morpheme, *forms in FULL_TENSE_ASPECT_TESTS:
             pk_lemma = ProtoKasanicLemma(
+                ident="",
                 definition="",
                 category=KasanicStemCategory.FIENTIVE,
                 mstype=MorphosyntacticType.INDEPENDENT,
@@ -179,6 +181,7 @@ class LauvinkoDiachronicTests(unittest.TestCase):
 
         for i, sylls in enumerate(all_pk_sylls(2)):
             pk_lemma = ProtoKasanicLemma(
+                ident="",
                 definition="",
                 category=KasanicStemCategory.UNINFLECTED,
                 mstype=MorphosyntacticType.INDEPENDENT,

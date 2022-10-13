@@ -134,6 +134,7 @@ def random_pk_morpheme() -> ProtoKasanicMorpheme:
 
 def random_pk_lemma(category: KasanicStemCategory) -> ProtoKasanicLemma:
     return ProtoKasanicLemma(
+        ident="",
         category=category,
         mstype=MorphosyntacticType.INDEPENDENT,
         definition="",

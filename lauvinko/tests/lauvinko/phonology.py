@@ -9,7 +9,7 @@ lm = LauvinkoMorpheme.from_informal_transcription
 
 TESTS: list[tuple[LauvinkoMorpheme, str, str, str, ProtoKasanicOnset, ProtoKasanicMutation]] = [
     (lm("se\\anor+F"), 'sêɐ̯.nol', 'sêɐ̯.nol', 'sɛ̂ɐ̯nʊɽ', ProtoKasanicOnset.S, ProtoKasanicMutation.FORTITION),
-    (lm("nca/ye+L"), 'an.t͡sá.je', 'an.t͡sá.je', 'ɐnt͡sɑ́ːjɪ', ProtoKasanicOnset.NC, ProtoKasanicMutation.LENITION),
+    (lm("nca/ye+L"), 'an.t͡sá.je', 'an.t͡sá.je', 'ɐnt͡sɑ́ːjɛ', ProtoKasanicOnset.NC, ProtoKasanicMutation.LENITION),
     (lm('ttayno+N'), 'taj.no', 'taj.no', 'tɐjnʊ', ProtoKasanicOnset.TT, ProtoKasanicMutation.NASALIZATION),
     (lm('socya\\ng+N'), 'sot͡s.jâŋ', 'sot͡s.jân', 'sʊtt͡ɕɐ̂ŋ', ProtoKasanicOnset.S, ProtoKasanicMutation.NASALIZATION),
     (lm('voh'), 'ʋok', 'ʋoh', 'ʋʊʔ', ProtoKasanicOnset.W, None),

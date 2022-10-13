@@ -311,6 +311,19 @@
     "mstype": "class word",
     "origin": "kasanic"
   },
+  "$rck$.$sg$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "(measure word) solid, compact thing (singular).",
+        "forms": {
+          "gn": ""
+        }
+      }
+    },
+    "mstype": "class word",
+    "origin": "kasanic"
+  },
   "$sea$": {
     "category": "uninflected",
     "languages": {

@@ -1885,16 +1885,6 @@
   "shark": {
     "category": "uninflected",
     "languages": {
-      "lv": {
-        "forms": {
-          "gn.au": {
-            "phonemic": "ma/yna"
-          },
-          "gn.na": {
-            "phonemic": "ma\\yna"
-          }
-        }
-      },
       "pk": {
         "definition": "Cartilaginous fish (shark, ray, sawfish).",
         "forms": {

@@ -429,9 +429,70 @@ class LauvinkoWord(Word):
         if not found or i != len(words):
             raise InvalidSyntacticWordSequence(str([w.word_type().value for w in words]))
 
-        return LauvinkoSurfaceForm.cliticize(
-            sfs=[w.surface_form() for w in words],
+        return LauvinkoWord.cliticize(
+            words=words,
             accented=accented,
+        )
+
+    @classmethod
+    def cliticize(cls, words: List["LauvinkoWord"], accented: int) -> "LauvinkoSurfaceForm":
+        syllables: List[LauvinkoSyllable] = []
+        accent_position = None
+        falling_accent = None
+
+        for i, word in enumerate(words):
+            sf = word.surface_form()
+
+            if accented == i:
+                accent_position = len(syllables) + sf.accent_position
+                falling_accent = sf.falling_accent
+
+            if len(sf.syllables) == 0:
+                if word.word_type() is LauvinkoWordType.DETERMINER:
+                    word.apply_case_ending(syllables)
+                continue
+
+            ms = [
+                LauvinkoSyllable(
+                    onset=s.onset,
+                    vowel=s.vowel,
+                    coda=s.coda,
+                )
+                for s in sf.syllables
+            ]
+
+            if ms[0].onset is None:
+                if len(syllables) == 0:
+                    pass
+
+                elif syllables[-1].coda is not None:
+                    ms[0].onset = syllables[-1].coda
+                    syllables[-1].coda = None
+
+                elif syllables[-1].vowel is LauvinkoVowel.A and accent_position != len(syllables):
+                    ms[0].onset = syllables[-1].onset
+                    del syllables[-1]
+
+                elif ms[0].vowel.frontness == syllables[-1].vowel.frontness and not ms[0].vowel.low:
+                    ms[0].vowel = syllables[-1].vowel
+                    ms[0].onset = syllables[-1].onset
+                    del syllables[-1]
+
+                elif syllables[-1].vowel.frontness is VowelFrontness.FRONT:
+                    ms[0].onset = LauvinkoConsonant.Y
+
+                elif syllables[-1].vowel.frontness is VowelFrontness.BACK:
+                    ms[0].onset = LauvinkoConsonant.V
+
+            syllables += ms
+
+        if accent_position is None:
+            raise ValueError
+
+        return LauvinkoSurfaceForm(
+            syllables=syllables,
+            accent_position=accent_position,
+            falling_accent=falling_accent,
         )
 
 
@@ -541,6 +602,57 @@ IRREGULAR_CLASS_WORDS: dict[tuple[str, str], tuple[Optional[list[ProtoKasanicSyl
 }
 
 
+def _add_case_vowel(lv_syllables: list[LauvinkoSyllable], vowel: LauvinkoVowel):
+    if lv_syllables[-1].coda is None:
+        if lv_syllables[-1].vowel.frontness is vowel.frontness:
+            pass
+        else:
+            lv_syllables[-1].coda = OFFGLIDES[vowel.frontness]
+
+    elif lv_syllables[-1].coda is LauvinkoConsonant.A:
+        raise NotImplementedError
+
+    else:
+        syll = LauvinkoSyllable(
+            onset=lv_syllables[-1].coda,
+            vowel=vowel,
+            coda=None,
+        )
+        lv_syllables[-1].coda = None
+        lv_syllables.append(syll)
+
+
+def _add_case_consonant(lv_syllables: list[LauvinkoSyllable], consonant: LauvinkoConsonant):
+    if lv_syllables[-1].coda is None:
+        lv_syllables[-1].coda = consonant
+
+    elif lv_syllables[-1].coda is LauvinkoConsonant.A:
+        raise NotImplementedError
+
+    else:
+        syll = LauvinkoSyllable(
+            onset=lv_syllables[-1].coda,
+            vowel=LauvinkoVowel.A,
+            coda=consonant,
+        )
+        lv_syllables[-1].coda = None
+        lv_syllables.append(syll)
+
+
+def _add_partitive_suffix(lv_syllables: list[LauvinkoSyllable]):
+    if lv_syllables[-1].coda is None:
+        lv_syllables.append(LauvinkoSyllable(onset=LauvinkoConsonant.Y, vowel=LauvinkoVowel.E, coda=None))
+    elif lv_syllables[-1].coda is LauvinkoConsonant.A:
+        raise NotImplementedError
+    else:
+        syll = LauvinkoSyllable(
+            onset=lv_syllables[-1].coda,
+            vowel=LauvinkoVowel.E,
+            coda=None,
+        )
+        lv_syllables[-1].coda = None
+        lv_syllables.append(syll)
+
 @dataclass
 class LauvinkoClassWord(LauvinkoWord):
     class_word: LauvinkoMorpheme
@@ -563,52 +675,44 @@ class LauvinkoClassWord(LauvinkoWord):
 
         self._as_morph = self._generate_morph()
 
-    def case(self) -> LauvinkoCase:
+    def case(self) -> Optional[LauvinkoCase]:
+        if self.case_suffix is None:
+            return None
         return CASE_BY_IDENT[self.case_suffix.lemma.ident]
 
     def animate(self) -> bool:
         return get_person(self.class_word.lemma) in ANIMATES
 
-    @staticmethod
-    def _add_case_vowel(lv_syllables: list[LauvinkoSyllable], vowel: LauvinkoVowel):
-        if lv_syllables[-1].coda is None:
-            if lv_syllables[-1].vowel.frontness is vowel.frontness:
-                pass
+    def apply_case_ending(self, lv_syllables: list[LauvinkoSyllable]):
+        case = self.case()
+
+        if case is None:
+            pass
+        elif case in (LauvinkoCase.VOLITIVE, LauvinkoCase.PATIENTIVE):
+            pass
+        elif case is LauvinkoCase.INSTRUMENTAL:
+            _add_case_consonant(lv_syllables, LauvinkoConsonant.K)
+        elif case is LauvinkoCase.DATIVE:
+            if self.animate():
+                # TODO: How attached am I to the stray anusvara?
+                _add_case_vowel(lv_syllables, LauvinkoVowel.I)
             else:
-                lv_syllables[-1].coda = OFFGLIDES[vowel.frontness]
-
-        elif lv_syllables[-1].coda is LauvinkoConsonant.A:
-            raise NotImplementedError
-
+                _add_case_consonant(lv_syllables, LauvinkoConsonant.N)
+        elif case is LauvinkoCase.ALLATIVE:
+            _add_case_vowel(lv_syllables, LauvinkoVowel.I)
+        elif case in (LauvinkoCase.LOCATIVE, LauvinkoCase.ABLATIVE):
+            _add_case_vowel(lv_syllables, LauvinkoVowel.O)
+        elif case is LauvinkoCase.PERLATIVE:
+            lv_syllables.append(LauvinkoSyllable(onset=LauvinkoConsonant.M, vowel=LauvinkoVowel.I, coda=None))
+        elif case is LauvinkoCase.PARTITIVE:
+            _add_partitive_suffix(lv_syllables)
         else:
-            syll = LauvinkoSyllable(
-                onset=lv_syllables[-1].coda,
-                vowel=vowel,
-                coda=None,
-            )
-            lv_syllables[-1].coda = None
-            lv_syllables.append(syll)
-
-    @staticmethod
-    def _add_case_consonant(lv_syllables: list[LauvinkoSyllable], consonant: LauvinkoConsonant):
-        if lv_syllables[-1].coda is None:
-            lv_syllables[-1].coda = consonant
-        elif lv_syllables[-1].coda is LauvinkoConsonant.A:
             raise NotImplementedError
-        else:
-            syll = LauvinkoSyllable(
-                onset=lv_syllables[-1].coda,
-                vowel=LauvinkoVowel.A,
-                coda=consonant,
-            )
-            lv_syllables[-1].coda = None
-            lv_syllables.append(syll)
 
     def _generate_morph(self) -> "LauvinkoMorpheme":
-        if self.case_suffix is None:
-            return self.class_word
-
         case = self.case()
+        if case is None:
+            return self.class_word
 
         pk_syllables: list[ProtoKasanicSyllable] = [*self.class_word.virtual_original_form.surface_form.syllables]
         tup = CASE_SPELLING_SYLLABLES[case.abbreviation]
@@ -622,6 +726,7 @@ class LauvinkoClassWord(LauvinkoWord):
             pks, lv_syllables, falling_accent = IRREGULAR_CLASS_WORDS[tup]
             if pks is not None:
                 pk_syllables = pks
+
         else:
             lv_syllables: list[LauvinkoSyllable] = [
                 LauvinkoSyllable(
@@ -632,37 +737,8 @@ class LauvinkoClassWord(LauvinkoWord):
                 for s in self.class_word.surface_form.syllables
             ]
 
-            if case in (LauvinkoCase.VOLITIVE, LauvinkoCase.PATIENTIVE):
-                pass
-            elif case is LauvinkoCase.INSTRUMENTAL:
-                self._add_case_consonant(lv_syllables, LauvinkoConsonant.K)
-            elif case is LauvinkoCase.DATIVE:
-                if self.animate():
-                    # TODO: How attached am I to the stray anusvara?
-                    self._add_case_vowel(lv_syllables, LauvinkoVowel.I)
-                else:
-                    self._add_case_consonant(lv_syllables, LauvinkoConsonant.N)
-            elif case is LauvinkoCase.ALLATIVE:
-                self._add_case_vowel(lv_syllables, LauvinkoVowel.I)
-            elif case in (LauvinkoCase.LOCATIVE, LauvinkoCase.ABLATIVE):
-                self._add_case_vowel(lv_syllables, LauvinkoVowel.O)
-            elif case is LauvinkoCase.PERLATIVE:
-                lv_syllables.append(LauvinkoSyllable(onset=LauvinkoConsonant.M, vowel=LauvinkoVowel.I, coda=None))
-            elif case is LauvinkoCase.PARTITIVE:
-                if lv_syllables[-1].coda is None:
-                    lv_syllables.append(LauvinkoSyllable(onset=LauvinkoConsonant.Y, vowel=LauvinkoVowel.E, coda=None))
-                elif lv_syllables[-1].coda is LauvinkoConsonant.A:
-                    raise NotImplementedError
-                else:
-                    syll = LauvinkoSyllable(
-                        onset=lv_syllables[-1].coda,
-                        vowel=LauvinkoVowel.E,
-                        coda=None,
-                    )
-                    lv_syllables[-1].coda = None
-                    lv_syllables.append(syll)
-            else:
-                raise NotImplementedError
+            if len(lv_syllables) > 0:
+                self.apply_case_ending(lv_syllables)
 
         return LauvinkoMorpheme(
             lemma=None,

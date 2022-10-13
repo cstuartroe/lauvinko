@@ -8,6 +8,7 @@ from .phonology import SurfaceForm
 class MorphosyntacticType(Enum):
     CLASS_WORD = "class word"
     ADPOSITION = "adposition"
+    DEFINITE_MARKER = "definite marker"
     MODAL_PREFIX = "modal prefix"
     TERTIARY_ASPECT_PREFIX = "tertiary aspect prefix"
     TOPIC_AGREEMENT_PREFIX = "topic agreement prefix"

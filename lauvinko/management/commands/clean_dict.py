@@ -10,12 +10,6 @@ MSTYPE_ORDER = [
     for t in MorphosyntacticType
 ]
 
-
-ADPOSITION_ORDER = [
-    f"${m.abbreviation}$"
-    for m in LauvinkoCase
-]
-
 PERSON_ORDER = [
     "$1excl$",
     "$1incl$",
@@ -38,8 +32,6 @@ NUMBER_ORDER = ["$sg$", "$du$", "$pl$"]
 def key_order(mstype: str, ident: str) -> Any:
     if mstype == MorphosyntacticType.INDEPENDENT.value or mstype == MorphosyntacticType.NUMBER_SUFFIX.value:
         return ident
-    elif mstype == MorphosyntacticType.ADPOSITION.value:
-        return ADPOSITION_ORDER.index(ident)
     elif mstype == MorphosyntacticType.CLASS_WORD.value:
         if ident in NUMBERLESS_PERSONS:
             person, number = ident, "$sg$"
@@ -47,6 +39,8 @@ def key_order(mstype: str, ident: str) -> Any:
             person, number = ident.split(".")
 
         return PERSON_ORDER.index(person), NUMBER_ORDER.index(number)
+    elif mstype == MorphosyntacticType.DEFINITE_MARKER.value:
+        return None
     else:
         raise NotImplementedError(f"{mstype} ordering not implemented")
 

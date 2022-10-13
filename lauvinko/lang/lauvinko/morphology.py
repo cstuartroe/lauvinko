@@ -639,16 +639,18 @@ def _add_case_consonant(lv_syllables: list[LauvinkoSyllable], consonant: Lauvink
         lv_syllables.append(syll)
 
 
-def _add_partitive_suffix(lv_syllables: list[LauvinkoSyllable]):
+def _add_partitive_suffix(lv_syllables: list[LauvinkoSyllable], definite: bool):
+    coda = LauvinkoConsonant.S if definite else None
+
     if lv_syllables[-1].coda is None:
-        lv_syllables.append(LauvinkoSyllable(onset=LauvinkoConsonant.Y, vowel=LauvinkoVowel.E, coda=None))
+        lv_syllables.append(LauvinkoSyllable(onset=LauvinkoConsonant.Y, vowel=LauvinkoVowel.E, coda=coda))
     elif lv_syllables[-1].coda is LauvinkoConsonant.A:
         raise NotImplementedError
     else:
         syll = LauvinkoSyllable(
             onset=lv_syllables[-1].coda,
             vowel=LauvinkoVowel.E,
-            coda=None,
+            coda=coda,
         )
         lv_syllables[-1].coda = None
         lv_syllables.append(syll)
@@ -657,9 +659,11 @@ def _add_partitive_suffix(lv_syllables: list[LauvinkoSyllable]):
 class LauvinkoClassWord(LauvinkoWord):
     class_word: LauvinkoMorpheme
     case_suffix: Optional[LauvinkoMorpheme]
+    definite_suffix: Optional[LauvinkoMorpheme]
 
     def __post_init__(self):
         assert self.class_word.lemma.mstype is MorphosyntacticType.CLASS_WORD
+
         if self.case_suffix is not None:
             assert self.case_suffix.lemma.mstype is MorphosyntacticType.ADPOSITION
 
@@ -672,6 +676,15 @@ class LauvinkoClassWord(LauvinkoWord):
                 assert self.class_word.context is MorphemeContext.AUGMENTED
             else:
                 assert self.class_word.context is MorphemeContext.NONAUGMENTED
+
+        if self.definite_suffix is not None:
+            assert self.definite_suffix.lemma.mstype is MorphosyntacticType.DEFINITE_MARKER
+
+            # The head class word is inherently indefinite, definite referents use $3rd$ class words
+            assert not self.class_word.lemma.ident.startswith("$hea$")
+
+            assert self.case_suffix is not None
+            assert self.case_suffix.lemma.ident == f"${LauvinkoCase.PARTITIVE.abbreviation}$"
 
         self._as_morph = self._generate_morph()
 
@@ -705,7 +718,7 @@ class LauvinkoClassWord(LauvinkoWord):
         elif case is LauvinkoCase.PERLATIVE:
             lv_syllables.append(LauvinkoSyllable(onset=LauvinkoConsonant.M, vowel=LauvinkoVowel.I, coda=None))
         elif case is LauvinkoCase.PARTITIVE:
-            _add_partitive_suffix(lv_syllables)
+            _add_partitive_suffix(lv_syllables, self.definite_suffix is not None)
         else:
             raise NotImplementedError
 
@@ -718,6 +731,9 @@ class LauvinkoClassWord(LauvinkoWord):
         tup = CASE_SPELLING_SYLLABLES[case.abbreviation]
         if tup is not None:
             pk_syllables.append(ProtoKasanicSyllable(*tup))
+
+        if self.definite_suffix is not None:
+            pk_syllables.append(*self.definite_suffix.virtual_original_form.surface_form.syllables)
 
         falling_accent = self.class_word.surface_form.falling_accent
 
@@ -763,12 +779,16 @@ class LauvinkoClassWord(LauvinkoWord):
 
     @classmethod
     def from_morphemes(cls, morphemes: List[LauvinkoMorpheme]) -> "LauvinkoClassWord":
-        if len(morphemes) == 1:
-            return cls(morphemes[0], None)
-        elif len(morphemes) == 2:
-            return cls(*morphemes)
-        else:
-            raise ValueError
+        class_word = morphemes[0]
+        case_suffix = None
+        definite_suffix = None
+
+        if len(morphemes) >= 2:
+            case_suffix = morphemes[1]
+        if len(morphemes) == 3:
+            definite_suffix = morphemes[2]
+
+        return cls(class_word, case_suffix, definite_suffix)
 
 @dataclass
 class LauvinkoParticle(LauvinkoWord):

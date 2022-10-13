@@ -340,6 +340,19 @@
     "mstype": "class word",
     "origin": "kasanic"
   },
+  "$def$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Definite suffix.",
+        "forms": {
+          "gn": "sa"
+        }
+      }
+    },
+    "mstype": "definite marker",
+    "origin": "kasanic"
+  },
   "$coll1$": {
     "category": "uninflected",
     "languages": {

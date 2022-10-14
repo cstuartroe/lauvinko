@@ -26,6 +26,12 @@ UNDERSPECIFIED_VOWELS = {
 }
 
 
+def reverse(d: dict, val):
+    for k, v in d.items():
+        if v is val:
+            return k
+
+
 @dataclass
 class ProtoKasanicMorpheme(Morpheme):
     lemma: Optional["ProtoKasanicLemma"]
@@ -41,6 +47,24 @@ class ProtoKasanicMorpheme(Morpheme):
             lemma=None,
             **cls._from_informal_transcription(transcription, stress_position=stress_position),
         )
+
+    def informal_transcription(self):
+        out = ""
+
+        for syll in self.surface_form.syllables:
+            if syll.onset is not None:
+                out += syll.onset.name.lower()
+
+            if syll.vowel.frontness is VowelFrontness.UNDERSPECIFIED:
+                out += reverse(UNDERSPECIFIED_VOWELS, syll.vowel)
+            else:
+                out += syll.vowel.name.lower()
+
+        mut = reverse(MUTATION_NOTATION, self.end_mutation)
+        if mut is not None:
+            out += mut
+
+        return out
 
     @staticmethod
     def _from_informal_transcription(transcription: str, stress_position: Optional[int] = -1):

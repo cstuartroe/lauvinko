@@ -3,7 +3,6 @@ from typing import Any
 from django.core.management.base import BaseCommand
 from lauvinko.lang.shared.morphology import MorphosyntacticType
 from lauvinko.lang.dictionary.dictionary import DICTIONARY_FILENAME
-from lauvinko.lang.lauvinko.morphology import LauvinkoCase
 
 MSTYPE_ORDER = [
     t.value
@@ -52,6 +51,10 @@ def dict_sort(item: tuple[str, dict]) -> tuple[int, Any]:
     return MSTYPE_ORDER.index(mstype), key_order(mstype, ident)
 
 
+def order_dict(d: dict) -> dict:
+    return dict(sorted(d.items(), key=dict_sort))
+
+
 class Command(BaseCommand):
     help = 'Autoformats the dictionary'
 
@@ -59,8 +62,6 @@ class Command(BaseCommand):
         with open(DICTIONARY_FILENAME, "r") as fh:
             d = json.load(fh)
 
-        d = dict(sorted(d.items(), key=dict_sort))
-
         with open(DICTIONARY_FILENAME, "w") as fh:
-            json.dump(d, fh, indent=2, sort_keys=False)
+            json.dump(order_dict(d), fh, indent=2, sort_keys=False)
         

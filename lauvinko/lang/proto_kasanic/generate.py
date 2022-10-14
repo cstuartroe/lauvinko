@@ -133,7 +133,7 @@ def random_pk_morpheme() -> ProtoKasanicMorpheme:
 
 
 def random_pk_lemma(category: KasanicStemCategory) -> ProtoKasanicLemma:
-    return ProtoKasanicLemma(
+    lemma = ProtoKasanicLemma(
         ident="",
         category=category,
         mstype=MorphosyntacticType.INDEPENDENT,
@@ -148,3 +148,7 @@ def random_pk_lemma(category: KasanicStemCategory) -> ProtoKasanicLemma:
             end_mutation=None,
         )
     )
+
+    lemma.generic_morph.lemma = lemma
+
+    return lemma

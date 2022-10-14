@@ -59,6 +59,8 @@ ADPOSITIONS = [
     (LauvinkoCase.ABLATIVE, "aapo"),
     (LauvinkoCase.PERLATIVE, "moko"),
     (LauvinkoCase.PARTITIVE, "e"),
+
+    ("and", "naa"),
 ]
 
 DICTIONARY_FILENAME = "lauvinko/lang/dictionary.json"
@@ -142,11 +144,16 @@ class Dictionary:
 
     def fill_in_adpositions(self):
         for case, informal_transcription in ADPOSITIONS:
-            ident = f"${case.abbreviation}$"
+            if isinstance(case, str):
+                ident = case
+                definition = case.title() + "."
+            else:
+                ident = f"${case.abbreviation}$"
+                definition = f"{case.name.title()} adposition"
 
             pk_lemma = ProtoKasanicLemma(
                 ident=ident,
-                definition=f"{case.name.title()} adposition",
+                definition=definition,
                 category=KasanicStemCategory.UNINFLECTED,
                 mstype=MorphosyntacticType.ADPOSITION,
                 forms={},

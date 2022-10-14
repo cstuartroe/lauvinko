@@ -5,6 +5,7 @@
 
 $paragraph_font_size: 1.75vh;
 $paragraph_padding: 1em;
+$border_width: 1.5px;
 
 p, .paragraph, input[type="text"] {
   font-size: $paragraph_font_size;
@@ -63,7 +64,7 @@ a:not([href]) {
 div.scroll {
   overflow: scroll;
   border-style: solid;
-  border-width: 2px;
+  border-width: $border_width;
   border-color: #f0f0f0;
 }
 
@@ -73,7 +74,7 @@ p.go-up {
 
 div.go-down div, button {
   border-style: solid;
-  border-width: 2px;
+  border-width: $border_width;
   border-color: #f0f0f0;
   border-radius: 20px;
   display: table;
@@ -117,7 +118,7 @@ li, td, th, hr, input[type="text"] {
   padding: 10px;
   border-radius: 15px;
   border-style: solid;
-  border-width: 2px;
+  border-width: $border_width;
   border-color: transparent;
 }
 
@@ -209,26 +210,32 @@ table.inline {
 
 div.gloss {
   max-width: 100%;
-  margin: 1em 0;
-  padding: 10px;
-  border: 2px solid #007f00;
+  margin: 5px 0;
+  padding: 5px;
+  border-width: $border_width;
+  border-style: solid;
+  border-color: #007f00;
   border-radius: 5px;
   width: fit-content;
   display: inline-block;
-}
+  position: relative;
 
-.gloss div {
-  overflow-x: scroll;
-}
+  div {
+    overflow-x: scroll;
+  }
 
-.gloss p {
-  padding: 0;
-}
+  p {
+    padding: 0;
+    position: absolute;
+    bottom: 2px;
+    right: 4px;
+  }
 
-.gloss table td {
-  border: none;
-  padding: 5px;
-  text-align: left;
+  table td {
+    border: none;
+    padding: 2px;
+    text-align: left;
+  }
 }
 
 .romanization {

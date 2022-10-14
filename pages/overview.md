@@ -8,7 +8,7 @@ and lexical influence from Malay, Pali, and Sanskrit, and less but significant
 from languages as various as Arabic, Tamil, Hokkien Chinese, Swahili,
 Portuguese, and Dutch, the language and identity remained vigorously
 distinct throughout its history, beginning with the inception of a unified
-Lauvìnko identity in the reign of the legendary 9th century chief Socyàng.
+Lauvìnko identity in the reign of the legendary 9^{th} century chief Socyàng.
 
 Given the broad range of time across which Lauvìnko is attested, it went
 through multiple stages that could properly be termed distinct languages. The

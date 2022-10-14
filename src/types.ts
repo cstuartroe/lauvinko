@@ -10,14 +10,19 @@ export type MistletoeDocument = {
   children: MarkdownBlock[],
 }
 
-export type MarkdownBlock = MarkdownParagraph | MarkdownTable | MarkdownPreformatted;
+export type MarkdownBlock = (
+  MarkdownParagraph
+  | MarkdownTable
+  | MarkdownPreformatted
+  | MarkdownHeading
+  | MarkdownList);
 
 export type MarkdownParagraph = {
   type: "Paragraph",
   children: ParagraphChild[],
 }
 
-export type ParagraphChild = RawText | InlineCode | Emphasis | Link | Image | LineBreak;
+export type ParagraphChild = RawText | InlineCode | Emphasis | Strong | Link | Image | LineBreak;
 
 type RawText = {
   type: "RawText",
@@ -31,6 +36,11 @@ export type InlineCode = {
 
 export type Emphasis = {
   type: "Emphasis",
+  children: ParagraphChild[],
+}
+
+export type Strong = {
+  type: "Strong",
   children: ParagraphChild[],
 }
 
@@ -49,6 +59,12 @@ export type Image = {
 type LineBreak = {
   type: "LineBreak",
   soft: boolean,
+}
+
+export type MarkdownHeading = {
+  type: "Heading",
+  level: number,
+  children: ParagraphChild[],
 }
 
 export type MarkdownTable = {
@@ -71,6 +87,16 @@ export type MarkdownPreformatted = {
   type: "CodeFence",
   language: string,
   children: RawText[],
+}
+
+export type MarkdownList = {
+  type: "List",
+  children: ListItem[],
+}
+
+type ListItem = {
+  type: "ListItem",
+  children: [MarkdownBlock],
 }
 
 export type ApiFailure = {

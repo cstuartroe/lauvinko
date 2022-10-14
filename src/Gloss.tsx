@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {ApiFailure, ApiResponse, InlineCode, MarkdownPreformatted} from "./types";
+import {ApiResponse, InlineCode, MarkdownPreformatted} from "./types";
 
 export type GlossRow = "analysis" | "romanization" | "falavay" | "narrow_transcription" | "broad_transcription";
 
@@ -222,6 +222,56 @@ class CopyLink extends Component<CopyLinkProps, CopyLinkState> {
   }
 }
 
+export function extraFormatting(s: string): JSX.Element[] {
+  let out: any[] = [];
+  let current: string = "";
+
+  let i = 0;
+  while (i < s.length) {
+    const c = s[i];
+
+    if (c == '$') {
+      out.push(current);
+      current = "";
+
+      const words = s.substring(i).match(/^\$([a-z0-9]+)\$/)
+      if (words === null) {
+        throw "Mismatched dollar signs";
+      }
+
+      out.push(<span className="abbrev" key={i}>{words[1]}</span>);
+
+      i += words[0].length;
+
+    } else if (c == '^') {
+      out.push(current);
+      current = "";
+
+      if (s[i+1] == '{') {
+        const words = s.substring(i).match(/^\^{([^}]+)}/)
+        if (words === null) {
+          throw "Mismatched braces";
+        }
+
+        out.push(<sup key={i}>{words[1]}</sup>);
+
+        i += words[0].length;
+      } else {
+        out.push(<sup>{s[i+1]}</sup>);
+        i += 2;
+      }
+
+    } else {
+      current += c;
+      i++;
+    }
+  }
+
+  out.push(current);
+
+  return out;
+}
+
 type BlockGlossProps = GlossParams & {
   rows: GlossRow[],
   translation: string,
@@ -290,7 +340,7 @@ class BlockGloss extends Component<BlockGlossProps, GlossState> {
           <td className={ROW_CLASSES[row]} key={col}>
             {row === "broad_transcription" && col === 0 && '/'}
             {row === "narrow_transcription" && col === 0 && '[ '}
-            {word}
+            {row == "analysis" ? extraFormatting(word) : word}
             {row === "broad_transcription" && col === this.length() - 1 && '/'}
             {row === "narrow_transcription" && col === this.length() - 1 && ' ]'}
           </td>

@@ -550,7 +550,6 @@ CASE_SPELLING_SYLLABLES: dict[str, Optional[tuple[ProtoKasanicOnset, ProtoKasani
     LauvinkoCase.VOLITIVE.abbreviation: None,
     LauvinkoCase.INSTRUMENTAL.abbreviation: (PKO.K, PKV.A),
     LauvinkoCase.PATIENTIVE.abbreviation: None,
-    LauvinkoCase.DATIVE.abbreviation: (None, PKV.I),
     LauvinkoCase.ALLATIVE.abbreviation: (None, PKV.I),
     LauvinkoCase.LOCATIVE.abbreviation: (None, PKV.U),
     LauvinkoCase.ABLATIVE.abbreviation: (None, PKV.U),
@@ -722,15 +721,27 @@ class LauvinkoClassWord(LauvinkoWord):
         else:
             raise NotImplementedError
 
+    def _case_spelling(self) -> ProtoKasanicSyllable:
+        case = self.case()
+
+        if case is LauvinkoCase.DATIVE:
+            if self.animate():
+                tup = (None, PKV.I)
+            else:
+                tup = (PKO.N, PKV.A)
+        else:
+            tup = CASE_SPELLING_SYLLABLES[case.abbreviation]
+
+        return tup and ProtoKasanicSyllable(*tup)
+
     def _generate_morph(self) -> "LauvinkoMorpheme":
         case = self.case()
         if case is None:
             return self.class_word
 
         pk_syllables: list[ProtoKasanicSyllable] = [*self.class_word.virtual_original_form.surface_form.syllables]
-        tup = CASE_SPELLING_SYLLABLES[case.abbreviation]
-        if tup is not None:
-            pk_syllables.append(ProtoKasanicSyllable(*tup))
+        syll = self._case_spelling()
+        syll and pk_syllables.append(syll)
 
         if self.definite_suffix is not None:
             pk_syllables.append(*self.definite_suffix.virtual_original_form.surface_form.syllables)

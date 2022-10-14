@@ -103,9 +103,9 @@ class MorphemeSource:
         out = self.name
 
         if self.value.lemma.category is not KasanicStemCategory.UNINFLECTED:
-            out += f".{PTA2ABBREV[self.primary_ta]}"
+            out += f".${PTA2ABBREV[self.primary_ta]}$"
 
-        if self.value.lemma.mstype is MorphosyntacticType.INDEPENDENT:
+        if self.value.lemma.mstype in (MorphosyntacticType.INDEPENDENT, MorphosyntacticType.CLASS_WORD):
             out += f".{MC_ABBREVS[self.context]}"
 
         return out

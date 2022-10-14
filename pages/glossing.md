@@ -74,6 +74,24 @@ within a syntactic word are categorically different and more
 complex than those which take place when syntactically independent
 words become phonologically enclitic/proclitic on one another.
 
+```
+$t3as$-$tvol$-speak.$pf$.$na$
+
+He spoke.
+```
+
+```
+$dat$=$t3as$-$tvol$-speak.$pf$.$na$
+
+He spoke about it.
+```
+
+```
+if-$t3as$-$tvol$-speak.$pf$.$na$
+
+If he spoke.
+```
+
 # Abbreviations
   
 Here is the full set of glossing 

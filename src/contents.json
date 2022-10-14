@@ -11,68 +11,7 @@
           "title": "A Note on Glossing"
         }
       ]
-    }, 
-    {
-      "name": "people", 
-      "subsections": [
-        {
-          "name": "history", 
-          "subsections": [
-            {
-              "name": "prehistory", 
-              "title": "Prehistory (until 800s CE)"
-            }, 
-            {
-              "name": "early_history", 
-              "title": "Early History (800s - 1400s)"
-            }, 
-            {
-              "name": "sultanate", 
-              "title": "Sultanate (1400s - 1511)"
-            }, 
-            {
-              "name": "portuguese_rule", 
-              "title": "Portuguese Rule (1511 - 1641)"
-            }, 
-            {
-              "name": "dutch_rule", 
-              "title": "Dutch Rule (1641 - 1824)"
-            }, 
-            {
-              "name": "british_rule", 
-              "title": "British Rule (1824 -)"
-            }
-          ]
-        }, 
-        {
-          "name": "culture", 
-          "subsections": [
-            {
-              "name": "food", 
-              "title": "Food, Drink, and Drugs"
-            }, 
-            {
-              "name": "material", 
-              "title": "Material Culture"
-            }, 
-            {
-              "name": "clans"
-            }, 
-            {
-              "name": "society"
-            }, 
-            {
-              "name": "religion"
-            },
-            {
-              "name": "octagram",
-              "title": "The Eight-Pointed Star"
-            }
-          ]
-        }
-      ], 
-      "title": "The Lauv\u00ecnko People"
-    }, 
+    },
     {
       "name": "phonorth", 
       "subsections": [

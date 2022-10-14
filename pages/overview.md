@@ -29,7 +29,7 @@ For the first six centuries of Lauvìnko history, the spoken language is lost - 
 that survives is the conservative written language which essentially preserved
 Old Lauvìnko, though a general timeline of phonological change can be
 discovered via diachronic analysis and loanwords. The first widespread
-renewal of written Lauvìnko came with Portuguese rule in the 16th century,
+renewal of written Lauvìnko came with Portuguese rule in the 16^{th} century,
 when colloquial Lauvìnko began to be written with the Latin alphabet in
 informal contexts. Writing with the Latin alphabet was unstandardized, 
 directly representing the writer’s spoken dialect and closely associated with
@@ -40,15 +40,15 @@ remained the standard for official writing, standards of spelling and especially
 grammar became more closely aligned with the contemporary language,
 forging an updated written standard. The language of this time period is
 collectively called Early Modern Lauvìnko, which may refer to the new written
-standard or, in dialectology, to the 16th century language which is the basis for
+standard or, in dialectology, to the 16^{th} century language which is the basis for
 all later dialects.
 
 The variant of Lauvìnko described herein is Modern Lauvìnko, the last few
-centuries of the language’s existence before its death in the late 19th century.
+centuries of the language’s existence before its death in the late 19^{th} century.
 Phonemic structure, spelling, and (unless specifically noted otherwise)
 grammar are based on the Early Modern Lauvìnko written standard. Specific
 details of pronunciation and most notes on colloquial language are descriptive
-of the spoken language of Malacca City as of my study in 1711-1717.
+of the spoken language of Malacca City in the early 18^{th} century.
 
 Lauvìnko is a typically verb-final language that exhibits a mix of head and
 dependent marking, with head-final tendencies across almost all criteria. Its

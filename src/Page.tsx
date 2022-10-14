@@ -83,18 +83,22 @@ function renderMarkdownHeading(block: MarkdownHeading) {
 function renderMarkdownTable(block: MarkdownTable) {
   return (
     <table>
-      <tr>
-        {block.header.children.map((cell, i) => (
-          <th key={i}>{paragraphChildren(cell.children)}</th>
-        ))}
-      </tr>
-      {block.children.map((row, i) => (
-        <tr key={i}>
-          {row.children.map((cell, j) => (
-            <td key={j}>{paragraphChildren(cell.children)}</td>
+      <thead>
+        <tr>
+          {block.header.children.map((cell, i) => (
+            <th key={i}>{paragraphChildren(cell.children)}</th>
           ))}
         </tr>
-      ))}
+      </thead>
+      <tbody>
+        {block.children.map((row, i) => (
+          <tr key={i}>
+            {row.children.map((cell, j) => (
+              <td key={j}>{paragraphChildren(cell.children)}</td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
     </table>
   );
 }

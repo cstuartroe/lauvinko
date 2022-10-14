@@ -219,7 +219,8 @@ class LauvinkoMorpheme(Morpheme):
 
             pk_syllables += morpheme_pk_syllables
 
-            active_mutation = morpheme.end_mutation()
+            if (len(ms) > 0) or (morpheme.end_mutation() is not None):
+                active_mutation = morpheme.end_mutation()
 
         lv_sf = LauvinkoSurfaceForm(
             syllables=syllables,
@@ -560,7 +561,6 @@ CASE_SPELLING_SYLLABLES: dict[str, Optional[tuple[ProtoKasanicOnset, ProtoKasani
 
 def get_person(lemma: Lemma):
     parts = lemma.ident.split(".")
-    print(parts)
     return re.match(r"\$([0-9a-z]+)\$", parts[0]).group(1)
 
 

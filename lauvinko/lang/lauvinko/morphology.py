@@ -444,13 +444,9 @@ class LauvinkoWord(Word):
         for i, word in enumerate(words):
             sf = word.surface_form()
 
-            if accented == i:
-                accent_position = len(syllables) + sf.accent_position
-                falling_accent = sf.falling_accent
-
             if len(sf.syllables) == 0:
                 if word.word_type() is LauvinkoWordType.DETERMINER:
-                    word.apply_case_ending(syllables)
+                    word.apply_case_ending(syllables, accent_position)
                 continue
 
             ms = [
@@ -484,6 +480,10 @@ class LauvinkoWord(Word):
 
                 elif syllables[-1].vowel.frontness is VowelFrontness.BACK:
                     ms[0].onset = LauvinkoConsonant.V
+
+            if accented == i:
+                accent_position = len(syllables) + sf.accent_position
+                falling_accent = sf.falling_accent
 
             syllables += ms
 
@@ -601,10 +601,13 @@ IRREGULAR_CLASS_WORDS: dict[tuple[str, str], tuple[Optional[list[ProtoKasanicSyl
 }
 
 
-def _add_case_vowel(lv_syllables: list[LauvinkoSyllable], vowel: LauvinkoVowel):
+def _add_case_vowel(lv_syllables: list[LauvinkoSyllable], accent_position: int, vowel: LauvinkoVowel):
     if lv_syllables[-1].coda is None:
         if lv_syllables[-1].vowel.frontness is vowel.frontness:
-            pass
+            # TODO: Consider removal once irregularly-spelled pronouns are implemented
+            if ((vowel is LauvinkoVowel.I) and (lv_syllables[-1].vowel is LauvinkoVowel.E)
+                    and accent_position < (len(lv_syllables) - 1)):
+                lv_syllables[-1].vowel = LauvinkoVowel.I
         else:
             lv_syllables[-1].coda = OFFGLIDES[vowel.frontness]
 
@@ -695,7 +698,7 @@ class LauvinkoClassWord(LauvinkoWord):
     def animate(self) -> bool:
         return get_person(self.class_word.lemma) in ANIMATES
 
-    def apply_case_ending(self, lv_syllables: list[LauvinkoSyllable]):
+    def apply_case_ending(self, lv_syllables: list[LauvinkoSyllable], accent_position: int):
         case = self.case()
 
         if case is None:
@@ -707,13 +710,13 @@ class LauvinkoClassWord(LauvinkoWord):
         elif case is LauvinkoCase.DATIVE:
             if self.animate():
                 # TODO: How attached am I to the stray anusvara?
-                _add_case_vowel(lv_syllables, LauvinkoVowel.I)
+                _add_case_vowel(lv_syllables, accent_position, LauvinkoVowel.I)
             else:
                 _add_case_consonant(lv_syllables, LauvinkoConsonant.N)
         elif case is LauvinkoCase.ALLATIVE:
-            _add_case_vowel(lv_syllables, LauvinkoVowel.I)
+            _add_case_vowel(lv_syllables, accent_position, LauvinkoVowel.I)
         elif case in (LauvinkoCase.LOCATIVE, LauvinkoCase.ABLATIVE):
-            _add_case_vowel(lv_syllables, LauvinkoVowel.O)
+            _add_case_vowel(lv_syllables, accent_position, LauvinkoVowel.O)
         elif case is LauvinkoCase.PERLATIVE:
             lv_syllables.append(LauvinkoSyllable(onset=LauvinkoConsonant.M, vowel=LauvinkoVowel.I, coda=None))
         elif case is LauvinkoCase.PARTITIVE:
@@ -746,6 +749,7 @@ class LauvinkoClassWord(LauvinkoWord):
         if self.definite_suffix is not None:
             pk_syllables.append(*self.definite_suffix.virtual_original_form.surface_form.syllables)
 
+        accent_position = self.class_word.surface_form.accent_position
         falling_accent = self.class_word.surface_form.falling_accent
 
         tup = (self.class_word.lemma.ident, case.abbreviation)
@@ -765,13 +769,13 @@ class LauvinkoClassWord(LauvinkoWord):
             ]
 
             if len(lv_syllables) > 0:
-                self.apply_case_ending(lv_syllables)
+                self.apply_case_ending(lv_syllables, accent_position)
 
         return LauvinkoMorpheme(
             lemma=None,
             surface_form=LauvinkoSurfaceForm(
                 syllables=lv_syllables,
-                accent_position=self.class_word.surface_form.accent_position,
+                accent_position=accent_position,
                 falling_accent=falling_accent,
             ),
             virtual_original_form=ProtoKasanicMorpheme(

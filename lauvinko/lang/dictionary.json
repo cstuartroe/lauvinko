@@ -1160,6 +1160,21 @@
     },
     "origin": "kasanic"
   },
+  "hip": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "(used only in dual) buttocks, butt"
+      },
+      "pk": {
+        "definition": "Hip.",
+        "forms": {
+          "gn": "kaampe"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "hot": {
     "category": "stative",
     "languages": {
@@ -1221,6 +1236,18 @@
         "definition": "To insert, pierce.",
         "forms": {
           "gn": "@ppai"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "interior": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "The interior of something with only one opening like a bag, a bodily orifice, or a hole in the ground.",
+        "forms": {
+          "gn": "kkeye"
         }
       }
     },
@@ -1494,6 +1521,18 @@
     },
     "origin": "kasanic"
   },
+  "milk": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Milk.",
+        "forms": {
+          "gn": "aangana"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "moon": {
     "category": "uninflected",
     "languages": {
@@ -1728,6 +1767,18 @@
         "definition": "Part, piece.",
         "forms": {
           "gn": "kwau"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "peach": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Peach.",
+        "forms": {
+          "gn": "nyame"
         }
       }
     },
@@ -2341,6 +2392,18 @@
         "definition": "Water.",
         "forms": {
           "gn": "heho"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "wear": {
+    "category": "stative",
+    "languages": {
+      "pk": {
+        "definition": "$ wears $.",
+        "forms": {
+          "gn": "anyonye"
         }
       }
     },

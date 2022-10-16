@@ -559,12 +559,15 @@ CASE_SPELLING_SYLLABLES: dict[str, Optional[tuple[ProtoKasanicOnset, ProtoKasani
 }
 
 
-def get_person(lemma: Lemma):
-    parts = lemma.ident.split(".")
-    return re.match(r"\$([0-9a-z]+)\$", parts[0]).group(1)
-
-
 ANIMATES = {"1excl", "1incl", "2fam", "2fml", "2hon", "3rd", "hea"}
+
+PARTITIVE_NUMBERS = {
+    "hea": "pl",
+    "bra": "du",
+    "lea": "pl",
+    "rck": "sg",
+    "sea": None,
+}
 
 IRREGULAR_CLASS_WORDS: dict[tuple[str, str], tuple[Optional[list[ProtoKasanicSyllable]], list[LauvinkoSyllable], bool]] = {
     ("$1excl$.$sg$", LauvinkoCase.DATIVE.abbreviation): (
@@ -679,6 +682,10 @@ class LauvinkoClassWord(LauvinkoWord):
             else:
                 assert self.class_word.context is MorphemeContext.NONAUGMENTED
 
+        if self.case() is LauvinkoCase.PARTITIVE:
+            person, number = self.pn()
+            assert number == PARTITIVE_NUMBERS.get(person, number)
+
         if self.definite_suffix is not None:
             assert self.definite_suffix.lemma.mstype is MorphosyntacticType.DEFINITE_MARKER
 
@@ -695,8 +702,17 @@ class LauvinkoClassWord(LauvinkoWord):
             return None
         return CASE_BY_IDENT[self.case_suffix.lemma.ident]
 
+    def pn(self) -> tuple[str, Optional[str]]:
+        parts = self.class_word.lemma.ident.split(".")
+        labels = [
+            re.match(r"\$([0-9a-z]+)\$", part).group(1)
+            for part in parts
+        ]
+        return tuple(labels) if len(labels) == 2 else (labels[0], None)
+
     def animate(self) -> bool:
-        return get_person(self.class_word.lemma) in ANIMATES
+        person, number = self.pn()
+        return person in ANIMATES
 
     def apply_case_ending(self, lv_syllables: list[LauvinkoSyllable], accent_position: int):
         case = self.case()

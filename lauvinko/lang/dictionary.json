@@ -2031,6 +2031,18 @@
     },
     "origin": "kasanic"
   },
+  "skin": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Skin.",
+        "forms": {
+          "gn": "caappo"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "sleep": {
     "category": "stative",
     "languages": {

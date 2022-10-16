@@ -3,3 +3,9 @@ north.$na$=$vol$=gust.$fqnp$.$na$=$3rd$.$sg$.$na$ and bright.$gn$.$au$=$3rd$.$pl
 
 The North Wind and the Sun were arguing over who was stronger, when a traveler in a warm shawl came by.
 ```
+
+```
+heel.$na$=$t3ap$-$tvol$-speak.$pf$.$na$ $vol$=cross.$np$.$na$=$hea$.$sg$.$na$-$ins$ skin.$na$=$bra$.$sg$.$na$-$abl$ weave.$pf$.$na$=$lea$.$pl$.$na$-$par$ $vol$=$dep$-put.$pf$.$au$=$hea$.$sg$.$au$-$dat$ $vol$=mighty.$imnp$.$au$=$hea$.$sg$.$au$-$dat$ manner.$na$=$rck$.$sg$.$na$-$prl$ thus-can-must-$t3ap$-$tvol$-speak.$imnp$.$na$
+
+They agreed that the one who first made the traveler take his shawl off should be considered the strongest.
+```

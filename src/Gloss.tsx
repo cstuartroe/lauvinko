@@ -304,7 +304,7 @@ class BlockGloss extends Component<BlockGlossProps, GlossState> {
         <div className={"gloss"}>
           <div>
             {this.state.errorMessage && (
-              <p style={{color: "red"}}>
+              <p style={{color: "red", left: "4px"}}>
                 {this.state.errorMessage}
               </p>
             )}

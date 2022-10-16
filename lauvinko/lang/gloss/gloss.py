@@ -154,6 +154,9 @@ class GlossSyntacticWord:
 class GlossPhonologicalWord:
     swords: List[GlossSyntacticWord]
     language: Language
+    capitalize: bool
+    front_matter: str
+    back_matter: str
 
     def __post_init__(self):
         if self.language is Language.LAUVINKO:
@@ -168,12 +171,22 @@ class GlossPhonologicalWord:
 
     @classmethod
     def parse(cls, source: str, language: Language):
+        front_matter = re.match("^[^a-zA-Z0-9$]*", source).group()
+        back_matter = re.search("[^a-zA-Z0-9$]*$", source).group()
+
+        source = source[len(front_matter):]
+        if back_matter:
+            source = source[:-len(back_matter)]
+
         return cls(
             swords=[
                 GlossSyntacticWord.parse(sword, language=language)
-                for sword in source.split("=")
+                for sword in source.lower().split("=")
             ],
             language=language,
+            capitalize=source[0].isupper(),
+            front_matter=front_matter,
+            back_matter=back_matter,
         )
 
     def analysis(self) -> str:
@@ -190,11 +203,16 @@ class GlossPhonologicalWord:
 
     def romanization(self) -> str:
         if self.language is Language.LAUVINKO:
-            return lv_romanize(self.surface_form)
+            out = lv_romanize(self.surface_form)
         elif self.language is Language.PK:
-            return pk_romanize(self.surface_form)
+            out = pk_romanize(self.surface_form)
         else:
             raise NotImplementedError
+
+        if self.capitalize:
+            out = out[0].upper() + out[1:]
+
+        return self.front_matter + out + self.back_matter
 
     def falavay(self) -> str:
         return "".join(sword.falavay() for sword in self.swords)

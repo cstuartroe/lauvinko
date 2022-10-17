@@ -47,7 +47,13 @@ export function parseGlossSpec(spec: string): {language: Language, rows: GlossRo
 
     return {
       language: language as Language,
-      rows: Array.from(row_abbrevs).map(a => ROW_ABBREVS[a]),
+      rows: Array.from(row_abbrevs).map(a => {
+        const row = ROW_ABBREVS[a];
+        if (row === undefined) {
+          console.log(`Warning: unknown row key: ${a}`);
+        }
+        return row;
+      }).filter(row => (row !== undefined)),
     };
   } else {
     return {
@@ -124,7 +130,7 @@ class InlineGloss extends Component<InlineGlossProps, GlossState> {
 
     switch (row) {
       case "analysis":
-        return <span className={className} key={key}>{analysis.join(' ')} </span>;
+        return <span className={className} key={key}>{extraFormatting(analysis.join(' '))}</span>;
       case "romanization":
         return <span className={className} key={key}>{romanization.join(' ')} </span>;
       case "falavay":
@@ -296,16 +302,27 @@ class BlockGloss extends Component<BlockGlossProps, GlossState> {
     });
   }
 
-  length = () => this.state.content?.analysis.length || 0;
+  render() {
+    return <LoadedBlockGloss {...this.props} {...this.state}/>;
+  }
+}
+
+export type LoadedBlockGlossProps = BlockGlossProps & GlossState
+
+export class LoadedBlockGloss extends Component<LoadedBlockGlossProps, {}> {
+  constructor(props: LoadedBlockGlossProps) {
+    super(props);
+  }
+  length = () => this.props.content?.analysis.length || 0;
 
   render() {
     return (
       <div>
         <div className={"gloss"}>
           <div>
-            {this.state.errorMessage && (
+            {this.props.errorMessage && (
               <p style={{color: "red", left: "4px"}}>
-                {this.state.errorMessage}
+                {this.props.errorMessage}
               </p>
             )}
             <table>
@@ -330,13 +347,13 @@ class BlockGloss extends Component<BlockGlossProps, GlossState> {
   }
 
   renderRow(row: GlossRow, key: number) {
-    if (this.state.content === undefined) {
+    if (this.props.content === undefined) {
       return null;
     }
 
     return (
       <tr key={key}>
-        {this.state.content[row].map((word, col) =>
+        {this.props.content[row].map((word, col) =>
           <td className={ROW_CLASSES[row]} key={col}>
             {row === "broad_transcription" && col === 0 && '/'}
             {row === "narrow_transcription" && col === 0 && '[ '}
@@ -368,12 +385,17 @@ class BlockGloss extends Component<BlockGlossProps, GlossState> {
   }
 }
 
-function renderMarkdownPreformatted(pre: MarkdownPreformatted) {
-  const {language, rows} = parseGlossSpec(pre.language);
-
+export function getPreParts(pre: MarkdownPreformatted) {
   const lines = pre.children[0].content.split("\n").filter(s => s !== "");
 
-  return <BlockGloss outline={lines[0]} translation={lines[1]} {...{language, rows}}/>;
+  return {outline: lines[0], translation: lines[1]};
+}
+
+function renderMarkdownPreformatted(pre: MarkdownPreformatted) {
+  const {language, rows} = parseGlossSpec(pre.language);
+  const {outline, translation} = getPreParts(pre)
+
+  return <BlockGloss {...{language, rows, outline, translation}}/>;
 }
 
 export {

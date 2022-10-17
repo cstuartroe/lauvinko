@@ -122,14 +122,16 @@ li, td, th, hr, input[type="text"] {
   border-color: transparent;
 }
 
-div.go-down div:hover, a:hover li, button:hover {
+div.go-down div:hover, div.go-down div.selected, a:hover li, button:hover {
   background-color: #8fc78f;
   border-color: black;
-}
-
-div.go-down div:hover h3, a:hover li, button:hover {
   color: white;
   font-weight: 900;
+
+  h3 {
+    color: white;
+    font-weight: 900;
+  }
 }
 
 ::-webkit-scrollbar {

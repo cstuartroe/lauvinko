@@ -184,7 +184,7 @@ class GlossPhonologicalWord:
                 for sword in source.lower().split("=")
             ],
             language=language,
-            capitalize=source[0].isupper(),
+            capitalize=any(source[i].isupper() for i in (0, 1)),
             front_matter=front_matter,
             back_matter=back_matter,
         )

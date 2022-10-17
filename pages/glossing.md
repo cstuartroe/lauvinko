@@ -11,7 +11,7 @@ I'm working on adding a line showing the underlying phonological
 value of each morpheme!
 
 ```lv;frbna
-cart.$na$=$lea$.$sg$.$na$-$all$ mango.$na$ $t1s$-$tvol$-add.$fqpt$.$na$=$bra$.$pl$.$na$
+Cart.$na$=$lea$.$sg$.$na$-$all$ mango.$na$ $t1s$-$tvol$-add.$fqpt$.$na$=$bra$.$pl$.$na$.
 
 I loaded the mangoes into the cart.
 ```
@@ -66,7 +66,7 @@ $1excl$.$sg$.$au$-$vol$ $lea$.$sg$.$na$-$dat$ $dep$-search.$pf$.$na$
 ```
 cart.$na$ $dat$=$t1s$-$tvol$-search.$pf$.$na$=$lea$.$sg$.$na$
 
-I found the cart.
+I found the cart
 ```
 
 - The morphophonological rules governing the joining of morphemes
@@ -77,19 +77,19 @@ words become phonologically enclitic/proclitic on one another.
 ```
 $t3as$-$tvol$-speak.$pf$.$na$
 
-He spoke.
+he spoke
 ```
 
 ```
 $dat$=$t3as$-$tvol$-speak.$pf$.$na$
 
-He spoke about it.
+he spoke about it
 ```
 
 ```
 if-$t3as$-$tvol$-speak.$pf$.$na$
 
-If he spoke.
+if he spoke
 ```
 
 # Abbreviations

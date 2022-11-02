@@ -68,13 +68,13 @@ class ProtoKasanicMorpheme(Morpheme):
 
     @staticmethod
     def _from_informal_transcription(transcription: str, stress_position: Optional[int] = -1):
-        m = regex.fullmatch("(([mngptckshryw']{0,3})([aeiou@~]{1,2}))*(\\+[FLN])?", transcription)
+        m = regex.fullmatch("(([mngptckshryw']{0,3})([aeiou@~]{1,2})(/?))*(\\+[FLN])?", transcription)
 
         if m is None:
             raise ProtoKasanicMorpheme.InvalidTranscription("Transcription does not match regex: " + transcription)
 
         syllables = []
-        for o_str, v_str in zip(m.captures(2), m.captures(3)):
+        for i, (o_str, v_str, s_str) in enumerate(zip(m.captures(2), m.captures(3), m.captures(4))):
             if o_str in {"", "'"}:
                 onset = None
             else:
@@ -90,7 +90,14 @@ class ProtoKasanicMorpheme(Morpheme):
 
             syllables.append(ProtoKasanicSyllable(onset, vowel))
 
-        mutation = MUTATION_NOTATION.get(m.group(4))
+            if s_str:
+                if stress_position == -1:
+                    stress_position = i
+                else:
+                    raise ProtoKasanicMorpheme.InvalidTranscription(
+                        f"Stress already set {transcription} {stress_position}")
+
+        mutation = MUTATION_NOTATION.get(m.group(5))
 
         if stress_position == -1:
             stress_position = None if len(syllables) == 0 else 0

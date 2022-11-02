@@ -50,6 +50,7 @@ PK_TESTS: list[tuple[ProtoKasanicMorpheme, LauvinkoMorpheme, LauvinkoMorpheme]] 
     (pkm("sohai"), lm("so/y"), lm("so\\y")),
     (pkm("sukara"), lm("so/kar"), lm("so/ala")),
     (pkm("tupai"), lm("to/pay"), lm("to/ve")),
+    (pkm("ttu'inkwa/kitaa"), lm("ttavinpe/kit"), lm("ttavinpe/t")),
 
     (pkm("tehinti"), lm("te/nti"), lm("te\\nti")),
     (pkm("tohinti"), lm("to/vinti"), lm("to\\vinti")),

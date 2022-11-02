@@ -11,6 +11,8 @@ MODAL_PREFIXES = {
     "if": "tti+L",
     "in_order": "ki+L",
     "thus": "iwo+F",
+    "while": "meru",
+    "before": "ttu+F",
     "after": "ngi",
     "$swrf$": "o+N",
     "after:$swrf$": "nyo+N",
@@ -19,7 +21,7 @@ MODAL_PREFIXES = {
     "want": "ewa",
     "like": "mika",
     "can": "so+N",
-    "must": "nosa+L",
+    "must": "yosa+L",
     "very": "kora",
     "but": "caa",
 }

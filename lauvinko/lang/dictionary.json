@@ -1065,12 +1065,12 @@
     "category": "fientive",
     "languages": {
       "lv": {
-        "definition": "(reflexive) $ins$ grows, ages. @ $pat$ expands in size. @ (reflexive) $ins$ ripens. @ $vol$ cultivates, rears $ins$, an agricultural product."
+        "definition": "(reflexive) $ins$ grows, ages. @ $pat$ expands in size. @ (reflexive) $ins$ ripens. @ $vol$ cultivates, rears $ins$, an agricultural product. @ (frequentative) $ins$ multiplies, proliferates, is distributed."
       },
       "pk": {
         "definition": "To grow, expand, mature.",
         "forms": {
-          "gn": "s@hitu"
+          "gn": "s~hitu"
         }
       }
     },
@@ -1784,6 +1784,18 @@
     },
     "origin": "kasanic"
   },
+  "pull": {
+    "category": "fientive",
+    "languages": {
+      "pk": {
+        "definition": "Pull.",
+        "forms": {
+          "gn": "kw~kitaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "put": {
     "category": "fientive",
     "languages": {
@@ -1791,7 +1803,7 @@
         "definition": "To put, place."
       },
       "pk": {
-        "definition": "To put, place.",
+        "definition": "$vol$ puts, places $pat$ into $all$. @ (frequentative) $vol$ sows $pat$ (seeds).",
         "forms": {
           "gn": "s~hai"
         }
@@ -2394,6 +2406,18 @@
     },
     "origin": "kasanic"
   },
+  "wash": {
+    "category": "fientive",
+    "languages": {
+      "pk": {
+        "definition": "Wash.",
+        "forms": {
+          "gn": "t@wai"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "water": {
     "category": "uninflected",
     "languages": {
@@ -2431,6 +2455,18 @@
         "definition": "To weave, interlay.",
         "forms": {
           "gn": "y@mpa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "whale": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Whale.",
+        "forms": {
+          "gn": "waitautte"
         }
       }
     },

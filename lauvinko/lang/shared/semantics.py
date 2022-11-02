@@ -65,7 +65,7 @@ class KasanicStemCategory(StemCategory, Enum):
             PrimaryTenseAspect.FREQUENTATIVE_NONPAST,
             PrimaryTenseAspect.FREQUENTATIVE_PAST,
         },
-        PrimaryTenseAspect.IMPERFECTIVE_PAST,
+        PrimaryTenseAspect.IMPERFECTIVE_NONPAST,
     )
 
     PUNCTUAL = (

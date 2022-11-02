@@ -194,6 +194,9 @@ class LauvinkoSurfaceForm(SurfaceForm):
         if self.accent_position is not None and self.accent_position >= len(self.syllables):
             raise self.InvalidLauvinkoSurfaceForm("Accent in invalid position")
 
+        for syllable in self.syllables:
+            syllable.__post_init__()
+
         for syllable in self.syllables[1:]:
             if syllable.onset is LauvinkoConsonant.H:
                 raise self.InvalidLauvinkoSurfaceForm("Lauvinko surface form cannot have h medially")

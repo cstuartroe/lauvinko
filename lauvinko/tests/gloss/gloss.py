@@ -13,6 +13,13 @@ TESTS: List[Tuple[str, List[str], List[str], List[str], List[str]]] = [
         ["HtqXEvMpinpenHekqHkZgi"],
         ["tiyevompinapanekkéhngi"],
     ),
+    (
+        "before-$t3as$-$tvol$-pull.$inc$.$na$",
+        ["ta.ʋin.pét"],
+        ["tɐʋɪmpɛ́ʔ"],
+        ["HtZIMpkqXta"],
+        ["tavimpéh"],
+    ),
 ]
 
 

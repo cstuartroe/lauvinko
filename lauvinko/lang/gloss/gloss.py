@@ -193,10 +193,7 @@ class GlossPhonologicalWord:
         return "=".join(sword.analysis() for sword in self.swords)
 
     def broad_transcription(self) -> str:
-        if self.language is Language.LAUVINKO:
-            return self.surface_form.historical_transcription()
-        else:
-            return self.surface_form.broad_transcription()
+        return self.surface_form.broad_transcription()
 
     def narrow_transcription(self) -> str:
         return self.surface_form.narrow_transcription()

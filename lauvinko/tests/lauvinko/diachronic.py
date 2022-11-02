@@ -143,8 +143,8 @@ class LauvinkoDiachronicTests(unittest.TestCase):
                 evolved_form = lv_lemma.form(PrimaryTenseAspect.GENERAL, context=augment)
 
                 self.assertEqual(
-                    evolved_form.surface_form.historical_transcription(),
-                    lv_morpheme.surface_form.historical_transcription(),
+                    evolved_form.surface_form.broad_transcription(),
+                    lv_morpheme.surface_form.broad_transcription(),
                 )
                 self.assertIs(
                     evolved_form.virtual_original_form.end_mutation,
@@ -171,8 +171,8 @@ class LauvinkoDiachronicTests(unittest.TestCase):
                 evolved_form = lv_lemma.form(primary_ta, MorphemeContext.NONAUGMENTED)
 
                 self.assertEqual(
-                    evolved_form.surface_form.historical_transcription(),
-                    lv_morpheme.surface_form.historical_transcription(),
+                    evolved_form.surface_form.broad_transcription(),
+                    lv_morpheme.surface_form.broad_transcription(),
                 )
 
     def test_information_loss(self):

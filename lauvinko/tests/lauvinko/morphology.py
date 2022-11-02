@@ -63,13 +63,13 @@ class LauvinkoMorphologyTests(unittest.TestCase):
                 accented=1,
             ).surface_form
 
-            if joined_then_evolved.historical_transcription() != evolved_then_joined.historical_transcription():
+            if joined_then_evolved.broad_transcription() != evolved_then_joined.broad_transcription():
                 print(f"{pk_lemma_1.citation_form().main_morpheme.surface_form.broad_transcription()} and "
                       f"{pk_lemma_2.citation_form().main_morpheme.surface_form.broad_transcription()} became")
-                print(f"{joined_then_evolved.historical_transcription()} when evolved as a single word and")
-                print(f"{lv_form_1.surface_form.historical_transcription()} + "
-                      f"{lv_form_2.surface_form.historical_transcription()} = "
-                      f"{evolved_then_joined.historical_transcription()} when joined synchronically")
+                print(f"{joined_then_evolved.broad_transcription()} when evolved as a single word and")
+                print(f"{lv_form_1.surface_form.broad_transcription()} + "
+                      f"{lv_form_2.surface_form.broad_transcription()} = "
+                      f"{evolved_then_joined.broad_transcription()} when joined synchronically")
                 print()
                 num_mismatched += 1
 

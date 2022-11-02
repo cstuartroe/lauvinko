@@ -203,7 +203,7 @@ class LauvinkoSurfaceForm(SurfaceForm):
             elif syllable.onset is None:
                 raise self.InvalidLauvinkoSurfaceForm("Non-initial syllables in Lauvinko must have an onset")
 
-    def _phonemic_transcription(self, narrower_coda: bool):
+    def broad_transcription(self):
         syllables_ipa = []
 
         for i, syllable in enumerate(self.syllables):
@@ -212,22 +212,16 @@ class LauvinkoSurfaceForm(SurfaceForm):
             else:
                 accent = ''
 
-            if narrower_coda:
-                coda = broad_coda_ipa(syllable.coda)
+            if syllable.coda is not None:
+                coda = syllable.coda.ipa
             else:
-                coda = getattr(syllable.coda, 'ipa', '')
+                coda = ''
 
             syllables_ipa.append(
                 f"{getattr(syllable.onset, 'ipa', '')}{syllable.vowel.ipa}{accent}{coda}"
             )
 
         return ".".join(syllables_ipa)
-
-    def historical_transcription(self):
-        return self._phonemic_transcription(False)
-
-    def broad_transcription(self):
-        return self._phonemic_transcription(True)
 
     def narrow_transcription(self) -> str:
         out = getattr(self.syllables[0].onset, 'ipa', '')

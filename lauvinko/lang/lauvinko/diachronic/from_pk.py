@@ -331,7 +331,7 @@ class ProtoKasanicOrigin(LauvinkoLemmaOrigin):
 
                     elif syllables[i-1].coda is None and syllables[i-1].vowel.frontness is syllables[i].vowel.frontness:
                         syllables[i-1].coda = syllables[i].coda
-                        assert not syllables[i].stressed
+                        syllables[i-1].stressed = syllables[i-1].stressed or syllables[i].stressed
                         out_syllables.append(syllables[i-1])
                         i -= 2
                         continue

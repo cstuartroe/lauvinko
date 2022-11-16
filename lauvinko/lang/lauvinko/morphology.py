@@ -29,10 +29,10 @@ def epenthetic_vowel(c: LauvinkoConsonant) -> LauvinkoVowel:
         return LauvinkoVowel.A
 
 
-def epenthetic_consonant(v: LauvinkoVowel) -> Optional[LauvinkoConsonant]:
-    if v.frontness is VowelFrontness.FRONT:
+def epenthetic_consonant(f: VowelFrontness) -> Optional[LauvinkoConsonant]:
+    if f in (VowelFrontness.FRONT, VowelFrontness.FRONTING):
         return LauvinkoConsonant.Y
-    elif v.frontness is VowelFrontness.BACK:
+    elif f in (VowelFrontness.BACK, VowelFrontness.BACKING):
         return LauvinkoConsonant.V
     else:
         return None
@@ -131,7 +131,7 @@ class LauvinkoMorpheme(Morpheme):
                             syllables[-1].coda = c1
                         elif syllables[-1].coda is LauvinkoConsonant.A:
                             epenthetic_syllable = LauvinkoSyllable(
-                                onset=epenthetic_consonant(syllables[-1].vowel),
+                                onset=epenthetic_consonant(syllables[-1].vowel.frontness),
                                 vowel=LauvinkoVowel.A,
                                 coda=c1,
                             )
@@ -162,29 +162,37 @@ class LauvinkoMorpheme(Morpheme):
 
                     original_final_vowel = pk_syllables[-1].vowel
 
-                    if original_final_vowel is ProtoKasanicVowel.A:
+                    if c1 is LauvinkoConsonant.A:
+                        pass
+
+                    elif original_final_vowel is ProtoKasanicVowel.A:
                         merged_vowel = LauvinkoVowel.find_by(
                             frontness=v2.frontness,
                             low=True,
                         )
                         ms[0].vowel = merged_vowel
-                        v1 = merged_vowel
 
                     elif original_final_vowel is ProtoKasanicVowel.AA and c2 is None and \
                             not (accented == i and morpheme.surface_form.accent_position == 0):
-                        ms[0].coda = epenthetic_consonant(v2)
+                        ms[0].coda = epenthetic_consonant(v2.frontness)
                         ms[0].vowel = LauvinkoVowel.A
 
                     v2 = ms[0].vowel
-
                     if c1 is not None:
                         if original_final_vowel.frontness is VowelFrontness.BACK \
                                 and v2.frontness is not VowelFrontness.BACK:
                             ms[0].onset = LauvinkoConsonant.V
 
+                        elif c1 is LauvinkoConsonant.A:
+                            syllables[-1].coda = None
+                            ms[0].onset = epenthetic_consonant(v1.frontness)
+
                         else:
                             syllables[-1].coda = None
                             ms[0].onset = c1
+
+                    if ms[0].onset is not None:
+                        pass
 
                     elif morpheme.surface_form.accent_position != 0 and v2.frontness is VowelFrontness.MID:
                         ms[0].onset = syllables[-1].onset
@@ -200,9 +208,11 @@ class LauvinkoMorpheme(Morpheme):
                         )
 
                     else:
-                        ec = epenthetic_consonant(v1) or epenthetic_consonant(v2)
+                        ec = (epenthetic_consonant(original_final_vowel.frontness)
+                              or epenthetic_consonant(v2.frontness)
+                              or epenthetic_consonant(v1.frontness))
                         if ec is None:
-                            raise RuntimeError
+                            raise RuntimeError(f"{original_final_vowel} {v1} {v2}")
 
                         ms[0].onset = ec
 
@@ -461,6 +471,21 @@ class LauvinkoWord(Word):
             if ms[0].onset is None:
                 if len(syllables) == 0:
                     pass
+
+                if syllables[-1].coda is LauvinkoConsonant.A:
+                    frontness = ms[0].vowel.frontness
+                    if ms[0].vowel.frontness is VowelFrontness.MID:
+                        syllables[-1].coda = None
+                        frontness = syllables[-1].vowel.frontness
+
+                    if frontness is VowelFrontness.FRONT:
+                        ms[0].onset = LauvinkoConsonant.Y
+
+                    elif frontness is VowelFrontness.BACK:
+                        ms[0].onset = LauvinkoConsonant.V
+
+                    else:
+                        raise RuntimeError
 
                 elif syllables[-1].coda is not None:
                     ms[0].onset = syllables[-1].coda

@@ -75,7 +75,7 @@ class Page extends Component<Props, State> {
 
         const blocks = this.state.document.children;
 
-        if (blocks[0].type == "CodeFence") {
+        if (blocks.length > 0 && blocks[0].type == "CodeFence") {
           return <Document blocks={blocks}/>;
         } else {
           return blocks.map((b, i) => (

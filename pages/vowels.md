@@ -3,7 +3,8 @@ widely by phonological context. In the most standard, conservative
 realization, in accented open syllables they become [ɑː eː iː oː],
 and are [ɐ ɛ ɪ ʊ] elsewhere.
 
-There are also three centering diphthongs /ɛɐ̯ ɪɐ̯ ʊɐ̯/ which are considered
+There are also three centering diphthongs /eɐ̯ iɐ̯ oɐ̯/ (pronounced
+[ɛɐ̯ ɪɐ̯ ʊɐ] in standard accent) which are considered
 closed rimes phonologically. They cannot be followed by a coda consonant.
 The sequences /aj oj aʋ eʋ iʋ/, pronounced [ɐj ʊj ɐw ɛw ɪw], occur, but are
 considered vowel-consonant sequences rather than diphthongs. In

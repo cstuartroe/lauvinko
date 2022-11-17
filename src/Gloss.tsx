@@ -232,13 +232,17 @@ export function extraFormatting(s: string): JSX.Element[] {
   let out: any[] = [];
   let current: string = "";
 
+  const flush = () => {
+    out.push(current);
+    current = "";
+  }
+
   let i = 0;
   while (i < s.length) {
     const c = s[i];
 
     if (c == '$') {
-      out.push(current);
-      current = "";
+      flush();
 
       const words = s.substring(i).match(/^\$([a-z0-9]+)\$/)
       if (words === null) {
@@ -250,8 +254,7 @@ export function extraFormatting(s: string): JSX.Element[] {
       i += words[0].length;
 
     } else if (c == '^') {
-      out.push(current);
-      current = "";
+      flush();
 
       if (s[i+1] == '{') {
         const words = s.substring(i).match(/^\^{([^}]+)}/)
@@ -267,6 +270,21 @@ export function extraFormatting(s: string): JSX.Element[] {
         i += 2;
       }
 
+    } else if (c == '⟨') {
+      flush();
+
+      const words = s.substring(i).match(/^⟨([^⟩]+)⟩/)
+      if (words === null) {
+        throw "Mismatched braces";
+      }
+
+      out.push(
+        '⟨',
+        <span style={{fontStyle: "italic", paddingRight: "2px"}}>{words[1]}</span>,
+        '⟩',
+      );
+
+      i += words[0].length
     } else {
       current += c;
       i++;

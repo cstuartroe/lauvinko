@@ -22,7 +22,7 @@ export type MarkdownParagraph = {
   children: ParagraphChild[],
 }
 
-export type ParagraphChild = RawText | InlineCode | Emphasis | Strong | Link | Image | LineBreak;
+export type ParagraphChild = RawText | InlineCode | Emphasis | Strong | MarkdownLink | Image | LineBreak;
 
 type RawText = {
   type: "RawText",
@@ -44,7 +44,7 @@ export type Strong = {
   children: ParagraphChild[],
 }
 
-export type Link = {
+export type MarkdownLink = {
   type: "Link",
   target: string,
   children: ParagraphChild[],

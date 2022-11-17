@@ -338,7 +338,7 @@ export class LoadedBlockGloss extends Component<LoadedBlockGlossProps, {}> {
               </tbody>
             </table>
           </div>
-          <p style={{textAlign: "right"}}>
+          <p style={{textAlign: "right"}} className="footer" >
             {this.renderFooter()}
           </p>
         </div>

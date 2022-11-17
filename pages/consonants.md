@@ -1,45 +1,93 @@
-According to my analysis, Lauvìnko has a quite small consonant inventory 
-of only 12 phonemes, though it exhibits a moderate degree of allophony 
-in the coronals:
+Lauvìnko has a quite small consonant inventory 
+of only 12 phonemes.
 
-|     |Labial|Dental|Alveolar|Retroflex|Palatal|Velar|Glottal|
-|:----|:----:|:----:|:------:|:-------:|:-----:|:---:|:-----:|
-|**Nasal**   |m  |      |n       |(ɳː)     |(ɲ)    |ŋ    |       |	
-|**Stop**    |p  |t     |        |(ʈː)     |       |k    |       |	
-|**Affricate**|  |      |t͡s    |(ʈ͡ːʂ)   |(t͡ɕ)  |     |       |	
-|**Fricative**|  |      |s       |(ʂː)     |(ɕ)    |     |h      |
-|**Approximant**|ʋ|     |        |         |j      |     |       |	
-|**Lateral** |   |l     |        |         |(ʎ)    |     |	     |
-|**Tap**     |   |      |        |(ɽ)      |       |     |       |	
+|                 |Labial| Alveolar | Dorsal | Glottal |
+|:----------------|:----:|:--------:|:------:|:-------:|
+| **Nasal**       |  m   |    n     |   ŋ    |         |	
+| **Stop**^1      |  p   |    t     |   k    |         |	
+| **Affricate**   |      |   t͡s    |        |	
+| **Fricative**   |      |    s     |        |   h^2   |
+| **Approximant** |  ʋ   |    l     |j      |         |
 
-/t l/ are typically dental, while /n t͡s s/ are alveolar. 
-Stops are pronounced unaspirated.
 
-[ɽ] is an allophone of /l/ that appears syllable-finally before peripheral 
-consonants or word boundaries, and the other retroflex sounds emerge from 
-mutual assimilation of /l/ with a following coronal /n t t͡s s/, and only 
-appear geminate. Retroflex consonants have apparent minimal pairs with 
+^1 Stops are pronounced unaspirated.\
+^2 /h/ only occurs word-initially, and is subject to deletion if a
+morpheme beginning in /h/ is phonologically bound to a preceding morpheme
+
+However, it exhibits a moderate degree of allophony arising from consonant
+sequences, particularly in the coronals.
+In the standard accent, the full set of consonant phones includes at
+least the following (some sounds only appear geminate, and are marked
+with ː)
+
+|     |Labial|Alveolar|Retroflex|Palatal|Velar|Glottal|
+|:----|:----:|:------:|:-------:|:-----:|:---:|:-----:|
+|**Nasal**   |  m   |n       |   ɳː    |  ɲː   |ŋ    |       |	
+|**Stop**    |  p   |  t     |   ʈː    |       |k    |   ʔ    |	
+|**Affricate**|      |t͡s     |  ʈ͡ːʂ   |  t͡ːɕ  |     |       |	
+|**Fricative**|      |s       |   ʂː    |   ɕː   |     |h      |
+|**Approximant**|  ʋ   |       |         |   j   |     |       |	
+|**Lateral** |      |  l     |         |   ʎː   |     |	      |
+|**Tap**     |      |        |   ɽ    |       |     |       |	
+
+All consonants except /h/ may occur at the end of a syllable, but
+most consonants are pronounced differently in that position.
+Allophonic variation in coda position can render a word ambiguous
+as to underlying phonemes; in such cases, I fall back on 
+morphological alternations or etymology to determine broad
+phonological transcription of a word.
+
+Coda /m n ŋ/ assimilate completely to a following consonant’s place of
+articulation, and are pronounced [ŋ] word-finally, or as nasalization
+on the preceding vowel.
+
+```lv;frbna
+$2hon$.$au$-$vol$, $2hon$.$au$-$loc$
+
+you, your
+```
+
+Coda stops /p t k/ assume a
+variety of realizations. They assimilate completely to a following obstruent /p
+t t͡s k s/, resulting in a geminate consonant [pː tː t͡ːs kː sː]. Before sonorants
+/m n ŋ l ʋ/, stops generally become [h~ɦ], which may assimilate to the
+preceding vowel somewhat: [ç] after /e i/, and [hʷ] after /o/; they may
+even devoice or spirantize the following sonorant to [m̥ː n̥ː ŋ̥ː ɬː fː],
+or simply surface as breathy voice on the preceding vowel. Stops usually
+surface as a glottal stop [ʔ] word-finally. In contrast,
+coda /t͡s/ becomes [s], except before [j]. All of /p t t͡s k/ mutually
+assimilate with a following /j/ to become [t͡ːɕ].
+
+```lv;frbna
+fish.$na$; fish.$na$=$3rd$.$sg$.$na$; fish.$na$=$bra$.$sg$.$na$; fish.$na$=$bra$.$du$.$na$
+
+to be a fish; the fish (live); a fish (cooked); two fish (cooked)
+```
+
+Coda /ʋ/ becomes [w]. 
+
+[ɽ] is an allophone of /l/ that appears syllable-finally before non-coronal 
+consonants or word boundaries.
+
+```lv;frbna
+throat.$na$, throat.$na$=$rck$.$sg$.$na$-$abl$
+
+interior, from the interior
+```
+
+The other retroflex sounds emerge from 
+mutual assimilation of /l/ with a following coronal and only 
+appear geminate: /ln lt lt͡s ls ll/ become [ɳː ʈː ʈ͡ːʂ ʂː lː~ɭː].
+Retroflex consonants thus have apparent minimal pairs with 
 alveolar/dental consonants in the middle of words:
 
-```
-sister.$na$=$2hon$.$na$ nonce.$na$=$2hon$.$na$
+```lv;frbna
+$all$=follow.$imnp$.$au$=$hea$.$sg$.$au$-$vol$, $all$=follow.$imnp$.$na$=$hea$.$sg$.$na$-$pat$
 
-The sister, the nonce word
-```
-
-The palatal and alveolo-palatal sounds /ɲ t͡ɕ ʎ ɕ/ appear as allophones 
-of coronal consonants /n t͡s l s/ before /i/. They also appear geminate as 
-a result of mutual assimilation between any consonant besides /ʋ/ and a 
-following /j/. Apparent minimal pairs between (alveolo-)palatals and other 
-coronals can thus appear in two ways, both due to merger of /e/ and /i/ in 
-unstressed open syllables, and due to assimilation of a consonant with a 
-following /j/:
-
-
-```
-nonce.$na$=$2hon$.$na$ nonce.$na$=$2hon$.$na$
-
-The sister, the nonce word
+Fugitive (agentive case), fugitive (patientive case)
 ```
 
-For more on consonant allophony cf. {{consonant_sandhi}}.
+All consonants except /ʋ j/ mutually assimilate with a following /j/
+to become a palatal or alveolo-palatal sound. Any stop/affricate + /j/
+becomes [t͡ːɕ]. Likewise, any nasal + /j/ becomes [ɲː]. /sj lj/ become
+[ɕː ʎː].

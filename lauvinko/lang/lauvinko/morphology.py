@@ -472,7 +472,7 @@ class LauvinkoWord(Word):
                 if len(syllables) == 0:
                     pass
 
-                if syllables[-1].coda is LauvinkoConsonant.A:
+                elif syllables[-1].coda is LauvinkoConsonant.A:
                     frontness = ms[0].vowel.frontness
                     if ms[0].vowel.frontness is VowelFrontness.MID:
                         syllables[-1].coda = None

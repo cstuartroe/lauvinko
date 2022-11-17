@@ -10,9 +10,9 @@ are distinguished by the lengthening of open rimes.
 
 Native words typically bear accent on the first syllable of the root, or 
 on the second syllable in roots with historical vowel breaking 
-(cf. {{diachronic_development}}). In compound
+(cf. [](diachronic_development)). In compound
 words or incorporations, which have multiple roots in the same phonological
 word, non-final roots lose accent. Loanwords generally carry an accent
 according to the prosody of the source language. Enclitic class words and
-particles have no stress of their own and undergo other sandhi with the
+particles have no accent of their own and undergo other sandhi with the
 preceding word.

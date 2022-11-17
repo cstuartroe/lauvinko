@@ -1022,6 +1022,21 @@
     },
     "origin": "kasanic"
   },
+  "follow": {
+    "category": "fientive",
+    "languages": {
+      "lv": {
+        "definition": "$vol$ follows, pursues, obeys $all$."
+      },
+      "pk": {
+        "definition": "To chase.",
+        "forms": {
+          "gn": "m~taa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "fruit": {
     "category": "uninflected",
     "languages": {
@@ -2046,6 +2061,9 @@
   "skin": {
     "category": "uninflected",
     "languages": {
+      "lv": {
+        "definition": "Skin, surface."
+      },
       "pk": {
         "definition": "Skin.",
         "forms": {
@@ -2251,6 +2269,21 @@
         "definition": "This, that.",
         "forms": {
           "gn": "kisu"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "throat": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Throat, interior of something with two openings."
+      },
+      "pk": {
+        "definition": "Throat.",
+        "forms": {
+          "gn": "sotaa"
         }
       }
     },

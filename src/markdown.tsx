@@ -7,10 +7,12 @@ import {
   MarkdownBlock,
   MarkdownHeading,
   MarkdownList,
-  MarkdownParagraph, MarkdownTable,
-  MistletoeDocument,
-  ParagraphChild
+  MarkdownParagraph,
+  MarkdownTable,
+  MarkdownLink,
+  ParagraphChild,
 } from "./types";
+import PageManager from "./PageManager";
 
 function ParagraphChild({e}: {e: ParagraphChild}) {
   switch (e.type) {
@@ -29,9 +31,7 @@ function ParagraphChild({e}: {e: ParagraphChild}) {
     case "InlineCode":
       return renderInlineCode(e);
     case "Link":
-      return <Link to={e.target}>
-        {paragraphChildren(e.children)}
-      </Link>;
+      return renderLink(e);
     case "Image":
       return <div className={"image-inset"}>
         <img src={e.src}/>
@@ -113,4 +113,28 @@ export function renderMarkdownBlock(block: MarkdownBlock) {
       console.log(block);
       throw `Unknown block type: ${block['type']}`;
   }
+}
+
+function renderLink(e: MarkdownLink) {
+  if (e.children.length == 0) {
+    return (
+      <Link to={"/" + e.target}>
+        {PageManager.get(e.target)?.title}
+      </Link>
+    );
+  }
+
+  if (e.target.startsWith("http")) {
+    return (
+      <a href={e.target} target="_blank">
+        {paragraphChildren(e.children)}
+      </a>
+    );
+  }
+
+  return (
+    <Link to={e.target}>
+      {paragraphChildren(e.children)}
+    </Link>
+  );
 }

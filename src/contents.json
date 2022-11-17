@@ -19,22 +19,16 @@
           "name": "phonology", 
           "subsections": [
             {
+              "name": "word_structure"
+            },
+            {
               "name": "consonants"
             }, 
             {
               "name": "vowels"
-            }, 
-            {
-              "name": "word_structure"
-            }, 
+            },
             {
               "name": "pitch_accent"
-            }, 
-            {
-              "name": "consonant_sandhi"
-            }, 
-            {
-              "name": "vowel_sandhi"
             }
           ]
         }, 

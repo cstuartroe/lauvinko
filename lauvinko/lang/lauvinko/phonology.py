@@ -126,16 +126,20 @@ RETROFLEXES = {
 }
 
 
+def geminate(ipa: str):
+    return ipa[0] + 'ː' + ipa[1:]
+
+
 def consonant_sandhi(coda: LauvinkoConsonant, onset: LauvinkoConsonant):
     if onset is LauvinkoConsonant.Y:
         p = palatal(coda)
         if p is not None:
-            return p[0] + p
+            return geminate(p)
 
     if coda is LauvinkoConsonant.L:
         if onset.poa is PlaceOfArticulation.ALVEOLAR:
             r = RETROFLEXES[onset.moa]
-            return r[0] + r
+            return geminate(r)
 
     if coda.moa is MannerOfArticulation.NASAL:
         coda = LauvinkoConsonant.find_by(
@@ -143,13 +147,16 @@ def consonant_sandhi(coda: LauvinkoConsonant, onset: LauvinkoConsonant):
             moa=MannerOfArticulation.NASAL,
         )
 
+        if coda is onset:
+            return geminate(onset.ipa)
+
         return coda.ipa + onset.ipa
 
     if coda.moa is MannerOfArticulation.PLAIN_STOP:
         if onset.moa in {MannerOfArticulation.NASAL, MannerOfArticulation.APPROXIMANT}:
             return 'ɦ' + onset.ipa
         else:
-            return onset.ipa[0] + onset.ipa
+            return geminate(onset.ipa)
 
     return narrow_coda_ipa(coda) + onset.ipa
 

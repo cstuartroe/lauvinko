@@ -1,4 +1,4 @@
-Lauvinko morphological alternation shows a high degree of complexity
+Lauvìnko morphological alternation shows a high degree of complexity
 and apparent irregularity, arising both from regular phonological
 and inflectional processes dating to Proto-Kasanic (which was substantially
 more regular in its morphology), and the idiosyncracies

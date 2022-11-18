@@ -66,118 +66,11 @@
       ]
     },
     {
-      "name": "nouns",
-      "title": "Nominal Morphology",
+      "name": "morphology",
       "subsections": [
         {
-          "name": "class",
-          "title": "Noun Class and Number",
-          "subsections": [
-            {
-              "name": "head",
-              "title": "Head Class"
-            },
-            {
-              "name": "branch",
-              "title": "Branch Class"
-            },
-            {
-              "name": "leaf",
-              "title": "Leaf Class"
-            },
-            {
-              "name": "rock",
-              "title": "Rock Class"
-            },
-            {
-              "name": "sea",
-              "title": "Sea Class"
-            },
-            {
-              "name": "number"
-            }
-          ]
-        },
-        {
-          "name": "personal_pronouns",
-          "title": "Personal Pronouns and Nominal Inflection",
-          "subsections": [
-            {
-              "name": "case_suffixes"
-            },
-            {
-              "name": "independent_forms"
-            },
-            {
-              "name": "dependent_forms"
-            },
-            {
-              "name": "2p",
-              "title": "Second Person Pronouns"
-            }
-          ]
-        },
-        {
-          "name": "other_pronouns",
-          "subsections": [
-            {
-              "name": "reflexive"
-            },
-            {
-              "name": "demonstrative"
-            },
-            {
-              "name": "indefinite",
-              "title": "Indefinite and Interrogative"
-            }
-          ]
-        },
-        {
-          "name": "cases",
-          "title": "Cases and Argument Structure",
-          "subsections": [
-            {
-              "name": "volitive",
-              "title": "Volitive Case"
-            },
-            {
-              "name": "instrumental",
-              "title": "Instrumental Case"
-            },
-            {
-              "name": "patientive",
-              "title": "Patientive Case"
-            },
-            {
-              "name": "dative",
-              "title": "Dative Case"
-            },
-            {
-              "name": "adpositional",
-              "title": "Adpositional Cases"
-            },
-            {
-              "name": "partitive",
-              "title": "Partitive Case"
-            }
-          ]
-        },
-        {
-          "name": "derivation",
-          "title": "Noun Derivation"
-        },
-        {
-          "name": "positionals"
-        }
-      ]
-    },
-    {
-      "name": "verbs",
-      "title": "Verbal Morphology",
-      "subsections": [
-        {
-          "name": "stem_changes",
-          "title": "Tense and Aspect Stem Changes",
+          "name": "conjunct",
+          "title": "Conjunct morphology",
           "subsections": [
             {
               "name": "primary",
@@ -188,61 +81,94 @@
               "title": "Secondary Aspect"
             },
             {
-              "name": "modern_forms"
-            }
-          ]
-        },
-        {
-          "name": "applicatives"
-        },
-        {
-          "name": "modals",
-          "title": "Modal Prefixes",
-          "subsections": [
+              "name": "trigger_agreement"
+            },
             {
               "name": "tertiary",
               "title": "Tertiary Aspect"
             },
             {
-              "name": "other_modals"
+              "name": "modals",
+              "title": "Modal Prefixes"
             }
           ]
         },
         {
-          "name": "agreement",
-          "title": "Core Argument Agreement",
+          "name": "class_case",
+          "title": "Class Words and Case Suffixes",
           "subsections": [
             {
-              "name": "topic_agreement"
+              "name": "class",
+              "title": "Noun Class and Pronouns",
+              "subsections": [
+                {
+                  "name": "personal_pronouns"
+                },
+                {
+                  "name": "head",
+                  "title": "Head Class"
+                },
+                {
+                  "name": "branch",
+                  "title": "Branch Class"
+                },
+                {
+                  "name": "leaf",
+                  "title": "Leaf Class"
+                },
+                {
+                  "name": "rock",
+                  "title": "Rock Class"
+                },
+                {
+                  "name": "sea",
+                  "title": "Sea Class"
+                }
+              ]
             },
             {
-              "name": "patient_agreement"
+              "name": "cases",
+              "title": "Cases Suffixes",
+              "subsections": [
+                {
+                  "name": "volitive",
+                  "title": "Volitive Case"
+                },
+                {
+                  "name": "instrumental",
+                  "title": "Instrumental Case"
+                },
+                {
+                  "name": "patientive",
+                  "title": "Patientive Case"
+                },
+                {
+                  "name": "dative",
+                  "title": "Dative Case"
+                },
+                {
+                  "name": "adpositional",
+                  "title": "Adpositional Cases"
+                },
+                {
+                  "name": "partitive",
+                  "title": "Partitive Case"
+                }
+              ]
             }
           ]
         },
         {
-          "name": "case_aspect_interaction",
+          "name": "disjunct",
+          "title": "Other Disjunct Morphology",
           "subsections": [
             {
-              "name": "inchoative_ablative",
-              "title": "Inchoative and Ablative"
+              "name": "applicatives"
             },
             {
-              "name": "imperfect_locative",
-              "title": "Imperfect and Locative"
-            },
-            {
-              "name": "experiential_perlative",
-              "title": "Experiential and Perlative"
-            },
-            {
-              "name": "prospective_allative",
-              "title": "Prospective and Allative"
+              "name": "incorporation"
             }
           ]
-        },
-        {
-          "name": "noun_incorporation"
         }
       ]
     },
@@ -267,7 +193,17 @@
               "name": "possession"
             },
             {
+              "name": "demonstratives"
+            },
+            {
+              "name": "indefinite",
+              "title": "Indefinites and Interrogatives"
+            },
+            {
               "name": "numerals"
+            },
+            {
+              "name": "positionals"
             }
           ]
         },
@@ -284,6 +220,30 @@
               "name": "noun_clauses"
             }
           ]
+        },
+        {
+          "name": "periphrastic_aspect",
+          "subsections": [
+            {
+              "name": "inchoative_ablative",
+              "title": "Inchoative and Ablative"
+            },
+            {
+              "name": "imperfect_locative",
+              "title": "Imperfect and Locative"
+            },
+            {
+              "name": "experiential_perlative",
+              "title": "Experiential and Perlative"
+            },
+            {
+              "name": "prospective_allative",
+              "title": "Prospective and Allative"
+            }
+          ]
+        },
+        {
+          "name": "clauses"
         },
         {
           "name": "discourse",

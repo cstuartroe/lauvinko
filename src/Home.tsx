@@ -39,7 +39,7 @@ class Home extends Component {
         <SectionLinks sections={[
           "colors",
           "proto",
-          "case_aspect_interaction",
+          "periphrastic_aspect",
         ]}/>
 
         <p style={{textAlign: "center", padding: ".5em"}}>

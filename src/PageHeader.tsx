@@ -5,11 +5,12 @@ import PageManager from "./PageManager";
 
 type Props = {
   name: string,
+  show_title: boolean,
 }
 
 class PageHeader extends Component<Props> {
   render() {
-    const { name } = this.props;
+    const { name, show_title } = this.props;
     const section = PageManager.get(name);
     const pageIndex = PageManager.indexOf(name);
 
@@ -19,7 +20,7 @@ class PageHeader extends Component<Props> {
 
     return (
       <div>
-        {section && <h1 style={{marginTop: "3vh"}}>{section.title}</h1>}
+        {show_title && section && <h1 style={{marginTop: "3vh"}}>{section.title}</h1>}
         <div className="row">
           <div className="col-12 col-md-4">
             {prev ?

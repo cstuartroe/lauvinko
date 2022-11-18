@@ -56,9 +56,12 @@ class _Page extends Component<Props, State> {
   render() {
     return (
       <div>
-        <PageHeader name={this.props.name}/>
+        <PageHeader name={this.props.name} show_title={true}/>
         {this.renderContent()}
         <SectionLinks sections={PageManager.get(this.props.name)?.subsections || []}/>
+        {this.state.document && this.state.document.children.length >= 4 && (
+          <PageHeader name={this.props.name} show_title={false}/>
+        )}
       </div>
     );
   }

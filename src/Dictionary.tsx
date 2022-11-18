@@ -377,7 +377,7 @@ class Dictionary extends Component<DictionaryProps, DictionaryState> {
 
         return (
             <div>
-                <PageHeader name={this.props.page_name}/>
+                <PageHeader name={this.props.page_name} show_title={true}/>
 
                 <p>This dictionary has {language_entry_ids.length} entries!</p>
 
@@ -400,6 +400,8 @@ class Dictionary extends Component<DictionaryProps, DictionaryState> {
                 ))}
 
                 {this.citation()}
+
+                <PageHeader name={this.props.page_name} show_title={false}/>
             </div>
         );
     }

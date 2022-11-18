@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Home from "./Home";
 import Page from "./Page";
@@ -13,6 +13,35 @@ type State = {
         subsections: [],
     }
 }
+
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <Home/>,
+    },
+    {
+        path: "/build",
+        element: <Builder/>
+    },
+    {
+        path: "/kasanic_dictionary",
+        element: <Dictionary
+          origin_languages={["kasanic"]}
+          page_name="kasanic_dictionary"
+        />,
+    },
+    {
+        path: "/loanword_dictionary",
+        element: <Dictionary
+          origin_languages={["sanskrit"]}
+          page_name="loanword_dictionary"
+        />,
+    },
+    {
+        path: "/:name",
+        element: <Page/>,
+    },
+]);
 
 class App extends Component<{}, State> {
     constructor(props: {}) {
@@ -40,37 +69,7 @@ class App extends Component<{}, State> {
                     <div className="col-1 col-md-2"/>
                     <div className="col-10 col-md-8">
                         {constructionNotice}
-                        <Router>
-                            <Switch>
-                                <Route exact={true} path="/" component={Home}/>
-                                <Route exact={true} path="/build" component={Builder}/>
-                                <Route
-                                  exact={true}
-                                  path="/kasanic_dictionary"
-                                  render={(props) => (
-                                    <Dictionary
-                                      {...props}
-                                      origin_languages={["kasanic"]}
-                                      page_name="kasanic_dictionary"
-                                    />
-                                  )}
-                                />
-                                <Route
-                                  exact={true}
-                                  path="/loanword_dictionary"
-                                  render={(props) => (
-                                    <Dictionary
-                                      {...props}
-                                      origin_languages={["sanskrit"]}
-                                      page_name="loanword_dictionary"
-                                    />
-                                  )}
-                                />
-                                <Route path="/:name" render={({match}) => (
-                                  <Page name={match.params.name}/>
-                                )}/>
-                            </Switch>
-                        </Router>
+                        <RouterProvider router={router} />
                     </div>
                     <div className="col-1 col-md-2"/>
                 </div>

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { useParams } from 'react-router-dom';
 
 import PageHeader  from "./PageHeader"
 import SectionLinks from "./SectionLinks";
@@ -16,7 +17,7 @@ type State = {
   document?: MistletoeDocument,
 }
 
-class Page extends Component<Props, State> {
+class _Page extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
@@ -84,6 +85,16 @@ class Page extends Component<Props, State> {
         }
     }
   }
+}
+
+function Page() {
+  const { name } = useParams();
+
+  if (name === undefined) {
+    return null;
+  }
+
+  return <_Page name={name}/>
 }
 
 export default Page;

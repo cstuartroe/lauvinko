@@ -15,17 +15,17 @@ sea class pronoun do not inflect for number.
 
 | |singular|dual|plural|
 |:---|:---:|:---:|:---:|
-|1^{st} exclusive|`ap $1excl$.$sg$`|`ap $1excl$.$pl$`|+|
+|1^{st} exclusive|`ap $1excl$.$sg$`|+|`ap $1excl$.$pl$`|
 |1^{st} inclusive| |`ap $1incl$.$du$`|`ap $1incl$.$pl$`|
-|2^{nd} familiar|`ap $2fam$.$sg$`|`ap $2fml$.$pl$`|+|
+|2^{nd} familiar|`ap $2fam$.$sg$`|+|`ap $2fml$.$pl$`|
 |2^{nd} formal|`ap $2fml$.$sg$`|`ap $2fml$.$du$`|^|
-|2^{nd} honorific|`ap $2hon$`|+|+|
+|2^{nd} honorific|+|+|`ap $2hon$`|
 |head class definite|`ap $3rd$.$sg$`|`ap $3rd$.$du$`|`ap $3rd$.$pl$`|
 |head class indefinite|`ap $hea$.$sg$`|`ap $hea$.$du$`|`ap $hea$.$pl$`|
 |branch class|`ap $bra$.$sg$`|`ap $bra$.$du$`|`ap $bra$.$pl$`|
-|leaf class|`ap $lea$.$sg$`|`ap $lea$.$pl$`|+|
-|rock class| | |+|
-|sea class|`ap $sea$`|+|+|
+|leaf class|`ap $lea$.$sg$`|+|`ap $lea$.$pl$`|
+|rock class| |+| |
+|sea class|+|+|`ap $sea$`|
 
 Most pronouns and classifiers decline regularly for case. The most notable
 exceptions are the datives of some formally animate arguments. Forms marked

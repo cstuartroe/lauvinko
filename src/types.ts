@@ -73,7 +73,7 @@ export type MarkdownTable = {
   children: TableRow[],
 }
 
-type TableRow = {
+export type TableRow = {
   type: "TableRow",
   children: TableCell[],
 }

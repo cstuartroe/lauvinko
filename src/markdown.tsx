@@ -11,6 +11,7 @@ import {
   MarkdownTable,
   MarkdownLink,
   ParagraphChild,
+  TableRow,
 } from "./types";
 import PageManager from "./PageManager";
 
@@ -68,23 +69,41 @@ function renderMarkdownHeading(block: MarkdownHeading) {
   }
 }
 
+function renderMarkdownRow(row: TableRow) {
+  const children: React.ReactNode[] = [];
+  let colspan: number = 1;
+
+  row.children.forEach((cell, j) => {
+    if (cell.children.length == 1 && cell.children[0].type == "RawText") {
+      switch (cell.children[0].content) {
+        case "+":
+          colspan += 1;
+          return;
+        case "^":
+          children.push(<td key={j} colSpan={1} style={{borderTop: "4px solid white"}}/>);
+          return;
+      }
+    }
+
+    children.push(
+      <td key={j} colSpan={colspan} style={{textAlign: "center"}}>
+        {paragraphChildren(cell.children)}
+      </td>
+    );
+  });
+
+  return children;
+}
+
 function renderMarkdownTable(block: MarkdownTable) {
   return (
     <table>
       <thead>
-      <tr>
-        {block.header.children.map((cell, i) => (
-          <th key={i}>{paragraphChildren(cell.children)}</th>
-        ))}
-      </tr>
+      <tr>{renderMarkdownRow(block.header)}</tr>
       </thead>
       <tbody>
       {block.children.map((row, i) => (
-        <tr key={i}>
-          {row.children.map((cell, j) => (
-            <td key={j}>{paragraphChildren(cell.children)}</td>
-          ))}
-        </tr>
+        <tr key={i}>{renderMarkdownRow(row)}</tr>
       ))}
       </tbody>
     </table>

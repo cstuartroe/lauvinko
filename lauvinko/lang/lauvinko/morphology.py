@@ -354,6 +354,7 @@ class LauvinkoWordType(Enum):
     DETERMINER = "determiner"
     ADPOSITION = "adposition"
     NUMBER_SUFFIX = "number suffix"
+    SEX_SUFFIX = "sex suffix"
 
 
 class InvalidSyntacticWordSequence(ValueError):
@@ -363,6 +364,7 @@ class InvalidSyntacticWordSequence(ValueError):
 PARTICLE_MSTYPES = {
     MorphosyntacticType.ADPOSITION: LauvinkoWordType.ADPOSITION,
     MorphosyntacticType.NUMBER_SUFFIX: LauvinkoWordType.NUMBER_SUFFIX,
+    MorphosyntacticType.SEX_SUFFIX: LauvinkoWordType.SEX_SUFFIX,
 }
 
 
@@ -426,6 +428,9 @@ class LauvinkoWord(Word):
             found = True
             accented = i
             context = words[i]._as_morph.context
+            i += 1
+
+        if words[i:] and words[i].word_type() is LauvinkoWordType.SEX_SUFFIX:
             i += 1
 
         if words[i:] and words[i].word_type() is LauvinkoWordType.DETERMINER:

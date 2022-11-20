@@ -128,7 +128,7 @@
             },
             {
               "name": "cases",
-              "title": "Cases Suffixes",
+              "title": "Case Suffixes",
               "subsections": [
                 {
                   "name": "volitive",
@@ -167,6 +167,13 @@
             },
             {
               "name": "incorporation"
+            },
+            {
+              "name": "collectives"
+            },
+            {
+              "name": "sex_suffix",
+              "title": "Biological sex suffixes"
             }
           ]
         }

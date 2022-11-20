@@ -66,6 +66,11 @@ ADPOSITIONS = [
     ("and", "naa"),
 ]
 
+SEX_SUFFIXES = {
+    "masc": "waa",
+    "femn": "ri",
+}
+
 DICTIONARY_FILENAME = "lauvinko/lang/dictionary.json"
 
 
@@ -114,6 +119,10 @@ class Dictionary:
         self.fill_in_prefix_set(
             TOPIC_CASE_PREFIXES,
             MorphosyntacticType.TOPIC_CASE_PREFIX,
+        )
+        self.fill_in_prefix_set(
+            SEX_SUFFIXES,
+            MorphosyntacticType.SEX_SUFFIX,
         )
 
         self.fill_in_adpositions()

@@ -14,6 +14,7 @@ class MorphosyntacticType(Enum):
     TOPIC_AGREEMENT_PREFIX = "topic agreement prefix"
     TOPIC_CASE_PREFIX = "topic case prefix"
     NUMBER_SUFFIX = "number suffix"
+    SEX_SUFFIX = "sex suffix"
     INDEPENDENT = "independent"
 
     class InvalidMSType(ValueError):

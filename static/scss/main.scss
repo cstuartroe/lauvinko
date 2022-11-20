@@ -109,7 +109,7 @@ td.merge-above {
 
 ul {
   list-style-type: none;
-  padding: 0 2em;
+  padding: 0 2em 1em;
   text-align: left;
 }
 
@@ -120,6 +120,10 @@ li, td, th, hr, input[type="text"] {
   border-style: solid;
   border-width: $border_width;
   border-color: transparent;
+}
+
+li .paragraph {
+  padding-bottom: 0;
 }
 
 div.go-down div:hover, div.go-down div.selected, a:hover li, button:hover {

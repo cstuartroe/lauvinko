@@ -66,8 +66,8 @@ class App extends Component<{}, State> {
         return (
             <div id="mainframe" className="container-fluid">
                 <div className="row">
-                    <div className="col-1 col-md-2"/>
-                    <div className="col-10 col-md-8">
+                    <div className="col-0 col-sm-1 col-md-2 col-lg-3"/>
+                    <div className="col-12 col-sm-10 col-md-8 col-lg-6">
                         {constructionNotice}
                         <RouterProvider router={router} />
                     </div>

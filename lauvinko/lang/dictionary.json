@@ -1427,6 +1427,18 @@
     },
     "origin": "kasanic"
   },
+  "long": {
+    "category": "stative",
+    "languages": {
+      "pk": {
+        "definition": "Long, tall.",
+        "forms": {
+          "gn": "ttica"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "man": {
     "category": "uninflected",
     "languages": {
@@ -1484,6 +1496,21 @@
         "definition": "Custom, manner, appearance.",
         "forms": {
           "gn": "aakkaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "marry": {
+    "category": "stative",
+    "languages": {
+      "lv": {
+        "definition": "$vol$ (plural) are married to one another (reflexive). @ $vol$ is married to $dat$ (this case arrangement is mainly used attributively)."
+      },
+      "pk": {
+        "definition": "To be married.",
+        "forms": {
+          "gn": "wane"
         }
       }
     },

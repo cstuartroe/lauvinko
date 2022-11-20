@@ -30,7 +30,7 @@ beginning of the stem.
 # Morphophonological binding
 
 In the morphological breakdown section of a gloss,
-there are two degrees of binding between morphemes:
+there are two degrees of binding between morphemes (cf. [](morphology)):
 
 - Morphemes within a syntactic word are joined with a dash (-);
 this includes the binding between most verbal prefixes
@@ -42,55 +42,6 @@ the binding between syntactic words is given by an equal sign (=). Words
 phonologically bound to a content word in this way include enclitic class
 words, as well as applicative prefixes and incorporated nouns
 (**disjunct prefixes**).
-
-This distinction may seem arbitrary at first, but in fact it
-is quite clear cut, for two reasons:
-- Although words joined by an = are phonologically connected, they may
-always appear as phonologically unbounded words in some contexts
-(note the distribution of cart.$na$ and $lea$.$sg$.$na$ in the examples 
-below). In contrast,
-conjunct prefixes may never appear as independent words.
-
-```
-$1excl$.$sg$.$au$-$vol$ cart.$na$=$lea$.$sg$.$na$-$dat$ $dep$-search.$pf$.$na$
-
-(that) I found the cart
-```
-
-```
-$1excl$.$sg$.$au$-$vol$ $lea$.$sg$.$na$-$dat$ $dep$-search.$pf$.$na$
-
-(that) I found it
-```
-
-```
-cart.$na$ $dat$=$t1s$-$tvol$-search.$pf$.$na$=$lea$.$sg$.$na$
-
-I found the cart
-```
-
-- The morphophonological rules governing the joining of morphemes
-within a syntactic word are categorically different and more
-complex than those which take place when syntactically independent
-words become phonologically enclitic/proclitic on one another.
-
-```
-$t3as$-$tvol$-speak.$pf$.$na$
-
-he spoke
-```
-
-```
-$dat$=$t3as$-$tvol$-speak.$pf$.$na$
-
-he spoke about it
-```
-
-```
-if-$t3as$-$tvol$-speak.$pf$.$na$
-
-if he spoke
-```
 
 # Abbreviations
   

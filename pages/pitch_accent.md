@@ -9,8 +9,8 @@ accent have a low pitch. In addition to a tonal difference, accented syllables
 are distinguished by the lengthening of open rimes.
 
 Native words typically bear accent on the first syllable of the root, or 
-on the second syllable in roots with historical vowel breaking 
-(cf. [](diachronic_development)). In compound
+on the second syllable in roots with historical vowel breaking or
+prosthesis (cf. [](diachronic_development)). In compound
 words or incorporations, which have multiple roots in the same phonological
 word, non-final roots lose accent. Loanwords generally carry an accent
 according to the prosody of the source language. Enclitic class words and

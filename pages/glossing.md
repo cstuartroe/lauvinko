@@ -27,6 +27,9 @@ aspect via vowel ablaut, and in the marking of augment on all stems and class
 words via synchronically unpredictable phonological changes toward the
 beginning of the stem.
 
+To see all six lines of the gloss, as well as to try editing it,
+click the "Open in builder" link!
+
 # Morphophonological binding
 
 In the morphological breakdown section of a gloss,
@@ -34,14 +37,14 @@ there are two degrees of binding between morphemes (cf. [](morphology)):
 
 - Morphemes within a syntactic word are joined with a dash (-);
 this includes the binding between most verbal prefixes
-(so-called **conjunct prefixes**) and the stem,
+(so-called **conjunct affixes**) and the stem,
 as well as the binding between class words and case suffixes.
 - Phonological words are very recognizable in Lauvìnko by multiple criteria.
 I regard many of them to consist of multiple syntactically independent words;
 the binding between syntactic words is given by an equal sign (=). Words
 phonologically bound to a content word in this way include enclitic class
 words, as well as applicative prefixes and incorporated nouns
-(**disjunct prefixes**).
+(**disjunct affixes**).
 
 # Abbreviations
   

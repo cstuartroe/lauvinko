@@ -148,6 +148,6 @@ of the last syllable of unitary lexical items in early forms of Lauvìnko.
 In any case, they have been much more widely applied in modern forms of
 the language, even appearing in personal names. Uniquely, their phonology
 happens to render them immune to any of the sandhi characteristic
-of conjunct prefixes, so there is no need to treat them as such in my
+of conjunct affixes, so there is no need to treat them as such in my
 morphological model. I have elected to treat them as disjunct
 affixes because it allows them to be used more flexibly.

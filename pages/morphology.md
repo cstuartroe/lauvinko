@@ -50,7 +50,7 @@ to his jolly bride-to-be
 
 It's harder to define a maximal number of morphemes for verbs, as there
 is a category of prefixes I call "modals" which variously mark deontic and
-epistemic modality as well as some other dependence marking and adverbial
+epistemic modality as well as some other subordination marking and adverbial
 functions, of which several may be applied at once to a verb. Taking modals
 as a single "slot" in the verbal template, a Lauvìnko verb has eight
 morphological slots:

@@ -97,7 +97,7 @@ function renderMarkdownRow(row: TableRow) {
 
 function renderMarkdownTable(block: MarkdownTable) {
   return (
-    <table>
+    <table style={{marginBottom: "10px"}}>
       <thead>
       <tr>{renderMarkdownRow(block.header)}</tr>
       </thead>
@@ -128,6 +128,8 @@ export function renderMarkdownBlock(block: MarkdownBlock) {
       return renderMarkdownHeading(block);
     case "List":
       return renderMarkdownList(block);
+    case "ThematicBreak":
+      return <hr/>;
     default:
       console.log(block);
       throw `Unknown block type: ${block['type']}`;

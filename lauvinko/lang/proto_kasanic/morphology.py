@@ -283,7 +283,8 @@ class ProtoKasanicLemma(Lemma):
         generic_first_syllable = self.generic_morph.surface_form.syllables[0]
 
         ablauts = LOW_ABLAUTS if generic_first_syllable.vowel.low else HIGH_ABLAUTS
-        if ablauts[primary_ta] is None:
+        if ablauts[primary_ta] is None or \
+                (primary_ta is PrimaryTenseAspect.INCEPTIVE and self.category is KasanicStemCategory.STATIVE):
             form_first_syllable = generic_first_syllable
         else:
             form_first_syllable = ProtoKasanicSyllable.make_valid(

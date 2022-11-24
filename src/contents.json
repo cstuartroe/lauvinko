@@ -39,7 +39,7 @@
           "subsections": [
             {
               "name": "mutations",
-              "title": "Consonant Mutations"
+              "title": "Consonant Breaking and Mutations"
             },
             {
               "name": "augment"
@@ -74,7 +74,7 @@
           "subsections": [
             {
               "name": "primary",
-              "title": "Primary Tense and Aspect"
+              "title": "Primary and Secondary Tense and Aspect"
             },
             {
               "name": "secondary",

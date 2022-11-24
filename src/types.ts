@@ -15,6 +15,7 @@ export type MarkdownBlock = (
   | MarkdownTable
   | MarkdownPreformatted
   | MarkdownHeading
+  | ThematicBreak
   | MarkdownList);
 
 export type MarkdownParagraph = {
@@ -97,6 +98,10 @@ export type MarkdownList = {
 type ListItem = {
   type: "ListItem",
   children: [MarkdownBlock],
+}
+
+export type ThematicBreak = {
+  type: "ThematicBreak",
 }
 
 export type ApiFailure = {

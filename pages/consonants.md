@@ -42,7 +42,7 @@ articulation, and are pronounced [ŋ] word-finally, or as nasalization
 on the preceding vowel.
 
 ```lv;frbna
-$2hon$.$au$-$vol$, $2hon$.$au$-$loc$
+$2hon$.$au$-$age$, $2hon$.$au$-$loc$
 
 you, your
 ```
@@ -82,7 +82,7 @@ Retroflex consonants thus have apparent minimal pairs with
 alveolar/dental consonants in the middle of words:
 
 ```lv;frbna
-$all$=follow.$imnp$.$au$=$hea$.$sg$.$au$-$vol$, $all$=follow.$imnp$.$na$=$hea$.$sg$.$na$-$pat$
+$all$=follow.$imnp$.$au$=$hea$.$sg$.$au$-$age$, $all$=follow.$imnp$.$na$=$hea$.$sg$.$na$-$pat$
 
 Fugitive (agentive case), fugitive (patientive case)
 ```

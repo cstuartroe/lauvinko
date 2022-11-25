@@ -77,10 +77,6 @@
               "title": "Primary and Secondary Tense and Aspect"
             },
             {
-              "name": "secondary",
-              "title": "Secondary Aspect"
-            },
-            {
               "name": "trigger_agreement"
             },
             {
@@ -131,8 +127,8 @@
               "title": "Case Suffixes",
               "subsections": [
                 {
-                  "name": "volitive",
-                  "title": "Volitive Case"
+                  "name": "agentive",
+                  "title": "Agentive Case"
                 },
                 {
                   "name": "instrumental",
@@ -143,8 +139,8 @@
                   "title": "Patientive Case"
                 },
                 {
-                  "name": "dative",
-                  "title": "Dative Case"
+                  "name": "genitive",
+                  "title": "Genitive Case"
                 },
                 {
                   "name": "adpositional",
@@ -376,7 +372,7 @@
         },
         {
           "name": "lesson2",
-          "title": "Lesson 2: Dative and Partitive Cases",
+          "title": "Lesson 2: Genitive and Partitive Cases",
           "subsections": [
             {
               "name": "readings2",

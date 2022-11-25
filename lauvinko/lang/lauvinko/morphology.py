@@ -332,10 +332,10 @@ class Case:
 
 
 class LauvinkoCase(Case, Enum):
-    VOLITIVE = ("vol", True)
+    AGENTIVE = ("age", True)
     INSTRUMENTAL = ("ins", False)
     PATIENTIVE = ("pat", False)
-    DATIVE = ("dat", None)
+    GENITIVE = ("gen", None)
     ALLATIVE = ("all", False)
     LOCATIVE = ("loc", True)
     ABLATIVE = ("abl", False)
@@ -578,7 +578,7 @@ LC = LauvinkoConsonant
 LV = LauvinkoVowel
 
 CASE_SPELLING_SYLLABLES: dict[str, Optional[tuple[ProtoKasanicOnset, ProtoKasanicVowel]]] = {
-    LauvinkoCase.VOLITIVE.abbreviation: None,
+    LauvinkoCase.AGENTIVE.abbreviation: None,
     LauvinkoCase.INSTRUMENTAL.abbreviation: (PKO.K, PKV.A),
     LauvinkoCase.PATIENTIVE.abbreviation: None,
     LauvinkoCase.ALLATIVE.abbreviation: (None, PKV.I),
@@ -600,20 +600,20 @@ PARTITIVE_NUMBERS = {
 }
 
 IRREGULAR_CLASS_WORDS: dict[tuple[str, str], tuple[Optional[list[ProtoKasanicSyllable]], list[LauvinkoSyllable], bool]] = {
-    ("$1excl$.$sg$", LauvinkoCase.DATIVE.abbreviation): (
+    ("$1excl$.$sg$", LauvinkoCase.GENITIVE.abbreviation): (
         [PKS(None, PKV.O), PKS(PKO.N, PKV.I)], [LS(None, LV.O), LS(LC.N, LV.I)], False,
     ),
-    ("$1incl$.$pl$", LauvinkoCase.DATIVE.abbreviation): (
+    ("$1incl$.$pl$", LauvinkoCase.GENITIVE.abbreviation): (
         [PKS(PKO.P, PKV.AA), PKS(PKO.N, PKV.I)], [LS(LC.P, LV.A), LS(LC.N, LV.I)], False,
     ),
-    ("$2fam$.$sg$", LauvinkoCase.DATIVE.abbreviation): (
+    ("$2fam$.$sg$", LauvinkoCase.GENITIVE.abbreviation): (
         None, [LS(LC.L, LV.I)], False,
     ),
     # TODO: What's up with the 2nd person plural pronoun?
-    ("$2hon$", LauvinkoCase.DATIVE.abbreviation): (
+    ("$2hon$", LauvinkoCase.GENITIVE.abbreviation): (
         [PKS(PKO.N, PKV.AA), PKS(None, PKV.I)], [LS(LC.N, LV.A, LC.Y)], False,
     ),
-    ("$3rd$.$sg$", LauvinkoCase.DATIVE.abbreviation): (
+    ("$3rd$.$sg$", LauvinkoCase.GENITIVE.abbreviation): (
         [PKS(PKO.R, PKV.I), PKS(PKO.N, PKV.A)], [LS(LC.L, LV.I, LC.N)], False,
     ),
     # TODO: Also the 3rd person plural?
@@ -749,11 +749,11 @@ class LauvinkoClassWord(LauvinkoWord):
 
         if case is None:
             pass
-        elif case in (LauvinkoCase.VOLITIVE, LauvinkoCase.PATIENTIVE):
+        elif case in (LauvinkoCase.AGENTIVE, LauvinkoCase.PATIENTIVE):
             pass
         elif case is LauvinkoCase.INSTRUMENTAL:
             _add_case_consonant(lv_syllables, LauvinkoConsonant.K)
-        elif case is LauvinkoCase.DATIVE:
+        elif case is LauvinkoCase.GENITIVE:
             if self.animate():
                 # TODO: How attached am I to the stray anusvara?
                 _add_case_vowel(lv_syllables, accent_position, LauvinkoVowel.I)
@@ -773,7 +773,7 @@ class LauvinkoClassWord(LauvinkoWord):
     def _case_spelling(self) -> ProtoKasanicSyllable:
         case = self.case()
 
-        if case is LauvinkoCase.DATIVE:
+        if case is LauvinkoCase.GENITIVE:
             if self.animate():
                 tup = (None, PKV.I)
             else:

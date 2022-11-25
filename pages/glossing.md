@@ -11,7 +11,7 @@ I'm working on adding a line showing the underlying phonological
 value of each morpheme!
 
 ```lv;frbna
-Cart.$na$=$lea$.$sg$.$na$-$all$ mango.$na$ $t1s$-$tvol$-add.$fqpt$.$na$=$bra$.$pl$.$na$.
+Cart.$na$=$lea$.$sg$.$na$-$all$ mango.$na$ $t1s$-$tage$-add.$fqpt$.$na$=$bra$.$pl$.$na$.
 
 I loaded the mangoes into the cart.
 ```
@@ -54,7 +54,7 @@ abbreviations that will appear in this document:
 |||
 |:----------|: $au$      $      | [augment](/augment) |
 | $na$      | [non-augment](/augment) |
-| $vol$     | [volitive case](/volitive) |
+| $age$     | [agentive case](/agentive) |
 | $ins$     | [instrumental case](/instrumental) |
 | $pat$     | [patientive case](/patientive) |
 | $gen$     | [genitive case](/genitive) |
@@ -78,7 +78,7 @@ abbreviations that will appear in this document:
 | $lea$     | [leaf class](/leaf) |
 | $rck$     | [rock class](/rock) |
 | $sea$     | [sea class](/sea) |
-| $tvol$    | [volitive trigger](/trigger_agreement) |
+| $tage$    | [agentive trigger](/trigger_agreement) |
 | $tgen$    | [genitive trigger](/trigger_agreement) |
 | $tloc$    | [locative trigger](/trigger_agreement) |
 | $dep$     | [dependent clause](/trigger_agreement) |

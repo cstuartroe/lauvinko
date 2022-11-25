@@ -383,7 +383,7 @@
     "category": "punctual",
     "languages": {
       "lv": {
-        "definition": "$vol$ adds $pat$ onto $all$. @ (reflexive) $ins$ grows, increases. (frequentative) $vol$ loads $pat$, cargo."
+        "definition": "$age$ adds $pat$ onto $all$. @ (reflexive) $ins$ grows, increases. (frequentative) $age$ loads $pat$, cargo."
       },
       "pk": {
         "definition": "To add.",
@@ -398,7 +398,7 @@
     "category": "fientive",
     "languages": {
       "lv": {
-        "definition": "$pat$ is boiling. @ $vol$ cooks, boils $pat$. @ $vol$ bothers, startles $pat$."
+        "definition": "$pat$ is boiling. @ $age$ cooks, boils $pat$. @ $age$ bothers, startles $pat$."
       },
       "pk": {
         "definition": "To agitate.",
@@ -482,7 +482,7 @@
     "category": "punctual",
     "languages": {
       "lv": {
-        "definition": "$vol$ bites $pat$. @ (frequentative) $vol$ chews, eats $pat$."
+        "definition": "$age$ bites $pat$. @ (frequentative) $age$ chews, eats $pat$."
       },
       "pk": {
         "definition": "To bite, chew.",
@@ -509,7 +509,7 @@
     "category": "punctual",
     "languages": {
       "lv": {
-        "definition": "(archaic) $vol$ borrows $pat$ from $abl$."
+        "definition": "(archaic) $age$ borrows $pat$ from $abl$."
       },
       "pk": {
         "definition": "To borrow.",
@@ -600,7 +600,7 @@
     "category": "fientive",
     "languages": {
       "lv": {
-        "definition": "$vol$ builds $pat$, a building or ship. @ (inchoative) $vol$ establishes, founds, begins construction on $pat$ @ $vol$ nominates $dat$ for public office."
+        "definition": "$age$ builds $pat$, a building or ship. @ (inchoative) $age$ establishes, founds, begins construction on $pat$ @ $age$ nominates $gen$ for public office."
       },
       "pk": {
         "definition": "To build, establish, appoint.",
@@ -632,7 +632,7 @@
     "category": "fientive",
     "languages": {
       "lv": {
-        "definition": "$vol$ carries, holds $pat$ with difficulty. @ $vol$/$loc$ contains, is pregnant with $pat$. @ $pat$ is heavy, serious, burdensome. @ $pat$ is difficult for $vol$. @ (perfective) $vol$ gives birth to $pat$. @ $vol$ conceives $pat$."
+        "definition": "$age$ carries, holds $pat$ with difficulty. @ $age$/$loc$ contains, is pregnant with $pat$. @ $pat$ is heavy, serious, burdensome. @ $pat$ is difficult for $age$. @ (perfective) $age$ gives birth to $pat$. @ $age$ conceives $pat$."
       },
       "pk": {
         "definition": "To carry, bear.",
@@ -738,7 +738,7 @@
     "category": "punctual",
     "languages": {
       "lv": {
-        "definition": "$vol$ crosses, passes over $pat$. @ (frequentative) $vol$ migrates, wanders."
+        "definition": "$age$ crosses, passes over $pat$. @ (frequentative) $age$ migrates, wanders."
       },
       "pk": {
         "definition": "To cross, go over.",
@@ -897,7 +897,7 @@
     "category": "punctual",
     "languages": {
       "lv": {
-        "definition": "$vol$ drinks, swallows $pat$. @ $vol$ inhales, smokes $pat$. @ (frequentative) $vol$ slurps, sucks $pat$. @ (vulgar) $vol$ performs oral sex on $pat$."
+        "definition": "$age$ drinks, swallows $pat$. @ $age$ inhales, smokes $pat$. @ (frequentative) $age$ slurps, sucks $pat$. @ (vulgar) $age$ performs oral sex on $pat$."
       },
       "pk": {
         "definition": "To drink.",
@@ -912,7 +912,7 @@
     "category": "fientive",
     "languages": {
       "lv": {
-        "definition": "$vol$ eats $pat$. @ (frequentative) $pat$ is a part of $vol$'s diet."
+        "definition": "$age$ eats $pat$. @ (frequentative) $pat$ is a part of $age$'s diet."
       },
       "pk": {
         "definition": "To eat, consume.",
@@ -969,7 +969,7 @@
     "category": "fientive",
     "languages": {
       "lv": {
-        "definition": "$vol$ fights. @ (reflexive) $vol$ and $vol$ fight against one another. @ (frequentative, literary) $vol$ struggles against, slaughters $pat$."
+        "definition": "$age$ fights. @ (reflexive) $age$ and $age$ fight against one another. @ (frequentative, literary) $age$ struggles against, slaughters $pat$."
       },
       "pk": {
         "definition": "To fight.",
@@ -1026,7 +1026,7 @@
     "category": "fientive",
     "languages": {
       "lv": {
-        "definition": "$vol$ follows, pursues, obeys $all$."
+        "definition": "$age$ follows, pursues, obeys $all$."
       },
       "pk": {
         "definition": "To chase.",
@@ -1053,7 +1053,7 @@
     "category": "fientive",
     "languages": {
       "lv": {
-        "definition": "$vol$ goes."
+        "definition": "$age$ goes."
       },
       "pk": {
         "definition": "To go.",
@@ -1080,7 +1080,7 @@
     "category": "fientive",
     "languages": {
       "lv": {
-        "definition": "(reflexive) $ins$ grows, ages. @ $pat$ expands in size. @ (reflexive) $ins$ ripens. @ $vol$ cultivates, rears $ins$, an agricultural product. @ (frequentative) $ins$ multiplies, proliferates, is distributed."
+        "definition": "(reflexive) $ins$ grows, ages. @ $pat$ expands in size. @ (reflexive) $ins$ ripens. @ $age$ cultivates, rears $ins$, an agricultural product. @ (frequentative) $ins$ multiplies, proliferates, is distributed."
       },
       "pk": {
         "definition": "To grow, expand, mature.",
@@ -1095,7 +1095,7 @@
     "category": "punctual",
     "languages": {
       "lv": {
-        "definition": "$vol$ (a person) blows, exhales on $all$. @ (frequentative) $vol$ (a wind) blows, gusts."
+        "definition": "$age$ (a person) blows, exhales on $all$. @ (frequentative) $age$ (a wind) blows, gusts."
       },
       "pk": {
         "definition": "To blow, gust.",
@@ -1245,7 +1245,7 @@
     "category": "punctual",
     "languages": {
       "lv": {
-        "definition": "$vol$ pierces, stings, stabs $pat$ with $ins$. @ $vol$ inserts $ins$ into $all$. @ (vulgar) $vol$ penetrates $pat$."
+        "definition": "$age$ pierces, stings, stabs $pat$ with $ins$. @ $age$ inserts $ins$ into $all$. @ (vulgar) $age$ penetrates $pat$."
       },
       "pk": {
         "definition": "To insert, pierce.",
@@ -1377,7 +1377,7 @@
     "category": "fientive",
     "languages": {
       "lv": {
-        "definition": "(reflexive) $vol$ studies $dat$. @ (reflexive) $ins$ learns $dat$ through experience. @ $vol$ teaches $ins$ about $dat$."
+        "definition": "(reflexive) $age$ studies $gen$. @ (reflexive) $ins$ learns $gen$ through experience. @ $age$ teaches $ins$ about $gen$."
       },
       "pk": {
         "definition": "To learn, teach.",
@@ -1392,7 +1392,7 @@
     "category": "fientive",
     "languages": {
       "lv": {
-        "definition": "$vol$ casts a fishing lure $pat$. @ $vol$ lends $pat$ to $dat$."
+        "definition": "$age$ casts a fishing lure $pat$. @ $age$ lends $pat$ to $gen$."
       },
       "pk": {
         "definition": "To throw.",
@@ -1443,7 +1443,7 @@
     "category": "uninflected",
     "languages": {
       "lv": {
-        "definition": "Man. @ $vol$ initiates $pat$ into manhood."
+        "definition": "Man. @ $age$ initiates $pat$ into manhood."
       },
       "pk": {
         "definition": "Man, male.",
@@ -1505,7 +1505,7 @@
     "category": "stative",
     "languages": {
       "lv": {
-        "definition": "$vol$ (plural) are married to one another (reflexive). @ $vol$ is married to $dat$ (this case arrangement is mainly used attributively)."
+        "definition": "$age$ (plural) are married to one another (reflexive). @ $age$ is married to $gen$ (this case arrangement is mainly used attributively)."
       },
       "pk": {
         "definition": "To be married.",
@@ -1537,7 +1537,7 @@
     "category": "fientive",
     "languages": {
       "lv": {
-        "definition": "(frequentative) $vol$ is great, mighty."
+        "definition": "(frequentative) $age$ is great, mighty."
       },
       "pk": {
         "definition": "To be great, mighty.",
@@ -1552,7 +1552,7 @@
     "category": "stative",
     "languages": {
       "lv": {
-        "definition": "$ins$ (inanimate) is warm, mild. @ $pat$ (animate) feels warm, comfortable. @ $vol$ (animate) is affectionate, friendly, relaxed."
+        "definition": "$ins$ (inanimate) is warm, mild. @ $pat$ (animate) feels warm, comfortable. @ $age$ (animate) is affectionate, friendly, relaxed."
       },
       "pk": {
         "definition": "Mild, easy.",
@@ -1638,7 +1638,7 @@
     "category": "stative",
     "languages": {
       "lv": {
-        "definition": "$pat$ needs $dat$."
+        "definition": "$pat$ needs $gen$."
       },
       "pk": {
         "definition": "To need.",
@@ -1788,7 +1788,7 @@
     "category": "stative",
     "languages": {
       "lv": {
-        "definition": "$vol$ is the parent of $pat$."
+        "definition": "$age$ is the parent of $pat$."
       },
       "pk": {
         "definition": "To parent, procreate.",
@@ -1845,7 +1845,7 @@
         "definition": "To put, place."
       },
       "pk": {
-        "definition": "$vol$ puts, places $pat$ into $all$. @ (frequentative) $vol$ sows $pat$ (seeds).",
+        "definition": "$age$ puts, places $pat$ into $all$. @ (frequentative) $age$ sows $pat$ (seeds).",
         "forms": {
           "gn": "s~hai"
         }
@@ -1887,7 +1887,7 @@
     "category": "punctual",
     "languages": {
       "lv": {
-        "definition": "$vol$ opens, unlocks, $pat$. @ $vol$ releases, turns loose $pat$. $vol$ frees, surrenders $pat$."
+        "definition": "$age$ opens, unlocks, $pat$. @ $age$ releases, turns loose $pat$. $age$ frees, surrenders $pat$."
       },
       "pk": {
         "definition": "Open, release.",
@@ -1940,7 +1940,7 @@
     "category": "fientive",
     "languages": {
       "lv": {
-        "definition": "$vol$ searches for $dat$. @ $vol$ wants $dat$. @ (perfective) $vol$ finds $dat$. @ $vol$ meets, meets up with $dat$. @ $vol$ invents, creates $pat$. @ $vol$ receives $pat$."
+        "definition": "$age$ searches for $gen$. @ $age$ wants $gen$. @ (perfective) $age$ finds $gen$. @ $age$ meets, meets up with $gen$. @ $age$ invents, creates $pat$. @ $age$ receives $pat$."
       },
       "pk": {
         "definition": "To search, find.",
@@ -1955,7 +1955,7 @@
     "category": "fientive",
     "languages": {
       "lv": {
-        "definition": "$vol$ looks at, watches $dat$. @ (vulgar) $vol$ has sex with, fucks $pat$. @ (inceptive) $vol$ catches sight of $dat$. @ $vol$ meets $dat$. @ (frequentative) $vol$ understands, comprehends, empathizes with $dat$, a person or idea."
+        "definition": "$age$ looks at, watches $gen$. @ (vulgar) $age$ has sex with, fucks $pat$. @ (inceptive) $age$ catches sight of $gen$. @ $age$ meets $gen$. @ (frequentative) $age$ understands, comprehends, empathizes with $gen$, a person or idea."
       },
       "pk": {
         "definition": "To see.",
@@ -2195,7 +2195,7 @@
     "category": "fientive",
     "languages": {
       "lv": {
-        "definition": "$vol$ speaks, says $pat$, a word (not a whole phrase). @ $vol$ speaks about $dat$. @ $vol$ speaks to, tells $all$. @ (frequentative) $vol$ commands, is in charge."
+        "definition": "$age$ speaks, says $pat$, a word (not a whole phrase). @ $age$ speaks about $gen$. @ $age$ speaks to, tells $all$. @ (frequentative) $age$ commands, is in charge."
       },
       "pk": {
         "definition": "To speak, say.",
@@ -2391,7 +2391,7 @@
     "category": "fientive",
     "languages": {
       "lv": {
-        "definition": "$vol$ touches, feels $pat$. @ $vol$ affects, disturbs $pat$. @ (frequentative) $vol$ strikes, hits $pat$."
+        "definition": "$age$ touches, feels $pat$. @ $age$ affects, disturbs $pat$. @ (frequentative) $age$ strikes, hits $pat$."
       },
       "pk": {
         "definition": "To touch, strike.",
@@ -2406,7 +2406,7 @@
     "category": "punctual",
     "languages": {
       "lv": {
-        "definition": "$vol$ trades, exchanges $pat$."
+        "definition": "$age$ trades, exchanges $pat$."
       },
       "pk": {
         "definition": "To trade.",
@@ -2467,7 +2467,7 @@
     "category": "fientive",
     "languages": {
       "lv": {
-        "definition": "$vol$ is a guest of $loc$."
+        "definition": "$age$ is a guest of $loc$."
       },
       "pk": {
         "definition": "To visit, to be a guest.",
@@ -2509,7 +2509,7 @@
     "category": "stative",
     "languages": {
       "pk": {
-        "definition": "$vol$ wears $pat$ on themself, $loc$.",
+        "definition": "$age$ wears $pat$ on themself, $loc$.",
         "forms": {
           "gn": "anyonye"
         }
@@ -2521,7 +2521,7 @@
     "category": "fientive",
     "languages": {
       "lv": {
-        "definition": "$vol$ weaves, intersperses $pat$."
+        "definition": "$age$ weaves, intersperses $pat$."
       },
       "pk": {
         "definition": "To weave, interlay.",
@@ -2575,7 +2575,7 @@
     "category": "stative",
     "languages": {
       "lv": {
-        "definition": "$vol$ is wise. @ (inchoative, typically religious) $vol$ instructs or presents a revelation to $ins$."
+        "definition": "$age$ is wise. @ (inchoative, typically religious) $age$ instructs or presents a revelation to $ins$."
       },
       "pk": {
         "definition": "Wise, intelligent.",

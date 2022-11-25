@@ -9,7 +9,7 @@ see broad and narrow phonetic transcriptions, simply click the
 "Open in builder" link. Try it:
 
 ```
-Cart.$na$=$lea$.$sg$.$na$-$all$ mango.$na$ $t1s$-$tvol$-add.$fqpt$.$na$=$bra$.$pl$.$na$.
+Cart.$na$=$lea$.$sg$.$na$-$all$ mango.$na$ $t1s$-$tage$-add.$fqpt$.$na$=$bra$.$pl$.$na$.
 
 I loaded the mangoes into the cart.
 ```

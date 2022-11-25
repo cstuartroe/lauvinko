@@ -43,7 +43,7 @@ a large noun. An example of a nearly-maximal noun (containing a morpheme
 at each position except a collective suffix or a definite suffix) is given:
 
 ```
-yellow.$gn$.$na$=$vol$=$pro$-$dep$-marry.$inc$.$na$=$femn$=$hea$.$sg$.$na$-$all$
+yellow.$gn$.$na$=$age$=$pro$-$dep$-marry.$inc$.$na$=$femn$=$hea$.$sg$.$na$-$all$
 
 to his jolly bride-to-be
 ```
@@ -85,19 +85,19 @@ below). For this reason I often use the terms "clitic", "enclitic",
 or "proclitic" interchangeably with "disjunct affix."
 
 ```
-$1excl$.$sg$.$au$-$vol$ cart.$na$=$lea$.$sg$.$na$-$dat$ $dep$-search.$pf$.$na$
+$1excl$.$sg$.$au$-$age$ cart.$na$=$lea$.$sg$.$na$-$gen$ $dep$-search.$pf$.$na$
 
 (that) I found the cart
 ```
 
 ```
-$1excl$.$sg$.$au$-$vol$ $lea$.$sg$.$na$-$dat$ $dep$-search.$pf$.$na$
+$1excl$.$sg$.$au$-$age$ $lea$.$sg$.$na$-$gen$ $dep$-search.$pf$.$na$
 
 (that) I found it
 ```
 
 ```
-cart.$na$ $dat$=$t1s$-$tvol$-search.$pf$.$na$=$lea$.$sg$.$na$
+cart.$na$ $gen$=$t1s$-$tage$-search.$pf$.$na$=$lea$.$sg$.$na$
 
 I found the cart
 ```
@@ -110,19 +110,19 @@ There are many other surprising irregularities exhibited by
 conjunct prefixes, introduced by historical sound change.
 
 ```
-$st$-$tvol$-speak.$pf$.$na$
+$st$-$tage$-speak.$pf$.$na$
 
 they spoke
 ```
 
 ```
-$dat$=$st$-$tvol$-speak.$pf$.$na$
+$gen$=$st$-$tage$-speak.$pf$.$na$
 
 they spoke about it
 ```
 
 ```
-if-$st$-$tvol$-speak.$pf$.$na$
+if-$st$-$tage$-speak.$pf$.$na$
 
 if they spoke
 ```

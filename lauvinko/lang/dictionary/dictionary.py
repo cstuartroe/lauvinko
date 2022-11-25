@@ -46,17 +46,17 @@ TOPIC_AGREEMENT_PREFIXES = {
 
 
 TOPIC_CASE_PREFIXES = {
-    "tvol": "",
-    "tdat": "pa+N",
+    "tage": "",
+    "tgen": "pa+N",
     "tloc": "posa",
     "dep": "eta",
 }
 
 ADPOSITIONS = [
-    (LauvinkoCase.VOLITIVE, "maa"),
+    (LauvinkoCase.AGENTIVE, "maa"),
     (LauvinkoCase.INSTRUMENTAL, "oka"),
     (LauvinkoCase.PATIENTIVE, ""),
-    (LauvinkoCase.DATIVE, "ni"),
+    (LauvinkoCase.GENITIVE, "ni"),
     (LauvinkoCase.ALLATIVE, "ai"),
     (LauvinkoCase.LOCATIVE, "po"),
     (LauvinkoCase.ABLATIVE, "aapo"),

@@ -28,17 +28,17 @@ sea class pronoun do not inflect for number.
 |sea class|+|+|`ap $sea$`|
 
 Most pronouns and classifiers decline regularly for case. The most notable
-exceptions are the datives of some formally animate arguments. Forms marked
+exceptions are the genitives of some formally animate arguments. Forms marked
 with @ are irregular:
 
 | |singular|dual|plural|
 |:---|:---:|:---:|:---:|
-|1^{st} exclusive|`lv ft $1excl$.$sg$.$au$-$dat$` @|`lv ft $1excl$.$pl$.$au$-$dat$`|+|
-|1^{st} inclusive| |`lv ft $1incl$.$du$.$au$-$dat$`|`lv ft $1incl$.$pl$.$au$-$dat$` @|
-|2^{nd} familiar|`lv ft $2fam$.$sg$.$au$-$dat$` @|`lv ft $2fml$.$pl$.$au$-$dat$` @|+|
-|2^{nd} formal|`lv ft $2fml$.$sg$.$au$-$dat$`|`lv ft $2fml$.$du$.$au$-$dat$`|^|
-|2^{nd} honorific|`lv ft $2hon$.$au$-$dat$` @|+|+|
-|head class definite|`lv ft $3rd$.$sg$.$au$-$dat$` @|`lv ft $3rd$.$du$.$au$-$dat$`|`lv ft $3rd$.$pl$.$au$-$dat$` @|
+|1^{st} exclusive|`lv ft $1excl$.$sg$.$au$-$gen$` @|`lv ft $1excl$.$pl$.$au$-$gen$`|+|
+|1^{st} inclusive| |`lv ft $1incl$.$du$.$au$-$gen$`|`lv ft $1incl$.$pl$.$au$-$gen$` @|
+|2^{nd} familiar|`lv ft $2fam$.$sg$.$au$-$gen$` @|`lv ft $2fml$.$pl$.$au$-$gen$` @|+|
+|2^{nd} formal|`lv ft $2fml$.$sg$.$au$-$gen$`|`lv ft $2fml$.$du$.$au$-$gen$`|^|
+|2^{nd} honorific|`lv ft $2hon$.$au$-$gen$` @|+|+|
+|head class definite|`lv ft $3rd$.$sg$.$au$-$gen$` @|`lv ft $3rd$.$du$.$au$-$gen$`|`lv ft $3rd$.$pl$.$au$-$gen$` @|
 
 There are a handful of other irregular pronouns: branch class has irregular
 instrumentals singular `lv ft $bra$.$sg$.$na$-$ins$` and

@@ -7,14 +7,14 @@ from lauvinko.lang.gloss.gloss import Gloss
 TESTS: List[Tuple[str, List[str], List[str], List[str], List[str]]] = [
     # ("see.impt.na", "jôj.ŋa", "jʊ̂jŋɐ", "eyohqXga", "yòynga"),
     (
-        "if-want-$pro$-$t1s$-$tdat$-cross.$fqnp$.$na$",
+        "if-want-$pro$-$t1s$-$tgen$-cross.$fqnp$.$na$",
         ["ti.je.ʋon.pi.na.pa.nek.kék.ŋi"],
         ["tɪjɛʋʊmpɪnɐpɐnɛkːɛ́ɦŋɪ"],
         ["HtqXEvMpinpenHekqHkZgi"],
         ["tiyevompinapanekkéhngi"],
     ),
     (
-        "before-$t3as$-$tvol$-pull.$inc$.$na$",
+        "before-$t3as$-$tage$-pull.$inc$.$na$",
         ["ta.ʋin.pét"],
         ["tɐʋɪmpɛ́ʔ"],
         ["HtZIMpkqXta"],

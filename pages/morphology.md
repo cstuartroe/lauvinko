@@ -110,21 +110,21 @@ There are many other surprising irregularities exhibited by
 conjunct prefixes, introduced by historical sound change.
 
 ```
-$t3as$-$tvol$-speak.$pf$.$na$
+$st$-$tvol$-speak.$pf$.$na$
 
-he spoke
+they spoke
 ```
 
 ```
-$dat$=$t3as$-$tvol$-speak.$pf$.$na$
+$dat$=$st$-$tvol$-speak.$pf$.$na$
 
-he spoke about it
+they spoke about it
 ```
 
 ```
-if-$t3as$-$tvol$-speak.$pf$.$na$
+if-$st$-$tvol$-speak.$pf$.$na$
 
-if he spoke
+if they spoke
 ```
 
 Case suffixes are an edge case. They originate from the same lexical source

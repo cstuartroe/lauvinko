@@ -14,8 +14,7 @@ MODAL_PREFIXES = {
     "while": "meru",
     "before": "ttu+F",
     "after": "ngi",
-    "$swrf$": "o+N",
-    "after:$swrf$": "nyo+N",
+    "after:$swrf$": "nyo",
     "not": "aara",
     "again": "tere",
     "want": "ewa",
@@ -36,12 +35,13 @@ TERTIARY_ASPECT_PREFIXES = {
 TOPIC_AGREEMENT_PREFIXES = {
     "t1s": "na",
     "t1p": "ta",
-    "t2s": "i+F",
-    "t2p": "e+F",
-    "t3as": "",
-    "t3ap": "aa",
-    "t3is": "sa",
-    "t3ip": "aasa",
+    "t2s:swrf": "i+F",
+    "t2p:swrf": "e+F",
+    "t3as:swrf": "aa",
+    "t3ap:swrf": "o",
+    "t3is:swrf": "saa",
+    "t3ip:swrf": "so",
+    "st": "",
 }
 
 

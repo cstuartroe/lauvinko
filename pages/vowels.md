@@ -11,4 +11,4 @@ considered vowel-consonant sequences rather than diphthongs. In
 unaccented syllables /aj aʋ/ might become [ɪ ʊ]. The sequences
 /oʋ ej ij/ are not permitted within a single syllable; they are
 permitted if the consonant is syllabified as part of the syllable
-after the vowel: `lv;frbn wash.$impt$.$na$` "he washed".
+after the vowel: `lv;frbn wash.$impt$.$na$` "washed".

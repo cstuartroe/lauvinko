@@ -254,9 +254,9 @@ Rather than an imperfective non-past form, statives have a so-called
 or a more general, gnomic sense.
 
 ```
-$t3as$-$tvol$-yellow.$gn$.$na$
+yellow.$gn$.$na$
 
-she's having fun/she's a fun person
+have fun/be a fun person
 ```
 
 Because stative stems began by having no internal inflection, there

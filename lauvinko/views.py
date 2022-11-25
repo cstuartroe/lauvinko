@@ -3,7 +3,6 @@ from django.shortcuts import render
 import json
 import mistletoe
 from mistletoe.ast_renderer import ASTRenderer
-
 from lauvinko.lang.dictionary import Dictionary
 from lauvinko.lang.gloss.gloss import Gloss, InvalidGloss
 from lauvinko.lang.lauvinko.morphology import InvalidSyntacticWordSequence

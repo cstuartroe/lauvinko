@@ -2509,7 +2509,7 @@
     "category": "stative",
     "languages": {
       "pk": {
-        "definition": "$ wears $.",
+        "definition": "$vol$ wears $pat$ on themself, $loc$.",
         "forms": {
           "gn": "anyonye"
         }

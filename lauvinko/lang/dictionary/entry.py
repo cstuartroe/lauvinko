@@ -1,4 +1,7 @@
 from dataclasses import dataclass
+import json
+import mistletoe
+from mistletoe.ast_renderer import ASTRenderer
 from lauvinko.lang.shared.semantics import (
     PrimaryTenseAspect,
     PRIMARY_TA_ABBREVIATIONS,
@@ -52,10 +55,13 @@ class DictEntry:
 
     # meant to produce json for the api, not meant to be the reverse of from_json_entry
     def to_json(self):
-        languages = {
-            language.value: lemma.to_json()
-            for language, lemma in self.languages.items()
-        }
+        languages = {}
+        for language, lemma in self.languages.items():
+            data = lemma.to_json()
+            languages[language.value] = {
+                **data,
+                "definition": json.loads(mistletoe.markdown(data["definition"], renderer=ASTRenderer))
+            }
 
         return {
             "languages": languages,

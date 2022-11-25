@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 
 import PageHeader from "./PageHeader";
-import {ApiResponse} from "./types";
+import {ApiResponse, MistletoeDocument} from "./types";
+import {renderMarkdownBlock} from "./markdown";
 
 type stem_category = "fientive" | "punctual" | "stative" | "uninflected";
 type pta_abbrev = "gn" | "np" | "pt" | "pf" | "impt" | "imnp" | "fqnp" | "fqpt" | "inc";
@@ -30,7 +31,7 @@ type Form = {
 
 type LangEntry = {
     forms: {[key: string]: Form},
-    definition: string,
+    definition: MistletoeDocument,
     category: stem_category,
 }
 
@@ -151,7 +152,9 @@ class LanguageEntry extends Component<LanguageEntryProps, LanguageEntryState> {
 
                 <h3><span style={{fontStyle: "italic"}}>{title}</span></h3>
 
-                <p>{langEntry.definition}</p>
+                {langEntry.definition.children.map((block, i) => (
+                  <div key={i}>{renderMarkdownBlock(block)}</div>
+                ))}
 
                 {langEntry.category === "uninflected" ? null :
                     <table>
@@ -360,7 +363,8 @@ class Dictionary extends Component<DictionaryProps, DictionaryState> {
                     continue;
                 }
 
-                if (langEntry.definition.toLowerCase().includes(q)) {
+                // TODO: better definition search
+                if ((langEntry.definition + "").toLowerCase().includes(q)) {
                     return true;
                 }
 

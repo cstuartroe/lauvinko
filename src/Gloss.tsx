@@ -244,9 +244,9 @@ export function extraFormatting(s: string): JSX.Element[] {
     if (c == '$') {
       flush();
 
-      const words = s.substring(i).match(/^\$([a-z0-9]+)\$/)
+      const words = s.substring(i).match(/^\$([a-z0-9:]+)\$/)
       if (words === null) {
-        throw "Mismatched dollar signs";
+        throw "Mismatched dollar signs: " + s;
       }
 
       out.push(<span className="abbrev" key={i}>{words[1]}</span>);
@@ -285,6 +285,9 @@ export function extraFormatting(s: string): JSX.Element[] {
       );
 
       i += words[0].length
+    } else if (c == '@') {
+      current += '۞';
+      i++;
     } else {
       current += c;
       i++;

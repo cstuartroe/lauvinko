@@ -9,7 +9,7 @@ TESTS: List[Tuple[str, List[str], List[str], List[str], List[str]]] = [
     (
         "if-want-$pro$-$t1s$-$tdat$-cross.$fqnp$.$na$",
         ["ti.je.ʋon.pi.na.pa.nek.kék.ŋi"],
-        ["tɪjɛʋʊmpɪnɐpɐnɛkkɛ́ɦŋɪ"],
+        ["tɪjɛʋʊmpɪnɐpɐnɛkːɛ́ɦŋɪ"],
         ["HtqXEvMpinpenHekqHkZgi"],
         ["tiyevompinapanekkéhngi"],
     ),

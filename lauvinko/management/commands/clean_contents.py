@@ -19,7 +19,7 @@ def order_dict(d: dict):
 
 
 class Command(BaseCommand):
-    help = 'Autoformats the dictionary'
+    help = 'Autoformats the contents file'
 
     def handle(self, *args, **options):
         with open(CONTENTS_FILENAME, "r") as fh:

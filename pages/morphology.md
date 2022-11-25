@@ -35,7 +35,7 @@ up to ten morphemes, in this order:
 - A [biological sex suffix](/sex_suffix)
 - A [class word](/class)
 - A [collective suffix](/collectives)
-- A [case suffix](/case)
+- A [case suffix](/cases)
 - A [definite suffix](/partitive)
 
 Of course, it is nearly impossible to find a natural example of such

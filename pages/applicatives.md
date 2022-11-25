@@ -16,7 +16,7 @@ postpositions, and there is an applicative available for most case roles.
 The applicatives are used where there is no semantic patient, or to place an
 oblique argument in a more focused position. For instan
 ```
-$age$=$1st$.$sg$-$datt$-see.$pf$.$na$=$3rd$.$sg$.$na$
+$age$=$t1s$-$tgen$-see.$pf$.$na$=$3rd$.$sg$.$na$
 
-She looked at me.
+I was seen by her.
 ```

@@ -1,5 +1,5 @@
 ```
-North.$na$=$age$=gust.$fqnp$.$na$=$3rd$.$sg$.$na$ and Bright.$gn$.$au$=$3rd$.$pl$.$au$-$gen$ what.$au$=$hea$.$sg$.$au$-$age$ $dep$-mighty.$fqnp$.$na$=$sea$.$na$ speak.$imnp$.$na$=$gen$=$t3ap:swrf$-$tage$-fight.$impt$.$na$, $ins$=hot.$gn$.$na$ weave.$pf$.$na$=$lea$.$sg$.$na$-$pat$ $age$=$dep$-wear.$gn$.$na$ $age$=cross.$np$.$au$=$hea$.$sg$.$au$-$gen$ $prl$=after-$t3as:swrf$-$tage$-go.$pf$.$na$=$lea$.$sg$.$na$.
+North.$na$=$age$=gust.$fqnp$.$na$=$3rd$.$sg$.$na$ and Bright.$gn$.$au$=$3rd$.$pl$.$au$-$gen$ what.$au$=$hea$.$sg$.$au$-$age$ $dep$-mighty.$fqnp$.$na$=$sea$.$na$ speak.$imnp$.$na$=$gen$=$t3ap:swrf$-$tage$-fight.$impt$.$na$, $ins$=hot.$gn$.$na$ weave.$pf$.$na$=$lea$.$sg$.$na$-$pat$ $age$=$dep$-wear.$gn$.$na$ $age$=cross.$np$.$au$=$hea$.$sg$.$au$-$gen$ $prl$=after:$swrf$-$t3as:swrf$-$tage$-go.$pf$.$na$=$lea$.$sg$.$na$.
 
 The North Wind and the Sun were arguing over who was stronger, when a traveler in a warm shawl came by.
 ```

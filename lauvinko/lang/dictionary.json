@@ -466,6 +466,18 @@
     },
     "origin": "kasanic"
   },
+  "bake": {
+    "category": "fientive",
+    "languages": {
+      "pk": {
+        "definition": "Bake, fire (as clay or ceramic)",
+        "forms": {
+          "gn": "m@kure"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "basa": {
     "category": "uninflected",
     "languages": {
@@ -1434,6 +1446,21 @@
         "definition": "Long, tall.",
         "forms": {
           "gn": "ttica"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "malacca": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Non-eldest brother, male friend."
+      },
+      "pk": {
+        "definition": "Malacca.",
+        "forms": {
+          "gn": "maraa/kkaa"
         }
       }
     },

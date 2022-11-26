@@ -77,7 +77,8 @@
               "title": "Primary and Secondary Tense and Aspect"
             },
             {
-              "name": "trigger_agreement"
+              "name": "trigger_agreement",
+              "title": "Trigger Agreement and Voice"
             },
             {
               "name": "tertiary",
@@ -178,6 +179,10 @@
     {
       "name": "syntax",
       "subsections": [
+        {
+          "name": "morphosyntax_overview",
+          "title": "A Schematic Summary of Lauvinko Morphosyntax"
+        },
         {
           "name": "argument_order",
           "title": "Core Argument Order"

@@ -2414,6 +2414,18 @@
     },
     "origin": "kasanic"
   },
+  "top": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Top, peak.",
+        "forms": {
+          "gn": "kkoppe"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "touch": {
     "category": "fientive",
     "languages": {

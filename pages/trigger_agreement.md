@@ -186,8 +186,18 @@ $2fml$.$sg$.$au$-$loc$ $dep$-bake.$pf$.$na$ $gen$=$t1s$-$tage$-see.$pf$.$na$=$rc
 I saw your brick.
 ```
 
-The only exception is genitive-case possessors, which are only
-for kinship terms.
+There are two exceptions:
+
+- [Positional nouns](/positionals)
+
+```
+build.$pf$.$au$=$lea$.$sg$.$au$-$loc$ top.$na$=$rck$.$sg$.$na$-$all$ bake.$pf$.$na$ $st$-$tage$-put.$pf$.$na$=$rck$.$sg$.$na$
+
+They threw the brick onto the top of the building.
+```
+
+- [Genitive-case possession](/possession), which aside from some
+positionals is only used for kinship terms and body parts.
 
 ```
 $2fml$.$sg$.$au$-$gen$ sister.$na$=$femn$ $gen$=$t1s$-$tage$-see.$pf$.$na$=$3rd$.$sg$.$na$

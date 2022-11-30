@@ -10,7 +10,7 @@ syllable, and allophony rules are applied according to the new syllablic
 structure.
 
 ```lv;frbna
-throat.$na$, throat.$na$=$rck$.$sg$.$na$-$abl$
+throat.$na$=$rck$.$na$, throat.$na$=$rck$.$na$-$abl$
 
 interior, from the interior
 ```

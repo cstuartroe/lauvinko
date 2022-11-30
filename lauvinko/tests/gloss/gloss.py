@@ -8,17 +8,17 @@ TESTS: List[Tuple[str, List[str], List[str], List[str], List[str]]] = [
     # ("see.impt.na", "jôj.ŋa", "jʊ̂jŋɐ", "eyohqXga", "yòynga"),
     (
         "if-want-$pro$-$t1s$-$tgen$-cross.$fqnp$.$na$",
-        ["ti.je.ʋon.pi.na.pa.nek.kék.ŋi"],
-        ["tɪjɛʋʊmpɪnɐpɐnɛkːɛ́ɦŋɪ"],
-        ["HtqXEvMpinpenHekqHkZgi"],
-        ["tiyevompinapanekkéhngi"],
+        ["ti.je.ʋon.pi.na.ta.nek.kék.ŋi"],
+        ["tɪjɛʋʊmpɪnɐtɐnɛkːɛ́ɦŋɪ"],
+        ["HtqXEvMpintqenHekqHkZgi"],
+        ["tiyevompinatanekkéhngi"],
     ),
     (
-        "before-$t3as$-$tage$-pull.$inc$.$na$",
-        ["ta.ʋin.pét"],
-        ["tɐʋɪmpɛ́ʔ"],
-        ["HtZIMpkqXta"],
-        ["tavimpéh"],
+        "before-$t3as:swrf$-$tage$-pull.$inc$.$na$",
+        ["ta.jin.pét"],
+        ["tɐjɪmpɛ́ʔ"],
+        ["HtZAIMpkqXta"],
+        ["tayimpéh"],
     ),
 ]
 

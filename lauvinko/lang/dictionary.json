@@ -311,11 +311,11 @@
     "mstype": "class word",
     "origin": "kasanic"
   },
-  "$rck$.$sg$": {
+  "$rck$": {
     "category": "uninflected",
     "languages": {
       "pk": {
-        "definition": "(measure word) solid, compact thing (singular).",
+        "definition": "(measure word) solid, compact thing (general number).",
         "forms": {
           "gn": ""
         }
@@ -377,6 +377,32 @@
       }
     },
     "mstype": "number suffix",
+    "origin": "kasanic"
+  },
+  "later": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Later, in the future.",
+        "forms": {
+          "gn": "taatu"
+        }
+      }
+    },
+    "mstype": "adverb",
+    "origin": "kasanic"
+  },
+  "tomorrow": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Tomorrow.",
+        "forms": {
+          "gn": "waarai"
+        }
+      }
+    },
+    "mstype": "adverb",
     "origin": "kasanic"
   },
   "add": {

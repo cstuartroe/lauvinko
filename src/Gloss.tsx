@@ -407,9 +407,17 @@ export class LoadedBlockGloss extends Component<LoadedBlockGlossProps, {}> {
 }
 
 export function getPreParts(pre: MarkdownPreformatted) {
-  const lines = pre.children[0].content.split("\n").filter(s => s !== "");
+  const lines = pre.children[0].content.split("\n");
+  let outline = "", i = 0;
 
-  return {outline: lines[0], translation: lines[1]};
+  while (lines[i] != "") {
+    outline += lines[i] + " ";
+    i++;
+  }
+
+  const translation = lines.slice(i + 1).join(' ');
+
+  return {outline, translation};
 }
 
 function renderMarkdownPreformatted(pre: MarkdownPreformatted) {

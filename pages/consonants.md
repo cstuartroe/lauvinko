@@ -70,7 +70,7 @@ Coda /ʋ/ becomes [w].
 consonants or word boundaries.
 
 ```lv;frbna
-throat.$na$, throat.$na$=$rck$.$sg$.$na$-$abl$
+throat.$na$, throat.$na$=$rck$.$na$-$abl$
 
 interior, from the interior
 ```

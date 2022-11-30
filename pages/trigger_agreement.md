@@ -83,13 +83,13 @@ after the first clause for which it is the trigger. In such cases,
 I mark the trigger agreement slot with $st$ ("same trigger").
 
 ```
-Bake.$pf$.$na$ $t2s:swrf$-$tloc$-sit.$pt$.$na$=$rck$.$sg$.$na$, after:$st$-$st$-$tage$-put.$pf$.$na$=$rck$.$sg$.$na$.
+Bake.$pf$.$na$ $t2s:swrf$-$tloc$-sit.$pt$.$na$=$rck$.$na$, after:$st$-$st$-$tage$-put.$pf$.$na$=$rck$.$na$.
 
 You had a brick, then you threw it.
 ```
 
 ```
-Bake.$pf$.$na$ $t1s$-$tloc$-sit.$pt$.$na$=$rck$.$sg$.$na$, after:$st$-$t1s$-$tage$-put.$pf$.$na$=$rck$.$sg$.$na$.
+Bake.$pf$.$na$ $t1s$-$tloc$-sit.$pt$.$na$=$rck$.$na$, after:$st$-$t1s$-$tage$-put.$pf$.$na$=$rck$.$na$.
 
 I had a brick, then I threw it.
 ```
@@ -108,13 +108,13 @@ agents of transitive
 and intransitive verbs. This is zero-marked in Lauvìnko.
 
 ```
-bake.$pf$.$na$ $st$-$tage$-put.$pf$.$na$=$rck$.$sg$.$na$
+bake.$pf$.$na$ $st$-$tage$-put.$pf$.$na$=$rck$.$na$
 
 They threw the brick.
 ```
 
 ```
-bake.$pf$.$na$ $gen$=$t3ap:swrf$-$tage$-see.$pf$.$na$=$rck$.$sg$.$na$
+bake.$pf$.$na$ $gen$=$t3ap:swrf$-$tage$-see.$pf$.$na$=$rck$.$na$
 
 They saw the brick.
 ```
@@ -125,7 +125,7 @@ the verb it generally marks objects of perception or cognition.
 This is marked with a prefix *ta-* which triggers nasal mutation.
 
 ```
-bake.$pf$.$na$=$rck$.$sg$.$na$-$gen$ $age$=$t3is:swrf$-$tgen$-see.$pf$.$na$=$3rd$.$pl$.$na$
+bake.$pf$.$na$=$rck$.$na$-$gen$ $age$=$t3is:swrf$-$tgen$-see.$pf$.$na$=$3rd$.$pl$.$na$
 
 The brick was seen by them.
 ```
@@ -135,7 +135,7 @@ locative is most often used for possessors. This is marked with the
 prefix *pos-*.
 
 ```
-bake.$pf$.$na$ $st$-$tloc$-sit.$gn$.$na$=$rck$.$sg$.$na$
+bake.$pf$.$na$ $st$-$tloc$-sit.$gn$.$na$=$rck$.$na$
 
 They have a brick.
 ```
@@ -164,7 +164,7 @@ is instead overtly marked for dependence with a prefix *et-*.
 A frequent use of this prefix is in nominalized clauses.
 
 ```
-$2fml$.$sg$.$au$-$age$ bake.$pf$.$na$=$rck$.$sg$.$na$-$par$ $dep$-put.$pf$.$na$ $gen$=$t1s$-$tage$-see.$pf$.$na$=$sea$.$na$
+$2fml$.$sg$.$au$-$age$ bake.$pf$.$na$=$rck$.$na$-$par$ $dep$-put.$pf$.$na$ $gen$=$t1s$-$tage$-see.$pf$.$na$=$sea$.$na$
 
 I saw you throw a brick.
 ```
@@ -181,7 +181,7 @@ I saw the man from Malacca.
 This includes nouns with locative-case possessors.
 
 ```
-$2fml$.$sg$.$au$-$loc$ $dep$-bake.$pf$.$na$ $gen$=$t1s$-$tage$-see.$pf$.$na$=$rck$.$sg$.$na$
+$2fml$.$sg$.$au$-$loc$ $dep$-bake.$pf$.$na$ $gen$=$t1s$-$tage$-see.$pf$.$na$=$rck$.$na$
 
 I saw your brick.
 ```
@@ -191,7 +191,7 @@ There are two exceptions:
 - [Positional nouns](/positionals)
 
 ```
-build.$pf$.$au$=$lea$.$sg$.$au$-$loc$ top.$na$=$rck$.$sg$.$na$-$all$ bake.$pf$.$na$ $st$-$tage$-put.$pf$.$na$=$rck$.$sg$.$na$
+build.$pf$.$au$=$lea$.$sg$.$au$-$loc$ top.$na$=$rck$.$na$-$all$ bake.$pf$.$na$ $st$-$tage$-put.$pf$.$na$=$rck$.$na$
 
 They threw the brick onto the top of the building.
 ```

@@ -30,6 +30,14 @@ def parse_gloss_tag(gloss_tag: str):
     return re.fullmatch("\\$([a-z]+)\\$", gloss_tag).group(1)
 
 
+PREFIX_TYPES = (
+    MorphosyntacticType.MODAL_PREFIX,
+    MorphosyntacticType.TERTIARY_ASPECT_PREFIX,
+    MorphosyntacticType.TOPIC_AGREEMENT_PREFIX,
+    MorphosyntacticType.TOPIC_CASE_PREFIX,
+)
+
+
 @dataclass
 class MorphemeSource:
     name: str
@@ -93,7 +101,12 @@ class MorphemeSource:
     def resolve_lauvinko(self) -> Morpheme:
         entry = dictionary.by_id(self.name)
         lemma = entry.languages[Language.LAUVINKO]
-        context = self.context or MorphemeContext.PREFIXED
+        if self.context:
+            context = self.context
+        elif lemma.mstype in PREFIX_TYPES:
+            context = MorphemeContext.PREFIXED
+        else:
+            context = MorphemeContext.NONAUGMENTED
         return lemma.form(
             primary_ta=self.primary_ta,
             context=context,

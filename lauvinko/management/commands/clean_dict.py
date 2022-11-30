@@ -23,19 +23,23 @@ PERSON_ORDER = [
     "$sea$",
 ]
 
-NUMBERLESS_PERSONS = {"$2hon$", "$sea$"}
+NUMBER_ORDER = [None, "$sg$", "$du$", "$pl$"]
 
-NUMBER_ORDER = ["$sg$", "$du$", "$pl$"]
+KEY_ORDERABLE_MSTYPES = (
+    MorphosyntacticType.INDEPENDENT.value,
+    MorphosyntacticType.NUMBER_SUFFIX.value,
+    MorphosyntacticType.ADVERB.value,
+)
 
 
 def key_order(mstype: str, ident: str) -> Any:
-    if mstype == MorphosyntacticType.INDEPENDENT.value or mstype == MorphosyntacticType.NUMBER_SUFFIX.value:
+    if mstype in KEY_ORDERABLE_MSTYPES:
         return ident
     elif mstype == MorphosyntacticType.CLASS_WORD.value:
-        if ident in NUMBERLESS_PERSONS:
-            person, number = ident, "$sg$"
-        else:
+        if '.' in ident:
             person, number = ident.split(".")
+        else:
+            person, number = ident, None
 
         return PERSON_ORDER.index(person), NUMBER_ORDER.index(number)
     elif mstype == MorphosyntacticType.DEFINITE_MARKER.value:
@@ -62,6 +66,8 @@ class Command(BaseCommand):
         with open(DICTIONARY_FILENAME, "r") as fh:
             d = json.load(fh)
 
+        ordered = order_dict(d)
+
         with open(DICTIONARY_FILENAME, "w") as fh:
-            json.dump(order_dict(d), fh, indent=2, sort_keys=False)
+            json.dump(ordered, fh, indent=2, sort_keys=False)
         

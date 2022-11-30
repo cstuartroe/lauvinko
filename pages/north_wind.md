@@ -18,7 +18,7 @@ interesting use of incorporation where the incorporated bit has a relationship
 to the main stem not easily mappable to a case role.
 
 ```
-Heel.$na$=$st$-$tage$-speak.$pf$.$na$, $age$=cross.$np$.$na$=$hea$.$sg$.$na$-$ins$ skin.$na$=$bra$.$sg$.$na$-$abl$ weave.$pf$.$na$=$lea$.$pl$.$na$-$par$ $age$=$dep$-put.$pf$.$au$=$hea$.$sg$.$au$-$gen$ $age$=mighty.$imnp$.$au$=$hea$.$sg$.$au$-$gen$ manner.$na$=$rck$.$sg$.$na$-$prl$ thus-can-must-$st$-$tage$-speak.$imnp$.$na$.
+Heel.$na$=$st$-$tage$-speak.$pf$.$na$, $age$=cross.$np$.$na$=$hea$.$sg$.$na$-$ins$ skin.$na$=$bra$.$sg$.$na$-$abl$ weave.$pf$.$na$=$lea$.$pl$.$na$-$par$ $age$=$dep$-put.$pf$.$au$=$hea$.$sg$.$au$-$gen$ $age$=mighty.$imnp$.$au$=$hea$.$sg$.$au$-$gen$ manner.$na$=$rck$.$na$-$prl$ thus-can-must-$st$-$tage$-speak.$imnp$.$na$.
 
 They agreed that the one who first made the traveler take his shawl off should be considered the strongest.
 ```

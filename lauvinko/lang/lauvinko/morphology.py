@@ -194,7 +194,11 @@ class LauvinkoMorpheme(Morpheme):
                     if ms[0].onset is not None:
                         pass
 
-                    elif morpheme.surface_form.accent_position != 0 and v2.frontness is VowelFrontness.MID:
+                    # The last condition is a brazen dodge - there's a prefix a- to which this rule shouldn't
+                    # apply. A more theoretically correct condition would look at whether the morpheme
+                    # truly starts with a central vowel, or if it's a case of diphthong breaking or prosthesis
+                    elif (morpheme.surface_form.accent_position != 0 and v2.frontness is VowelFrontness.MID
+                          and morpheme.lemma.ident != "$t3as:swrf$"):
                         ms[0].onset = syllables[-1].onset
                         ms[0].vowel = v1
                         del syllables[-1]
@@ -355,6 +359,7 @@ class LauvinkoWordType(Enum):
     ADPOSITION = "adposition"
     NUMBER_SUFFIX = "number suffix"
     SEX_SUFFIX = "sex suffix"
+    ADVERB = "adverb"
 
 
 class InvalidSyntacticWordSequence(ValueError):
@@ -365,6 +370,7 @@ PARTICLE_MSTYPES = {
     MorphosyntacticType.ADPOSITION: LauvinkoWordType.ADPOSITION,
     MorphosyntacticType.NUMBER_SUFFIX: LauvinkoWordType.NUMBER_SUFFIX,
     MorphosyntacticType.SEX_SUFFIX: LauvinkoWordType.SEX_SUFFIX,
+    MorphosyntacticType.ADVERB: LauvinkoWordType.ADVERB,
 }
 
 
@@ -595,7 +601,6 @@ PARTITIVE_NUMBERS = {
     "hea": "pl",
     "bra": "du",
     "lea": "pl",
-    "rck": "sg",
     "sea": None,
 }
 
@@ -860,6 +865,8 @@ class LauvinkoParticle(LauvinkoWord):
         assert self.morpheme.lemma.mstype in PARTICLE_MSTYPES
 
     def _get_accented(self):
+        if self.morpheme.lemma.mstype is MorphosyntacticType.ADVERB:
+            return 0
         return None
 
     def morphemes(self) -> List[LauvinkoMorpheme]:

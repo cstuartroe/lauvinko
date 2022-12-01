@@ -30,6 +30,11 @@ def parse_gloss_tag(gloss_tag: str):
     return re.fullmatch("\\$([a-z]+)\\$", gloss_tag).group(1)
 
 
+def normalize_word(word: str):
+    m = re.search("([a-z\u0300\u0301]+)", word.lower())
+    return m.group(0)
+
+
 PREFIX_TYPES = (
     MorphosyntacticType.MODAL_PREFIX,
     MorphosyntacticType.TERTIARY_ASPECT_PREFIX,

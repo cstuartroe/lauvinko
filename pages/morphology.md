@@ -14,11 +14,13 @@ inflections they may take.
 
 ```
 man.$na$=$3rd$.$sg$.$na$-$par$-$def$ long.$gn$.$na$
+
 The man is tall.
 ```
 
 ```
 long.$gn$.$na$=$3rd$.$sg$.$na$-$par$-$def$ man.$na$
+
 The tall one is a man.
 ```
 

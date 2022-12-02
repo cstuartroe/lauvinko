@@ -88,6 +88,14 @@ type GlossState = {
   errorMessage?: string,
 }
 
+function interleave<S, T>(elems: T[], inserter: S): (S | T)[] {
+  const out: (S | T)[] = [elems[0]];
+  for (let i = 1; i < elems.length; i++) {
+    out.push(inserter, elems[i]);
+  }
+  return out;
+}
+
 class InlineGloss extends Component<InlineGlossProps, GlossState> {
   constructor(props: InlineGlossProps) {
     super(props);
@@ -108,7 +116,10 @@ class InlineGloss extends Component<InlineGlossProps, GlossState> {
   render() {
     return (
       <>
-        {this.props.rows.map((row, i) => this.renderRow(row, i))}
+        {interleave(
+          this.props.rows.map((row, i) => this.renderRow(row, i)),
+          ' ',
+        )}
       </>
     );
   }
@@ -132,13 +143,13 @@ class InlineGloss extends Component<InlineGlossProps, GlossState> {
       case "analysis":
         return <span className={className} key={key}>{extraFormatting(analysis.join(' '))}</span>;
       case "romanization":
-        return <span className={className} key={key}>{romanization.join(' ')} </span>;
+        return <span className={className} key={key}>{romanization.join(' ')}</span>;
       case "falavay":
-        return <span className={className} key={key}>{falavay.join('')} </span>;
+        return <span className={className} key={key}>{falavay.join('')}</span>;
       case "narrow_transcription":
-        return <span className={className} key={key}>{'[' + narrow_transcription.join(' ') + ']'} </span>;
+        return <span className={className} key={key}>{'[' + narrow_transcription.join(' ') + ']'}</span>;
       case "broad_transcription":
-        return <span className={className} key={key}>{'/' + broad_transcription.join(' ') + '/'} </span>;
+        return <span className={className} key={key}>{'/' + broad_transcription.join(' ') + '/'}</span>;
     }
   }
 }

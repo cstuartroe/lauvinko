@@ -379,6 +379,19 @@
     "mstype": "number suffix",
     "origin": "kasanic"
   },
+  "$mir$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Mirative particle.",
+        "forms": {
+          "gn": "mari"
+        }
+      }
+    },
+    "mstype": "adverb",
+    "origin": "kasanic"
+  },
   "later": {
     "category": "uninflected",
     "languages": {
@@ -782,6 +795,21 @@
         "definition": "To cross, go over.",
         "forms": {
           "gn": "@kkungi"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "cut": {
+    "category": "punctual",
+    "languages": {
+      "lv": {
+        "definition": "$age$ cuts, slices $pat$. @ (frequentative) $age$ chops up $pat$. @ $age$ operates on, castrates $pat$. @ (reflexive) $pat$ and $pat$ intersect."
+      },
+      "pk": {
+        "definition": "Cut, slice.",
+        "forms": {
+          "gn": "~simo"
         }
       }
     },
@@ -1797,6 +1825,21 @@
       }
     },
     "origin": "sanskrit"
+  },
+  "obscure": {
+    "category": "stative",
+    "languages": {
+      "lv": {
+        "definition": "$ins$ obscures, smudges, clouds $loc$. @ $age$/$ins$ prevents an occurrence $pat$."
+      },
+      "pk": {
+        "definition": "Obscure, impede, block, prevent, smudge, cloud.",
+        "forms": {
+          "gn": "suromu"
+        }
+      }
+    },
+    "origin": "kasanic"
   },
   "ocean": {
     "category": "uninflected",

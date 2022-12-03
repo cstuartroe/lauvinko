@@ -379,6 +379,22 @@
     "mstype": "number suffix",
     "origin": "kasanic"
   },
+  "all": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "All, every, each."
+      },
+      "pk": {
+        "definition": "All, every.",
+        "forms": {
+          "gn": "nyaisaa"
+        }
+      }
+    },
+    "mstype": "number suffix",
+    "origin": "kasanic"
+  },
   "$mir$": {
     "category": "uninflected",
     "languages": {
@@ -455,21 +471,6 @@
         "definition": "Air, weather, environment, conditions.",
         "forms": {
           "gn": "tokkwo"
-        }
-      }
-    },
-    "origin": "kasanic"
-  },
-  "all": {
-    "category": "uninflected",
-    "languages": {
-      "lv": {
-        "definition": "All, every, each."
-      },
-      "pk": {
-        "definition": "All, every.",
-        "forms": {
-          "gn": "nyaisaa"
         }
       }
     },
@@ -773,6 +774,18 @@
     },
     "origin": "kasanic"
   },
+  "clear": {
+    "category": "stative",
+    "languages": {
+      "pk": {
+        "definition": "Clean, pure, clear, evident.",
+        "forms": {
+          "gn": "kkesaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "color": {
     "category": "uninflected",
     "languages": {
@@ -974,6 +987,18 @@
     },
     "origin": "kasanic"
   },
+  "dry": {
+    "category": "stative",
+    "languages": {
+      "pk": {
+        "definition": "Dry, barren, spent.",
+        "forms": {
+          "gn": "keka"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "eat": {
     "category": "fientive",
     "languages": {
@@ -1083,6 +1108,18 @@
         "definition": "Tending to say upright, capable of carrying weight, buoyant on water.",
         "forms": {
           "gn": "naasaci"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "flow": {
+    "category": "fientive",
+    "languages": {
+      "pk": {
+        "definition": "Flow, pour.",
+        "forms": {
+          "gn": "r@mai"
         }
       }
     },
@@ -1703,13 +1740,10 @@
   "much": {
     "category": "uninflected",
     "languages": {
-      "lv": {
-        "definition": "Much, many, a lot, very."
-      },
       "pk": {
-        "definition": "Much, many.",
+        "definition": "Amount, degree, very, much.",
         "forms": {
-          "gn": "koro"
+          "gn": "poku"
         }
       }
     },
@@ -1917,6 +1951,18 @@
         "definition": "Peach.",
         "forms": {
           "gn": "nyame"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "proverb": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "(A pro-verb; that is, a stem used as a verb whose meaning can be recovered, usually by being the same as the previous verb)",
+        "forms": {
+          "gn": "nusa"
         }
       }
     },
@@ -2324,6 +2370,18 @@
         "definition": "To stand.",
         "forms": {
           "gn": "nitto"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "stone": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Stone.",
+        "forms": {
+          "gn": "ngiyo"
         }
       }
     },

@@ -43,9 +43,14 @@ class Command(BaseCommand):
 
         category = KasanicStemCategory[options['category'].upper()]
         ident, definition = options['ident'], options['definition']
+
+        if ident in d:
+            print("ID already in use.")
+            return
+
         pk_lemma = get_lemma(category, ident, definition)
 
-        d[options['ident']] = {
+        d[ident] = {
             "category": category.name.lower(),
             "languages": {
                 "pk": {

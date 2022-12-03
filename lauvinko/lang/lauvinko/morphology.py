@@ -357,7 +357,6 @@ class LauvinkoWordType(Enum):
     CONTENT_WORD = "content word"
     DETERMINER = "determiner"
     ADPOSITION = "adposition"
-    NUMBER_SUFFIX = "number suffix"
     SEX_SUFFIX = "sex suffix"
     ADVERB = "adverb"
 
@@ -368,7 +367,6 @@ class InvalidSyntacticWordSequence(ValueError):
 
 PARTICLE_MSTYPES = {
     MorphosyntacticType.ADPOSITION: LauvinkoWordType.ADPOSITION,
-    MorphosyntacticType.NUMBER_SUFFIX: LauvinkoWordType.NUMBER_SUFFIX,
     MorphosyntacticType.SEX_SUFFIX: LauvinkoWordType.SEX_SUFFIX,
     MorphosyntacticType.ADVERB: LauvinkoWordType.ADVERB,
 }
@@ -402,8 +400,8 @@ class LauvinkoWord(Word):
         if morphemes[-1].lemma.mstype is MorphosyntacticType.INDEPENDENT:
             return LauvinkoContentWord.from_morphemes(morphemes)
 
-        elif morphemes[0].lemma.mstype is MorphosyntacticType.CLASS_WORD:
-            return LauvinkoClassWord.from_morphemes(morphemes)
+        elif morphemes[0].lemma.mstype in (MorphosyntacticType.CLASS_WORD, MorphosyntacticType.NUMBER_SUFFIX):
+            return LauvinkoDeterminer.from_morphemes(morphemes)
 
         elif morphemes[0].lemma.mstype in PARTICLE_MSTYPES:
             return LauvinkoParticle.from_morphemes(morphemes)
@@ -445,7 +443,11 @@ class LauvinkoWord(Word):
             found = True
             i += 1
 
-        if words[i:] and words[i].word_type() is LauvinkoWordType.NUMBER_SUFFIX:
+        if words[i:] and words[i].word_type() is LauvinkoWordType.DETERMINER:
+            if words[i-1].determiner_type() is MorphosyntacticType.NUMBER_SUFFIX:
+                raise ValueError
+            elif words[i].determiner_type() is MorphosyntacticType.CLASS_WORD:
+                raise ValueError
             i += 1
 
         if not found or i != len(words):
@@ -696,13 +698,13 @@ def _add_partitive_suffix(lv_syllables: list[LauvinkoSyllable], definite: bool):
         lv_syllables.append(syll)
 
 @dataclass
-class LauvinkoClassWord(LauvinkoWord):
-    class_word: LauvinkoMorpheme
+class LauvinkoDeterminer(LauvinkoWord):
+    determiner: LauvinkoMorpheme
     case_suffix: Optional[LauvinkoMorpheme]
     definite_suffix: Optional[LauvinkoMorpheme]
 
     def __post_init__(self):
-        assert self.class_word.lemma.mstype is MorphosyntacticType.CLASS_WORD
+        assert self.determiner.lemma.mstype in (MorphosyntacticType.CLASS_WORD, MorphosyntacticType.NUMBER_SUFFIX)
 
         if self.case_suffix is not None:
             assert self.case_suffix.lemma.mstype is MorphosyntacticType.ADPOSITION
@@ -713,9 +715,9 @@ class LauvinkoClassWord(LauvinkoWord):
                 expected_augment = self.animate()
 
             if expected_augment:
-                assert self.class_word.context is MorphemeContext.AUGMENTED
+                assert self.determiner.context is MorphemeContext.AUGMENTED
             else:
-                assert self.class_word.context is MorphemeContext.NONAUGMENTED
+                assert self.determiner.context is MorphemeContext.NONAUGMENTED
 
         if self.case() is LauvinkoCase.PARTITIVE:
             person, number = self.pn()
@@ -725,7 +727,7 @@ class LauvinkoClassWord(LauvinkoWord):
             assert self.definite_suffix.lemma.mstype is MorphosyntacticType.DEFINITE_MARKER
 
             # The head class word is inherently indefinite, definite referents use $3rd$ class words
-            assert not self.class_word.lemma.ident.startswith("$hea$")
+            assert not self.determiner.lemma.ident.startswith("$hea$")
 
             assert self.case_suffix is not None
             assert self.case_suffix.lemma.ident == f"${LauvinkoCase.PARTITIVE.abbreviation}$"
@@ -738,7 +740,10 @@ class LauvinkoClassWord(LauvinkoWord):
         return CASE_BY_IDENT[self.case_suffix.lemma.ident]
 
     def pn(self) -> tuple[str, Optional[str]]:
-        parts = self.class_word.lemma.ident.split(".")
+        if self.determiner_type() is MorphosyntacticType.NUMBER_SUFFIX:
+            return "number", None
+
+        parts = self.determiner.lemma.ident.split(".")
         labels = [
             re.match(r"\$([0-9a-z]+)\$", part).group(1)
             for part in parts
@@ -791,19 +796,19 @@ class LauvinkoClassWord(LauvinkoWord):
     def _generate_morph(self) -> "LauvinkoMorpheme":
         case = self.case()
         if case is None:
-            return self.class_word
+            return self.determiner
 
-        pk_syllables: list[ProtoKasanicSyllable] = [*self.class_word.virtual_original_form.surface_form.syllables]
+        pk_syllables: list[ProtoKasanicSyllable] = [*self.determiner.virtual_original_form.surface_form.syllables]
         syll = self._case_spelling()
         syll and pk_syllables.append(syll)
 
         if self.definite_suffix is not None:
             pk_syllables.append(*self.definite_suffix.virtual_original_form.surface_form.syllables)
 
-        accent_position = self.class_word.surface_form.accent_position
-        falling_accent = self.class_word.surface_form.falling_accent
+        accent_position = self.determiner.surface_form.accent_position
+        falling_accent = self.determiner.surface_form.falling_accent
 
-        tup = (self.class_word.lemma.ident, case.abbreviation)
+        tup = (self.determiner.lemma.ident, case.abbreviation)
         if tup in IRREGULAR_CLASS_WORDS:
             pks, lv_syllables, falling_accent = IRREGULAR_CLASS_WORDS[tup]
             if pks is not None:
@@ -816,7 +821,7 @@ class LauvinkoClassWord(LauvinkoWord):
                     vowel=s.vowel,
                     coda=s.coda,
                 )
-                for s in self.class_word.surface_form.syllables
+                for s in self.determiner.surface_form.syllables
             ]
 
             if len(lv_syllables) > 0:
@@ -833,18 +838,21 @@ class LauvinkoClassWord(LauvinkoWord):
                 lemma=None,
                 surface_form=PKSurfaceForm(
                     syllables=pk_syllables,
-                    stress_position=self.class_word.virtual_original_form.surface_form.stress_position,
+                    stress_position=self.determiner.virtual_original_form.surface_form.stress_position,
                 ),
                 end_mutation=None,
             ),
-            context=self.class_word.context,
+            context=self.determiner.context,
         )
 
     def word_type(self) -> LauvinkoWordType:
         return LauvinkoWordType.DETERMINER
 
+    def determiner_type(self) -> MorphosyntacticType:
+        return self.determiner.lemma.mstype
+
     @classmethod
-    def from_morphemes(cls, morphemes: List[LauvinkoMorpheme]) -> "LauvinkoClassWord":
+    def from_morphemes(cls, morphemes: List[LauvinkoMorpheme]) -> "LauvinkoDeterminer":
         class_word = morphemes[0]
         case_suffix = None
         definite_suffix = None

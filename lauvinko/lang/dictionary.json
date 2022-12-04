@@ -379,6 +379,19 @@
     "mstype": "number suffix",
     "origin": "kasanic"
   },
+  "$dim$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "diminutive suffix",
+        "forms": {
+          "gn": "ki"
+        }
+      }
+    },
+    "mstype": "number suffix",
+    "origin": "kasanic"
+  },
   "all": {
     "category": "uninflected",
     "languages": {
@@ -393,6 +406,19 @@
       }
     },
     "mstype": "number suffix",
+    "origin": "kasanic"
+  },
+  "$hort$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Hortative/jussive, used sentence-initially.",
+        "forms": {
+          "gn": "aayau"
+        }
+      }
+    },
+    "mstype": "adverb",
     "origin": "kasanic"
   },
   "$mir$": {
@@ -441,6 +467,19 @@
         "definition": "Later, in the future.",
         "forms": {
           "gn": "taatu"
+        }
+      }
+    },
+    "mstype": "adverb",
+    "origin": "kasanic"
+  },
+  "quite": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Quite, rather (to a higher degree than expected).",
+        "forms": {
+          "gn": "yaato"
         }
       }
     },
@@ -1553,6 +1592,18 @@
     },
     "origin": "sanskrit"
   },
+  "large": {
+    "category": "stative",
+    "languages": {
+      "pk": {
+        "definition": "Large.",
+        "forms": {
+          "gn": "naumamu"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "learn": {
     "category": "fientive",
     "languages": {
@@ -2073,7 +2124,7 @@
     "category": "fientive",
     "languages": {
       "lv": {
-        "definition": "To put, place."
+        "definition": "$age$ throws $pat$. @ (frequentative) $age$ sows $pat$ (seeds)."
       },
       "pk": {
         "definition": "$age$ puts, places $pat$ into $all$. @ (frequentative) $age$ sows $pat$ (seeds).",
@@ -2177,6 +2228,18 @@
         "definition": "Rice.",
         "forms": {
           "gn": "hekwe"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "sago_palm": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Sago palm (Metroxylon sagu).",
+        "forms": {
+          "gn": "kkiwainga"
         }
       }
     },
@@ -2447,6 +2510,18 @@
         "definition": "To speak, say.",
         "forms": {
           "gn": "k@ppotaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "split": {
+    "category": "stative",
+    "languages": {
+      "pk": {
+        "definition": "Split, broken, torn.",
+        "forms": {
+          "gn": "ngaitaa"
         }
       }
     },
@@ -2732,6 +2807,18 @@
       }
     },
     "origin": "malay"
+  },
+  "trunk": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Torso, trunk (of a tree), neck (of a stringed instrument), pipe, flute.",
+        "forms": {
+          "gn": "ikaati"
+        }
+      }
+    },
+    "origin": "kasanic"
   },
   "vanar": {
     "category": "uninflected",

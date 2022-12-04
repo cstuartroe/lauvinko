@@ -408,6 +408,32 @@
     "mstype": "adverb",
     "origin": "kasanic"
   },
+  "and:$st$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "And (clausal coordination with same trigger).",
+        "forms": {
+          "gn": "kittaa"
+        }
+      }
+    },
+    "mstype": "adverb",
+    "origin": "kasanic"
+  },
+  "and:$swrf$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "And (clausal coordination with switch-reference).",
+        "forms": {
+          "gn": "tekaa"
+        }
+      }
+    },
+    "mstype": "adverb",
+    "origin": "kasanic"
+  },
   "later": {
     "category": "uninflected",
     "languages": {
@@ -513,6 +539,18 @@
         "definition": "Bake, fire (as clay or ceramic)",
         "forms": {
           "gn": "m@kure"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "banteng": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Banteng.",
+        "forms": {
+          "gn": "paantanga"
         }
       }
     },
@@ -1179,6 +1217,18 @@
     },
     "origin": "kasanic"
   },
+  "ground": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Ground, floor.",
+        "forms": {
+          "gn": "nekinye"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "grow": {
     "category": "fientive",
     "languages": {
@@ -1278,6 +1328,21 @@
     },
     "origin": "kasanic"
   },
+  "help": {
+    "category": "fientive",
+    "languages": {
+      "lv": {
+        "definition": "$age$ helps $gen$ with/by doing $pat$."
+      },
+      "pk": {
+        "definition": "Help.",
+        "forms": {
+          "gn": "@nausi"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "hip": {
     "category": "uninflected",
     "languages": {
@@ -1327,6 +1392,18 @@
         "definition": "Hut, shelter.",
         "forms": {
           "gn": "karaawi"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "indoor": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Indoors, interior of a building.",
+        "forms": {
+          "gn": "naisi"
         }
       }
     },
@@ -1864,7 +1941,7 @@
     "category": "stative",
     "languages": {
       "lv": {
-        "definition": "$ins$ obscures, smudges, clouds $loc$. @ $age$/$ins$ prevents an occurrence $pat$."
+        "definition": "$ins$ obscures, smudges, clouds $loc$. @ $age$/$ins$ prevents an occurrence $pat$. @ $ins$ (an emotion) overcomes $pat$."
       },
       "pk": {
         "definition": "Obscure, impede, block, prevent, smudge, cloud.",
@@ -1918,12 +1995,24 @@
     "category": "stative",
     "languages": {
       "lv": {
-        "definition": "$age$ is the parent of $pat$."
+        "definition": "$age$ is the parent of $pat$. @ $pat$ is a child."
       },
       "pk": {
         "definition": "To parent, procreate.",
         "forms": {
           "gn": "saattu"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "parent:animal": {
+    "category": "stative",
+    "languages": {
+      "pk": {
+        "definition": "To procreate (of an animal).",
+        "forms": {
+          "gn": "ttunya"
         }
       }
     },
@@ -2062,6 +2151,21 @@
       }
     },
     "origin": "arabic"
+  },
+  "request": {
+    "category": "punctual",
+    "languages": {
+      "lv": {
+        "definition": "$age$ asks requests $gen$ from $all$."
+      },
+      "pk": {
+        "definition": "Request.",
+        "forms": {
+          "gn": "@kaane"
+        }
+      }
+    },
+    "origin": "kasanic"
   },
   "rice": {
     "category": "uninflected",
@@ -2387,6 +2491,23 @@
     },
     "origin": "kasanic"
   },
+  "storehouse": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Barn, storehouse, dormitory, barracks.",
+        "forms": {
+          "gn": "paantasaaraa"
+        }
+      },
+      "sa": {
+        "definition": "Storehouse.",
+        "native": "\u092d\u093e\u0923\u094d\u0921\u0936\u093e\u0932\u093e",
+        "transcription": "bh\u0101\u1e47\u1e0da\u015b\u0101l\u0101"
+      }
+    },
+    "origin": "sanskrit"
+  },
   "surya": {
     "category": "uninflected",
     "languages": {
@@ -2572,7 +2693,7 @@
     "category": "punctual",
     "languages": {
       "lv": {
-        "definition": "$age$ trades, exchanges $pat$."
+        "definition": "$age$ trades, exchanges $pat$ (buy or sell, default interpretation is buy) with money $dat$."
       },
       "pk": {
         "definition": "To trade.",

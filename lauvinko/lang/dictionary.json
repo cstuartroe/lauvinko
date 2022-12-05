@@ -1232,6 +1232,18 @@
     },
     "origin": "kasanic"
   },
+  "foul": {
+    "category": "stative",
+    "languages": {
+      "pk": {
+        "definition": "Stinky, having a stench, unclean, rotten, morally reprehensible, having a bad reputation.",
+        "forms": {
+          "gn": "ngente"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "fruit": {
     "category": "uninflected",
     "languages": {
@@ -1891,6 +1903,26 @@
       }
     },
     "origin": "kasanic"
+  },
+  "name": {
+    "category": "stative",
+    "languages": {
+      "lv": {
+        "definition": "Name. @ $age$ calls $gen$ by name $pat$."
+      },
+      "pk": {
+        "definition": "Name, to call by name.",
+        "forms": {
+          "gn": "naama"
+        }
+      },
+      "sa": {
+        "definition": "Name.",
+        "native": "\u0928\u093e\u092e\u0928\u094d",
+        "transcription": "n\u0101\u0301man"
+      }
+    },
+    "origin": "sanskrit"
   },
   "need": {
     "category": "stative",

@@ -875,6 +875,21 @@
     },
     "origin": "kasanic"
   },
+  "cook": {
+    "category": "fientive",
+    "languages": {
+      "lv": {
+        "definition": "$age$ prepares food $gen$ from ingredients $pat$."
+      },
+      "pk": {
+        "definition": "Cook, prepare.",
+        "forms": {
+          "gn": "c~ca"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "cross": {
     "category": "punctual",
     "languages": {
@@ -2233,6 +2248,18 @@
     },
     "origin": "kasanic"
   },
+  "sago": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Sago pith, starch (from any plant).",
+        "forms": {
+          "gn": "waancau"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "sago_palm": {
     "category": "uninflected",
     "languages": {
@@ -2651,11 +2678,23 @@
     },
     "origin": "malay"
   },
+  "that": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "That.",
+        "forms": {
+          "gn": "tusu"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "this": {
     "category": "uninflected",
     "languages": {
       "pk": {
-        "definition": "This, that.",
+        "definition": "This.",
         "forms": {
           "gn": "kisu"
         }

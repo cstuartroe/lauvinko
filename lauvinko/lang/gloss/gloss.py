@@ -196,13 +196,15 @@ class GlossPhonologicalWord:
         if back_matter:
             source = source[:-len(back_matter)]
 
+        first_letter = re.search("[a-zA-Z]", source).group()
+
         return cls(
             swords=[
                 GlossSyntacticWord.parse(sword, language=language)
                 for sword in source.lower().split("=")
             ],
             language=language,
-            capitalize=any(source[i].isupper() for i in (0, 1)),
+            capitalize=first_letter.isupper(),
             front_matter=front_matter,
             back_matter=back_matter,
         )

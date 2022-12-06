@@ -473,6 +473,32 @@
     "mstype": "adverb",
     "origin": "kasanic"
   },
+  "may": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "May, having permission.",
+        "forms": {
+          "gn": "remi"
+        }
+      }
+    },
+    "mstype": "adverb",
+    "origin": "kasanic"
+  },
+  "may_not": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "May not, not having permission.",
+        "forms": {
+          "gn": "haakkwaa"
+        }
+      }
+    },
+    "mstype": "adverb",
+    "origin": "kasanic"
+  },
   "quite": {
     "category": "uninflected",
     "languages": {
@@ -1188,6 +1214,18 @@
         "definition": "Fish.",
         "forms": {
           "gn": "eteto"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "five": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Five.",
+        "forms": {
+          "gn": "wiki"
         }
       }
     },
@@ -2143,6 +2181,21 @@
     },
     "origin": "kasanic"
   },
+  "play": {
+    "category": "fientive",
+    "languages": {
+      "lv": {
+        "definition": "Move back and forth, fluctuate, flicker. @ Dance, cavort. @ Fool about, tinker with $pat$. @ Play a game $gen$. @ Be shifty, untrustworthy. @ Try to deceive someone $gen$."
+      },
+      "pk": {
+        "definition": "Move back and forth, dance.",
+        "forms": {
+          "gn": "tt@wi"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "proverb": {
     "category": "uninflected",
     "languages": {
@@ -2460,6 +2513,21 @@
         "definition": "Sit, be (with adpositional phrase)",
         "forms": {
           "gn": "ni'i"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "skilled": {
+    "category": "stative",
+    "languages": {
+      "lv": {
+        "definition": "$age$ is skilled, proficient at $gen$. @ $age$ is clever, dexterous."
+      },
+      "pk": {
+        "definition": "Skilled.",
+        "forms": {
+          "gn": "maiyukaa"
         }
       }
     },

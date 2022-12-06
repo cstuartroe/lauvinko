@@ -23,6 +23,7 @@ MODAL_PREFIXES = {
     "must": "yosa+L",
     "very": "kora",
     "but": "caa",
+    "$indir$": "co'i"
 }
 
 

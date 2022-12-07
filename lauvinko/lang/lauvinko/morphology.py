@@ -359,6 +359,7 @@ class LauvinkoWordType(Enum):
     ADPOSITION = "adposition"
     SEX_SUFFIX = "sex suffix"
     ADVERB = "adverb"
+    PARTICLE = "particle"
 
 
 class InvalidSyntacticWordSequence(ValueError):
@@ -369,6 +370,7 @@ PARTICLE_MSTYPES = {
     MorphosyntacticType.ADPOSITION: LauvinkoWordType.ADPOSITION,
     MorphosyntacticType.SEX_SUFFIX: LauvinkoWordType.SEX_SUFFIX,
     MorphosyntacticType.ADVERB: LauvinkoWordType.ADVERB,
+    MorphosyntacticType.PARTICLE: LauvinkoWordType.PARTICLE,
 }
 
 

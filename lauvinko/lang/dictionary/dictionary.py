@@ -60,7 +60,7 @@ ADPOSITIONS = [
     (LauvinkoCase.GENITIVE, "ni"),
     (LauvinkoCase.ALLATIVE, "ai"),
     (LauvinkoCase.LOCATIVE, "po"),
-    (LauvinkoCase.ABLATIVE, "aapo"),
+    (LauvinkoCase.ABLATIVE, "au"),
     (LauvinkoCase.PERLATIVE, "moko"),
     (LauvinkoCase.PARTITIVE, "e"),
 

@@ -15,6 +15,7 @@ class MorphosyntacticType(Enum):
     TOPIC_CASE_PREFIX = "topic case prefix"
     NUMBER_SUFFIX = "number suffix"
     SEX_SUFFIX = "sex suffix"
+    PARTICLE = "particle"
     ADVERB = "adverb"
     INDEPENDENT = "independent"
 

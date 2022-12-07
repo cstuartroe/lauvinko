@@ -340,6 +340,19 @@
     "mstype": "class word",
     "origin": "kasanic"
   },
+  "$refl$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Self.",
+        "forms": {
+          "gn": "ciro"
+        }
+      }
+    },
+    "mstype": "class word",
+    "origin": "kasanic"
+  },
   "$def$": {
     "category": "uninflected",
     "languages": {
@@ -408,6 +421,45 @@
     "mstype": "number suffix",
     "origin": "kasanic"
   },
+  "$int$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Interrogative.",
+        "forms": {
+          "gn": "ne"
+        }
+      }
+    },
+    "mstype": "particle",
+    "origin": "kasanic"
+  },
+  "and:$st$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "And (clausal coordination with same trigger).",
+        "forms": {
+          "gn": "kita"
+        }
+      }
+    },
+    "mstype": "particle",
+    "origin": "kasanic"
+  },
+  "and:$swrf$": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "And (clausal coordination with switch-reference).",
+        "forms": {
+          "gn": "te'a"
+        }
+      }
+    },
+    "mstype": "particle",
+    "origin": "kasanic"
+  },
   "$hort$": {
     "category": "uninflected",
     "languages": {
@@ -428,32 +480,6 @@
         "definition": "Mirative particle.",
         "forms": {
           "gn": "mari"
-        }
-      }
-    },
-    "mstype": "adverb",
-    "origin": "kasanic"
-  },
-  "and:$st$": {
-    "category": "uninflected",
-    "languages": {
-      "pk": {
-        "definition": "And (clausal coordination with same trigger).",
-        "forms": {
-          "gn": "kittaa"
-        }
-      }
-    },
-    "mstype": "adverb",
-    "origin": "kasanic"
-  },
-  "and:$swrf$": {
-    "category": "uninflected",
-    "languages": {
-      "pk": {
-        "definition": "And (clausal coordination with switch-reference).",
-        "forms": {
-          "gn": "tekaa"
         }
       }
     },
@@ -1442,6 +1468,21 @@
         "definition": "Help.",
         "forms": {
           "gn": "@nausi"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "hide": {
+    "category": "stative",
+    "languages": {
+      "lv": {
+        "definition": "$pat$ fits, squeezes into $loc$. @ (reflexive) $age$ hides from $gen$. @ $age$ conceals, disguises, does not admit $pat$ to $gen$. @ $age$ buries, stashes $pat$. @ $pat$ is invisible."
+      },
+      "pk": {
+        "definition": "Fit into.",
+        "forms": {
+          "gn": "maarau"
         }
       }
     },
@@ -2744,6 +2785,18 @@
     },
     "origin": "sanskrit"
   },
+  "table": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Plank, board, table.",
+        "forms": {
+          "gn": "ngongwau"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "teach": {
     "category": "stative",
     "languages": {
@@ -2954,6 +3007,18 @@
         "definition": "Torso, trunk (of a tree), neck (of a stringed instrument), pipe, flute.",
         "forms": {
           "gn": "ikaati"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "under": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Under, underside (positional).",
+        "forms": {
+          "gn": "neko"
         }
       }
     },

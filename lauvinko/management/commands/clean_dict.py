@@ -21,6 +21,7 @@ PERSON_ORDER = [
     "$lea$",
     "$rck$",
     "$sea$",
+    "$refl$",
 ]
 
 NUMBER_ORDER = [None, "$sg$", "$du$", "$pl$"]
@@ -28,6 +29,7 @@ NUMBER_ORDER = [None, "$sg$", "$du$", "$pl$"]
 KEY_ORDERABLE_MSTYPES = (
     MorphosyntacticType.INDEPENDENT.value,
     MorphosyntacticType.NUMBER_SUFFIX.value,
+    MorphosyntacticType.PARTICLE.value,
     MorphosyntacticType.ADVERB.value,
 )
 

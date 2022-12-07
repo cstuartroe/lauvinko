@@ -35,11 +35,13 @@ def normalize_word(word: str):
     return m.group(0)
 
 
-PREFIX_TYPES = (
+ACCENTLESS_TYPES = (
     MorphosyntacticType.MODAL_PREFIX,
     MorphosyntacticType.TERTIARY_ASPECT_PREFIX,
     MorphosyntacticType.TOPIC_AGREEMENT_PREFIX,
     MorphosyntacticType.TOPIC_CASE_PREFIX,
+    MorphosyntacticType.ADPOSITION,
+    MorphosyntacticType.PARTICLE,
 )
 
 
@@ -108,7 +110,7 @@ class MorphemeSource:
         lemma = entry.languages[Language.LAUVINKO]
         if self.context:
             context = self.context
-        elif lemma.mstype in PREFIX_TYPES:
+        elif lemma.mstype in ACCENTLESS_TYPES:
             context = MorphemeContext.PREFIXED
         else:
             context = MorphemeContext.NONAUGMENTED

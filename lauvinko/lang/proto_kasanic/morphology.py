@@ -52,7 +52,10 @@ class ProtoKasanicMorpheme(Morpheme):
         out = ""
 
         for syll in self.surface_form.syllables:
-            if syll.onset is not None:
+            if syll.onset is None:
+                if out:
+                    out += '\''
+            else:
                 out += syll.onset.name.lower()
 
             if syll.vowel.frontness is VowelFrontness.UNDERSPECIFIED:

@@ -1,0 +1,156 @@
+I followed along the [Lexember festivities](https://www.reddit.com/r/conlangs/comments/z91a1h/introducing_lexember_2022/)
+on /r/conlangs.
+
+# Day 1
+
+```
+Cut.$pt$.$na$=$lea$.$pl$.$na$-$gen$ $mir$ black.$gn$.$na$ $ins$=$t3is:swrf$-$tloc$-obscure.$gn$.$na$=$sea$.$na$!
+
+The pages are smudged with ink!
+```
+
+I coined two new roots for this sentence:
+
+- [ìsing](/kasanic_dictionary?q=@cut) "Cut, slice, castrate, intersect."
+
+- [sòlang](/kasanic_dictionary?q=@obscure) "Obscure, impede, block, prevent, smudge, cloud."
+
+And two new compound words, one from a new root and one from an existing root:
+
+- [òsimo](/build?outline=cut.%24pt%24.%24na%24%3D%24lea%24.%24sg%24.%24na%24&language=lv&translation=page) "page" 
+
+- [yóvani](/build?outline=black.%24gn%24.%24na%24%3D%24sea%24.%24na%24&language=lv&translation=ink) "ink"
+
+# Day 2
+
+```
+$Age$=wise.$gn$.$au$=$3rd$.$sg$.$au$-$gen$ $1excl$.$sg$.$na$-$all$ help.$pf$.$na$ $gen$=$t3as:swrf$-$tage$-request.$pt$.$na$=$rck$.$na$.
+
+The expert asked me for help.
+```
+
+I coined two new roots for this sentence:
+
+- [éani](/kasanic_dictionary?q=@request) "request"
+
+- [ànosi](/kasanic_dictionary?q=@help) "help"
+
+And one new compound word from an existing root:
+ 
+- [mancáyto](/build?outline=%24age%24%3Dwise.%24gn%24.%24au%24%3D%24hea%24.%24sg%24.%24au%24&language=lv&translation=wise+one%2C+guru%2C+expert) "wise one, guru, expert"
+
+# Day 3
+
+```
+Storehouse.$na$=$lea$.$sg$.$na$ this.$na$ $1excl$.$sg$.$au$-$age$ $all$=go.$pf$.$na$ and:$st$ ground.$au$=$lea$.$sg$.$au$-$loc$ banteng.$na$=parent:animal.$gn$.$na$=$dim$ $st$-$tloc$-lie.$pt$.$na$.
+
+I entered the barn and there was a banteng calf lying on the ground. 
+```
+
+I coined two new native roots for this sentence:
+
+- [tòng](/kasanic_dictionary?q=@parent:animal) "To procreate (of an animal)."
+
+- [néni](/kasanic_dictionary?q=@ground) "Ground, floor."
+
+I also borrowed one word from Malay:
+
+- [pánang](/kasanic_dictionary?q=@banteng) "[banteng](https://en.wikipedia.org/wiki/Banteng)"
+
+And one from Sanskrit भाण्डशाला *bhāṇḍaśālā* (which is also loaned into Malay as the word *bangsal*):
+
+- [pánsar](/loanword_dictionary?q=@storehouse) "Barn, storehouse, dormitory, barracks."
+
+I was unsure how to go about forming the names of baby animals. On one hand, giving every type of baby animal its own unrelated name (like English calf, kid, piglet, puppy, etc.) seemed too simple. On the other hand, regularly deriving all baby animal names from the name of the adult seemed to simplistic as well. To resolve this question, I looked into what Lauvìnko's control languages - Malay, Malayalam, and Tamil - do. It turns out all three of them just regularly derive them from <name of adult animal> + "baby" (or the reverse order, depending on head direction). So, that's what I decided to do: <name of adult animal> + *tòng*.
+
+---
+
+```
+Much.$au$=$rck$.$au$-$loc$ foul.$gn$.$na$! $2Fml$.$sg$.$au$-$age$ Foul.$gn$.$na$ can-must-$st$-$tgen$-name.$gn$.$na$.
+
+What a stench! You should call her Stinky.
+```
+
+I created one new root for this sentence:
+
+- [ngéni](/kasanic_dictionary?q=@foul) "Stinky, having a stench, unclean, rotten, morally reprehensible, having a bad reputation."
+
+# Day 4
+
+```
+Sago_palm.$na$=$bra$.$sg$.$na$ this.$na$ quite large.$pt$.$na$, and:$st$ trunk.$na$ $st$-$tloc$-split.$pt$.$na$=$bra$.$sg$.$na$.
+
+The sago palm was rather large, and its trunk was split.
+```
+
+I coined four new roots for this sentence:
+
+- [kìveng](/kasanic_dictionary?q=@sago_palm) "sago palm"
+
+- [nàumang](/kasanic_dictionary?q=@large) "large"
+
+- [íati](/kasanic_dictionary?q=@trunk) "Torso, trunk (of a tree), neck (of a stringed instrument), pipe, flute."
+
+- [ngayír](/kasanic_dictionary?q=@split) "Split, broken, torn."
+
+---
+
+```
+$Hort$ interior.$na$=$rck$.$na$-$gen$ see.$pf$.$na$! $2Fml$.$sg$.$au$-$gen$ that.$na$ sago.$na$=$sea$.$na$-$par$-$def$ hurry.$gn$.$na$ $gen$=can-$st$-$tage$-cook.$pf$.$na$=$bra$.$sg$.$na$.
+
+Look inside! You could make pudding with that starch.
+```
+
+I coined two new roots for this sentence:
+
+- [vánso](/kasanic_dictionary?q=@sago) "Sago pith, starch (from any plant)."
+
+- [cés](/kasanic_dictionary?q=@cook) "Cook, prepare."
+
+This was a fun one because I got to use a throwback to [last year's Lexember](https://www.reddit.com/r/conlangs/comments/r6d6rj/lexember_2021_day_1/hmw8cy8/)!
+
+# Day 5
+
+```
+$Ins$=grow.$pf$.$au$=$3rd$.$sg$.$au$-$gen$ may_not stone.$na$=$rck$.$na$-$par$ five.$na$ $gen$=$t3as:swrf$-$tage$-play.$pf$.$na$! Much.$na$=$rck$.$na$-$abl$ $indir$-$st$-$tage$-skilled.$gn$.$na$!
+
+The grownup can't play five-stones! He'd be too good!
+```
+
+I coined two new roots for this sentence:
+
+- [tàvi](/kasanic_dictionary?q=@play) "Move back and forth, fluctuate, flicker. ۞ Dance, cavort. ۞ Fool about, tinker with. ۞ Play a game. ۞ Be shifty, untrustworthy. ۞ Try to deceive someone."
+
+- [màyyah](/kasanic_dictionary?q=@skilled) "Skilled, proficient, clever, dexterous."
+
+I coined a new compound word:
+
+-[oasítto](/build?outline=%24ins%24%3Dgrow.%24pf%24.%24au%24%3D%24hea%24.%24sg%24.%24au%24&language=lv&translation=adult) "adult"
+
+as well as the new adverbial construction
+
+-[pó](/build?outline=much.%24na%24%3D%24rck%24.%24na%24-%24abl%24&language=lv&translation=too) "too (excessively)"
+
+I also expanded the use of the indirect evidential *coy-* for this sentence. Already used for inference, I decided to use it here for the "would be" sense, with the justification that it's a sort of deduction or supposition in this context.
+
+The game the children are playing is a game [a bit like jacks](https://en.wikipedia.org/wiki/Knucklebones#Austronesia) called *[batu seremban](https://weefolkart.com/homeschool/batu-seremban-game-directions/)* in Malay.
+
+# Day 6
+
+```
+$T3is:swrf$-$tloc$-sit.$gn$.$na$ table.$au$=$lea$.$sg$.$au$-$loc$ under.$au$=$rck$.$au$-$loc$ $refl$.$na$-$par$ $age$=$dep$-hide.$gn$.$na$ chicken.$na$=$hea$.$sg$.$na$... $int$ $2fml$.$sg$.$na$ $abl$=sit.$gn$.$na$?
+
+There's a chicken hiding under the table, is that yours?
+```
+
+I coined three new roots for this sentence:
+
+- [néu](/kasanic_dictionary?q=@under) "under"
+
+- [ngòmo](/kasanic_dictionary?q=@table) "Plank, board, table."
+
+- [màlo](/kasanic_dictionary?q=@hide) "Fit, squeeze into. ۞ (reflexive) Hide from. ۞ Conceal, disguise, not admit. ۞ Bury, stash. ۞ Be invisible."
+
+I think this is the first time, or at least the first time since making several syntax changes, that I've decided how to do an existential construction. What I've settled on makes use of the heretofore rarely-used post-verbal focus position: the sentence begins with a verb *saposnì* marked for a new third-person trigger despite no overt trigger being stated, and the verb essentially means "it is there/it has", and the thing (in this case, a chicken hiding under a table) comes in the focus position.
+
+I also played with cases in a new way here. Normally, the locative case is used for alienable possession, but it doesn't seem right to mark "you" with the locative in this situation, where the chicken has escaped its owner. So, I translated "yours" using the ablative case, with the idea that the chicken was *from* the chef at some earlier point in time.

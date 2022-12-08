@@ -422,6 +422,14 @@
         },
         {
           "name": "bhagavad_gita"
+        },
+        {
+          "name": "lexember",
+          "subsections": [
+            {
+              "name": "lexember_2022"
+            }
+          ]
         }
       ]
     },

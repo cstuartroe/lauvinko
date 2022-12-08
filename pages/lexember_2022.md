@@ -154,3 +154,35 @@ I coined three new roots for this sentence:
 I think this is the first time, or at least the first time since making several syntax changes, that I've decided how to do an existential construction. What I've settled on makes use of the heretofore rarely-used post-verbal focus position: the sentence begins with a verb *saposnì* marked for a new third-person trigger despite no overt trigger being stated, and the verb essentially means "it is there/it has", and the thing (in this case, a chicken hiding under a table) comes in the focus position.
 
 I also played with cases in a new way here. Normally, the locative case is used for alienable possession, but it doesn't seem right to mark "you" with the locative in this situation, where the chicken has escaped its owner. So, I translated "yours" using the ablative case, with the idea that the chicken was *from* the chef at some earlier point in time.
+
+# Day 7
+
+```
+First.$na$ narrow.$gn$.$na$=$rck$.$na$, and:$swrf$ after:$swrf$-wide.$gn$.$na$, and:$swrf$ $abl$=after:$swrf$-narrow.$gn$.$na$, after:$swrf$-wide.$gn$.$na$, after:$swrf$-narrow.$gn$.$na$, and:$swrf$ face.$au$=$rck$.$au$-$loc$ $abl$=after:$swrf$-wide.$gn$.$na$.
+
+The first one narrow, then wide, then more narrow, then wide, then narrow, then lastly more wide.
+```
+
+I coined two new roots for this sentence:
+
+- [sórvay](/kasanic_dictionary?q=@wide) "Wide, loose, spacious, imprecise."
+
+- [ayísmi](/kasanic_dictionary?q=@narrow) "Narrow, tight, precise."
+
+---
+
+This seemingly confusing sentence is describing a
+[Porcupine](https://en.xen.wiki/w/Porcupine)-like hexatonic scale for
+a tuning system like [15-EDO](https://en.xen.wiki/w/15edo) or
+[22-EDO](https://en.xen.wiki/w/22edo). I use such scales in my own
+music, and given that the South Asian music theoretical concept of
+a [shruti](https://en.wikipedia.org/wiki/Shruti_(music)) involves
+dividing an octave into 22 pieces, it's quite reasonable to expect that
+the Lauvìnko would be prepared to work with such a scale.
+
+This sentence marks the first time I've used an ablative applicative
+to form a morphological intensive/comparative. I've strayed away from
+morphological comparatives in the past since they're rather rare outside
+Europe, but this is not a dedicated comparative affix, and the semantics
+follow very naturally from the rest of the grammar, so it feels justified
+to me.

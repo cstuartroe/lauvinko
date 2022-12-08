@@ -1185,6 +1185,18 @@
     },
     "origin": "kasanic"
   },
+  "face": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Face, front, end (chronological).",
+        "forms": {
+          "gn": "rinausaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "father": {
     "category": "uninflected",
     "languages": {
@@ -1225,6 +1237,18 @@
         "definition": "Finger.",
         "forms": {
           "gn": "cokine"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "first": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "First.",
+        "forms": {
+          "gn": "paratama"
         }
       }
     },
@@ -1779,9 +1803,6 @@
   "malacca": {
     "category": "uninflected",
     "languages": {
-      "lv": {
-        "definition": "Non-eldest brother, male friend."
-      },
       "pk": {
         "definition": "Malacca.",
         "forms": {
@@ -2002,6 +2023,18 @@
       }
     },
     "origin": "sanskrit"
+  },
+  "narrow": {
+    "category": "stative",
+    "languages": {
+      "pk": {
+        "definition": "Narrow, tight, precise.",
+        "forms": {
+          "gn": "aiccaangwe"
+        }
+      }
+    },
+    "origin": "kasanic"
   },
   "need": {
     "category": "stative",
@@ -3144,6 +3177,18 @@
         "definition": "White.",
         "forms": {
           "gn": "sontaasa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "wide": {
+    "category": "stative",
+    "languages": {
+      "pk": {
+        "definition": "Wide, loose, spacious, imprecise.",
+        "forms": {
+          "gn": "sotowai"
         }
       }
     },

@@ -186,3 +186,19 @@ morphological comparatives in the past since they're rather rare outside
 Europe, but this is not a dedicated comparative affix, and the semantics
 follow very naturally from the rest of the grammar, so it feels justified
 to me.
+
+# Day 8
+
+```
+$3Rd$.$sg$.$au$-$loc$ $pro$-$dep$-sit.$gn$.$na$ build.$pf$.$au$=$lea$.$sg$.$au$-$loc$ ground.$na$=$lea$.$sg$.$na$-$all$ weave.$pf$.$na$ $t1s$-$tage$-lie.$gn$.$na$=$lea$.$sg$.$na$.
+
+I laid a rug on the floor in his future house.
+```
+
+Today I coined... no new roots!
+
+However, this is the first time I've committed a couple of new types of
+constructions to writing. The first is applying aspect/relative tense
+to possession, in this case with the word `lv;fr $pro$-$dep$-sit.$gn$.$na$`.
+The other is using a positional with a causative construction to mean
+something like "put."

@@ -506,7 +506,9 @@ class LauvinkoWord(Word):
                     ms[0].onset = syllables[-1].coda
                     syllables[-1].coda = None
 
-                elif syllables[-1].vowel is LauvinkoVowel.A and accent_position != len(syllables):
+                elif accent_position != len(syllables) and (syllables[-1].vowel is LauvinkoVowel.A or (
+                    syllables[-1].onset is LauvinkoConsonant.Y and syllables[-1].vowel is LauvinkoVowel.I)):
+
                     ms[0].onset = syllables[-1].onset
                     del syllables[-1]
 

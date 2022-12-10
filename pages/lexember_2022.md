@@ -202,3 +202,22 @@ constructions to writing. The first is applying aspect/relative tense
 to possession, in this case with the word `lv;fr $pro$-$dep$-sit.$gn$.$na$`.
 The other is using a positional with a causative construction to mean
 something like "put."
+
+# Day 9
+
+```
+After:$swrf$-proverb.$na$, what.$na$ mushroom.$na$=$bra$.$pl$.$na$ $int$ $ins$=yellow.$inc$.$na$?
+
+Wait, which mushrooms get you high?
+```
+
+I coined one new root for this sentence:
+
+- [kérni](/kasanic_dictionary?q=@mushroom) "Mushroom."
+
+I also coined the new composed word
+
+- [nonòs](/build?outline=after%3A%24swrf%24-proverb.%24na%24&language=lv&translation=anyway) "Anyway, so, well"
+
+The sense of "get high" for the stem [ngìng](/kasanic_dictionary?q=@yellow) is
+actually quite old.

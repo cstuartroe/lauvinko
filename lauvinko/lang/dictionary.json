@@ -2004,6 +2004,18 @@
     },
     "origin": "kasanic"
   },
+  "mushroom": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Mushroom.",
+        "forms": {
+          "gn": "ketanyi"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "name": {
     "category": "stative",
     "languages": {

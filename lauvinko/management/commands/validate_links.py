@@ -29,7 +29,7 @@ def validate_md(md: dict, section_names: set[str]):
             if m is not None and ((m.group(1) is None) != (len(md["children"]) == 0)):
                 print(f"Only empty links may not start with slash: f{target}")
 
-            if m is None or m.group(2) not in section_names:
+            if m is None or m.group(2) not in (*section_names, 'build'):
                 print(f"Invalid link: {repr(target)}", file=sys.stderr)
 
     for child in md.get("children", []):

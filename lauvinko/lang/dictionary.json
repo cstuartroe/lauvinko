@@ -460,6 +460,19 @@
     "mstype": "particle",
     "origin": "kasanic"
   },
+  "or": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Or.",
+        "forms": {
+          "gn": "naasa"
+        }
+      }
+    },
+    "origin": "kasanic",
+    "mstype": "particle"
+  },
   "$hort$": {
     "category": "uninflected",
     "languages": {
@@ -524,6 +537,19 @@
     },
     "mstype": "adverb",
     "origin": "kasanic"
+  },
+  "oh": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Oh, um.",
+        "forms": {
+          "gn": "aa"
+        }
+      }
+    },
+    "origin": "kasanic",
+    "mstype": "adverb"
   },
   "quite": {
     "category": "uninflected",
@@ -1359,6 +1385,18 @@
     },
     "origin": "kasanic"
   },
+  "goat": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Goat.",
+        "forms": {
+          "gn": "songi"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "green": {
     "category": "stative",
     "languages": {
@@ -1889,6 +1927,18 @@
     },
     "origin": "kasanic"
   },
+  "meat": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Meat, flesh, muscle.",
+        "forms": {
+          "gn": "ngaani"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "mesi": {
     "category": "uninflected",
     "languages": {
@@ -2282,6 +2332,18 @@
     },
     "origin": "kasanic"
   },
+  "pleasant": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Tasty, pleasant, lekker.",
+        "forms": {
+          "gn": "aakeku"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "proverb": {
     "category": "uninflected",
     "languages": {
@@ -2468,6 +2530,21 @@
         "definition": "To see.",
         "forms": {
           "gn": "y@hingaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "seem": {
+    "category": "stative",
+    "languages": {
+      "lv": {
+        "definition": "$pat$ seems/appears $gen$ to $age$. @ (reflexive) $age$ feels $gen$."
+      },
+      "pk": {
+        "definition": "Seem, feel, appear.",
+        "forms": {
+          "gn": "maayo"
         }
       }
     },

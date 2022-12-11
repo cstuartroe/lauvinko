@@ -220,4 +220,66 @@ I also coined the new composed word
 - [nonòs](/build?outline=after%3A%24swrf%24-proverb.%24na%24&language=lv&translation=anyway) "Anyway, so, well"
 
 The sense of "get high" for the stem [ngìng](/kasanic_dictionary?q=@yellow) is
-actually quite old.
+actually quite old - I believe I coined it in 2016 or 2017.
+
+# Day 10
+
+```
+After:$swrf$-proverb.$na$... pleasant.$na$=$rck$.$na$-$gen$ $indir$-$t1s$-$tage$-seem.$gn$.$na$ goat.$na$=$bra$.$sg$.$na$!
+
+Well... the goat looks tasty!
+```
+
+I coined three new roots for this sentence:
+
+- [áyka](/kasanic_dictionary?q=@pleasant) "Tasty, pleasant, lekker."
+
+- [mày](/kasanic_dictionary?q=@seem) "Seem, feel, appear."
+
+- [sòngi](/kasanic_dictionary?q=@goat) "Goat."
+
+*áyka* is the first instance where I've created an uninflected rather
+than stative stem for something that I translate with an English
+adjective. I'm not sure why it felt right to me - I suppose I thought
+of it more as a thing: a tasty treat, something nice. I also have
+a hard time imagining a use case for the inceptive aspect with this
+stem - things don't normally just become pleasant without some other
+process going on.
+
+I spent a while debating how to convey the "looks" sense. I didn't
+think that the strategy Malay uses would fit well. I thought about
+making *áyka* the finite verb of the sentence, and forming some kind
+of adverbial from *áyka* "see." Then I looked at Malayalam and it
+decided to do something similar for Lauvìnko here. The finite verb
+means "seem, appear" and the thing it seems like is an oblique -
+in Lauvìnko's case, a genitive. I extended the availability of
+case roles a bit more by allowing an agentive-case perceiver - in
+this sentence, it's the speaker.
+
+I did one last new thing here, in that I used the indirect evidential
+in a situation where there is obviously direct evidence - the speaker
+is stating their own opinion. However, I thought it could be used
+to soften the opinion a bit, as though allowing room for disagreement.
+This is an awkward date, after all - the speaker wouldn't want to come
+on too strong.
+
+---
+
+```
+Oh... $int$ meat.$na$ not-$t2s:swrf$-$tage$-eat.$fqnp$.$na$=$bra$.$sg$.$na$-$pat$?
+
+Oh... you don't eat meat?
+```
+
+I coined one new root for this sentence:
+
+- [ngàni](/kasanic_dictionary?q=@meat) "Meat, flesh, muscle."
+
+---
+
+```
+$3Rd$.$sg$.$au$-$age$ this.$na$=manner.$na$=$rck$.$na$-$prl$
+$dep$-proverb.$na$=$rck$.$na$ this.$na$ much.$na$ or?
+
+Does she do this kind of thing a lot?
+```

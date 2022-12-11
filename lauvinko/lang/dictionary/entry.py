@@ -79,7 +79,7 @@ class DictEntry:
         return {
             "languages": languages,
             "citation_form": PTA2ABBREV[self.category.citation_form],
-            "alphabetization": None,
+            "alphabetization": self.languages[Language.LAUVINKO].citation_form().virtual_original_form.surface_form.alphabetical_order(),
             "origin": {
                 "language": olang.value[0],
                 "word": oword,

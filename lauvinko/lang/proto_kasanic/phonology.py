@@ -13,36 +13,37 @@ from lauvinko.lang.shared.phonology import (
 
 
 class ProtoKasanicOnset(Consonant, Enum):
-    M = ("m", PlaceOfArticulation.LABIAL, MannerOfArticulation.NASAL)
-    N = ("n", PlaceOfArticulation.ALVEOLAR, MannerOfArticulation.NASAL)
-    NY = ("ɲ", PlaceOfArticulation.PALATAL, MannerOfArticulation.NASAL)
+    K = ("k", PlaceOfArticulation.VELAR, MannerOfArticulation.PLAIN_STOP)
+    KK = ("ˀk", PlaceOfArticulation.VELAR, MannerOfArticulation.PREGLOTTALIZED_STOP)
+    NK = ("ᵑk", PlaceOfArticulation.VELAR, MannerOfArticulation.PRENASALIZED_STOP)
     NG = ("ŋ", PlaceOfArticulation.VELAR, MannerOfArticulation.NASAL)
-    NGW = ("ŋʷ", PlaceOfArticulation.LABIOVELAR, MannerOfArticulation.NASAL)
+
+    C = ("t͡ɕ", PlaceOfArticulation.PALATAL, MannerOfArticulation.PLAIN_STOP)
+    CC = ("ˀt͡ɕ", PlaceOfArticulation.PALATAL, MannerOfArticulation.PREGLOTTALIZED_STOP)
+    NC = ("ᶮt͡ɕ", PlaceOfArticulation.PALATAL, MannerOfArticulation.PRENASALIZED_STOP)
+    NY = ("ɲ", PlaceOfArticulation.PALATAL, MannerOfArticulation.NASAL)
+
+    T = ("t", PlaceOfArticulation.ALVEOLAR, MannerOfArticulation.PLAIN_STOP)
+    TT = ("ˀt", PlaceOfArticulation.ALVEOLAR, MannerOfArticulation.PREGLOTTALIZED_STOP)
+    NT = ("ⁿt", PlaceOfArticulation.ALVEOLAR, MannerOfArticulation.PRENASALIZED_STOP)
+    N = ("n", PlaceOfArticulation.ALVEOLAR, MannerOfArticulation.NASAL)
+
 
     P = ("p", PlaceOfArticulation.LABIAL, MannerOfArticulation.PLAIN_STOP)
-    T = ("t", PlaceOfArticulation.ALVEOLAR, MannerOfArticulation.PLAIN_STOP)
-    C = ("t͡ɕ", PlaceOfArticulation.PALATAL, MannerOfArticulation.PLAIN_STOP)
-    K = ("k", PlaceOfArticulation.VELAR, MannerOfArticulation.PLAIN_STOP)
     KW = ("kʷ", PlaceOfArticulation.LABIOVELAR, MannerOfArticulation.PLAIN_STOP)
-
-    MP = ("ᵐp", PlaceOfArticulation.LABIAL, MannerOfArticulation.PRENASALIZED_STOP)
-    NT = ("ⁿt", PlaceOfArticulation.ALVEOLAR, MannerOfArticulation.PRENASALIZED_STOP)
-    NC = ("ᶮt͡ɕ", PlaceOfArticulation.PALATAL, MannerOfArticulation.PRENASALIZED_STOP)
-    NK = ("ᵑk", PlaceOfArticulation.VELAR, MannerOfArticulation.PRENASALIZED_STOP)
-    NKW = ("ᵑkʷ", PlaceOfArticulation.LABIOVELAR, MannerOfArticulation.PRENASALIZED_STOP)
-
     PP = ("ˀp", PlaceOfArticulation.LABIAL, MannerOfArticulation.PREGLOTTALIZED_STOP)
-    TT = ("ˀt", PlaceOfArticulation.ALVEOLAR, MannerOfArticulation.PREGLOTTALIZED_STOP)
-    CC = ("ˀt͡ɕ", PlaceOfArticulation.PALATAL, MannerOfArticulation.PREGLOTTALIZED_STOP)
-    KK = ("ˀk", PlaceOfArticulation.VELAR, MannerOfArticulation.PREGLOTTALIZED_STOP)
     KKW = ("ˀkʷ", PlaceOfArticulation.LABIOVELAR, MannerOfArticulation.PREGLOTTALIZED_STOP)
+    MP = ("ᵐp", PlaceOfArticulation.LABIAL, MannerOfArticulation.PRENASALIZED_STOP)
+    NKW = ("ᵑkʷ", PlaceOfArticulation.LABIOVELAR, MannerOfArticulation.PRENASALIZED_STOP)
+    M = ("m", PlaceOfArticulation.LABIAL, MannerOfArticulation.NASAL)
+    NGW = ("ŋʷ", PlaceOfArticulation.LABIOVELAR, MannerOfArticulation.NASAL)
+
+    Y = ("j", PlaceOfArticulation.PALATAL, MannerOfArticulation.APPROXIMANT)
+    R = ("r", PlaceOfArticulation.ALVEOLAR, MannerOfArticulation.APPROXIMANT)
+    W = ("w", PlaceOfArticulation.LABIOVELAR, MannerOfArticulation.APPROXIMANT)
 
     S = ("s", PlaceOfArticulation.ALVEOLAR, MannerOfArticulation.FRICATIVE)
     H = ("h", PlaceOfArticulation.GLOTTAL, MannerOfArticulation.FRICATIVE)
-
-    R = ("r", PlaceOfArticulation.ALVEOLAR, MannerOfArticulation.APPROXIMANT)
-    Y = ("j", PlaceOfArticulation.PALATAL, MannerOfArticulation.APPROXIMANT)
-    W = ("w", PlaceOfArticulation.LABIOVELAR, MannerOfArticulation.APPROXIMANT)
 
 
 DELABIALIZE = {
@@ -54,19 +55,31 @@ DELABIALIZE = {
 }
 
 class ProtoKasanicVowel(Vowel, Enum):
-    AA = ('a', True, VowelFrontness.MID)
-    E = ('e', True, VowelFrontness.FRONT)
-    O = ('o', True, VowelFrontness.BACK)
-
     A = ('ə', False, VowelFrontness.MID)
+    AA = ('a', True, VowelFrontness.MID)
     I = ('i', False, VowelFrontness.FRONT)
     U = ('u', False, VowelFrontness.BACK)
-
+    E = ('e', True, VowelFrontness.FRONT)
     AI = ('ai̯', True, VowelFrontness.FRONTING)
+    O = ('o', True, VowelFrontness.BACK)
     AU = ('au̯', True, VowelFrontness.BACKING)
 
     LOW = ('A', True, VowelFrontness.UNDERSPECIFIED)
     HIGH = ('I', False, VowelFrontness.UNDERSPECIFIED)
+
+
+ONSET_POSITIONS = {
+    None: 0,
+    **{
+        o: i+1
+        for i, o in enumerate(ProtoKasanicOnset)
+    }
+}
+
+VOWEL_POSITIONS = {
+    v: i
+    for i, v in enumerate(ProtoKasanicVowel)
+}
 
 
 @dataclass
@@ -168,3 +181,9 @@ class PKSurfaceForm(SurfaceForm):
 
     def narrow_transcription(self) -> str:
         return self.broad_transcription()  # This is a protolang, who needs narrow transcription lol
+
+    def alphabetical_order(self) -> str:
+        out = ""
+        for syll in self.syllables:
+            out += f"{ONSET_POSITIONS[syll.onset]:02d}{VOWEL_POSITIONS[syll.vowel]}"
+        return out

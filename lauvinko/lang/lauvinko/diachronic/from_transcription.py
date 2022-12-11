@@ -32,6 +32,25 @@ INFORMAL_LV_VOWELS = {
 }
 
 
+LV_TO_PK_ONSETS: dict[LauvinkoConsonant, ProtoKasanicOnset] = {
+    LauvinkoConsonant.M: ProtoKasanicOnset.M,
+    LauvinkoConsonant.N: ProtoKasanicOnset.N,
+    LauvinkoConsonant.NG: ProtoKasanicOnset.NG,
+
+    LauvinkoConsonant.P: ProtoKasanicOnset.P,
+    LauvinkoConsonant.T: ProtoKasanicOnset.T,
+    LauvinkoConsonant.C: ProtoKasanicOnset.C,
+    LauvinkoConsonant.K: ProtoKasanicOnset.K,
+
+    LauvinkoConsonant.S: ProtoKasanicOnset.S,
+    LauvinkoConsonant.H: ProtoKasanicOnset.H,
+
+    LauvinkoConsonant.V: ProtoKasanicOnset.W,
+    LauvinkoConsonant.L: ProtoKasanicOnset.R,
+    LauvinkoConsonant.Y: ProtoKasanicOnset.Y,
+}
+
+
 class InvalidTranscription(ValueError):
     pass
 
@@ -69,18 +88,59 @@ class TranscriptionReader:
         self.resolve_final_consonant()
 
         virtual_syllables: List[ProtoKasanicSyllable] = []
+        virtual_stress_position: Optional[int] = None
         for i, syllable in enumerate(self.syllables):
-            s = ProtoKasanicSyllable(
-                onset=self.original_initial_consonant if i == 0 else None, # TODO?
+            if self.accent_position == i:
+                virtual_stress_position = len(virtual_syllables)
+
+            onset = self.original_initial_consonant if i == 0 else LV_TO_PK_ONSETS[syllable.onset]
+
+            if syllable.vowel is LauvinkoVowel.A:
+                if syllable.coda is LauvinkoConsonant.Y:
+                    virtual_syllables.append(ProtoKasanicSyllable(onset, ProtoKasanicVowel.AI))
+                    continue
+
+                if syllable.coda is LauvinkoConsonant.V:
+                    virtual_syllables.append(ProtoKasanicSyllable(onset, ProtoKasanicVowel.AU))
+                    continue
+
+            syll = ProtoKasanicSyllable(
+                onset=None,
                 vowel=ProtoKasanicVowel.find_by(
                     frontness=syllable.vowel.frontness,
                     low=syllable.vowel.low,
                 )
             )
+            # Circumventing PK prohibition on yi
+            syll.onset = onset
+            virtual_syllables.append(syll)
 
-            virtual_syllables.append(s)
+            if syllable.coda is LauvinkoConsonant.A:
+                virtual_syllables.append(
+                    ProtoKasanicSyllable(
+                        onset=None,
+                        vowel=ProtoKasanicVowel.A,
+                    )
+                )
+            elif syllable.coda is not None:
+                virtual_syllables.append(
+                    ProtoKasanicSyllable(
+                        onset=LV_TO_PK_ONSETS[syllable.coda],
+                        vowel=ProtoKasanicVowel.A,
+                    )
+                )
 
-            # TODO: this doesn't really work lol, what about codas n whatnot
+        last_syll = self.syllables[-1]
+        if last_syll.coda is None and last_syll.vowel is not LauvinkoVowel.I:
+            virtual_syllables.append(
+                ProtoKasanicSyllable(
+                    onset=ProtoKasanicOnset.H,
+                    vowel=ProtoKasanicVowel.find_by(
+                        frontness=last_syll.vowel.frontness,
+                        low=False,
+                    ),
+                )
+            )
 
         return (
             LauvinkoSurfaceForm(
@@ -92,7 +152,7 @@ class TranscriptionReader:
                 lemma=None,
                 surface_form=PKSurfaceForm(
                     syllables=virtual_syllables,
-                    stress_position=self.accent_position,
+                    stress_position=virtual_stress_position,
                 ),
                 end_mutation=self.end_mutation,
             ),

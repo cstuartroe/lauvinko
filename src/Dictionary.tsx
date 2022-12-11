@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import PageHeader from "./PageHeader";
-import {ApiResponse, MistletoeDocument} from "./types";
+import {ApiResponse, MarkdownBlock, MistletoeDocument, ParagraphChild} from "./types";
 import {renderMarkdownBlock} from "./markdown";
 
 type stem_category = "fientive" | "punctual" | "stative" | "uninflected";
@@ -19,7 +19,9 @@ const languageNames: {[key in language]: string} = {
 
 const ORIGIN_LANGUAGES = {
     "kasanic": "pk",
-    "sanskrit": "pk",  // TODO
+    "sanskrit": "sa",
+    "malay": "ms",
+    "dutch": "nl",
 };
 
 type Origin = keyof typeof ORIGIN_LANGUAGES;
@@ -259,7 +261,7 @@ class LanguageSection extends Component<LanguageSectionProps> {
 
             <p>{blurbs[this.props.origin]}</p>
 
-            {this.props.entry_ids.map(id => (
+            {language_entry_ids.map(id => (
                 <DictionaryEntry
                   entry={this.props.entries[id]}
                   key={id}
@@ -283,6 +285,40 @@ type DictionaryState = {
     status: "pending",
     q: string | null,
     entries: {[key: string]: DictEntry},
+}
+
+function pText(c: ParagraphChild): string {
+    switch (c.type) {
+        case "RawText":
+            return c.content;
+        case "LineBreak":
+            return "";
+        case "InlineCode":
+        case "Link":
+        case "Strong":
+        case "Emphasis":
+        case "Image":
+            return c.children.map(pText).join(' ');
+    }
+}
+
+function markdownText(e: MarkdownBlock): string {
+    switch (e.type) {
+        case "ThematicBreak":
+            return "";
+        case "Paragraph":
+            return e.children.map(pText).join(' ');
+        default:
+            throw "Not implemented";
+    }
+}
+
+function normalize(s: string): string {
+    return s.toLowerCase().trim().replaceAll(/\s+/g, ' ');
+}
+
+function documentText(d: MistletoeDocument): string {
+    return normalize(d.children.map(markdownText).join(' '));
 }
 
 class Dictionary extends Component<DictionaryProps, DictionaryState> {
@@ -364,7 +400,7 @@ class Dictionary extends Component<DictionaryProps, DictionaryState> {
                 }
 
                 // TODO: better definition search
-                if ((langEntry.definition + "").toLowerCase().includes(q)) {
+                if (documentText(langEntry.definition).includes(normalize(q))) {
                     return true;
                 }
 

@@ -11,6 +11,7 @@ from lauvinko.lang.shared.semantics import (
 )
 from lauvinko.lang.shared.morphology import Lemma, MorphosyntacticType
 from lauvinko.lang.proto_kasanic.morphology import ProtoKasanicMorpheme, ProtoKasanicStem, ProtoKasanicLemma
+from lauvinko.lang.lauvinko.phonology import LauvinkoSurfaceForm
 from lauvinko.lang.lauvinko.morphology import LauvinkoLemma, LauvinkoMorpheme
 from lauvinko.lang.lauvinko.diachronic.base import LauvinkoLemmaOrigin, OriginLanguage, UnspecifiedOrigin, \
     MorphemeContext
@@ -92,15 +93,30 @@ class DictEntry:
         if mstype in CLOSED_CLASSES:
             raise ValueError(f"{mstype} is a closed class")
 
-        if origin is OriginLanguage.KASANIC or origin is OriginLanguage.SANSKRIT:  # TODO: separately handle sanskrit
+        if Language.PK.value in json_entry["languages"]:
+            assert origin in (OriginLanguage.KASANIC, OriginLanguage.SANSKRIT, OriginLanguage.MALAY)  # TODO: separately handle?
             languages = DictEntry.languages_from_pk_json(
                 ident,
                 json_entry["languages"],
                 category=category,
                 mstype=mstype,
             )
+
+        elif origin is OriginLanguage.KASANIC:
+            languages = DictEntry.languages_from_json_no_source(ident, json_entry["languages"],
+                                                                category=category, mstype=mstype)
+
         else:
-            raise NotImplementedError
+            assert category is KasanicStemCategory.UNINFLECTED
+            assert mstype is MorphosyntacticType.INDEPENDENT
+            # TODO Arabic needs its own treatment
+            if origin not in (OriginLanguage.DUTCH, OriginLanguage.ARABIC, OriginLanguage.MALAY):
+                raise ValueError(f"Language cannot loan word recently: {json_entry}")
+
+            languages = DictEntry.languages_from_recent_loan(
+                ident,
+                json_entry["languages"],
+            )
 
         assert languages[Language.LAUVINKO].category is category
 
@@ -137,9 +153,6 @@ class DictEntry:
     @staticmethod
     def languages_from_pk_json(ident: str, languages_json: dict, category: KasanicStemCategory,
                                mstype: MorphosyntacticType):
-        if Language.PK.value not in languages_json:
-            return DictEntry.languages_from_json_no_source(ident, languages_json, category=category, mstype=mstype)
-
         pk_lemma = ProtoKasanicLemma(
             ident=ident,
             definition=languages_json[Language.PK.value]["definition"],
@@ -201,3 +214,36 @@ class DictEntry:
                 origin=UnspecifiedOrigin(),
             )
         }
+
+    @staticmethod
+    def languages_from_recent_loan(ident: str, languages_json: dict) -> dict[Language, Lemma]:
+        forms = languages_json[Language.LAUVINKO.value]["forms"]
+        assert len(forms) == 1
+        gn_form = LauvinkoMorpheme.from_informal_transcription(forms["gn"]["phonemic"])
+        gn_form.context = MorphemeContext.AUGMENTED
+        assert gn_form.surface_form.falling_accent is False
+
+        return {
+            Language.LAUVINKO: LauvinkoLemma(
+                ident=ident,
+                definition=languages_json[Language.LAUVINKO.value]["definition"],
+                category=KasanicStemCategory.UNINFLECTED,
+                mstype=MorphosyntacticType.INDEPENDENT,
+                forms={
+                    (PrimaryTenseAspect.GENERAL, MorphemeContext.AUGMENTED): gn_form,
+                    (PrimaryTenseAspect.GENERAL, MorphemeContext.NONAUGMENTED): LauvinkoMorpheme(
+                        lemma=gn_form.lemma,
+                        context=MorphemeContext.NONAUGMENTED,
+                        surface_form=LauvinkoSurfaceForm(
+                            syllables=gn_form.surface_form.syllables,
+                            accent_position=gn_form.surface_form.accent_position,
+                            falling_accent=True,
+                        ),
+                        virtual_original_form=gn_form.virtual_original_form,
+                    )
+                },
+                origin=UnspecifiedOrigin(),
+            )
+        }
+
+

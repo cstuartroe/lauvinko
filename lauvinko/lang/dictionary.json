@@ -649,6 +649,20 @@
     },
     "origin": "kasanic"
   },
+  "baby": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Baby.",
+        "forms": {
+          "gn": {
+            "phonemic": "pa/yi"
+          }
+        }
+      }
+    },
+    "origin": "malay"
+  },
   "bake": {
     "category": "fientive",
     "languages": {
@@ -1276,9 +1290,14 @@
         "forms": {
           "gn": "paratama"
         }
+      },
+      "sa": {
+        "definition": "First.",
+        "native": "\u092a\u094d\u0930\u0925\u092e",
+        "transcription": "pratham\u00e1"
       }
     },
-    "origin": "kasanic"
+    "origin": "sanskrit"
   },
   "fish": {
     "category": "uninflected",
@@ -1802,6 +1821,20 @@
     },
     "origin": "kasanic"
   },
+  "lens": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Lens.",
+        "forms": {
+          "gn": {
+            "phonemic": "le/nsa"
+          }
+        }
+      }
+    },
+    "origin": "dutch"
+  },
   "lie": {
     "category": "stative",
     "languages": {
@@ -1841,14 +1874,16 @@
   "malacca": {
     "category": "uninflected",
     "languages": {
-      "pk": {
+      "lv": {
         "definition": "Malacca.",
         "forms": {
-          "gn": "maraa/kkaa"
+          "gn": {
+            "phonemic": "mala/ka"
+          }
         }
       }
     },
-    "origin": "kasanic"
+    "origin": "malay"
   },
   "man": {
     "category": "uninflected",
@@ -2437,14 +2472,10 @@
         "transcription": "jumh\u016briyya"
       },
       "lv": {
+        "definition": "Republic.",
         "forms": {
-          "gn.au": {
-            "falavay": "jumhZlXGyt",
-            "phonemic": "comoli\u00b4yat"
-          },
-          "gn.na": {
-            "falavay": "jumhZlXyt",
-            "phonemic": "comoli`yat"
+          "gn": {
+            "phonemic": "comoli/yat"
           }
         }
       }

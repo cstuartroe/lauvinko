@@ -53,12 +53,12 @@ class MorphemeSource:
     language: Language
 
     def __post_init__(self):
+        lemma = dictionary.by_id(self.name)
+
+        if lemma is None:
+            raise InvalidGloss(f"No lemma with name {self.name}")
+
         if self.primary_ta is None:
-            lemma = dictionary.by_id(self.name)
-
-            if lemma is None:
-                raise InvalidGloss(f"No lemma with name {self.name}")
-
             if lemma.category is not KasanicStemCategory.UNINFLECTED:
                 raise InvalidGloss(f"Must include primary tense/aspect for {lemma.category.title} stem")
 

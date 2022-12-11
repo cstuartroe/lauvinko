@@ -83,13 +83,13 @@ after the first clause for which it is the trigger. In such cases,
 I mark the trigger agreement slot with $st$ ("same trigger").
 
 ```
-Bake.$pf$.$na$ $t2s:swrf$-$tloc$-sit.$pt$.$na$=$rck$.$na$, after:$st$-$st$-$tage$-put.$pf$.$na$=$rck$.$na$.
+Bake.$pf$.$na$ $t2s:swrf$-$tloc$-sit:$sg$.$pt$.$na$=$rck$.$na$, after:$st$-$st$-$tage$-put.$pf$.$na$=$rck$.$na$.
 
 You had a brick, then you threw it.
 ```
 
 ```
-Bake.$pf$.$na$ $t1s$-$tloc$-sit.$pt$.$na$=$rck$.$na$, after:$st$-$t1s$-$tage$-put.$pf$.$na$=$rck$.$na$.
+Bake.$pf$.$na$ $t1s$-$tloc$-sit:$sg$.$pt$.$na$=$rck$.$na$, after:$st$-$t1s$-$tage$-put.$pf$.$na$=$rck$.$na$.
 
 I had a brick, then I threw it.
 ```
@@ -135,7 +135,7 @@ locative is most often used for possessors. This is marked with the
 prefix *pos-*.
 
 ```
-bake.$pf$.$na$ $st$-$tloc$-sit.$gn$.$na$=$rck$.$na$
+bake.$pf$.$na$ $st$-$tloc$-sit:$sg$.$gn$.$na$=$rck$.$na$
 
 They have a brick.
 ```

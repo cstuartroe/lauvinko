@@ -426,7 +426,7 @@ export function getPreParts(pre: MarkdownPreformatted) {
     i++;
   }
 
-  const translation = lines.slice(i + 1).join(' ');
+  const translation = lines.slice(i + 1).join(' ').trim();
 
   return {outline, translation};
 }

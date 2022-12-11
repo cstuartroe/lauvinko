@@ -42,7 +42,7 @@ And one new compound word from an existing root:
 # Day 3
 
 ```
-Storehouse.$na$=$lea$.$sg$.$na$ this.$na$ $1excl$.$sg$.$au$-$age$ $all$=go.$pf$.$na$ and:$st$ ground.$au$=$lea$.$sg$.$au$-$loc$ banteng.$na$=parent:animal.$gn$.$na$=$dim$ $st$-$tloc$-lie.$pt$.$na$.
+Storehouse.$na$=$lea$.$sg$.$na$ this.$na$ $1excl$.$sg$.$au$-$age$ $all$=go.$pf$.$na$ and:$st$ ground.$au$=$lea$.$sg$.$au$-$loc$ banteng.$na$=parent:animal.$gn$.$na$=$dim$ $st$-$tloc$-lie:$sg$.$pt$.$na$.
 
 I entered the barn and there was a banteng calf lying on the ground. 
 ```
@@ -55,7 +55,7 @@ I coined two new native roots for this sentence:
 
 I also borrowed one word from Malay:
 
-- [pánang](/kasanic_dictionary?q=@banteng) "[banteng](https://en.wikipedia.org/wiki/Banteng)"
+- [pánang](/loanword_dictionary?q=@banteng) "[banteng](https://en.wikipedia.org/wiki/Banteng)"
 
 And one from Sanskrit भाण्डशाला *bhāṇḍaśālā* (which is also loaned into Malay as the word *bangsal*):
 
@@ -125,11 +125,11 @@ I coined two new roots for this sentence:
 
 I coined a new compound word:
 
--[oasítto](/build?outline=%24ins%24%3Dgrow.%24pf%24.%24au%24%3D%24hea%24.%24sg%24.%24au%24&language=lv&translation=adult) "adult"
+- [oasítto](/build?outline=%24ins%24%3Dgrow.%24pf%24.%24au%24%3D%24hea%24.%24sg%24.%24au%24&language=lv&translation=adult) "adult"
 
 as well as the new adverbial construction
 
--[pó](/build?outline=much.%24na%24%3D%24rck%24.%24na%24-%24abl%24&language=lv&translation=too) "too (excessively)"
+- [pó](/build?outline=much.%24na%24%3D%24rck%24.%24na%24-%24abl%24&language=lv&translation=too) "too (excessively)"
 
 I also expanded the use of the indirect evidential *coy-* for this sentence. Already used for inference, I decided to use it here for the "would be" sense, with the justification that it's a sort of deduction or supposition in this context.
 
@@ -138,7 +138,7 @@ The game the children are playing is a game [a bit like jacks](https://en.wikipe
 # Day 6
 
 ```
-$T3is:swrf$-$tloc$-sit.$gn$.$na$ table.$au$=$lea$.$sg$.$au$-$loc$ under.$au$=$rck$.$au$-$loc$ $refl$.$na$-$par$ $age$=$dep$-hide.$gn$.$na$ chicken.$na$=$hea$.$sg$.$na$... $int$ $2fml$.$sg$.$na$ $abl$=sit.$gn$.$na$?
+$T3is:swrf$-$tloc$-sit:$sg$.$gn$.$na$ table.$au$=$lea$.$sg$.$au$-$loc$ under.$au$=$rck$.$au$-$loc$ $refl$.$na$-$par$ $age$=$dep$-hide.$gn$.$na$ chicken.$na$=$hea$.$sg$.$na$... $int$ $2fml$.$sg$.$na$ $abl$=sit:$sg$.$gn$.$na$?
 
 There's a chicken hiding under the table, is that yours?
 ```
@@ -169,8 +169,6 @@ I coined two new roots for this sentence:
 
 - [ayísmi](/kasanic_dictionary?q=@narrow) "Narrow, tight, precise."
 
----
-
 This seemingly confusing sentence is describing a
 [Porcupine](https://en.xen.wiki/w/Porcupine)-like hexatonic scale for
 a tuning system like [15-EDO](https://en.xen.wiki/w/15edo) or
@@ -190,7 +188,7 @@ to me.
 # Day 8
 
 ```
-$3Rd$.$sg$.$au$-$loc$ $pro$-$dep$-sit.$gn$.$na$ build.$pf$.$au$=$lea$.$sg$.$au$-$loc$ ground.$na$=$lea$.$sg$.$na$-$all$ weave.$pf$.$na$ $t1s$-$tage$-lie.$gn$.$na$=$lea$.$sg$.$na$.
+$3Rd$.$sg$.$au$-$loc$ $pro$-$dep$-sit:$sg$.$gn$.$na$ build.$pf$.$au$=$lea$.$sg$.$au$-$loc$ ground.$na$=$lea$.$sg$.$na$-$all$ weave.$pf$.$na$ $t1s$-$tage$-lie:$sg$.$gn$.$na$=$lea$.$sg$.$na$.
 
 I laid a rug on the floor in his future house.
 ```
@@ -199,7 +197,7 @@ Today I coined... no new roots!
 
 However, this is the first time I've committed a couple of new types of
 constructions to writing. The first is applying aspect/relative tense
-to possession, in this case with the word `lv;fr $pro$-$dep$-sit.$gn$.$na$`.
+to possession, in this case with the word `lv;fr $pro$-$dep$-sit:$sg$.$gn$.$na$`.
 The other is using a positional with a causative construction to mean
 something like "put."
 
@@ -283,3 +281,55 @@ $dep$-proverb.$na$=$rck$.$na$ this.$na$ much.$na$ or?
 
 Does she do this kind of thing a lot?
 ```
+
+# Day 11
+
+```
+$Loc$=work.$imnp$.$na$=$lea$.$sg$.$na$-$gen$ ground.$au$=$lea$.$sg$.$au$-$loc$ $3rd$.$sg$.$au$-$loc$ $dep$-lens.$na$=$rck$.$na$-$abl$ $dep$-glass.$na$ break.$pt$.$na$ $t3is:swrf$-$tloc$-be:$pl$.$pt$.$na$=$rck$.$na$.
+
+The shards of glass from her lens were on the floor of the workshop.
+```
+
+I coined two new native roots for this sentence:
+
+- [ásimay](/kasanic_dictionary?q=@work) "Work, labor."
+
+- [sílo](/kasanic_dictionary?q=@break) "Break, smash, shatter."
+
+I also loaned a new word from Sanskrit
+[काचक](https://en.wiktionary.org/wiki/%E0%A4%95%E0%A4%BE%E0%A4%9A%E0%A4%95#Sanskrit):
+
+- [kásah](/loanword_dictionary?q=@glass) "Glass."
+
+Most excitingly, today marks my first-ever Dutch loanword into Lauvìnko!
+It required fair bit of code wrangling to make it work.
+
+- [lènsa](/loanword_dictionary?q=@lens) "Lens," from Dutch *lens*
+
+---
+
+```
+$T1s$-$tage$-go.$pf$.$na$ in_order-$t1s$-$tage$-pick_up.$pt$.$na$.
+
+I went to pick them up.
+```
+
+I coined one new native root for this sentence:
+
+- [néh](/kasanic_dictionary?q=@pick_up) "Pick up."
+
+---
+
+```
+Glue.$na$=$sea$.$na$-$ins$ $indir$-not-want-$t2s:swrf$-$tage$-bind.$gn$.$na$, no?
+
+I guess you don't want to glue them back together, huh?
+```
+
+I coined one new native root for this sentence:
+
+- [náli](/kasanic_dictionary?q=@bind) "Bind, adhere, fasten, stay together."
+
+I also took another Dutch loanword:
+
+- [làyma](/loanword_dictionary?q=@glue) "Glue," from Dutch *lijm*

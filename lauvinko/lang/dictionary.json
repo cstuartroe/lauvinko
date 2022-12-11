@@ -538,6 +538,19 @@
     "mstype": "adverb",
     "origin": "kasanic"
   },
+  "no": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "No.",
+        "forms": {
+          "gn": "aara"
+        }
+      }
+    },
+    "origin": "kasanic",
+    "mstype": "adverb"
+  },
   "oh": {
     "category": "uninflected",
     "languages": {
@@ -685,7 +698,7 @@
         }
       }
     },
-    "origin": "kasanic"
+    "origin": "malay"
   },
   "basa": {
     "category": "uninflected",
@@ -694,6 +707,30 @@
         "definition": "Basa fish, shark catfish.",
         "forms": {
           "gn": "yauppami"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "be:$pl$": {
+    "category": "stative",
+    "languages": {
+      "pk": {
+        "definition": "(generic plural positional; suppletive counterpart of `lv;fr sit:$sg$.$gn$.$na$`, `lv;fr stand:$sg$.$gn$.$na$`, `lv;fr lie:$sg$.$gn$.$na$` for plural patients)",
+        "forms": {
+          "gn": "sitta"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "bind": {
+    "category": "stative",
+    "languages": {
+      "pk": {
+        "definition": "Bind, adhere, fasten, stay together.",
+        "forms": {
+          "gn": "ntaate"
         }
       }
     },
@@ -736,6 +773,18 @@
         "definition": "To borrow.",
         "forms": {
           "gn": "~merau"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "break": {
+    "category": "punctual",
+    "languages": {
+      "pk": {
+        "definition": "Break, smash, shatter.",
+        "forms": {
+          "gn": "s~taawa"
         }
       }
     },
@@ -1389,6 +1438,40 @@
     },
     "origin": "kasanic"
   },
+  "glass": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Glass.",
+        "forms": {
+          "gn": "kaacaka"
+        }
+      },
+      "sa": {
+        "definition": "Glass, stone, ashes.",
+        "native": "\u0915\u093e\u091a\u0915",
+        "transcription": "k\u0101caka"
+      }
+    },
+    "origin": "sanskrit"
+  },
+  "glue": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Glue.",
+        "forms": {
+          "gn": {
+            "phonemic": "la/yma"
+          }
+        }
+      },
+      "nl": {
+        "native": "lijm"
+      }
+    },
+    "origin": "dutch"
+  },
   "go": {
     "category": "fientive",
     "languages": {
@@ -1831,11 +1914,14 @@
             "phonemic": "le/nsa"
           }
         }
+      },
+      "nl": {
+        "native": "lens"
       }
     },
     "origin": "dutch"
   },
-  "lie": {
+  "lie:$sg$": {
     "category": "stative",
     "languages": {
       "pk": {
@@ -2352,6 +2438,18 @@
     },
     "origin": "kasanic"
   },
+  "pick_up": {
+    "category": "punctual",
+    "languages": {
+      "pk": {
+        "definition": "Pick up.",
+        "forms": {
+          "gn": "nt@tto"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "play": {
     "category": "fientive",
     "languages": {
@@ -2700,7 +2798,7 @@
     },
     "origin": "kasanic"
   },
-  "sit": {
+  "sit:$sg$": {
     "category": "stative",
     "languages": {
       "pk": {
@@ -2860,11 +2958,11 @@
     },
     "origin": "kasanic"
   },
-  "stand": {
+  "stand:$sg$": {
     "category": "stative",
     "languages": {
       "lv": {
-        "definition": "$pat$ stands. @ $pat$, a formally animate noun, exists (used with adpositional statements)."
+        "definition": "$pat$ (singular) stands. @ $pat$, a formally animate noun, exists (used with adpositional statements)."
       },
       "pk": {
         "definition": "To stand.",
@@ -3339,6 +3437,18 @@
         "definition": "Woman, female.",
         "forms": {
           "gn": "mokaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "work": {
+    "category": "fientive",
+    "languages": {
+      "pk": {
+        "definition": "Work, labor.",
+        "forms": {
+          "gn": "@cimai"
         }
       }
     },

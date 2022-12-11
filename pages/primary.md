@@ -274,9 +274,9 @@ appears as *o*.
 For stems which already had a first vowel of **o** or **u** in Proto-Kasanic,
 the past is the same as the general:
 
-| `lv;fr lie.$gn$.$na$` "lie, be" |        General        |         Past          |
-|:--------------------------------|:---------------------:|:---------------------:|
-| Imperfective                    | `lv;fr lie.$gn$.$na$` | `lv;fr lie.$pt$.$na$` |
+| `lv;fr lie:$sg$.$gn$.$na$` "lie, be" |          General           |            Past            |
+|:-------------------------------------|:--------------------------:|:--------------------------:|
+| Imperfective                         | `lv;fr lie:$sg$.$gn$.$na$` | `lv;fr lie:$sg$.$pt$.$na$` |
 
 However, they may still be categorized as stative rather than uninfected,
 because they have the
@@ -288,14 +288,14 @@ mutation) as fientives, affixing onto the general stem:
 |:---------------------------------------|:------------------------:|:-------------------------:|
 | Inceptive                              |            +             | `lv;fr yellow.$inc$.$na$` |
 
-| `lv;fr lie.$gn$.$na$` "lie, be" |        General        |          Past          |
-|:--------------------------------|:---------------------:|:----------------------:|
-| Inceptive                       |           +           | `lv;fr lie.$inc$.$na$` |
+| `lv;fr lie:$sg$.$gn$.$na$` "lie, be" | General |            Past             |
+|:-------------------------------------|:-------:|:---------------------------:|
+| Inceptive                            |    +    | `lv;fr lie:$sg$.$inc$.$na$` |
 
 (note that although these stems both have a *nk* sequence before the accented
 vowel, in the case of `lv;fr yellow.$inc$.$na$` it is merely consonant
 breaking,
-while for `lv;fr lie.$inc$.$na$` it is a nasal mutation on plain *k*.)
+while for `lv;fr lie:$sg$.$inc$.$na$` it is a nasal mutation on plain *k*.)
 
 # Uninflected stems
 

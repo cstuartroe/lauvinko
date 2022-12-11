@@ -249,6 +249,7 @@ class ProtoKasanicLemma(Lemma):
     generic_morph: ProtoKasanicMorpheme
     definition: str
     forms: dict[PrimaryTenseAspect, ProtoKasanicStem]
+    origin: Optional["LauvinkoLemmaOrigin"] = None
 
     def __post_init__(self):
         super().__post_init__()

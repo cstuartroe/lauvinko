@@ -672,6 +672,10 @@
             "phonemic": "pa/yi"
           }
         }
+      },
+      "ms": {
+        "definition": "Baby.",
+        "native": "bayi"
       }
     },
     "origin": "malay"
@@ -696,6 +700,10 @@
         "forms": {
           "gn": "paantanga"
         }
+      },
+      "ms": {
+        "definition": "Banteng.",
+        "native": "banteng"
       }
     },
     "origin": "malay"
@@ -953,8 +961,7 @@
       },
       "ms": {
         "definition": "Chaiya.",
-        "native": null,
-        "transcription": "cahaya"
+        "native": "cahaya"
       },
       "pk": {
         "definition": "Chaiya, a region in modern Thailand which hosted an important seaport during the Srivijaya empire. Some Kasanic people migrated there, eventually becoming the Botharu.",
@@ -1967,6 +1974,10 @@
             "phonemic": "mala/ka"
           }
         }
+      },
+      "ms": {
+        "definition": "Malacca.",
+        "native": "Melaka"
       }
     },
     "origin": "malay"
@@ -3070,8 +3081,7 @@
     "languages": {
       "ms": {
         "definition": "Tapir.",
-        "native": null,
-        "transcription": "tenuk"
+        "native": "tenuk"
       },
       "pk": {
         "definition": "The Tapir clan.",
@@ -3239,8 +3249,7 @@
     "languages": {
       "ms": {
         "definition": "Squirrel, treeshrew.",
-        "native": null,
-        "transcription": "tupai"
+        "native": "tupai"
       },
       "pk": {
         "definition": "The Treeshrew clan.",

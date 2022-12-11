@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Optional
 import json
 import mistletoe
 from mistletoe.ast_renderer import ASTRenderer
@@ -13,8 +14,13 @@ from lauvinko.lang.shared.morphology import Lemma, MorphosyntacticType
 from lauvinko.lang.proto_kasanic.morphology import ProtoKasanicMorpheme, ProtoKasanicStem, ProtoKasanicLemma
 from lauvinko.lang.lauvinko.phonology import LauvinkoSurfaceForm
 from lauvinko.lang.lauvinko.morphology import LauvinkoLemma, LauvinkoMorpheme
-from lauvinko.lang.lauvinko.diachronic.base import LauvinkoLemmaOrigin, OriginLanguage, UnspecifiedOrigin, \
-    MorphemeContext
+from lauvinko.lang.lauvinko.diachronic.base import (
+    LauvinkoLemmaOrigin,
+    OriginLanguage,
+    UnspecifiedOrigin,
+    GenericOrigin,
+    MorphemeContext,
+)
 
 
 def parse_context(s) -> MorphemeContext:
@@ -43,13 +49,17 @@ CLOSED_CLASSES: set[MorphosyntacticType] = {
 }
 
 
+EARLY_LOAN_LANGUAGES = (OriginLanguage.KASANIC, OriginLanguage.SANSKRIT, OriginLanguage.MALAY)
+RECENT_LOAN_LANGUAGES = (OriginLanguage.DUTCH, OriginLanguage.ARABIC, OriginLanguage.MALAY)
+
+
 @dataclass
 class DictEntry:
     languages: dict[Language, Lemma]
     ident: str
     category: KasanicStemCategory
     mstype: MorphosyntacticType
-    origin: OriginLanguage
+    origin: LauvinkoLemmaOrigin
 
     class MissingData(ValueError):
         pass
@@ -64,17 +74,22 @@ class DictEntry:
                 "definition": json.loads(mistletoe.markdown(data["definition"], renderer=ASTRenderer))
             }
 
+        olang, oword = self.origin.language_and_word()
+
         return {
             "languages": languages,
             "citation_form": PTA2ABBREV[self.category.citation_form],
             "alphabetization": None,
-            "origin": self.origin.value,
+            "origin": {
+                "language": olang.value[0],
+                "word": oword,
+            },
         }
 
     @staticmethod
     def from_json_entry(ident: str, json_entry: dict):
         try:
-            origin: OriginLanguage = OriginLanguage[json_entry["origin"].swapcase()]
+            origin_language: OriginLanguage = OriginLanguage[json_entry["origin"].swapcase()]
         except KeyError:
             raise LauvinkoLemmaOrigin.InvalidOrigin(f"Invalid word origin: {repr(json_entry.get('origin'))}")
 
@@ -94,15 +109,16 @@ class DictEntry:
             raise ValueError(f"{mstype} is a closed class")
 
         if Language.PK.value in json_entry["languages"]:
-            assert origin in (OriginLanguage.KASANIC, OriginLanguage.SANSKRIT, OriginLanguage.MALAY)  # TODO: separately handle?
+            assert origin_language in EARLY_LOAN_LANGUAGES # TODO: separately handle?
             languages = DictEntry.languages_from_pk_json(
                 ident,
                 json_entry["languages"],
                 category=category,
                 mstype=mstype,
+                origin_language=origin_language,
             )
 
-        elif origin is OriginLanguage.KASANIC:
+        elif origin_language is OriginLanguage.KASANIC:
             languages = DictEntry.languages_from_json_no_source(ident, json_entry["languages"],
                                                                 category=category, mstype=mstype)
 
@@ -110,12 +126,13 @@ class DictEntry:
             assert category is KasanicStemCategory.UNINFLECTED
             assert mstype is MorphosyntacticType.INDEPENDENT
             # TODO Arabic needs its own treatment
-            if origin not in (OriginLanguage.DUTCH, OriginLanguage.ARABIC, OriginLanguage.MALAY):
+            if origin_language not in RECENT_LOAN_LANGUAGES:
                 raise ValueError(f"Language cannot loan word recently: {json_entry}")
 
             languages = DictEntry.languages_from_recent_loan(
                 ident,
                 json_entry["languages"],
+                origin_language,
             )
 
         assert languages[Language.LAUVINKO].category is category
@@ -125,7 +142,7 @@ class DictEntry:
             ident=ident,
             category=category,
             mstype=mstype,
-            origin=origin,
+            origin=languages[Language.LAUVINKO].origin,
         )
 
     @staticmethod
@@ -152,7 +169,11 @@ class DictEntry:
 
     @staticmethod
     def languages_from_pk_json(ident: str, languages_json: dict, category: KasanicStemCategory,
-                               mstype: MorphosyntacticType):
+                               mstype: MorphosyntacticType, origin_language: OriginLanguage):
+        ultimate_origin: Optional[LauvinkoLemmaOrigin] = None
+        if origin_language is not OriginLanguage.KASANIC:
+            ultimate_origin = GenericOrigin.from_json(origin_language, languages_json)
+
         pk_lemma = ProtoKasanicLemma(
             ident=ident,
             definition=languages_json[Language.PK.value]["definition"],
@@ -166,7 +187,8 @@ class DictEntry:
                 )
                 for pta, transcription in languages_json[Language.PK.value]["forms"].items()
                 if pta != "gn"
-            }
+            },
+            origin=ultimate_origin,
         )
 
         languages = {Language.PK: pk_lemma}
@@ -216,7 +238,8 @@ class DictEntry:
         }
 
     @staticmethod
-    def languages_from_recent_loan(ident: str, languages_json: dict) -> dict[Language, Lemma]:
+    def languages_from_recent_loan(ident: str, languages_json: dict, origin_language: OriginLanguage)\
+            -> dict[Language, Lemma]:
         forms = languages_json[Language.LAUVINKO.value]["forms"]
         assert len(forms) == 1
         gn_form = LauvinkoMorpheme.from_informal_transcription(forms["gn"]["phonemic"])
@@ -242,7 +265,7 @@ class DictEntry:
                         virtual_original_form=gn_form.virtual_original_form,
                     )
                 },
-                origin=UnspecifiedOrigin(),
+                origin=GenericOrigin.from_json(origin_language, languages_json),
             )
         }
 

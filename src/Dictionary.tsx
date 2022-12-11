@@ -24,7 +24,7 @@ const ORIGIN_LANGUAGES = {
     "dutch": "nl",
 };
 
-type Origin = keyof typeof ORIGIN_LANGUAGES;
+type OriginLanguage = keyof typeof ORIGIN_LANGUAGES;
 
 type Form = {
     romanization: string,
@@ -41,7 +41,10 @@ type DictEntry = {
     languages: {[key in language]?: LangEntry},
     citation_form: pta_abbrev,
     alphabetization: string,
-    origin: Origin,
+    origin: {
+        language: OriginLanguage,
+        word: string,
+    },
 }
 
 const aspects: {[key in stem_category]: aspect[]} = {
@@ -207,7 +210,7 @@ class DictionaryEntry extends Component<DictionaryEntryProps> {
         const { entry } = this.props;
 
         if (entry.languages.lv === undefined) {
-            return null; // ought not to happen?
+            throw "Missing lauvinko entry"
         }
 
         const citation_form = entry.languages.lv.forms[entry.citation_form + ".na"];
@@ -218,7 +221,17 @@ class DictionaryEntry extends Component<DictionaryEntryProps> {
 
                 {/* TODO: copy link */}
 
-                {/* TODO: source language */}
+                {(entry.origin.language !== "kasanic") && (
+                  <p>
+                      From {capitalize(entry.origin.language)}{' '}
+                      <a
+                        href={`https://en.wiktionary.org/wiki/${entry.origin.word}#${capitalize(entry.origin.language)}`}
+                        target="_blank"
+                      >
+                          {entry.origin.word}
+                      </a>
+                  </p>
+                )}
 
                 {languages_in_order.map(lang => (
                   <LanguageEntry lang={lang} entry={entry} key={lang}/>
@@ -232,12 +245,12 @@ class DictionaryEntry extends Component<DictionaryEntryProps> {
 
 
 // TODO: wtf was this?
-const blurbs: {[key in Origin]?: string} = {
+const blurbs: {[key in OriginLanguage]?: string} = {
     // kasanic: "This is a list of Proto-Kasanic stems which became ",
 }
 
 type LanguageSectionProps = {
-    origin: Origin,
+    origin: OriginLanguage,
     entries: {[key: string]: DictEntry},
     entry_ids: string[],
     showTitle: boolean,
@@ -246,7 +259,7 @@ type LanguageSectionProps = {
 class LanguageSection extends Component<LanguageSectionProps> {
     render() {
         const language_entry_ids = this.props.entry_ids.filter(id => (
-          this.props.entries[id].origin === this.props.origin
+          this.props.entries[id].origin.language === this.props.origin
         ));
 
         if (language_entry_ids.length === 0) {
@@ -278,7 +291,7 @@ type DictionaryApiResponse = ApiResponse<{
 
 type DictionaryProps = {
     page_name: string,  // TODO this prop can be done away with
-    origin_languages: Origin[],
+    origin_languages: OriginLanguage[],
 }
 
 type DictionaryState = {
@@ -374,7 +387,7 @@ class Dictionary extends Component<DictionaryProps, DictionaryState> {
     languageEntries(): string[] {
         const all_entry_ids = Object.keys(this.state.entries);
         const language_entry_ids = all_entry_ids.filter(id => (
-          this.props.origin_languages.includes(this.state.entries[id].origin)
+          this.props.origin_languages.includes(this.state.entries[id].origin.language)
         ));
 
         return language_entry_ids.sort((n1, n2) => this.compareKeys(n1, n2));

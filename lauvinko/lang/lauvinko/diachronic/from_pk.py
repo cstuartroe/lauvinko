@@ -14,7 +14,7 @@ from lauvinko.lang.proto_kasanic.phonology import (
     ProtoKasanicVowel,
 )
 from lauvinko.lang.lauvinko.phonology import LauvinkoConsonant, LauvinkoVowel, LauvinkoSyllable, LauvinkoSurfaceForm
-from .base import LauvinkoLemmaOrigin, MorphemeContext
+from .base import LauvinkoLemmaOrigin, MorphemeContext, OriginLanguage
 
 
 def pk_to_lv_onset(pk_onset: ProtoKasanicOnset):
@@ -97,6 +97,12 @@ class ProtoKasanicOrigin(LauvinkoLemmaOrigin):
         lv_sf = self.evolve_surface_form(pk_sf, context)
 
         return lv_sf, pk_stem.as_morph()
+
+    def language_and_word(self) -> tuple[OriginLanguage, Optional[str]]:
+        if self.derived_from.origin is not None:
+            return self.derived_from.origin.language_and_word()
+
+        return OriginLanguage.KASANIC, None
 
     @classmethod
     def evolve_surface_form(cls, pk_sf: PKSurfaceForm, context: MorphemeContext) -> LauvinkoSurfaceForm:

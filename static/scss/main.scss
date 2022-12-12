@@ -30,7 +30,7 @@ h1.falavay {
   font-size: 3.25vh;
 }
 
-h1, h2, h3, p, .paragraph, li, td, th, input[type="text"] {
+h1, h2, h3, p, .paragraph, li, td, th, input[type="text"], span {
   font-family: "Gentium", serif;
 }
 
@@ -59,6 +59,15 @@ a, a:hover, a:not([href]) {
 
 a:not([href]) {
   cursor: pointer;
+}
+
+.faded-link {
+  opacity: 20%;
+  transition: .25s ease;
+
+  &:hover {
+    opacity: 100%;
+  }
 }
 
 div.scroll {
@@ -174,6 +183,7 @@ div.go-down div:hover, div.go-down div.selected, a:hover li, button:hover {
 
 .entry {
   position: relative;
+  margin-left: 15px;
 }
 
 .entry > * {

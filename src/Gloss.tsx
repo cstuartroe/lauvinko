@@ -212,8 +212,10 @@ export class CopyLink extends Component<CopyLinkProps, CopyLinkState> {
     const opacity = 100 - Math.round(this.state.copiedPosition * 100 / maxCopiedPosition);
 
     return (
-      <span style={{position: "relative"}}>
-        <a onClick={() => this.onClick()}><FontAwesomeIcon icon={faLink}/></a>
+      <span style={{position: "relative", fontSize: "1.75vh"}}>
+        <a onClick={() => this.onClick()} className="faded-link">
+          <FontAwesomeIcon icon={faLink}/>
+        </a>
         <span style={{
           color: `rgba(127, 127, 127, ${opacity}%)`,
           position: "absolute",

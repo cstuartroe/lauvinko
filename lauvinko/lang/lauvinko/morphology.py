@@ -179,8 +179,7 @@ class LauvinkoMorpheme(Morpheme):
 
                     v2 = ms[0].vowel
                     if c1 is not None:
-                        if original_final_vowel.frontness is VowelFrontness.BACK \
-                                and v2.frontness is not VowelFrontness.BACK:
+                        if original_final_vowel.frontness is VowelFrontness.BACK:
                             ms[0].onset = LauvinkoConsonant.V
 
                         elif c1 is LauvinkoConsonant.A:

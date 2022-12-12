@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLink } from "@fortawesome/free-solid-svg-icons";
 import {ApiResponse, InlineCode, MarkdownPreformatted} from "./types";
 
 export type GlossRow = "analysis" | "romanization" | "falavay" | "narrow_transcription" | "broad_transcription";
@@ -197,7 +199,7 @@ type CopyLinkState = {
 
 const maxCopiedPosition = 30;
 
-class CopyLink extends Component<CopyLinkProps, CopyLinkState> {
+export class CopyLink extends Component<CopyLinkProps, CopyLinkState> {
   constructor(props: CopyLinkProps) {
     super(props);
 
@@ -211,7 +213,7 @@ class CopyLink extends Component<CopyLinkProps, CopyLinkState> {
 
     return (
       <span style={{position: "relative"}}>
-        <a onClick={() => this.onClick()}>Copy link</a>
+        <a onClick={() => this.onClick()}><FontAwesomeIcon icon={faLink}/></a>
         <span style={{
           color: `rgba(127, 127, 127, ${opacity}%)`,
           position: "absolute",

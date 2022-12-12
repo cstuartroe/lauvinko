@@ -1,8 +1,11 @@
 import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLink } from "@fortawesome/free-solid-svg-icons";
 
 import PageHeader from "./PageHeader";
 import {ApiResponse, MarkdownBlock, MistletoeDocument, ParagraphChild} from "./types";
 import {renderMarkdownBlock} from "./markdown";
+import {CopyLink} from "./Gloss";
 
 type stem_category = "fientive" | "punctual" | "stative" | "uninflected";
 type pta_abbrev = "gn" | "np" | "pt" | "pf" | "impt" | "imnp" | "fqnp" | "fqpt" | "inc";
@@ -202,13 +205,30 @@ function capitalize(s: string) {
     return s[0].toUpperCase() + s.substring(1).toLowerCase();
 }
 
+function entryLink(ident: string) {
+    const currentUrl = new URL(window.location.href);
+    const target = `${currentUrl.protocol}//${currentUrl.host}${currentUrl.pathname}?q=@${ident}`
+
+    return (
+      <div
+        style={{
+          position: 'absolute',
+          top: '1.25vh',
+          left: '-3vh',
+      }}>
+          <CopyLink link={target}/>
+      </div>
+    );
+}
+
 type DictionaryEntryProps = {
+    ident: string,
     entry: DictEntry,
 }
 
 class DictionaryEntry extends Component<DictionaryEntryProps> {
     render() {
-        const { entry } = this.props;
+        const { ident, entry } = this.props;
 
         if (entry.languages.lv === undefined) {
             throw "Missing lauvinko entry"
@@ -218,6 +238,8 @@ class DictionaryEntry extends Component<DictionaryEntryProps> {
 
         return (
             <div className="entry">
+                {entryLink(ident)}
+
                 <h1 className="falavay">{citation_form.falavay}</h1>
 
                 {/* TODO: copy link */}
@@ -277,6 +299,7 @@ class LanguageSection extends Component<LanguageSectionProps> {
 
             {language_entry_ids.map(id => (
                 <DictionaryEntry
+                  ident={id}
                   entry={this.props.entries[id]}
                   key={id}
                 />

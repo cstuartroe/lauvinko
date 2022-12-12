@@ -22,6 +22,7 @@ const ORIGIN_LANGUAGES = {
     "sanskrit": "sa",
     "malay": "ms",
     "dutch": "nl",
+    "javanese": "jv",
 };
 
 type OriginLanguage = keyof typeof ORIGIN_LANGUAGES;

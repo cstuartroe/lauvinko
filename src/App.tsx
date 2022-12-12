@@ -33,7 +33,7 @@ const router = createBrowserRouter([
     {
         path: "/loanword_dictionary",
         element: <Dictionary
-          origin_languages={["sanskrit", "malay", "dutch"]}
+          origin_languages={["sanskrit", "malay", "javanese", "dutch"]}
           page_name="loanword_dictionary"
         />,
     },

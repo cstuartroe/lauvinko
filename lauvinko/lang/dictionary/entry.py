@@ -49,8 +49,18 @@ CLOSED_CLASSES: set[MorphosyntacticType] = {
 }
 
 
-EARLY_LOAN_LANGUAGES = (OriginLanguage.KASANIC, OriginLanguage.SANSKRIT, OriginLanguage.MALAY)
-RECENT_LOAN_LANGUAGES = (OriginLanguage.DUTCH, OriginLanguage.ARABIC, OriginLanguage.MALAY)
+EARLY_LOAN_LANGUAGES = (
+    OriginLanguage.KASANIC,
+    OriginLanguage.SANSKRIT,
+    OriginLanguage.MALAY,
+    OriginLanguage.JAVANESE,
+)
+RECENT_LOAN_LANGUAGES = (
+    OriginLanguage.DUTCH,
+    OriginLanguage.ARABIC,
+    OriginLanguage.MALAY,
+    OriginLanguage.JAVANESE,
+)
 
 
 @dataclass

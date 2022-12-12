@@ -1770,11 +1770,14 @@
       "pk": {
         "definition": "Kendhang (two headed drum used to set tempo in a musical ensemble).",
         "forms": {
-          "gn": "kantaanga"
+          "gn": "kantaa/nga"
         }
+      },
+      "jv": {
+        "native": "\ua98f\ua9bc\ua9a4\ua9c0\ua99d\ua981"
       }
     },
-    "origin": "kasanic"
+    "origin": "javanese"
   },
   "keng": {
     "category": "uninflected",

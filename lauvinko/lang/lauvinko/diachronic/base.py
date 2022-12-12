@@ -15,6 +15,7 @@ class MorphemeContext(Enum):
 class OriginLanguage(Enum):
     KASANIC = ("kasanic", "pk")
     MALAY = ("malay", "ms")
+    JAVANESE = ("javanese", "jv")
     SANSKRIT = ("sanskrit", "sa")
     TAMIL = ("tamil", "ta")
     ARABIC = ("arabic", "ar")

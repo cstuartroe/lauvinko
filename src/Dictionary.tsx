@@ -26,6 +26,7 @@ const ORIGIN_LANGUAGES = {
     "malay": "ms",
     "dutch": "nl",
     "javanese": "jv",
+    "hokkien": "hk",
 };
 
 type OriginLanguage = keyof typeof ORIGIN_LANGUAGES;
@@ -205,6 +206,14 @@ function capitalize(s: string) {
     return s[0].toUpperCase() + s.substring(1).toLowerCase();
 }
 
+const WiktNames: {[key in OriginLanguage]?: string} = {
+    "hokkien": "Chinese",
+}
+
+function wiktName(lang: OriginLanguage): string {
+    return WiktNames[lang] || capitalize(lang);
+}
+
 function entryLink(ident: string) {
     const currentUrl = new URL(window.location.href);
     const target = `${currentUrl.protocol}//${currentUrl.host}${currentUrl.pathname}?q=@${ident}`
@@ -248,7 +257,7 @@ class DictionaryEntry extends Component<DictionaryEntryProps> {
                   <p>
                       From {capitalize(entry.origin.language)}{' '}
                       <a
-                        href={`https://en.wiktionary.org/wiki/${entry.origin.word}#${capitalize(entry.origin.language)}`}
+                        href={`https://en.wiktionary.org/wiki/${entry.origin.word}#${wiktName(entry.origin.language)}`}
                         target="_blank"
                       >
                           {entry.origin.word}

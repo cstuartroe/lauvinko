@@ -333,3 +333,22 @@ I coined one new native root for this sentence:
 I also took another Dutch loanword:
 
 - [làyma](/loanword_dictionary?q=@glue) "Glue," from Dutch *lijm*
+
+# Day 12
+
+```
+Help.$pf$.$na$ batik.$na$ silk.$na$ trousers.$na$ want-$t1s$-$tloc$-sit:$sg$.$gn$.$na$=$lea$.$sg$.$na$.
+
+I'd like the silk batik trousers please.
+```
+
+I loaned three new roots into Lauvìnko today, from three different languages!
+
+- [pàtih](/loanword_dictionary?q=@batik) "Batik," from Javanese
+
+- [sìtiu](/loanword_dictionary?q=@silk) "Silk fabric," from Hokkien
+
+- [salòala](/loanword_dictionary?q=@trousers) "Trousers," from Malay
+
+I also coined a new usage for *ènosi* "help", to mean "please." This is
+a direct calque of Malay *tolong*.

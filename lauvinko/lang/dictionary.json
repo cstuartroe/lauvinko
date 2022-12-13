@@ -720,6 +720,23 @@
     },
     "origin": "kasanic"
   },
+  "batik": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Batik.",
+        "forms": {
+          "gn": {
+            "phonemic": "pa/tik"
+          }
+        }
+      },
+      "jv": {
+        "native": "\ua9a7\ua99b\ua9b6\ua98f\ua9c0"
+      }
+    },
+    "origin": "javanese"
+  },
   "be:$pl$": {
     "category": "stative",
     "languages": {
@@ -2768,6 +2785,23 @@
     },
     "origin": "sanskrit"
   },
+  "silk": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Silk fabric.",
+        "forms": {
+          "gn": {
+            "phonemic": "si/tiu"
+          }
+        }
+      },
+      "hk": {
+        "native": "\u7d72\u7da2"
+      }
+    },
+    "origin": "hokkien"
+  },
   "sing": {
     "category": "fientive",
     "languages": {
@@ -3259,6 +3293,22 @@
         "forms": {
           "gn": "tupai"
         }
+      }
+    },
+    "origin": "malay"
+  },
+  "trousers": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Trousers.",
+        "forms": {
+          "gn": "saru/'aara"
+        }
+      },
+      "ms": {
+        "definition": "Trousers.",
+        "native": "seluar"
       }
     },
     "origin": "malay"

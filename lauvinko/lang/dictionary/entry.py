@@ -60,6 +60,7 @@ RECENT_LOAN_LANGUAGES = (
     OriginLanguage.ARABIC,
     OriginLanguage.MALAY,
     OriginLanguage.JAVANESE,
+    OriginLanguage.HOKKIEN,
 )
 
 

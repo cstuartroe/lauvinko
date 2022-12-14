@@ -120,6 +120,19 @@
     "mstype": "class word",
     "origin": "kasanic"
   },
+  "who": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Who.",
+        "forms": {
+          "gn": "yaace"
+        }
+      }
+    },
+    "mstype": "class word",
+    "origin": "kasanic"
+  },
   "$2hon$": {
     "category": "uninflected",
     "languages": {
@@ -1209,21 +1222,6 @@
         "definition": "To cover, to hang, to drape.",
         "forms": {
           "gn": "taici"
-        }
-      }
-    },
-    "origin": "kasanic"
-  },
-  "draw": {
-    "category": "fientive",
-    "languages": {
-      "lv": {
-        "definition": "To scratch. @ To plow. @ To write, draw (esp. line drawings)."
-      },
-      "pk": {
-        "definition": "To scrape, scratch.",
-        "forms": {
-          "gn": "c~saakaa"
         }
       }
     },
@@ -2665,6 +2663,21 @@
     },
     "origin": "kasanic"
   },
+  "scratch": {
+    "category": "fientive",
+    "languages": {
+      "lv": {
+        "definition": "To scratch. @ To plow. @ To write, draw (esp. line drawings)."
+      },
+      "pk": {
+        "definition": "To scrape, scratch.",
+        "forms": {
+          "gn": "c~saakaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "search": {
     "category": "fientive",
     "languages": {
@@ -3016,6 +3029,18 @@
         "definition": "To stand.",
         "forms": {
           "gn": "nitto"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "steal": {
+    "category": "punctual",
+    "languages": {
+      "pk": {
+        "definition": "Steal.",
+        "forms": {
+          "gn": "@niki"
         }
       }
     },

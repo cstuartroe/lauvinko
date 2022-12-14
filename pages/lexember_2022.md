@@ -352,3 +352,19 @@ I loaned three new roots into Lauvìnko today, from three different languages!
 
 I also coined a new usage for *ènosi* "help", to mean "please." This is
 a direct calque of Malay *tolong*.
+
+# Day 13
+
+```
+Who.$na$-$gen$ $int$ $1excl$.$sg$.$na$-$abl$ $loc$=scratch.$imnp$.$na$ want-$t3as:swrf$-$tage$-steal.$pt$.$na$=$lea$.$sg$.$na$?
+
+Who would want to steal my notebook?
+```
+
+Today I coined one new stem:
+
+- [èniki](/kasanic_dictionary?q=@steal) "Steal."
+
+I also coined one new composed word:
+
+- [pocèsako](/build?outline=%24loc%24%3Dscratch.%24imnp%24.%24na%24%3D%24lea%24.%24sg%24.%24na%24&language=lv&translation=notebook) "Notebook."

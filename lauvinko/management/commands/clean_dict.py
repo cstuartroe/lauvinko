@@ -43,7 +43,12 @@ def key_order(mstype: str, ident: str) -> Any:
         else:
             person, number = ident, None
 
-        return PERSON_ORDER.index(person), NUMBER_ORDER.index(number)
+        if person in PERSON_ORDER:
+            pix = PERSON_ORDER.index(person)
+        else:
+            pix = len(person)
+
+        return pix, person, NUMBER_ORDER.index(number)
     elif mstype == MorphosyntacticType.DEFINITE_MARKER.value:
         return None
     else:

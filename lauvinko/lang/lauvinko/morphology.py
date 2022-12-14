@@ -600,13 +600,13 @@ CASE_SPELLING_SYLLABLES: dict[str, Optional[tuple[ProtoKasanicOnset, ProtoKasani
 }
 
 
-ANIMATES = {"1excl", "1incl", "2fam", "2fml", "2hon", "3rd", "hea"}
+ANIMATES = {"$1excl$", "$incl$", "$2fam$", "$2fml$", "$2hon$", "$3rd$", "$hea$"}
 
 PARTITIVE_NUMBERS = {
-    "hea": "pl",
-    "bra": "du",
-    "lea": "pl",
-    "sea": None,
+    "$hea$": "$pl$",
+    "$bra$": "$du$",
+    "$lea$": "$pl$",
+    "$sea$": None,
 }
 
 IRREGULAR_CLASS_WORDS: dict[tuple[str, str], tuple[Optional[list[ProtoKasanicSyllable]], list[LauvinkoSyllable], bool]] = {
@@ -748,7 +748,7 @@ class LauvinkoDeterminer(LauvinkoWord):
 
         parts = self.determiner.lemma.ident.split(".")
         labels = [
-            re.match(r"\$([0-9a-z]+)\$", part).group(1)
+            re.match(r"(\$?[0-9a-z]+\$?)", part).group(1)
             for part in parts
         ]
         return tuple(labels) if len(labels) == 2 else (labels[0], None)

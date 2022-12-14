@@ -368,3 +368,18 @@ Today I coined one new stem:
 I also coined one new composed word:
 
 - [pocèsako](/build?outline=%24loc%24%3Dscratch.%24imnp%24.%24na%24%3D%24lea%24.%24sg%24.%24na%24&language=lv&translation=notebook) "Notebook."
+
+# Day 14
+
+```
+What.$na$=much.$na$=$rck$.$na$ this.$na$ gold.$na$=$sea$.$na$-$gen$ price.$na$=$rck$.$na$?
+
+What's the price of gold?
+```
+
+Today I took two loanwords from Sanskrit, both of which have cognates
+in Malay:
+
+- [màs](/loanword_dictionary?q=@gold) "Gold."
+
+- [èlanka](/loanword_dictionary?q=@price) "Price."

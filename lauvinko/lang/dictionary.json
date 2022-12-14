@@ -1521,6 +1521,23 @@
     },
     "origin": "kasanic"
   },
+  "gold": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Gold.",
+        "forms": {
+          "gn": "maasa"
+        }
+      },
+      "sa": {
+        "definition": "Gold.",
+        "native": "\u092e\u093e\u0937",
+        "transcription": "m\u0101\u1e63a"
+      }
+    },
+    "origin": "sanskrit"
+  },
   "green": {
     "category": "stative",
     "languages": {
@@ -2505,6 +2522,23 @@
       }
     },
     "origin": "kasanic"
+  },
+  "price": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Price.",
+        "forms": {
+          "gn": "arankaha"
+        }
+      },
+      "sa": {
+        "definition": "Value, price.",
+        "native": "\u0905\u0930\u094d\u0918",
+        "transcription": "argh\u00e1"
+      }
+    },
+    "origin": "sanskrit"
   },
   "proverb": {
     "category": "uninflected",

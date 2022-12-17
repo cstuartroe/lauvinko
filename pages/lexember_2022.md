@@ -383,3 +383,19 @@ in Malay:
 - [màs](/loanword_dictionary?q=@gold) "Gold."
 
 - [èlanka](/loanword_dictionary?q=@price) "Price."
+
+# Day 15
+
+```
+Pull.$pf$.$na$=$lea$.$pl$.$na$-$gen$ banteng.$au$=$hea$.$pl$.$au$-$gen$ skin.$na$ $t1p$-$tage$-craft.$pf$.$na$.
+
+We made drums from banteng hide.
+```
+
+I made one new root:
+
+- [tènni](/kasanic_dictionary?q=@craft) "Make something small with the hands."
+
+I also created one new compound word:
+
+- [píto](/build?outline=pull.%24pf%24.%24na%24%3D%24lea%24.%24sg%24.%24na%24&language=lv&translation=drum) "Drum."

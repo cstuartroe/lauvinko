@@ -1068,6 +1068,21 @@
     },
     "origin": "kasanic"
   },
+  "craft": {
+    "category": "fientive",
+    "languages": {
+      "lv": {
+        "definition": "$age$ creates $gen$ by hand from materials $pat$."
+      },
+      "pk": {
+        "definition": "Make something small with the hands.",
+        "forms": {
+          "gn": "t~naani"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "cross": {
     "category": "punctual",
     "languages": {

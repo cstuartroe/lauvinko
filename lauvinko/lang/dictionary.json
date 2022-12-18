@@ -1284,6 +1284,18 @@
     },
     "origin": "kasanic"
   },
+  "edge": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Rim, edge, shore.",
+        "forms": {
+          "gn": "yewoti"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "eel": {
     "category": "uninflected",
     "languages": {
@@ -2712,6 +2724,18 @@
     },
     "origin": "kasanic"
   },
+  "sand": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Sand, grit, dust.",
+        "forms": {
+          "gn": "tonai"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "scratch": {
     "category": "fientive",
     "languages": {
@@ -3347,7 +3371,7 @@
     "category": "uninflected",
     "languages": {
       "pk": {
-        "definition": "Tree.",
+        "definition": "Tree, wood.",
         "forms": {
           "gn": "kaunaa"
         }

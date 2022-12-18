@@ -387,7 +387,7 @@ in Malay:
 # Day 15
 
 ```
-Pull.$pf$.$na$=$lea$.$pl$.$na$-$gen$ banteng.$au$=$hea$.$pl$.$au$-$gen$ skin.$na$ $t1p$-$tage$-craft.$pf$.$na$.
+Pull.$pf$.$na$=$lea$.$pl$.$na$-$gen$ banteng.$au$=$hea$.$pl$.$au$-$gen$ skin.$na$ $t1p$-$tage$-craft.$pf$.$na$=$bra$.$pl$.$na$.
 
 We made drums from banteng hide.
 ```
@@ -399,3 +399,23 @@ I made one new root:
 I also created one new compound word:
 
 - [píto](/build?outline=pull.%24pf%24.%24na%24%3D%24lea%24.%24sg%24.%24na%24&language=lv&translation=drum) "Drum."
+
+# Day 16
+
+```
+$Loc$=sand.$na$ edge.$na$=$lea$.$sg$.$na$-$gen$ $t3is:swrf$-$tloc$-sit:$sg$.$gn$.$na$ tree.$na$ build.$pf$.$na$=$dim$.
+
+On the sandy beach there's a wooden cottage.
+```
+
+I made two new roots:
+
+- [tòne](/kasanic_dictionary?q=@sand) "Sand, grit, dust."
+
+- [yèuti](/kasanic_dictionary?q=@edge) "Rim, edge, shore."
+
+When used as a relational noun, *yèuti* is in rock class, but here it is marked with
+leaf class as it denotes a location, a seashore.
+
+For this sentence I used a new type of construction, where I use a locative applicative
+with a comitative-like meaning.

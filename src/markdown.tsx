@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import {renderInlineCode, renderMarkdownPreformatted, extraFormatting} from "./Gloss";
+import {renderInlineCode, renderMarkdownPreformatted, extraFormatting, CopyLink} from "./Gloss";
 import {
   InlineCode,
   MarkdownBlock,
@@ -56,16 +56,45 @@ function MarkdownParagraph({para}: {para: MarkdownParagraph}) {
   );
 }
 
+function snake_casify(s: string): string {
+  let out = "";
+
+  for (let i = 0; i < s.length; i++) {
+    const c = s[i];
+
+    if (' _'.includes(c)) {
+      out += '_'
+    } else if (c.match(/[a-zA-Z0-9]/g)) {
+      out += c.toLowerCase()
+    }
+  }
+
+  return out
+}
+
 function renderMarkdownHeading(block: MarkdownHeading) {
   const children = paragraphChildren(block.children);
 
+  let id: string | undefined = undefined;
+  if (block.children.length === 1 && block.children[0].type === "RawText") {
+    id = snake_casify(block.children[0].content)
+  }
+
+  let copier = null;
+  if (id) {
+    const currentUrl = new URL(window.location.href);
+    const target = `${currentUrl.protocol}//${currentUrl.host}${currentUrl.pathname}#${id}`;
+
+    copier = <CopyLink link={target}/>;
+  }
+
   switch (block.level) {
     case 1:
-      return <h2>{children}</h2>;
+      return <h2 id={id}>{copier} {children}</h2>;
     case 2:
-      return <h3>{children}</h3>;
+      return <h3 id={id}>{copier} {children}</h3>;
     default:
-      return <h4>{children}</h4>;
+      return <h4 id={id}>{copier} {children}</h4>;
   }
 }
 

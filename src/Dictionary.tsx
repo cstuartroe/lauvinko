@@ -251,8 +251,6 @@ class DictionaryEntry extends Component<DictionaryEntryProps> {
 
                 <h1 className="falavay">{citation_form.falavay}</h1>
 
-                {/* TODO: copy link */}
-
                 {(entry.origin.language !== "kasanic") && (
                   <p>
                       From {capitalize(entry.origin.language)}{' '}

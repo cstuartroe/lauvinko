@@ -48,7 +48,11 @@ class _Page extends Component<Props, State> {
         document: doc as MistletoeDocument,
         status: "succeeded",
       }))
-      .then(() => setTimeout(() => {window.location.href = window.location.href}, 500))
+      .then(() => {
+        if ((new URL(window.location.href)).hash) {
+          setTimeout(() => {window.location.href = window.location.href}, 500);
+        }
+      })
       .catch(_ => this.setState({
         status: "failed",
       }));

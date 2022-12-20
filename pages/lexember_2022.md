@@ -419,3 +419,45 @@ leaf class as it denotes a location, a seashore.
 
 For this sentence I used a new type of construction, where I use a locative applicative
 with a comitative-like meaning.
+
+# Day 17
+
+```
+$Loc$=be:$pl$.$gn$.$na$=$lea$.$sg$.$na$ $int$ Atineni.$na$=$rck$.$na$-$abl$ east.$na$ south.$au$ lie:$sg$.$gn$.$na$?
+
+The capsule is southeast of Atineni?
+```
+
+I created two new roots:
+
+- [navór](/kasanic_dictionary?q=@east) "east"
+
+- [áytoy](/kasanic_dictionary?q=@south) "south"
+
+I already had a root meaning "north" from translating *The North Wind and the Sun*, so
+I created one more to round out the set:
+
+- [ípi](/kasanic_dictionary?q=@west) "west"
+
+I spent a long while debating how to do secondary cardinals in Lauvìnko. I've always
+admired languages which do something other than straightforward combination of
+an east/west term and a north/south term. Malay has different words for north/south
+for secondary cardinals (e.g. "north" = *utara*, "west" = *barat*, but
+"northwest" = *barat laut*) and a unique monomorphemic term for "southeast". Finnish
+has unique monomorphemic terms for all secondary cardinals. However, doing anything
+weird like this appears to be extremely rare. Tagalog and all the South Asian languages
+I looked at just form secondary cardinals compositionally. For now, I just decided to
+take this straightforward approach, using the same order as Malay - east/west before
+north/south.
+
+---
+
+```
+$Prl$=sit:$sg$.$gn$.$na$ that.$na$ mountain.$au$=$dim$-$loc$ top.$na$=$rck$.$na$.
+
+It's just over that hill.
+```
+
+I made one root for this sentence:
+
+- [sáuna](/kasanic_dictionary?q=@mountain) "Mountain, hill."

@@ -439,8 +439,8 @@ class LauvinkoWord(Word):
             i += 1
 
         if words[i:] and words[i].word_type() is LauvinkoWordType.DETERMINER:
-            if context is not None and context is not words[i]._as_morph.context:
-                raise ValueError("Augment must match between content and class word")
+            if context is not None and context is not words[i].expected_context():
+                raise ValueError(f"Augment must match between content and class word: {context} {words[i].expected_context()}")
             found = True
             i += 1
 
@@ -712,15 +712,8 @@ class LauvinkoDeterminer(LauvinkoWord):
         if self.case_suffix is not None:
             assert self.case_suffix.lemma.mstype is MorphosyntacticType.ADPOSITION
 
-            expected_augment = self.case().augment
-
-            if expected_augment is None:
-                expected_augment = self.animate()
-
-            if expected_augment:
-                assert self.determiner.context is MorphemeContext.AUGMENTED
-            else:
-                assert self.determiner.context is MorphemeContext.NONAUGMENTED
+        if self.case() and (self.determiner.lemma.mstype is MorphosyntacticType.CLASS_WORD):
+            assert self.determiner.context is self.expected_context()
 
         if self.case() is LauvinkoCase.PARTITIVE:
             person, number = self.pn()
@@ -741,6 +734,20 @@ class LauvinkoDeterminer(LauvinkoWord):
         if self.case_suffix is None:
             return None
         return CASE_BY_IDENT[self.case_suffix.lemma.ident]
+
+    def _expected_augment(self) -> bool:
+        if self.case() is None:
+            return False
+
+        au = self.case().augment
+
+        if au is None:
+            return self.animate()
+        else:
+            return au
+
+    def expected_context(self) -> MorphemeContext:
+        return MorphemeContext.AUGMENTED if self._expected_augment() else MorphemeContext.NONAUGMENTED
 
     def pn(self) -> tuple[str, Optional[str]]:
         if self.determiner_type() is MorphosyntacticType.NUMBER_SUFFIX:

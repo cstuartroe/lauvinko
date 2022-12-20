@@ -645,6 +645,18 @@
     },
     "origin": "kasanic"
   },
+  "atineni": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Atineni, a village.",
+        "forms": {
+          "gn": "aatina/nyi"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "auncle": {
     "category": "uninflected",
     "languages": {
@@ -1264,6 +1276,18 @@
         "definition": "Dry, barren, spent.",
         "forms": {
           "gn": "keka"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "east": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "East.",
+        "forms": {
+          "gn": "nautu"
         }
       }
     },
@@ -2236,6 +2260,18 @@
     },
     "origin": "kasanic"
   },
+  "mountain": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Mountain, hill.",
+        "forms": {
+          "gn": "saakunyu"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "much": {
     "category": "uninflected",
     "languages": {
@@ -3053,6 +3089,18 @@
     },
     "origin": "sanskrit"
   },
+  "south": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "South.",
+        "forms": {
+          "gn": "aitohe"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "speak": {
     "category": "fientive",
     "languages": {
@@ -3516,6 +3564,18 @@
         "definition": "To weave, interlay.",
         "forms": {
           "gn": "y@mpa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "west": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "West.",
+        "forms": {
+          "gn": "ikkwe"
         }
       }
     },

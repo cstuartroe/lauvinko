@@ -247,7 +247,7 @@ process going on.
 I spent a while debating how to convey the "looks" sense. I didn't
 think that the strategy Malay uses would fit well. I thought about
 making *áyka* the finite verb of the sentence, and forming some kind
-of adverbial from *áyka* "see." Then I looked at Malayalam and it
+of adverbial from `lv;r see.$imnp$.$na$` "see." Then I looked at Malayalam and it
 decided to do something similar for Lauvìnko here. The finite verb
 means "seem, appear" and the thing it seems like is an oblique -
 in Lauvìnko's case, a genitive. I extended the availability of
@@ -461,3 +461,19 @@ It's just over that hill.
 I made one root for this sentence:
 
 - [sáuna](/kasanic_dictionary?q=@mountain) "Mountain, hill."
+
+# Day 18
+
+```
+$1Excl$.$sg$.$au$-$gen$ head.$au$=$bra$.$sg$.$au$-$loc$ top.$na$=$rck$.$na$-$gen$
+$t3is:swrf$-$tloc$-sit:$sg$.$pt$.$na$... dhole.$na$=$hea$.$sg$.$na$!
+
+On top of my head was sitting... a dhole!
+```
+
+I made one root for this sentence:
+
+- [hònti](/kasanic_dictionary?q=@dhole) "Dhole."
+
+[Dholes](https://en.wikipedia.org/wiki/Dhole) are the only canids endemic to the
+region.

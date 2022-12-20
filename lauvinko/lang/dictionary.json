@@ -1224,6 +1224,18 @@
     },
     "origin": "kasanic"
   },
+  "dhole": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Dhole.",
+        "forms": {
+          "gn": "hunaati"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "dog": {
     "category": "uninflected",
     "languages": {

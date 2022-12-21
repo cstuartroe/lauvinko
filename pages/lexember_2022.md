@@ -423,7 +423,7 @@ with a comitative-like meaning.
 # Day 17
 
 ```
-$Loc$=be:$pl$.$gn$.$na$=$lea$.$sg$.$na$ $int$ Atineni.$na$=$rck$.$na$-$abl$ east.$na$ south.$au$ lie:$sg$.$gn$.$na$?
+$Loc$=be:$pl$.$gn$.$na$=$lea$.$sg$.$na$ $int$ Atineni.$na$=$rck$.$na$-$abl$ east.$na$ south.$au$=$lea$.$sg$.$au$-$loc$ lie:$sg$.$gn$.$na$?
 
 The capsule is southeast of Atineni?
 ```
@@ -477,3 +477,18 @@ I made one root for this sentence:
 
 [Dholes](https://en.wikipedia.org/wiki/Dhole) are the only canids endemic to the
 region.
+
+# Day 19
+
+```
+All-$par$ must-$dep$-order.$na$=$rck$.$na$ $loc$=sit:$sg$.$gn$.$na$.
+
+I need to tidy everything up.
+```
+
+I made one root for this sentence:
+
+- [lòngang.](/kasanic_dictionary?q=@order) "Neat, tidy, correct, appropriate, fitting."
+
+This is the first time I've used a long-theorized construction: periphrastically
+indicating aspect for uninflected stems.

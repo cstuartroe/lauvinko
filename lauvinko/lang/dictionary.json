@@ -2490,6 +2490,21 @@
     },
     "origin": "kasanic"
   },
+  "order": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Neat, tidy, correct, appropriate, fitting."
+      },
+      "pk": {
+        "definition": "Row, line.",
+        "forms": {
+          "gn": "rongonyo"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "pandan": {
     "category": "uninflected",
     "languages": {

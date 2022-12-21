@@ -1523,6 +1523,21 @@
     },
     "origin": "kasanic"
   },
+  "full": {
+    "category": "stative",
+    "languages": {
+      "lv": {
+        "definition": "$loc$ is full of, has an abundance of $pat$. @ $pat$ is abundant, common."
+      },
+      "pk": {
+        "definition": "Full, replete.",
+        "forms": {
+          "gn": "nyaacu"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "glass": {
     "category": "uninflected",
     "languages": {
@@ -3301,6 +3316,18 @@
       }
     },
     "origin": "malay"
+  },
+  "termite": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Termite.",
+        "forms": {
+          "gn": "paakeco"
+        }
+      }
+    },
+    "origin": "kasanic"
   },
   "that": {
     "category": "uninflected",

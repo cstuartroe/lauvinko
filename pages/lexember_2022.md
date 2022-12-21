@@ -42,7 +42,7 @@ And one new compound word from an existing root:
 # Day 3
 
 ```
-Storehouse.$na$=$lea$.$sg$.$na$ this.$na$ $1excl$.$sg$.$au$-$age$ $all$=go.$pf$.$na$ and:$st$ ground.$au$=$lea$.$sg$.$au$-$loc$ banteng.$na$=parent:animal.$gn$.$na$=$dim$ $st$-$tloc$-lie:$sg$.$pt$.$na$.
+Storehouse.$na$=$lea$.$sg$.$na$ indoor.$na$=$lea$.$sg$.$na$ this.$na$ $1excl$.$sg$.$au$-$age$ $all$=go.$pf$.$na$ and:$st$ ground.$au$=$lea$.$sg$.$au$-$loc$ banteng.$na$=parent:animal.$gn$.$na$=$dim$ $st$-$tloc$-lie:$sg$.$pt$.$na$.
 
 I entered the barn and there was a banteng calf lying on the ground. 
 ```
@@ -481,14 +481,28 @@ region.
 # Day 19
 
 ```
-All-$par$ must-$dep$-order.$na$=$rck$.$na$ $loc$=sit:$sg$.$gn$.$na$.
+$Loc$=sit:$sg$.$gn$.$na$ all-$par$ must-$dep$-order.$na$=$rck$.$na$.
 
 I need to tidy everything up.
 ```
 
 I made one root for this sentence:
 
-- [lòngang.](/kasanic_dictionary?q=@order) "Neat, tidy, correct, appropriate, fitting."
+- [lòngang](/kasanic_dictionary?q=@order) "Neat, tidy, correct, appropriate, fitting."
 
 This is the first time I've used a long-theorized construction: periphrastically
 indicating aspect for uninflected stems.
+
+# Day 20
+
+```
+Interior.$na$=$rck$.$na$-$gen$ $t3as:swrf$-$tloc$-full.$gn$.$na$ termite.$na$=$hea$.$pl$.$na$!
+
+It's full of termites!
+```
+
+I made two roots for this sentence:
+
+- [páyca](/kasanic_dictionary?q=@termite) "Termite."
+
+- [nás](/kasanic_dictionary?q=@full) "Full of, have an abundance of."

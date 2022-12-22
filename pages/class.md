@@ -31,14 +31,15 @@ Most pronouns and classifiers decline regularly for case. The most notable
 exceptions are the genitives of some formally animate arguments. Forms marked
 with @ are irregular:
 
-|                     |             singular              |              dual               |              plural               |
-|:--------------------|:---------------------------------:|:-------------------------------:|:---------------------------------:|
-| 1^{st} exclusive    | `lv;fr $1excl$.$sg$.$au$-$gen$` @ |                +                |  `lv;fr $1excl$.$pl$.$au$-$gen$`  |
-| 1^{st} inclusive    |                                   | `lv;fr $1incl$.$du$.$au$-$gen$` | `lv;fr $1incl$.$pl$.$au$-$gen$` @ |
-| 2^{nd} familiar     | `lv;fr $2fam$.$sg$.$au$-$gen$` @  |                +                | `lv;fr $2fml$.$pl$.$au$-$gen$` @  |
-| 2^{nd} formal       |  `lv;fr $2fml$.$sg$.$au$-$gen$`   | `lv;fr $2fml$.$du$.$au$-$gen$`  |                 ^                 |
-| 2^{nd} honorific    |                 +                 |                +                |    `lv;fr $2hon$.$au$-$gen$` @    | 
-| head class definite |  `lv;fr $3rd$.$sg$.$au$-$gen$` @  |  `lv;fr $3rd$.$du$.$au$-$gen$`  |  `lv;fr $3rd$.$pl$.$au$-$gen$` @  |
+|                       |             singular              |              dual               |              plural               |
+|:----------------------|:---------------------------------:|:-------------------------------:|:---------------------------------:|
+| 1^{st} exclusive      | `lv;fr $1excl$.$sg$.$au$-$gen$` @ |                +                |  `lv;fr $1excl$.$pl$.$au$-$gen$`  |
+| 1^{st} inclusive      |                                   | `lv;fr $1incl$.$du$.$au$-$gen$` | `lv;fr $1incl$.$pl$.$au$-$gen$` @ |
+| 2^{nd} familiar       | `lv;fr $2fam$.$sg$.$au$-$gen$` @  |                +                | `lv;fr $2fml$.$pl$.$au$-$gen$` @  |
+| 2^{nd} formal         |  `lv;fr $2fml$.$sg$.$au$-$gen$`   | `lv;fr $2fml$.$du$.$au$-$gen$`  |                 ^                 |
+| 2^{nd} honorific      |                 +                 |                +                |    `lv;fr $2hon$.$au$-$gen$` @    | 
+| head class definite   |  `lv;fr $3rd$.$sg$.$au$-$gen$` @  |  `lv;fr $3rd$.$du$.$au$-$gen$`  |  `lv;fr $3rd$.$pl$.$au$-$gen$` @  |
+| head class indefinite |   `lv;fr $hea$.$sg$.$au$-$gen$`   |  `lv;fr $hea$.$du$.$au$-$gen$`  |  `lv;fr $hea$.$pl$.$au$-$gen$` @  |
 
 There are a handful of other irregular pronouns: branch class has irregular
 instrumentals singular `lv;fr $bra$.$sg$.$na$-$ins$` and

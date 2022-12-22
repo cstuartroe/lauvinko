@@ -705,6 +705,21 @@
     },
     "origin": "malay"
   },
+  "back": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Back (anatomy). @ Stature, posture. @ Support structure (architecture). @ $pat$ supports $gen$ ideologically/morally."
+      },
+      "pk": {
+        "definition": "Back (anatomy).",
+        "forms": {
+          "gn": "wetimpo"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "bake": {
     "category": "fientive",
     "languages": {
@@ -3261,6 +3276,18 @@
       }
     },
     "origin": "sanskrit"
+  },
+  "stripe": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Stripe, rock vein.",
+        "forms": {
+          "gn": "ranai"
+        }
+      }
+    },
+    "origin": "kasanic"
   },
   "style": {
     "category": "uninflected",

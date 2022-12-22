@@ -526,3 +526,11 @@ from which I derived:
 I also loaned one Sanskrit word:
 
 - [sàyli](/loanword_dictionary?q=@style) "Style, way, manner, school of thought."
+
+# Day 22
+
+```
+Stripe.$na$ yellow.$gn$.$na$=$bra$.$du$.$na$-$par$ $loc$=$dep$-be:$pl$.$gn$.$na$ back.$na$ $t3is:swrf$-$tgen$-be:$pl$.$gn$.$na$=$bra$.$pl$.$na$.
+
+They have yellow stripes on their backs.
+```

@@ -481,7 +481,7 @@ region.
 # Day 19
 
 ```
-$Loc$=sit:$sg$.$gn$.$na$ all-$par$ must-$dep$-order.$na$=$rck$.$na$.
+$Loc$=sit:$sg$.$gn$.$na$ all-$par$ must-order.$na$=$rck$.$na$.
 
 I need to tidy everything up.
 ```
@@ -506,3 +506,23 @@ I made two roots for this sentence:
 - [páyca](/kasanic_dictionary?q=@termite) "Termite."
 
 - [nás](/kasanic_dictionary?q=@full) "Full of, have an abundance of."
+
+# Day 21
+
+```
+Tree.$na$ $ins$=behave.$imnp$.$na$=$bra$.$sg$.$na$ Besisi.$au$=$3rd$.$pl$.$au$-$gen$ style.$na$=$rck$.$na$-$prl$ sit:$sg$.$gn$.$na$.
+
+The wooden mask is in the style of the Besisi.
+```
+
+I coined one new root:
+
+- [ngèni](/kasanic_dictionary?q=@behave) "Behave in an attitude, pretend, act, display emotion."
+
+from which I derived:
+
+- [ohngènir](/build?outline=%24ins%24%3Dbehave.%24imnp%24.%24na%24%3D%24bra%24.%24sg%24.%24na%24&language=lv&translation=mask) "mask"
+
+I also loaned one Sanskrit word:
+
+- [sàyli](/loanword_dictionary?q=@style) "Style, way, manner, school of thought."

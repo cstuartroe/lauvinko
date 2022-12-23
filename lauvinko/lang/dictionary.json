@@ -1398,6 +1398,18 @@
     },
     "origin": "kasanic"
   },
+  "exhaust": {
+    "category": "fientive",
+    "languages": {
+      "pk": {
+        "definition": "Exhaust, deplete (only used with frequentative or inceptive).",
+        "forms": {
+          "gn": "kk@'u"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "face": {
     "category": "uninflected",
     "languages": {
@@ -2763,6 +2775,18 @@
         "definition": "Open, release.",
         "forms": {
           "gn": "r@seki"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "relent": {
+    "category": "punctual",
+    "languages": {
+      "pk": {
+        "definition": "Relent, give up.",
+        "forms": {
+          "gn": "n@sauku"
         }
       }
     },

@@ -1,24 +1,57 @@
 ```
-North.$na$=$age$=gust.$fqnp$.$na$=$3rd$.$sg$.$na$ and Bright.$gn$.$au$=$3rd$.$pl$.$au$-$gen$ what.$au$=$hea$.$sg$.$au$-$age$ $dep$-mighty.$fqnp$.$na$=$sea$.$na$ speak.$imnp$.$na$=$gen$=$t3ap:swrf$-$tage$-fight.$impt$.$na$, $ins$=hot.$gn$.$na$ weave.$pf$.$na$=$lea$.$sg$.$na$-$pat$ $age$=$dep$-wear.$gn$.$na$ $age$=cross.$np$.$au$=$hea$.$sg$.$au$-$gen$ $prl$=after:$swrf$-$t3as:swrf$-$tage$-go.$pf$.$na$=$lea$.$sg$.$na$.
+North.$na$=$age$=gust.$fqnp$.$na$=$3rd$.$sg$.$na$
+and Bright.$gn$.$au$=$3rd$.$pl$.$au$-$gen$
+what.$au$=$hea$.$sg$.$au$-$age$ $dep$-mighty.$fqnp$.$na$=$sea$.$na$-$gen$
+speak.$imnp$.$na$=$t3ap:swrf$-$tage$-fight.$impt$.$na$=$refl$.$na$,
+and:$swrf$ $ins$=hot.$gn$.$na$ weave.$pf$.$na$=$lea$.$pl$.$na$-$par$
+$age$=$dep$-wear.$gn$.$na$ $age$=cross.$np$.$au$=$hea$.$sg$.$au$-$gen$
+$prl$=after:$swrf$-$t3as:swrf$-$tage$-go.$pf$.$na$=$lea$.$sg$.$na$.
 
-The North Wind and the Sun were arguing over who was stronger, when a traveler in a warm shawl came by.
+The North Wind and the Sun were disputing which was the stronger,
+when a traveler came along wrapped in a warm cloak.
 ```
 
-This sentence shows off several pretty interesting features of Lauvìnko. The
-first I want to point out is the somewhat ideophonic use of the frequentative
-aspect in `lv;ra North.$na$=$age$=gust.$fqnp$.$na$=$3rd$.$sg$.$na$` “North Wind”
-and `lv;ra $dep$-mighty.$fqnp$.$na$=$sea$.$na$` “mighty,” which in both cases
-serves to colorfully illustrate a high level of intensity. Neither stem would be
-likely to appear outside of spoken narrative.
+```
+Heel.$na$=speak.$pf$.$na$ this.$na$
+$age$=cross.$np$.$na$=$3rd$.$sg$.$na$-$ins$ skin.$na$=$bra$.$sg$.$na$-$abl$
+weave.$pf$.$na$=$lea$.$pl$.$na$-$par$ $age$=$dep$-lie:$sg$.$inc$.$au$=$hea$.$sg$.$au$-$gen$
+$age$=mighty.$imnp$.$na$=$hea$.$pl$.$na$-$par$ thus-can-must-speak.$imnp$.$na$=$rck$.$na$.
 
-Also, the use of incorporated
-`lv;ra speak.$imnp$.$na$` “speak” in the term
-`lv;ra speak.$imnp$.$na$=$gen$=$t3ap$-$tage$-fight.$impt$.$na$` “argue” shows off an
-interesting use of incorporation where the incorporated bit has a relationship
-to the main stem not easily mappable to a case role.
+They agreed that the one who first succeeded in making the traveler take his cloak off
+should be considered stronger than the other.
+```
 
 ```
-Heel.$na$=$st$-$tage$-speak.$pf$.$na$, $age$=cross.$np$.$na$=$hea$.$sg$.$na$-$ins$ skin.$na$=$bra$.$sg$.$na$-$abl$ weave.$pf$.$na$=$lea$.$pl$.$na$-$par$ $age$=$dep$-put.$pf$.$au$=$hea$.$sg$.$au$-$gen$ $age$=mighty.$imnp$.$au$=$hea$.$sg$.$au$-$gen$ manner.$na$=$rck$.$na$-$prl$ thus-can-must-$st$-$tage$-speak.$imnp$.$na$.
+North.$na$=$age$=gust.$fqnp$.$au$=$3rd$.$sg$.$au$-$gen$ $t3as:swrf$-$tage$-gust.$fqpt$.$na$
+$st$-$tage$-exhaust.$fqpt$.$na$=$refl$.$na$,
+and:$st$ what.$na$=much.$au$=$rck$.$au$-$loc$ $all$=$st$-$tage$-gust.$pt$.$na$,
+$age$=cross.$np$.$au$=$3rd$.$sg$.$au$-$gen$ that.$na$=much.$au$=$rck$.$au$-$loc$
+$refl$.$na$-$all$ weave.$pf$.$na$ but-thus-$t3as:swrf$-$tage$-pull.$impt$.$na$
+$st$-$tage$-bind.$pt$.$na$=$lea$.$sg$.$na$;
 
-They agreed that the one who first made the traveler take his shawl off should be considered the strongest.
+Then the North Wind blew as hard as he could,
+but the more he blew the more closely did the traveler fold his cloak around him;
+```
+
+```
+North.$na$=$age$=gust.$fqnp$.$au$=$3rd$.$sg$.$au$-$gen$ back.$au$=$rck$.$au$-$loc$
+$t3as:swrf$-$tage$-relent.$pt$.$na$=$rck$.$na$.
+
+and at last the North Wind gave up the attempt.
+```
+
+```
+Bright.$gn$.$au$=$3rd$.$sg$.$au$-$gen$ after:$swrf$-$t3as:swrf$-$tage$-hot.$pt$.$na$,
+and:$swrf$ $age$=cross.$np$.$au$=$3rd$.$sg$.$au$-$gen$ skin.$na$=$bra$.$sg$.$na$-$abl$
+weave.$pf$.$na$ after:$swrf$-$t3as:swrf$-$tage$-lie:$sg$.$inc$.$na$=$lea$.$pl$.$na$.
+
+Then the Sun shined out warmly, and immediately the traveler took off his cloak.
+```
+
+```
+And:$swrf$ North.$na$=$age$=gust.$fqnp$.$au$=$3rd$.$sg$.$au$-$gen$
+Bright.$gn$.$au$=$3rd$.$sg$.$au$-$gen$ $refl$.$na$-$abl$ $age$=$dep$-mighty.$imnp$.$na$
+thus-must-$t3as:swrf$-$tage$-speak.$imnp$.$na$=$rck$.$na$.
+
+And so the North Wind was obliged to confess that the Sun was the stronger of the two.
 ```

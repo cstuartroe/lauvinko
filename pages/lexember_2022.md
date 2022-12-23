@@ -158,7 +158,7 @@ I also played with cases in a new way here. Normally, the locative case is used 
 # Day 7
 
 ```
-First.$na$ narrow.$gn$.$na$=$rck$.$na$, and:$swrf$ after:$swrf$-wide.$gn$.$na$, and:$swrf$ $abl$=after:$swrf$-narrow.$gn$.$na$, after:$swrf$-wide.$gn$.$na$, after:$swrf$-narrow.$gn$.$na$, and:$swrf$ face.$au$=$rck$.$au$-$loc$ $abl$=after:$swrf$-wide.$gn$.$na$.
+First.$na$ narrow.$gn$.$na$=$rck$.$na$, and:$swrf$ after:$swrf$-wide.$gn$.$na$, and:$swrf$ $abl$=after:$swrf$-narrow.$gn$.$na$, after:$swrf$-wide.$gn$.$na$, after:$swrf$-narrow.$gn$.$na$, and:$swrf$ back.$au$=$rck$.$au$-$loc$ $abl$=after:$swrf$-wide.$gn$.$na$.
 
 The first one narrow, then wide, then more narrow, then wide, then narrow, then lastly more wide.
 ```

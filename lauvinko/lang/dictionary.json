@@ -103,10 +103,12 @@
       "lv": {
         "forms": {
           "gn.au": {
-            "phonemic": "yo/ve"
+            "phonemic": "yo/ve",
+            "written_like": "yu'a"
           },
           "gn.na": {
-            "phonemic": "ya\\"
+            "phonemic": "ya\\",
+            "written_like": "yu'a"
           }
         }
       },
@@ -162,12 +164,10 @@
         "definition": "He, him; she, her; they, them (animate, singular).",
         "forms": {
           "gn.au": {
-            "phonemic": "li/",
-            "written_like": "ri"
+            "phonemic": "li/"
           },
           "gn.na": {
-            "phonemic": "si\\",
-            "written_like": "si"
+            "phonemic": "si\\"
           }
         }
       }
@@ -194,10 +194,12 @@
       "lv": {
         "forms": {
           "gn.au": {
-            "phonemic": "lo/ve"
+            "phonemic": "lo/ve",
+            "written_like": "ru'a"
           },
           "gn.na": {
-            "phonemic": "la\\"
+            "phonemic": "la\\",
+            "written_like": "ru'a"
           }
         }
       },

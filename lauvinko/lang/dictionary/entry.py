@@ -157,7 +157,8 @@ class DictEntry:
         )
 
     @staticmethod
-    def lv_forms_from_json(forms_json: dict) -> dict[tuple[PrimaryTenseAspect, MorphemeContext], LauvinkoMorpheme]:
+    def lv_forms_from_json(forms_json: dict, mstype: MorphosyntacticType
+                           ) -> dict[tuple[PrimaryTenseAspect, MorphemeContext], LauvinkoMorpheme]:
         lv_forms = {}
 
         for form_id, form_json in forms_json.items():
@@ -172,7 +173,12 @@ class DictEntry:
                 print("Warning: 'falavay' deprecated")
 
             elif "written_like" in form_json:
-                print("Warning: 'written_like' deprecated")
+                if mstype is not MorphosyntacticType.CLASS_WORD:
+                    raise ValueError("Cannot override spelling for any but class words.")
+
+                morpheme.virtual_original_form = ProtoKasanicMorpheme.from_informal_transcription(
+                    form_json["written_like"],
+                )
 
             lv_forms[(primary_ta, context)] = morpheme
 
@@ -212,7 +218,7 @@ class DictEntry:
                 lv_definition = languages_json[Language.LAUVINKO.value]["definition"]
 
             if "forms" in languages_json[Language.LAUVINKO.value]:
-                lv_forms = DictEntry.lv_forms_from_json(languages_json[Language.LAUVINKO.value]["forms"])
+                lv_forms = DictEntry.lv_forms_from_json(languages_json[Language.LAUVINKO.value]["forms"], mstype)
 
         languages[Language.LAUVINKO] = LauvinkoLemma.from_pk(
             pk_lemma=languages[Language.PK],
@@ -225,7 +231,7 @@ class DictEntry:
     @staticmethod
     def languages_from_json_no_source(ident: str, languages_json: dict, category: KasanicStemCategory,
                                       mstype: MorphosyntacticType) -> dict[Language, Lemma]:
-        forms_given = DictEntry.lv_forms_from_json(languages_json[Language.LAUVINKO.value]["forms"])
+        forms_given = DictEntry.lv_forms_from_json(languages_json[Language.LAUVINKO.value]["forms"], mstype)
 
         expected_forms = {
             (pta, context)

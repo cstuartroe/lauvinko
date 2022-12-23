@@ -599,8 +599,7 @@ CASE_SPELLING_SYLLABLES: dict[str, Optional[tuple[ProtoKasanicOnset, ProtoKasani
     LauvinkoCase.PARTITIVE.abbreviation: (None, PKV.E),
 }
 
-
-ANIMATES = {"$1excl$", "$incl$", "$2fam$", "$2fml$", "$2hon$", "$3rd$", "$hea$"}
+ANIMATES = {"$1excl$", "$1incl$", "$2fam$", "$2fml$", "$2hon$", "$3rd$", "$hea$"}
 
 PARTITIVE_NUMBERS = {
     "$hea$": "$pl$",

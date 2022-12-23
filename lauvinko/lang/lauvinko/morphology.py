@@ -202,7 +202,11 @@ class LauvinkoMorpheme(Morpheme):
                         ms[0].vowel = v1
                         del syllables[-1]
 
-                    elif v1.frontness is v2.frontness and not (v1 is LauvinkoVowel.I and v2 is LauvinkoVowel.E):
+                    elif (v1.frontness is v2.frontness) and (
+                            (v1.frontness is VowelFrontness.MID) or
+                            (v2.low is False) or
+                            ((morpheme.surface_form.accent_position is not None) and
+                             (morpheme.surface_form.accent_position > 0))):
                         ms[0].onset = syllables[-1].onset
                         del syllables[-1]
                         ms[0].vowel = LauvinkoVowel.find_by(

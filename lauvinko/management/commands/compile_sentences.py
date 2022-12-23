@@ -9,6 +9,9 @@ from lauvinko.lang.shared.semantics import Language
 from lauvinko.lang.gloss.gloss import Gloss, normalize_word
 
 
+SENTENCES_FILE = "lauvinko/lang/sentences.txt"
+
+
 def get_outline(block: dict):
     lines = block["children"][0]["content"].split("\n")
     outline = ""
@@ -36,6 +39,8 @@ class Command(BaseCommand):
         word_counts: dict[str, int] = {}
         sentences: list[Sentence] = []
 
+        outfile_content = ""
+
         for mdfile in os.listdir(PAGES_DIR):
             with open(os.path.join(PAGES_DIR, mdfile), 'r') as fh:
                 content = json.loads(mistletoe.markdown(fh.read(), ASTRenderer))
@@ -47,10 +52,14 @@ class Command(BaseCommand):
                         outline, translation = get_outline(block)
                         gloss = Gloss.parse(outline, language=Language.LAUVINKO)
                         r = gloss.romanization()
+                        f = gloss.falavay()
                         for word in r:
                             n = normalize_word(word)
                             word_counts[n] = word_counts.get(n, 0) + 1
                         sentences.append(Sentence(r, translation))
+
+                        outfile_content += ' '.join(f) + "\n"
+                        outfile_content += ' '.join(r) + "\n"
 
         print()
         for word, count in sorted(list(word_counts.items()), key=lambda x: x[1])[-100:]:
@@ -61,3 +70,6 @@ class Command(BaseCommand):
         print(f"{sum(word_counts.values())} total words.")
         print(f"{len(word_counts)} distinct words.")
         print(f"{len(list(w for w, c in word_counts.items() if c == 1))} hapax legomena.")
+
+        with open(SENTENCES_FILE, "w") as fh:
+            fh.write(outfile_content)

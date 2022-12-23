@@ -3,11 +3,15 @@ North.$na$=$age$=gust.$fqnp$.$na$=$3rd$.$sg$.$na$
 and Bright.$gn$.$au$=$3rd$.$pl$.$au$-$gen$
 what.$au$=$hea$.$sg$.$au$-$age$ $dep$-mighty.$fqnp$.$na$=$sea$.$na$-$gen$
 speak.$imnp$.$na$=$t3ap:swrf$-$tage$-fight.$impt$.$na$=$refl$.$na$,
+
+The North Wind and the Sun were disputing which was the stronger,
+```
+
+```
 and:$swrf$ $ins$=hot.$gn$.$na$ weave.$pf$.$na$=$lea$.$pl$.$na$-$par$
 $age$=$dep$-wear.$gn$.$na$ $age$=cross.$np$.$au$=$hea$.$sg$.$au$-$gen$
 $prl$=after:$swrf$-$t3as:swrf$-$tage$-go.$pf$.$na$=$lea$.$sg$.$na$.
 
-The North Wind and the Sun were disputing which was the stronger,
 when a traveler came along wrapped in a warm cloak.
 ```
 
@@ -24,12 +28,16 @@ should be considered stronger than the other.
 ```
 North.$na$=$age$=gust.$fqnp$.$au$=$3rd$.$sg$.$au$-$gen$ $t3as:swrf$-$tage$-gust.$fqpt$.$na$
 $st$-$tage$-exhaust.$fqpt$.$na$=$refl$.$na$,
+
+Then the North Wind blew as hard as he could,
+```
+
+```
 and:$st$ what.$na$=much.$au$=$rck$.$au$-$loc$ $all$=$st$-$tage$-gust.$pt$.$na$,
 $age$=cross.$np$.$au$=$3rd$.$sg$.$au$-$gen$ that.$na$=much.$au$=$rck$.$au$-$loc$
 $refl$.$na$-$all$ weave.$pf$.$na$ but-thus-$t3as:swrf$-$tage$-pull.$impt$.$na$
 $st$-$tage$-bind.$pt$.$na$=$lea$.$sg$.$na$;
 
-Then the North Wind blew as hard as he could,
 but the more he blew the more closely did the traveler fold his cloak around him;
 ```
 

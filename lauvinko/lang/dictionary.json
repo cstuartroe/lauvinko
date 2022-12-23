@@ -815,6 +815,22 @@
     },
     "origin": "kasanic"
   },
+  "bhagavad_gita": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Bhagavad Gita.",
+        "forms": {
+          "gn": "sarimantapankawantanki/taa"
+        }
+      },
+      "sa": {
+        "definition": "Bhagavad Gita.",
+        "native": "\u0936\u094d\u0930\u0940\u092e\u0926\u094d\u092d\u0917\u0935\u0926\u094d\u0917\u0940\u0924\u093e"
+      }
+    },
+    "origin": "sanskrit"
+  },
   "bind": {
     "category": "stative",
     "languages": {
@@ -2676,6 +2692,21 @@
         "definition": "Tasty, pleasant, lekker.",
         "forms": {
           "gn": "aakeku"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "press": {
+    "category": "fientive",
+    "languages": {
+      "lv": {
+        "definition": "$age$ presses, stamps, prints $gen$ onto $pat$. @ $age$ crushes, grinds, juices $pat$. @ $pat$ is juice. @ $age$ copies $gen$ onto $pat$. @ $pat$ has the shape, appearance of $gen$."
+      },
+      "pk": {
+        "definition": "Press, stamp.",
+        "forms": {
+          "gn": "c~ti"
         }
       }
     },

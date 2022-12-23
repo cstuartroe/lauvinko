@@ -534,3 +534,25 @@ Stripe.$na$ yellow.$gn$.$na$=$bra$.$du$.$na$-$par$ $loc$=$dep$-be:$pl$.$gn$.$na$
 
 They have yellow stripes on their backs.
 ```
+
+I made two new roots today:
+
+- [lène](/kasanic_dictionary?q=@stripe) "Stripe, rock vein."
+
+- [vélimpa](/kasanic_dictionary?q=@back) "Back (anatomy). ۞ Stature, posture. ۞ Support structure (architecture). ۞ Support ideologically/morally."
+
+# Day 23
+
+```
+$Int$ Bhagavad_gita.$na$=$rck$.$na$-$gen$ $dep$-press.$pf$.$na$ $t2p:swrf$-$tloc$-sit:$sg$.$gn$.$na$=$lea$.$sg$.$na$?
+
+Do you have a copy of the Bhagavad Gita?
+```
+
+I coined one new native stem:
+
+- [céli](/kasanic_dictionary?q=@press) "Press, stamp, print. ۞ Crush, grind, juice. ۞ Copy. ۞ Shape, appearance."
+
+I also loaned in the monstrously long full name of the (Srimad) Bhagavad Gita:
+
+- [Salimantapankavantankír](/loanword_dictionary?q=@bhagavad_gita) "Bhagavad Gita."

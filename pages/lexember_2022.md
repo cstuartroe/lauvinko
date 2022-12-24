@@ -556,3 +556,19 @@ I coined one new native stem:
 I also loaned in the monstrously long full name of the (Srimad) Bhagavad Gita:
 
 - [Salimantapankavantankír](/loanword_dictionary?q=@bhagavad_gita) "Bhagavad Gita."
+
+# Day 24
+
+```
+$1Excl$.$sg$.$na$ $Age$=grow.$imnp$.$na$=$sea$.$na$-$gen$ $Dep$-minister.$na$=$coll1$ $abl$=stand:$sg$.$gn$.$na$.
+
+I'm from the Ministry of Agriculture.
+```
+
+I took just one new loanword from Sanskrit today:
+
+- [ménli](/loanword_dictionary?q=@minister) "Minister, government official."
+
+As well as forming the pretty predictable compound:
+
+- [masètani](/build?outline=%24age%24%3Dgrow.%24imnp%24.%24na%24%3D%24sea%24.%24na%24&language=lv&translation=agriculture) "agriculture"

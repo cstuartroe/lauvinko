@@ -572,3 +572,19 @@ I took just one new loanword from Sanskrit today:
 As well as forming the pretty predictable compound:
 
 - [masètani](/build?outline=%24age%24%3Dgrow.%24imnp%24.%24na%24%3D%24sea%24.%24na%24&language=lv&translation=agriculture) "agriculture"
+
+# Day 25
+
+```
+$1Excl$.$sg$.$na$ angklung.$na$=$bra$.$du$.$na$-$par$ $all$=give.$pt$.$na$!
+
+I received an angklung!
+```
+
+I coined one new very important stem:
+
+- [nèli](/kasanic_dictionary?q=@give) "Give, allow, pay. ۞ Beat up, thrash."
+
+I also loaned the term for a Sundanese instrument, the [angklung](https://en.wikipedia.org/wiki/Angklung).
+
+- [ànkalong](/loanword_dictionary?q=@angklung) "Angklung."

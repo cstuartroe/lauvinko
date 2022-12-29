@@ -647,6 +647,24 @@
     },
     "origin": "kasanic"
   },
+  "angklung": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "Angklung.",
+        "forms": {
+          "gn": {
+            "phonemic": "a/nkalong"
+          }
+        }
+      },
+      "ms": {
+        "definition": "Angklung.",
+        "native": "angklung"
+      }
+    },
+    "origin": "malay"
+  },
   "atineni": {
     "category": "uninflected",
     "languages": {
@@ -1602,6 +1620,21 @@
         "definition": "Full, replete.",
         "forms": {
           "gn": "nyaacu"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "give": {
+    "category": "punctual",
+    "languages": {
+      "lv": {
+        "definition": "$age$ gives $pat$ to $all$. @ $age$ allows $pat$. @ $age$ pays $all$ for $gen$ with money $pat$. @ $age$ beats up, thrashes $pat$."
+      },
+      "pk": {
+        "definition": "Give, allow.",
+        "forms": {
+          "gn": "ny@ri"
         }
       }
     },
@@ -3598,7 +3631,7 @@
     "category": "punctual",
     "languages": {
       "lv": {
-        "definition": "$age$ trades, exchanges $pat$ (buy or sell, default interpretation is buy) with money $dat$."
+        "definition": "$age$ trades, exchanges $pat$ (buy or sell, default interpretation is buy) with money $prl$."
       },
       "pk": {
         "definition": "To trade.",

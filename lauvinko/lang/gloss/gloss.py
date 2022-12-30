@@ -12,8 +12,6 @@ from ..lauvinko.romanize import romanize as lv_romanize
 from ..dictionary import Dictionary, Language
 from ..dictionary.entry import parse_context
 
-dictionary = Dictionary.from_file()
-
 
 class InvalidGloss(ValueError):
     pass
@@ -53,7 +51,7 @@ class MorphemeSource:
     language: Language
 
     def __post_init__(self):
-        lemma = dictionary.by_id(self.name)
+        lemma = Dictionary.main_by_id(self.name)
 
         if lemma is None:
             raise InvalidGloss(f"No lemma with name {self.name}")
@@ -106,7 +104,7 @@ class MorphemeSource:
             raise NotImplementedError
 
     def resolve_lauvinko(self) -> Morpheme:
-        entry = dictionary.by_id(self.name)
+        entry = Dictionary.main_by_id(self.name)
         lemma = entry.languages[Language.LAUVINKO]
         if self.context:
             context = self.context

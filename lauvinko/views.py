@@ -30,6 +30,8 @@ def page_content(_request: HttpRequest, name):
 
 
 def gloss(request: HttpRequest):
+    Dictionary.load()
+
     language_code = request.GET.get("language", Language.LAUVINKO.value)
 
     if language_code not in [l.value for l in Language]:

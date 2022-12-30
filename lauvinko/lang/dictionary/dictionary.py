@@ -1,4 +1,6 @@
+import datetime
 import json
+import os.path
 
 from lauvinko.lang.lauvinko.morphology import LauvinkoLemma, LauvinkoCase
 from lauvinko.lang.shared.morphology import MorphosyntacticType
@@ -75,13 +77,37 @@ SEX_SUFFIXES = {
 DICTIONARY_FILENAME = "lauvinko/lang/dictionary.json"
 
 
+DICTIONARY_CACHE: dict[str, tuple[float, "Dictionary"]] = {}
+
+
 class Dictionary:
     def __init__(self, entries: dict[str, DictEntry]):
         self.entries = entries
         self.fill_in_closed_classes()
 
+    @staticmethod
+    def load(filename=DICTIONARY_FILENAME) -> "Dictionary":
+        last_fetched, dictionary = DICTIONARY_CACHE.get(filename, (None, None))
+
+        if dictionary is None or (os.path.getmtime(filename) > last_fetched):
+            print(f"{'re' if dictionary else ''}loading {filename}...")
+
+            dictionary = Dictionary.from_file(filename)
+
+            DICTIONARY_CACHE[filename] = (
+                datetime.datetime.now().timestamp(),
+                dictionary,
+            )
+
+        return dictionary
+
     def by_id(self, ident: str) -> DictEntry:
         return self.entries.get(ident)
+
+    @staticmethod
+    def main_by_id(ident: str) -> DictEntry:
+        _, d = DICTIONARY_CACHE[DICTIONARY_FILENAME]
+        return d.by_id(ident)
 
     def where(self, f):
         return Dictionary({
@@ -91,7 +117,7 @@ class Dictionary:
         })
 
     @classmethod
-    def from_file(cls, filename=DICTIONARY_FILENAME):
+    def from_file(cls, filename=DICTIONARY_FILENAME) -> "Dictionary":
         with open(filename, "r") as fh:
             entries_dict = json.load(fh)
 
@@ -191,3 +217,5 @@ class Dictionary:
             for ident, entry in self.entries.items()
             if entry.mstype is MorphosyntacticType.INDEPENDENT
         }
+
+Dictionary.load()

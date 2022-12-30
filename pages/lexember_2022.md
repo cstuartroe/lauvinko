@@ -588,3 +588,17 @@ I coined one new very important stem:
 I also loaned the term for a Sundanese instrument, the [angklung](https://en.wikipedia.org/wiki/Angklung).
 
 - [ànkalong](/loanword_dictionary?q=@angklung) "Angklung."
+
+# Day 26
+
+```
+Cut.$pt$.$na$=$lea$.$pl$.$na$ $loc$=filth.$gn$.$na$.
+
+The pages are dirty.
+```
+
+Throwback to day 1.
+
+I made one new root:
+
+- [kíssi](/kasanic_dictionary?q=@filth) "Dirt, filth."

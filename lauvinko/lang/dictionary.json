@@ -1488,6 +1488,18 @@
     },
     "origin": "kasanic"
   },
+  "filth": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Dirt, filth.",
+        "forms": {
+          "gn": "kittuse"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "finger": {
     "category": "uninflected",
     "languages": {

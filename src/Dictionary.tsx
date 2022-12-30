@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLink } from "@fortawesome/free-solid-svg-icons";
 
 import PageHeader from "./PageHeader";
 import {ApiResponse, MarkdownBlock, MistletoeDocument, ParagraphChild} from "./types";
@@ -455,6 +453,24 @@ class Dictionary extends Component<DictionaryProps, DictionaryState> {
         });
     }
 
+    setQuery(q: string) {
+        this.setState({q});
+
+        const searchParams = new URLSearchParams(window.location.search);
+
+        if (q === "") {
+            searchParams.delete("q")
+        } else {
+            searchParams.set("q", q);
+        }
+
+        let newRelativePathQuery = window.location.pathname;
+        if ([...searchParams.values()].length > 0) {
+            newRelativePathQuery += '?' + searchParams.toString();
+        }
+        history.pushState(null, '', newRelativePathQuery);
+    }
+
     render() {
         const language_entry_ids = this.languageEntries();
         const entry_ids_to_show = this.matchingEntries(language_entry_ids);
@@ -468,7 +484,7 @@ class Dictionary extends Component<DictionaryProps, DictionaryState> {
                 <input
                   type="text"
                   value={this.state.q || ""}
-                  onChange={event => this.setState({q: event.target.value})}
+                  onChange={event => this.setQuery(event.target.value)}
                 />
 
                 <hr/>

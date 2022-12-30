@@ -1006,6 +1006,22 @@
     },
     "origin": "kasanic"
   },
+  "candlenut": {
+    "category": "uninflected",
+    "languages": {
+      "ms": {
+        "definition": "Candlenut.",
+        "native": "kemiri"
+      },
+      "pk": {
+        "definition": "Candlenut.",
+        "forms": {
+          "gn": "kami/ri"
+        }
+      }
+    },
+    "origin": "malay"
+  },
   "candra": {
     "category": "uninflected",
     "languages": {
@@ -1123,6 +1139,18 @@
         "definition": "Clean, pure, clear, evident.",
         "forms": {
           "gn": "kkesaa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "coconut_milk": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Coconut milk.",
+        "forms": {
+          "gn": "yungwaangwe"
         }
       }
     },
@@ -1632,6 +1660,18 @@
         "definition": "Full, replete.",
         "forms": {
           "gn": "nyaacu"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "ginger": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Ginger.",
+        "forms": {
+          "gn": "ngekasaa"
         }
       }
     },

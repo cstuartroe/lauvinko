@@ -602,3 +602,27 @@ Throwback to day 1.
 I made one new root:
 
 - [kíssi](/kasanic_dictionary?q=@filth) "Dirt, filth."
+
+# Day 27
+
+```
+Agitate.$pf$.$na$=$sea$.$na$-$all$ coconut_milk.$na$=$sea$.$na$ and
+candlenut.$na$=$bra$.$pl$.$na$ and ginger.$na$=$sea$.$na$ and shrimp.$na$=$bra$.$pl$.$na$
+$t1s$-$tage$-be:$pl$.$pt$.$na$.
+
+I put coconut milk, candlenuts, ginger paste, and shrimp into the soup.
+```
+
+I coined two new native roots:
+
+- [yòmmi](/kasanic_dictionary?q=@coconut_milk) "coconut milk"
+
+- [ngéasa](/kasanic_dictionary?q=@ginger) "ginger"
+
+As well as loaning one from Malay:
+
+- [kamìli](/loanword_dictionary?q=@candlenut) "candlenut"
+
+I also coined a new composed word:
+
+- [cénisani](/build?outline=agitate.%24pf%24.%24na%24%3D%24sea%24.%24na%24&language=lv&translation=soup) "soup"

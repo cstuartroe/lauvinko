@@ -3735,6 +3735,21 @@
     },
     "origin": "kasanic"
   },
+  "tranquil": {
+    "category": "stative",
+    "languages": {
+      "lv": {
+        "definition": "(reflexive) $ins$ is tranquil, comfortable, unbothered. @ (reflexive, inceptive) $ins$ experiences relief. @ $age$ shows mercy to $pat$."
+      },
+      "pk": {
+        "definition": "Tranquil, comfortable, unbothered.",
+        "forms": {
+          "gn": "pewe"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "tree": {
     "category": "uninflected",
     "languages": {

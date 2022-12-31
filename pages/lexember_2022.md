@@ -655,3 +655,20 @@ Someone inclined to read into culture based on the nature of a language may chuc
 at the fact that Lauvìnko expresses "I need to consult" with a single
 word `lv;fr $all$=must-$t1s$-$tage$-request.$np$.$na$` but needs eight syllables to
 say "dentist."
+
+# Day 29
+
+```
+$1Excl$.$sg$.$na$ large.$gn$.$na$ part.$au$=$dim$-$loc$ $refl$.$na$-$par$ $ins$=tranquil.$inc$.$na$.
+
+I mostly feel relieved.
+```
+
+I coined a new native root:
+
+- [pèvi](/kasanic_dictionary?q=@tranquil) "Tranquil, comfortable, unbothered. @ (causative) show mercy. @ (inceptive) relieved."
+
+I also coined a new phrase, calqued roughly from Tamil but which also pretty literally
+translates to the English phrase "in large part":
+
+- [nàumang páukiu](/build?outline=large.%24gn%24.%24na%24+part.%24au%24%3D%24dim%24-%24loc%24&language=lv&translation=mostly) "mostly, primarily"

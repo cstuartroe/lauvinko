@@ -117,12 +117,12 @@ class InlineGloss extends Component<InlineGlossProps, GlossState> {
 
   render() {
     return (
-      <>
+      <a href={`/build?outline=${this.props.outline}`} target="_blank">
         {interleave(
           this.props.rows.map((row, i) => this.renderRow(row, i)),
           ' ',
         )}
-      </>
+      </a>
     );
   }
 

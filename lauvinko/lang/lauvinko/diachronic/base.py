@@ -20,6 +20,7 @@ class OriginLanguage(Enum):
     TAMIL = ("tamil", "ta")
     ARABIC = ("arabic", "ar")
     HOKKIEN = ("hokkien", "hk")
+    KHMER = ("khmer", "km")
     PORTUGUESE = ("portuguese", "pt")
     DUTCH = ("dutch", "nl")
     ENGLISH = ("english", "en")

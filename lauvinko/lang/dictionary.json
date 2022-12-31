@@ -2566,6 +2566,18 @@
     },
     "origin": "kasanic"
   },
+  "navigate": {
+    "category": "fientive",
+    "languages": {
+      "pk": {
+        "definition": "(reflexive) navigate over water, sail. @ (reflexive) meet people, network.",
+        "forms": {
+          "gn": "w@pu"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "need": {
     "category": "stative",
     "languages": {
@@ -2853,6 +2865,24 @@
       }
     },
     "origin": "kasanic"
+  },
+  "prey_nokor": {
+    "category": "uninflected",
+    "languages": {
+      "lv": {
+        "definition": "[Prey Nokor](https://en.wikipedia.org/wiki/Names_of_Ho_Chi_Minh_City#Khmer_name).",
+        "forms": {
+          "gn": {
+            "phonemic": "palinoko/"
+          }
+        }
+      },
+      "km": {
+        "definition": "Prey Nokor.",
+        "native": "\u1796\u17d2\u179a\u17c3\u1793\u1782\u179a"
+      }
+    },
+    "origin": "khmer"
   },
   "price": {
     "category": "uninflected",

@@ -25,6 +25,7 @@ const ORIGIN_LANGUAGES = {
     "dutch": "nl",
     "javanese": "jv",
     "hokkien": "hk",
+    "khmer": "km",
 };
 
 type OriginLanguage = keyof typeof ORIGIN_LANGUAGES;

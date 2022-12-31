@@ -666,9 +666,25 @@ I mostly feel relieved.
 
 I coined a new native root:
 
-- [pèvi](/kasanic_dictionary?q=@tranquil) "Tranquil, comfortable, unbothered. @ (causative) show mercy. @ (inceptive) relieved."
+- [pèvi](/kasanic_dictionary?q=@tranquil) "Tranquil, comfortable, unbothered. ۞ (causative) show mercy. ۞ (inceptive) relieved."
 
 I also coined a new phrase, calqued roughly from Tamil but which also pretty literally
 translates to the English phrase "in large part":
 
 - [nàumang páukiu](/build?outline=large.%24gn%24.%24na%24+part.%24au%24%3D%24dim%24-%24loc%24&language=lv&translation=mostly) "mostly, primarily"
+
+# Day 30
+
+```
+Prey_Nokor.$na$=$rck$.$na$-$all$ float.$gn$.$au$=$lea$.$sg$.$au$-$loc$ $t1p$-$tage$-navigate.$pf$.$na$=$refl$.$na$.
+
+We sailed on a boat to Prey Nokor.
+```
+
+I coined a new native root:
+
+- [váu](/kasanic_dictionary?q=@navigate) "Navigate over water, sail. ۞ Meet people, network."
+
+I also took in my first loan from Khmer, albeit just a place name:
+
+- [Palinokò](/loanword_dictionary?q=@prey_nokor) "Prey Nokor"

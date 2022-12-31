@@ -34,7 +34,10 @@ def parse_context(s) -> MorphemeContext:
         raise ValueError
 
 
-def parse_lv_form_id(form_id: str):
+def parse_lv_form_id(form_id: str) -> tuple[PrimaryTenseAspect, Optional[MorphemeContext]]:
+    if "." not in form_id:
+        return PRIMARY_TA_ABBREVIATIONS[form_id], None
+
     pta, con = form_id.split(".")
 
     return PRIMARY_TA_ABBREVIATIONS[pta], parse_context(con)
@@ -62,6 +65,20 @@ RECENT_LOAN_LANGUAGES = (
     OriginLanguage.JAVANESE,
     OriginLanguage.HOKKIEN,
 )
+
+
+def validate_keys(d: dict, require: set, permit: set):
+    assert len(require & permit) == 0
+
+    for k in require:
+        if k not in d:
+            raise ValueError(f"Expected key {repr(k)} in dictionary {d}")
+
+    u = require | permit
+
+    for k in d:
+        if k not in u:
+            raise ValueError(f"Unexpected key {k} in dictionary {d}")
 
 
 @dataclass
@@ -164,23 +181,43 @@ class DictEntry:
         for form_id, form_json in forms_json.items():
             primary_ta, context = parse_lv_form_id(form_id)
 
-            morpheme = LauvinkoMorpheme.from_informal_transcription(
-                form_json["phonemic"],
-            )
-            morpheme.context = context
+            if context is None:
+                validate_keys(form_json, {"as_from"}, set())
 
-            if "falavay" in form_json:
-                print("Warning: 'falavay' deprecated")
-
-            elif "written_like" in form_json:
-                if mstype is not MorphosyntacticType.CLASS_WORD:
-                    raise ValueError("Cannot override spelling for any but class words.")
-
-                morpheme.virtual_original_form = ProtoKasanicMorpheme.from_informal_transcription(
-                    form_json["written_like"],
+                pk_lemma = ProtoKasanicLemma(
+                    category=KasanicStemCategory.UNINFLECTED,
+                    ident="",
+                    definition="",
+                    forms={},
+                    mstype=mstype,
+                    generic_morph=ProtoKasanicMorpheme.from_informal_transcription(form_json["as_from"]),
                 )
 
-            lv_forms[(primary_ta, context)] = morpheme
+                lv_lemma = LauvinkoLemma.from_pk(pk_lemma)
+
+                for ctx in (MorphemeContext.AUGMENTED, MorphemeContext.NONAUGMENTED):
+                    lv_forms[(primary_ta, ctx)] = lv_lemma.form(PrimaryTenseAspect.GENERAL, ctx)
+
+            else:
+                validate_keys(form_json, {"phonemic"}, {"falavay", "written_like"})
+
+                morpheme = LauvinkoMorpheme.from_informal_transcription(
+                    form_json["phonemic"],
+                )
+                morpheme.context = context
+
+                if "falavay" in form_json:
+                    print("Warning: 'falavay' deprecated")
+
+                elif "written_like" in form_json:
+                    if mstype is not MorphosyntacticType.CLASS_WORD:
+                        raise ValueError("Cannot override spelling for any but class words.")
+
+                    morpheme.virtual_original_form = ProtoKasanicMorpheme.from_informal_transcription(
+                        form_json["written_like"],
+                    )
+
+                lv_forms[(primary_ta, context)] = morpheme
 
         return lv_forms
 

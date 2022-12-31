@@ -891,26 +891,18 @@
   "body": {
     "category": "uninflected",
     "languages": {
+      "lv": {
+        "definition": "(back-formed by haplology with branch class suffix) Body of a person or animal. @ By oneself. @ Only.",
+        "forms": {
+          "gn": {
+            "as_from": "sara"
+          }
+        }
+      },
       "pk": {
         "definition": "Body.",
         "forms": {
           "gn": "sarira"
-        }
-      },
-      "sa": {
-        "definition": "Body.",
-        "native": "\u0936\u0930\u0940\u0930"
-      }
-    },
-    "origin": "sanskrit"
-  },
-  "body:lv": {
-    "category": "uninflected",
-    "languages": {
-      "pk": {
-        "definition": "(back-formed by haplology with branch class suffix) Body of a person or animal. @ By oneself. @ Only.",
-        "forms": {
-          "gn": "sara"
         }
       },
       "sa": {

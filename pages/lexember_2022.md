@@ -626,3 +626,32 @@ As well as loaning one from Malay:
 I also coined a new composed word:
 
 - [cénisani](/build?outline=agitate.%24pf%24.%24na%24%3D%24sea%24.%24na%24&language=lv&translation=soup) "soup"
+
+# Day 28
+
+```
+Tooth.$na$=$bra$.$du$.$na$-$par$ $age$=heal.$imnp$.$na$ $all$=must-$t1s$-$tage$-request.$np$.$na$=$hea$.$sg$.$na$.
+
+I need to go see a dentist.
+```
+
+I coined a new native root:
+
+- [sáng](/kasanic_dictionary?q=@heal) "Treat, heal."
+
+From which I predictably derived the word
+
+- [masánto](/build?outline=%24age%24%3Dheal.%24imnp%24.%24na%24%3D%24hea%24.%24sg%24.%24na%24&language=lv&translation=doctor) "doctor"
+
+Which I further extended into the phrase
+
+- [ósovimeye masánto](/build?outline=tooth.%24na%24%3D%24bra%24.%24du%24.%24na%24-%24par%24+%24age%24%3Dheal.%24imnp%24.%24na%24%3D%24hea%24.%24sg%24.%24na%24&language=lv&translation=dentist) "dentist"
+
+I also extended the meaning of `lv;fr request.$np$.$na$` to mean "consult."
+
+---
+
+Someone inclined to read into culture based on the nature of a language may chuckle
+at the fact that Lauvìnko expresses "I need to consult" with a single
+word `lv;fr $all$=must-$t1s$-$tage$-request.$np$.$na$` but needs eight syllables to
+say "dentist."

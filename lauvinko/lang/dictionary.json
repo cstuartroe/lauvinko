@@ -888,6 +888,38 @@
     },
     "origin": "kasanic"
   },
+  "body": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Body.",
+        "forms": {
+          "gn": "sarira"
+        }
+      },
+      "sa": {
+        "definition": "Body.",
+        "native": "\u0936\u0930\u0940\u0930"
+      }
+    },
+    "origin": "sanskrit"
+  },
+  "body:lv": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "(back-formed by haplology with branch class suffix) Body of a person or animal. @ By oneself. @ Only.",
+        "forms": {
+          "gn": "sara"
+        }
+      },
+      "sa": {
+        "definition": "Body.",
+        "native": "\u0936\u0930\u0940\u0930"
+      }
+    },
+    "origin": "sanskrit"
+  },
   "borrow": {
     "category": "punctual",
     "languages": {
@@ -1858,6 +1890,21 @@
         "definition": "Head",
         "forms": {
           "gn": "toroha"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "heal": {
+    "category": "fientive",
+    "languages": {
+      "lv": {
+        "definition": "$age$ treats body or body part $pat$ medically. @ (perfective) $age$ heals, cures body or body part $pat$. @ (if no body part is specified, the word `lv;fr body:lv.$na$` is used) @ (frequently makes use of incorporated body part and stranded possessor)"
+      },
+      "pk": {
+        "definition": "To treat, heal.",
+        "forms": {
+          "gn": "s@mpaa"
         }
       }
     },
@@ -2949,7 +2996,7 @@
     "category": "punctual",
     "languages": {
       "lv": {
-        "definition": "$age$ asks requests $gen$ from $all$."
+        "definition": "$age$ asks/requests $gen$ from $all$. @ $age$ consults the advice/services of $all$."
       },
       "pk": {
         "definition": "Request.",

@@ -48,6 +48,7 @@ type DictEntry = {
         language: OriginLanguage,
         word: string,
     },
+    notes: MistletoeDocument | null,
 }
 
 const aspects: {[key in stem_category]: aspect[]} = {
@@ -260,6 +261,10 @@ class DictionaryEntry extends Component<DictionaryEntryProps> {
                       </a>
                   </p>
                 )}
+
+                {entry.notes && entry.notes.children.map((block, i) => (
+                    <div key={i}>{renderMarkdownBlock(block)}</div>
+                ))}
 
                 {languages_in_order.map(lang => (
                   <LanguageEntry lang={lang} entry={entry} key={lang}/>

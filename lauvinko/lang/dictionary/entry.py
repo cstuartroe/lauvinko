@@ -88,6 +88,7 @@ class DictEntry:
     category: KasanicStemCategory
     mstype: MorphosyntacticType
     origin: LauvinkoLemmaOrigin
+    notes: Optional[str] = None
 
     class MissingData(ValueError):
         pass
@@ -112,6 +113,7 @@ class DictEntry:
                 "language": olang.value[0],
                 "word": oword,
             },
+            "notes": self.notes and json.loads(mistletoe.markdown(self.notes, renderer=ASTRenderer)),
         }
 
     @staticmethod
@@ -171,6 +173,7 @@ class DictEntry:
             category=category,
             mstype=mstype,
             origin=languages[Language.LAUVINKO].origin,
+            notes=json_entry.get("notes")
         )
 
     @staticmethod

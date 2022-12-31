@@ -890,9 +890,10 @@
   },
   "body": {
     "category": "uninflected",
+    "notes": "Lauv\u00ecnko form dropped *-ir* ending via reanalysis as branch class suffix.",
     "languages": {
       "lv": {
-        "definition": "(back-formed by haplology with branch class suffix) Body of a person or animal. @ By oneself. @ Only.",
+        "definition": "Body of a person or animal. @ By oneself. @ Only.",
         "forms": {
           "gn": {
             "as_from": "sara"
@@ -1889,9 +1890,10 @@
   },
   "heal": {
     "category": "fientive",
+    "notes": "In Lauv\u00ecnko, this verb frequently makes use of incorporated body part and stranded possessor.\n\nIf no body part is specified as the patient, the word `lv;fr body.$na$` is used",
     "languages": {
       "lv": {
-        "definition": "$age$ treats body or body part $pat$ medically. @ (perfective) $age$ heals, cures body or body part $pat$. @ (if no body part is specified, the word `lv;fr body:lv.$na$` is used) @ (frequently makes use of incorporated body part and stranded possessor)"
+        "definition": "$age$ treats body or body part $pat$ medically. @ (perfective) $age$ heals, cures body or body part $pat$."
       },
       "pk": {
         "definition": "To treat, heal.",

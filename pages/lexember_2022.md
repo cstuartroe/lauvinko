@@ -688,3 +688,15 @@ I coined a new native root:
 I also took in my first loan from Khmer, albeit just a place name:
 
 - [Palinokò](/loanword_dictionary?q=@prey_nokor) "Prey Nokor"
+
+# Day 31
+
+```
+That.$na$ book.$na$=$lea$.$sg$.$na$ $mir$ thick.$gn$.$na$ no!
+
+That's one thick book!
+```
+
+I coined a new native root:
+
+- [lòmang](/kasanic_dictionary?q=@thick) "Thick, dense, bulky, deep (of water or sound), saturated (of color)."

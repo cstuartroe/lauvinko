@@ -849,6 +849,18 @@
     },
     "origin": "sanskrit"
   },
+  "big_toe": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "Hallux (big toe).",
+        "forms": {
+          "gn": "homuma"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "bind": {
     "category": "stative",
     "languages": {
@@ -912,6 +924,24 @@
       }
     },
     "origin": "sanskrit"
+  },
+  "book": {
+    "category": "uninflected",
+    "languages": {
+      "ar": {
+        "definition": "Book.",
+        "native": "\u0643\u0650\u062a\u064e\u0627\u0628"
+      },
+      "lv": {
+        "definition": "Book.",
+        "forms": {
+          "gn": {
+            "phonemic": "kita/p"
+          }
+        }
+      }
+    },
+    "origin": "arabic"
   },
   "borrow": {
     "category": "punctual",
@@ -3637,6 +3667,18 @@
     },
     "origin": "kasanic"
   },
+  "thick": {
+    "category": "stative",
+    "languages": {
+      "pk": {
+        "definition": "Thick, dense, bulky, deep (of water or sound), saturated (of color).",
+        "forms": {
+          "gn": "rumumu"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "this": {
     "category": "uninflected",
     "languages": {
@@ -3680,21 +3722,6 @@
       }
     },
     "origin": "sanskrit"
-  },
-  "toe": {
-    "category": "uninflected",
-    "languages": {
-      "lv": {
-        "definition": "Toe."
-      },
-      "pk": {
-        "definition": "Toe.",
-        "forms": {
-          "gn": "homuma"
-        }
-      }
-    },
-    "origin": "kasanic"
   },
   "tongue": {
     "category": "uninflected",

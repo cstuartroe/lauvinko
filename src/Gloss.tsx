@@ -71,8 +71,13 @@ export function getGlossJson(params: GlossParams): Promise<GlossResponse> {
     .catch(_e => ({success: false, message: "Unknown error"}));
 }
 
+type AnalysisLabel = {
+  text: string,
+  link: string,
+}
+
 export type GlossData = {
-  analysis: string[],
+  analysis: (string | AnalysisLabel)[][],
   romanization: string[],
   falavay: string[],
   narrow_transcription: string[],
@@ -314,6 +319,16 @@ export function extraFormatting(s: string): JSX.Element[] {
   return out;
 }
 
+function renderAnalysisWord(word: (string | AnalysisLabel)[]) {
+  return word.map(e => {
+    if (typeof e === "string") {
+      return e
+    } else {
+      return <a href={e.link} target="_blank">{extraFormatting(e.text)}</a>
+    }
+  })
+}
+
 type BlockGlossProps = GlossParams & {
   rows: GlossRow[],
   translation: string,
@@ -393,7 +408,7 @@ export class LoadedBlockGloss extends Component<LoadedBlockGlossProps, {}> {
           <td className={ROW_CLASSES[row]} key={col}>
             {row === "broad_transcription" && col === 0 && '/'}
             {row === "narrow_transcription" && col === 0 && '[ '}
-            {row == "analysis" ? extraFormatting(word) : word}
+            {(typeof word === "string") ? word : renderAnalysisWord(word)}
             {row === "broad_transcription" && col === this.length() - 1 && '/'}
             {row === "narrow_transcription" && col === this.length() - 1 && ' ]'}
           </td>

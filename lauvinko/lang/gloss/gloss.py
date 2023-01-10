@@ -7,7 +7,7 @@ from ..shared.morphology import Morpheme, Word, MorphosyntacticType
 from ..proto_kasanic.morphology import PKWord
 from ..proto_kasanic.romanize import romanize as pk_romanize
 from ..lauvinko.morphology import LauvinkoWord
-from ..lauvinko.diachronic.base import MorphemeContext
+from ..lauvinko.diachronic.base import MorphemeContext, OriginLanguage
 from ..lauvinko.romanize import romanize as lv_romanize
 from ..dictionary import Dictionary, Language
 from ..dictionary.entry import parse_context
@@ -41,6 +41,14 @@ ACCENTLESS_TYPES = (
     MorphosyntacticType.ADPOSITION,
     MorphosyntacticType.PARTICLE,
 )
+
+
+PARTICLE_LINKS = {
+    "$int$": "questions",
+    "and:$st$": "conjunction",
+    "and:$swrf$": "conjunction",
+    "or": "conjunction",
+}
 
 
 @dataclass
@@ -117,14 +125,57 @@ class MorphemeSource:
             context=context,
         )
 
-    def as_str(self):
-        out = self.name
+    def analysis(self, index: int):
+        morpheme = self.resolve()
+        if morpheme.lemma.mstype is MorphosyntacticType.INDEPENDENT:
+            lang, _ = morpheme.lemma.origin.language_and_word()
+            if lang is OriginLanguage.KASANIC:
+                page = f"kasanic_dictionary?q=@{self.name}"
+            else:
+                page = f"loanword_dictionary?q=@{self.name}"
+        elif morpheme.lemma.mstype is MorphosyntacticType.CLASS_WORD:
+            page = "class"
+        elif morpheme.lemma.mstype in (MorphosyntacticType.TOPIC_AGREEMENT_PREFIX, MorphosyntacticType.TOPIC_CASE_PREFIX):
+            page = "trigger_agreement"
+        elif morpheme.lemma.mstype is MorphosyntacticType.TERTIARY_ASPECT_PREFIX:
+            page = "tertiary"
+        elif morpheme.lemma.mstype is MorphosyntacticType.MODAL_PREFIX:
+            page = "modals"
+        elif morpheme.lemma.mstype is MorphosyntacticType.DEFINITE_MARKER:
+            page = "partitive"
+        elif morpheme.lemma.mstype is MorphosyntacticType.NUMBER_SUFFIX:
+            page = "number_suffixes"
+        elif morpheme.lemma.mstype is MorphosyntacticType.SEX_SUFFIX:
+            page = "sex_suffix"
+        elif morpheme.lemma.mstype is MorphosyntacticType.ADPOSITION:
+            page = "applicatives" if index == 0 else "/cases"
+        elif morpheme.lemma.mstype in (MorphosyntacticType.ADVERB, MorphosyntacticType.PARTICLE):
+            page = PARTICLE_LINKS.get(morpheme.lemma.ident, "adverbs")
+        else:
+            raise ValueError
+
+        out = [{
+            "text": self.name,
+            "link": "/" + page,
+        }]
 
         if self.value.lemma.category is not KasanicStemCategory.UNINFLECTED:
-            out += f".${PTA2ABBREV[self.primary_ta]}$"
+            out += [
+                ".",
+                {
+                    "text": f"${PTA2ABBREV[self.primary_ta]}$",
+                    "link": "/primary",
+                },
+            ]
 
         if self.value.lemma.mstype in (MorphosyntacticType.INDEPENDENT, MorphosyntacticType.CLASS_WORD):
-            out += f".{MC_ABBREVS[self.context]}"
+            out += [
+                ".",
+                {
+                    "text": f"{MC_ABBREVS[self.context]}",
+                    "link": "/augment",
+                },
+            ]
 
         return out
 
@@ -161,8 +212,15 @@ class GlossSyntacticWord:
             language=language,
         )
 
-    def analysis(self) -> str:
-        return "-".join(ms.as_str() for ms in self.morpheme_sources)
+    def analysis(self):
+        out = []
+        for i, ms in enumerate(self.morpheme_sources):
+            if i > 0:
+                out.append('-')
+
+            out += ms.analysis(i)
+
+        return out
 
     def falavay(self) -> str:
         return self.word.falavay()
@@ -209,8 +267,13 @@ class GlossPhonologicalWord:
             back_matter=back_matter,
         )
 
-    def analysis(self) -> str:
-        return "=".join(sword.analysis() for sword in self.swords)
+    def analysis(self):
+        out = []
+        for i, sword in enumerate(self.swords):
+            if i > 0:
+                out.append("=")
+            out += sword.analysis()
+        return out
 
     def broad_transcription(self) -> str:
         return self.surface_form.broad_transcription()
@@ -250,7 +313,7 @@ class Gloss:
             language=language,
         )
 
-    def analysis(self) -> List[str]:
+    def analysis(self):
         return [pword.analysis() for pword in self.pwords]
 
     def broad_transcription(self) -> List[str]:

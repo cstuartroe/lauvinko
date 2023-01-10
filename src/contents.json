@@ -166,7 +166,7 @@
               "name": "incorporation"
             },
             {
-              "name": "collectives"
+              "name": "number_suffixes"
             },
             {
               "name": "sex_suffix",
@@ -251,7 +251,12 @@
           ]
         },
         {
-          "name": "clauses"
+          "name": "clauses",
+          "subsections": [
+            {
+              "name": "conjunction"
+            }
+          ]
         },
         {
           "name": "discourse",
@@ -436,6 +441,9 @@
     {
       "name": "dictionary",
       "subsections": [
+        {
+          "name": "adverbs"
+        },
         {
           "name": "kasanic_dictionary",
           "title": "Kasanic Root Dictionary"

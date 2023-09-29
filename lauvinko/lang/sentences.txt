@@ -1,25 +1,5 @@
-emkZel IHepoxqnuI gixqXhqY
-Méuli ipposnòy, ngisì.
-emkZel nepoxqnuI ginxqXhqY
-Méuli naposnòy, nginasì.
-emkZel xqXhqY
-méuli sì
-emkZel niOeyhqXga
-méuli niyoyèng
-emkZeln maxatqeNhqXgalZQ
-méuling masatanènla
-emkZel epoxqniI
-méuli posnì
-ekoG emkZelE EtqxqXhqY nineyhqXgaAMtqX
-kó méuliye essì ninayèngani
-malakahqOpaU EtqelHja nineyhqXgaxqX
-Malàkovo ehlés ninayènsi
-ekoGU EtqemkZel nineyhqXga
-kó ehméuli ninayèng
-EGkaeyOGpaU HekoHepI emkZel xqXhqY
-ékayopo kópi méuli sì
-ekoGI mXelolX nineyhqXgaxqX
-kóy mìlli ninayènsi
+mantqeNhqXgaxqX
+manatanènsi
 naGm naGmU
 náng, námo
 Eetqeto EetqetoxqX EetqetoIta Eetqetoem
@@ -32,22 +12,6 @@ HtqXEvMpintqenHekqHkZgi
 tiyevompinatanekkéhngi
 HtZAIMpkqXta
 tayimpéh
-malakahq YlanevkqXOpa
-Malàka aylanavéyo
-malakahq YMpinevkqXOpa
-Malàka ayminavéyo
-tZGhqXxqlXGn valY HekoHep YAevkqX
-Tóysaling vàle kópi ayavé.
-tatZ ehqep nMejkqX
-Tár hévi nancé.
-venlXtZ lavenlXtZ MpivenlXtZ
-vènilito, lavènilito, mivènilito
-ehqep lanMejokqX epovahqXga YnevkqXOpa
-Hévi lanancóy povàynga aynavéyo.
-nilaAeyhqXga niMpiAINahqXga nilaAeyeyhqXga
-Nilayèng; nimiyaynàynga; nilayeyèng.
-mantqeNhqXgaxqX
-manatanènsi
 yanOpaI natqmX nkZkZelMtaOta
 Yànoy nármi nakakòlintor.
 UxqXemoEpan mlX eyoka OkqxaepoxqxZelomZAMtqX
@@ -126,8 +90,6 @@ palXenoekohZI naGxqjiOGpaU kqevpujielo
 Palinokòy násciyopo kavéucir.
 tZxZ kqXtapOpa mlX lZmZmZ Al
 Tòs kitàpo mèli lòmang àr!
-yanOpaI natqmX nkZkZelMtaOta
-Yànoy nármi nakakòlintor.
 elHjaxqXExq HtqXj
 léssiyes tís
 HtqXjxqXExq elHja
@@ -146,6 +108,24 @@ niekqHepota
 niképah
 HtqXehqHepota
 tiyépah
+kqmanWmakqXkqXMkapilZxqX na tZGhqXxqlZGQI laGexqtZG EtqepepnikqXAMtqXn kaHepotaOehonajvijielo
+Kennaumakikímpirsi na Tóysalovi lásito eppepènikiyaning kapatovònasvicir,
+etqQ OkqxqYev eyMpEpaE maEtqQeNoeN maEGHkZgitZGI emoekoeNoAevkqXOpa
+tea ossàyvi yémeve metènni mékkangitoy mokonovavéyo.
+pYekqHepota kqXxZ maEHkZgixqXkq jaHepoItaU eyMpEpaE maEtqIMekoGenotZGI mapanikqXtqE IevoejoeNoxqhaHepota
+Payképah kìs méhngisih cápilo yémeve metenkóntoy mapànikiteye ivoconosápah.
+kqmanWmakqXkqXGMkapilZlXGn AkZkZMkapilZ HekoHekoUjielo
+Kennaumakikínkapilling akakómpir kokkòcir,
+kqXtq laexqepoGkZU YkZMkapilZ maEGHkZgilXGn tZxZepoGkZU jieloI eyMp jaIevoAkZkqXta MetoetqOpa
+kih lasipóko aykómpir, mékkangiling tospóko cìli yéng cayvovakóyta nóliyo;
+kqmanWmakqXkqXGMkapilZlXGn evGtqXMepoU AenoxqWkZ
+Kennaumakikínkapilling vétimpau anòsoh.
+tZGhqXxqlXGn eNoAexoev etqQ maEGHkZgilXGn jaHepoItaU eyMp eNoAIMekoenoEpa
+Tóysaling novasòvi, tea mékkangiling cápilo yéng novayinkòneu.
+etqQ kqmanWmakqXkqXGMkapilZlXGn tZGhqXxqlXGn jieloU maEtqpanikqX IevoeyoxqAkaHepota
+Tea Kennaumakikínkapilling Tóysaling cìlo meppàniki ivoyosakápah.
+yanOpaI natqmX nkZkZelMtaOta
+Yànoy nármi nakakòlintor.
 xqhqY xqXxqXhqY
 sè; sisì
 jiHkqX jijiHkqX
@@ -166,21 +146,41 @@ epepnikqX
 pepèniki
 MkqXma
 ngìng
+malakahq YlanevkqXOpa
+Malàka aylanavéyo
+malakahq YMpinevkqXOpa
+Malàka ayminavéyo
+tZGhqXxqlXGn valY HekoHep YAevkqX
+Tóysaling vàle kópi ayavé.
+tatZ ehqep nMejkqX
+Tár hévi nancé.
+venlXtZ lavenlXtZ MpivenlXtZ
+vènilito, lavènilito, mivènilito
+ehqep lanMejokqX epovahqXga YnevkqXOpa
+Hévi lanancóy povàynga aynavéyo.
+nilaAeyhqXga niMpiAINahqXga nilaAeyeyhqXga
+Nilayèng; nimiyaynàynga; nilayeyèng.
+emkZel IHepoxqnuI gixqXhqY
+Méuli ipposnòy, ngisì.
+emkZel nepoxqnuI ginxqXhqY
+Méuli naposnòy, nginasì.
+emkZel xqXhqY
+méuli sì
+emkZel niOeyhqXga
+méuli niyoyèng
+emkZeln maxatqeNhqXgalZQ
+méuling masatanènla
+emkZel epoxqniI
+méuli posnì
+ekoG emkZelE EtqxqXhqY nineyhqXgaAMtqX
+kó méuliye essì ninayèngani
+malakahqOpaU EtqelHja nineyhqXgaxqX
+Malàkovo ehlés ninayènsi
+ekoGU EtqemkZel nineyhqXga
+kó ehméuli ninayèng
+EGkaeyOGpaU HekoHepI emkZel xqXhqY
+ékayopo kópi méuli sì
+ekoGI mXelolX nineyhqXgaxqX
+kóy mìlli ninayènsi
 exota exotaU
 sór, sólo
-kqmanWmakqXkqXMkapilZxqX na tZGhqXxqlZGQI laGexqtZG EtqepepnikqXAMtqXn kaHepotaOehonajvijielo
-Kennaumakikímpirsi na Tóysalovi lásito eppepènikiyaning kapatovònasvicir,
-etqQ OkqxqYev eyMpEpaE maEtqQeNoeN maEGHkZgitZGI emoekoeNoAevkqXOpa
-tea ossàyvi yémeve metènni mékkangitoy mokonovavéyo.
-pYekqHepota kqXxZ maEHkZgixqXkq jaHepoItaU eyMpEpaE maEtqIMekoGenotZGI mapanikqXtqE IevoejoeNoxqhaHepota
-Payképah kìs méhngisih cápilo yémeve metenkóntoy mapànikiteye ivoconosápah.
-kqmanWmakqXkqXGMkapilZlXGn AkZkZMkapilZ HekoHekoUjielo
-Kennaumakikínkapilling akakómpir kokkòcir,
-kqXtq laexqepoGkZU YkZMkapilZ maEGHkZgilXGn tZxZepoGkZU jieloI eyMp jaIevoAkZkqXta MetoetqOpa
-kih lasipóko aykómpir, mékkangiling tospóko cìli yéng cayvovakóyta nóliyo;
-kqmanWmakqXkqXGMkapilZlXGn evGtqXMepoU AenoxqWkZ
-Kennaumakikínkapilling vétimpau anòsoh.
-tZGhqXxqlXGn eNoAexoev etqQ maEGHkZgilXGn jaHepoItaU eyMp eNoAIMekoenoEpa
-Tóysaling novasòvi, tea mékkangiling cápilo yéng novayinkòneu.
-etqQ kqmanWmakqXkqXGMkapilZlXGn tZGhqXxqlXGn jieloU maEtqpanikqX IevoeyoxqAkaHepota
-Tea Kennaumakikínkapilling Tóysaling cìlo meppàniki ivoyosakápah.

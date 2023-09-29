@@ -41,7 +41,7 @@ class Command(BaseCommand):
 
         outfile_content = ""
 
-        for mdfile in os.listdir(PAGES_DIR):
+        for mdfile in sorted(list(os.listdir(PAGES_DIR))):
             with open(os.path.join(PAGES_DIR, mdfile), 'r') as fh:
                 content = json.loads(mistletoe.markdown(fh.read(), ASTRenderer))
 

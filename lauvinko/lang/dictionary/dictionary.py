@@ -6,7 +6,7 @@ from lauvinko.lang.lauvinko.morphology import LauvinkoLemma, LauvinkoCase
 from lauvinko.lang.shared.morphology import MorphosyntacticType
 from lauvinko.lang.shared.semantics import KasanicStemCategory, Language
 from lauvinko.lang.proto_kasanic.morphology import pkm, ProtoKasanicLemma
-from lauvinko.lang.lauvinko.diachronic.base import OriginLanguage
+from lauvinko.lang.lauvinko.diachronic.from_pk import ProtoKasanicOrigin
 from lauvinko.lang.dictionary.entry import DictEntry
 
 MODAL_PREFIXES = {
@@ -177,7 +177,7 @@ class Dictionary:
                 ident=ident,
                 category=KasanicStemCategory.UNINFLECTED,
                 mstype=mstype,
-                origin=OriginLanguage.KASANIC
+                origin=ProtoKasanicOrigin(pk_lemma)
             )
 
     def fill_in_adpositions(self):
@@ -208,7 +208,7 @@ class Dictionary:
                 ident=ident,
                 category=KasanicStemCategory.UNINFLECTED,
                 mstype=MorphosyntacticType.ADPOSITION,
-                origin=OriginLanguage.KASANIC,
+                origin=ProtoKasanicOrigin(pk_lemma),
             )
 
     def to_json(self):

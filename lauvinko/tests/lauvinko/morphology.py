@@ -17,6 +17,12 @@ lm = LauvinkoMorpheme.from_informal_transcription
 PK_JOINS: list[tuple[ProtoKasanicMorpheme, ProtoKasanicMorpheme, LauvinkoMorpheme]] = [
     (pkm("ttu"), pkm("inkwa/kitaa"), lm("ttavinpe/t")),
     (pkm("poha"), pkm("ita"), lm("povi/r")),
+    (pkm("so"), pkm("atine/ni"), lm("soatine\\ni")),
+    (pkm("ti"), pkm("untu/ntaukke"), lm("tiyanto/nokki")),
+    # (pkm("ti"), pkm("au/ni"), lm("tiyo\\ni")),
+    (pkm("ti"), pkm("utaa/"), lm("tiuta\\")),
+    (pkm("ti"), pkm("uttaa/"), lm("tiyatta\\")),
+    (pkm("raa"), pkm("untaa/"), lm("lavanta\\")),
 ]
 
 JOINS: list[tuple[LauvinkoMorpheme, LauvinkoMorpheme, int, LauvinkoMorpheme]] = [

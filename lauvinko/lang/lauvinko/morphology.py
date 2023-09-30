@@ -193,14 +193,28 @@ class LauvinkoMorpheme(Morpheme):
                     if ms[0].onset is not None:
                         pass
 
-                    # The last condition is a brazen dodge - there's a prefix a- to which this rule shouldn't
-                    # apply. A more theoretically correct condition would look at whether the morpheme
-                    # truly starts with a central vowel, or if it's a case of diphthong breaking or prosthesis
-                    elif (morpheme.surface_form.accent_position != 0 and v2.frontness is VowelFrontness.MID
-                          and morpheme.lemma.ident != "$t3as:swrf$"):
-                        ms[0].onset = syllables[-1].onset
-                        ms[0].vowel = v1
-                        del syllables[-1]
+                    elif morpheme.surface_form.accent_position != 0 and v2.frontness is VowelFrontness.MID:
+                        original_initial_vowel = morpheme.virtual_original_form.surface_form.syllables[0].vowel
+
+                        if morpheme.virtual_original_form.surface_form.stress_position == 0 or pk_consonant is ProtoKasanicOnset.NC:
+                            ms[0].onset = syllables[-1].onset
+                            ms[0].vowel = v1
+                            # vowel breaking or epenthesis - throw out the /a/
+                            del syllables[-1]
+                        elif original_final_vowel.frontness is original_initial_vowel.frontness:
+                            ms[0].onset = syllables[-1].onset
+                            ms[0].vowel = v1
+                            del syllables[-1]
+                        elif c2 is not None:
+                            ms[0].onset = epenthetic_consonant(original_final_vowel.frontness) or epenthetic_consonant(original_initial_vowel.frontness)
+                        else:
+                            ms[0].onset = syllables[-1].onset
+                            ms[0].vowel = v1
+                            if original_initial_vowel.frontness is not VowelFrontness.MID:
+                                ms[0].coda = epenthetic_consonant(original_initial_vowel.frontness)
+                            elif v1.frontness is not VowelFrontness.MID:
+                                ms[0].coda = LauvinkoConsonant.A
+                            del syllables[-1]
 
                     elif (v1.frontness is v2.frontness) and (
                             (v1.frontness is VowelFrontness.MID) or

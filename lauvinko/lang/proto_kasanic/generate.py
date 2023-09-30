@@ -133,6 +133,7 @@ def random_pk_morpheme() -> ProtoKasanicMorpheme:
 
 
 def random_pk_lemma(category: KasanicStemCategory) -> ProtoKasanicLemma:
+    syllables = _random_pk_syllables(category)
     lemma = ProtoKasanicLemma(
         ident="",
         category=category,
@@ -142,8 +143,8 @@ def random_pk_lemma(category: KasanicStemCategory) -> ProtoKasanicLemma:
         generic_morph=ProtoKasanicMorpheme(
             lemma=None,
             surface_form=PKSurfaceForm(
-                syllables=_random_pk_syllables(category),
-                stress_position=0,
+                syllables=syllables,
+                stress_position=randrange(len(syllables)),
             ),
             end_mutation=None,
         )

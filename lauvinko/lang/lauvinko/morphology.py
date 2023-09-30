@@ -196,10 +196,16 @@ class LauvinkoMorpheme(Morpheme):
                     elif morpheme.surface_form.accent_position != 0 and v2.frontness is VowelFrontness.MID:
                         original_initial_vowel = morpheme.virtual_original_form.surface_form.syllables[0].vowel
 
-                        if morpheme.virtual_original_form.surface_form.stress_position == 0 or pk_consonant is ProtoKasanicOnset.NC:
+                        vowel_epenthesized = pk_consonant is ProtoKasanicOnset.NC
+                        vowel_broken = original_initial_vowel in (ProtoKasanicVowel.AI, ProtoKasanicVowel.AU)
+
+                        if vowel_epenthesized or vowel_broken:
                             ms[0].onset = syllables[-1].onset
                             ms[0].vowel = v1
-                            # vowel breaking or epenthesis - throw out the /a/
+
+                            if ms[0].coda is epenthetic_consonant(v1.frontness):
+                                ms[0].coda = None
+
                             del syllables[-1]
                         elif original_final_vowel.frontness is original_initial_vowel.frontness:
                             ms[0].onset = syllables[-1].onset

@@ -166,6 +166,7 @@ class Dictionary:
                 forms={},
                 generic_morph=pkm(informal_transcription)
             )
+            pk_lemma.generic_morph.surface_form.stress_position = None
 
             lv_lemma = LauvinkoLemma.from_pk(pk_lemma)
 

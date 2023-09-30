@@ -6,6 +6,7 @@ from lauvinko.lang.shared.morphology import MorphosyntacticType
 from lauvinko.lang.shared.semantics import KasanicStemCategory
 from lauvinko.lang.proto_kasanic.morphology import ProtoKasanicMorpheme, pkm, ProtoKasanicLemma
 from lauvinko.lang.proto_kasanic.generate import random_pk_lemma
+from lauvinko.lang.lauvinko.phonology import LauvinkoSyllable
 from lauvinko.lang.lauvinko.morphology import LauvinkoLemma, LauvinkoMorpheme, LauvinkoWord, LauvinkoContentWord
 from lauvinko.lang.lauvinko.diachronic.from_pk import ProtoKasanicOrigin
 
@@ -23,6 +24,8 @@ PK_JOINS: list[tuple[ProtoKasanicMorpheme, ProtoKasanicMorpheme, LauvinkoMorphem
     (pkm("ti"), pkm("utaa/"), lm("tiuta\\")),
     (pkm("ti"), pkm("uttaa/"), lm("tiyatta\\")),
     (pkm("raa"), pkm("untaa/"), lm("lavanta\\")),
+    # (pkm("mpi"), pkm("aa'inyaa/hingaa"), lm("mina\\ynga")),
+    # (pkm("kwiwi"), pkm("ainkwe/"), lm("pivinpe\\")),
 ]
 
 JOINS: list[tuple[LauvinkoMorpheme, LauvinkoMorpheme, int, LauvinkoMorpheme]] = [
@@ -89,6 +92,7 @@ class LauvinkoMorphologyTests(unittest.TestCase):
 
         for _ in range(num_trials):
             pk_lemma_1 = random_pk_lemma(KasanicStemCategory.UNINFLECTED)
+            pk_lemma_1.generic_morph.surface_form.stress_position = None
             pk_lemma_2 = random_pk_lemma(KasanicStemCategory.UNINFLECTED)
             augment = randrange(2) == 0
 
@@ -113,10 +117,17 @@ class LauvinkoMorphologyTests(unittest.TestCase):
                 context=MorphemeContext.AUGMENTED if augment else MorphemeContext.NONAUGMENTED
             )
 
-            evolved_then_joined = LauvinkoMorpheme.join(
-                [lv_form_1, lv_form_2],
-                accented=1,
-            ).surface_form
+            try:
+                evolved_then_joined = LauvinkoMorpheme.join(
+                    [lv_form_1, lv_form_2],
+                    accented=1,
+                ).surface_form
+            except LauvinkoSyllable.InvalidSyllable:
+                print(f"InvalidSyllable encountered when joining "
+                      f"{pk_lemma_1.citation_form().surface_form().broad_transcription()} and "
+                      f"{pk_lemma_2.citation_form().surface_form().broad_transcription()}"
+                      )
+                raise
 
             if joined_then_evolved.broad_transcription() != evolved_then_joined.broad_transcription():
                 num_mismatched += 1

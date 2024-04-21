@@ -22,6 +22,23 @@ for entry in Dictionary.load().entries.values():
 
 ROOTS.sort()
 
+# ROOTS = [
+#     "black.$inc$.$na$",
+#     "cut.$np$.$na$",
+#     "wise.$inc$.$na$",
+#     "deep.$gn$.$na$",
+#     "cross.$np$.$na$",
+#     "help.$imnp$.$na$",
+#     "build.$fqnp$.$na$",
+#     "build.$fqpt$.$na$",
+#     "cross.$fqnp$.$na$",
+#     "cross.$fqpt$.$na$",
+#     "cut.$fqpt$.$na$",
+#     "narrow.$gn$.$na$",
+#     "depict.$fqpt$.$na$",
+#     "atineni.$gn$.$na$",
+# ]
+
 PREFIXES = []
 
 for p in MODAL_PREFIXES.keys():
@@ -36,6 +53,8 @@ for p in TOPIC_AGREEMENT_PREFIXES.keys():
 for p in TOPIC_CASE_PREFIXES.keys():
     PREFIXES.append(f"$st$-${p}$")
 
+# PREFIXES = ["after:$st$", "like"]
+
 
 OUTFILE = "lauvinko/lang/prefixes.txt"
 
@@ -44,6 +63,22 @@ class Command(BaseCommand):
     help = 'Exports the combination of every prefix with every root'
 
     def handle(self, *args, **options):
+    #     for root in ROOTS:
+    #         print(root)
+    #         forms = [
+    #             Gloss.parse(root, language=Language.LAUVINKO).romanization()[0]
+    #         ]
+    #         for prefix in PREFIXES:
+    #             if prefix == "$st$-$tage$":
+    #                 continue
+    #             form = Gloss.parse(f"{prefix}-{root}", language=Language.LAUVINKO).romanization()[0]
+    #             forms.append(form)
+    #
+    #         for i in range(6):
+    #             print('\t'.join(forms[i*6:(i+1)*6]))
+    #
+    #
+    # def skip(self):
         outfile_content = ""
 
         for prefix in PREFIXES:

@@ -58,6 +58,7 @@ def get_representative_roots(printing: bool = True) -> list[str]:
             for root in roots:
                 gloss = Gloss.parse(root, language=Language.LAUVINKO)
                 print(root, gloss.romanization()[0])
+            print(f"{len(roots)}/{len(ROOTS)} ({len(roots)*100/len(ROOTS):.1f}%)")
 
     return [
         root_group[0]

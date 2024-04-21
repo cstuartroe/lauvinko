@@ -2021,6 +2021,18 @@
     },
     "origin": "kasanic"
   },
+  "huddle": {
+    "category": "stative",
+    "languages": {
+      "pk": {
+        "definition": "(reflexive) Huddle, cuddle.",
+        "forms": {
+          "gn": "rowamowa"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "hurry": {
     "category": "stative",
     "languages": {
@@ -3071,6 +3083,18 @@
         "definition": "Rice.",
         "forms": {
           "gn": "hekwe"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "roil": {
+    "category": "fientive",
+    "languages": {
+      "pk": {
+        "definition": "(of the ocean) $ins$ churns, roils, is choppy.",
+        "forms": {
+          "gn": "s@waaraa"
         }
       }
     },

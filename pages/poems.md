@@ -1,4 +1,4 @@
-This is just a record of little snippets of Lauvinko text I've
+This is just a record of little snippets of Lauvìnko text I've
 written for personal use.
 
 ```

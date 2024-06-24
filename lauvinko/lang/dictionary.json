@@ -1394,6 +1394,21 @@
     },
     "origin": "kasanic"
   },
+  "divide": {
+    "category": "punctual",
+    "languages": {
+      "lv": {
+        "definition": "$age$/$ins$ divides, separates, distinguishes, categorizes $pat$ from $abl$. @ (frequentative) $age$ understands $pat$."
+      },
+      "pk": {
+        "definition": "Divide, separate",
+        "forms": {
+          "gn": "c@'a"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "dog": {
     "category": "uninflected",
     "languages": {
@@ -2770,6 +2785,18 @@
     },
     "origin": "kasanic"
   },
+  "one": {
+    "category": "uninflected",
+    "languages": {
+      "pk": {
+        "definition": "One",
+        "forms": {
+          "gn": "ikka"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "order": {
     "category": "uninflected",
     "languages": {
@@ -2982,6 +3009,18 @@
     },
     "origin": "kasanic"
   },
+  "quick": {
+    "category": "stative",
+    "languages": {
+      "pk": {
+        "definition": "Fast, quick",
+        "forms": {
+          "gn": "kengweso"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "reach": {
     "category": "stative",
     "languages": {
@@ -3068,6 +3107,21 @@
         "definition": "Request.",
         "forms": {
           "gn": "@kaane"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
+  "rest": {
+    "category": "fientive",
+    "languages": {
+      "lv": {
+        "definition": "(reflexive) $ins$ rests, pauses, takes a break, recuperates, recovers, naps."
+      },
+      "pk": {
+        "definition": "Rest, pause, take a break, recuperate, recover, nap",
+        "forms": {
+          "gn": "n@kauwaa"
         }
       }
     },

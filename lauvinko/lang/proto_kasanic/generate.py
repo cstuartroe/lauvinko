@@ -144,7 +144,7 @@ def random_pk_lemma(category: KasanicStemCategory) -> ProtoKasanicLemma:
             lemma=None,
             surface_form=PKSurfaceForm(
                 syllables=syllables,
-                stress_position=randrange(len(syllables)),
+                stress_position=0,
             ),
             end_mutation=None,
         )

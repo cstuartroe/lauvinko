@@ -1223,6 +1223,18 @@
     },
     "origin": "kasanic"
   },
+  "complete": {
+    "category": "punctual",
+    "languages": {
+      "pk": {
+        "definition": "Complete, put the finishing touches on, polish, decorate",
+        "forms": {
+          "gn": "s@nke"
+        }
+      }
+    },
+    "origin": "kasanic"
+  },
   "cook": {
     "category": "fientive",
     "languages": {

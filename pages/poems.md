@@ -14,7 +14,7 @@ We're huddled together in a boat on the churning ocean.
 ```
 
 ```
-Hut.$na$=$lea$.$pl$.$na$-$par$ build.$imnp$.$na$ this.$na$ one.$na$=one.$na$ dark.$gn$.$au$=$lea$.$sg$.$au$-$loc$ divide.$np$.$au$=$lea$.$sg$.$au$-$loc$ indoor.$au$=$rck$.$au$-$loc$ $refl$.$na$-$par$ $dep$-rest.$fqnp$.$na$=$sea$.$na$-$prl$ quick.$gn$.$na$=$rck$.$na$.
+Hut.$na$=$lea$.$pl$.$na$-$par$ build.$imnp$.$na$ this.$na$ one.$na$=one.$na$ dark.$gn$.$au$=$lea$.$sg$.$au$-$loc$ $exp$-complete.$np$.$na$ divide.$np$.$au$=$lea$.$sg$.$au$-$loc$ indoor.$au$=$rck$.$au$-$loc$ $refl$.$na$-$par$ $dep$-rest.$fqnp$.$na$=$sea$.$na$-$prl$ quick.$gn$.$na$=$rck$.$na$.
 
 The fastest way to build a house is to rest every night in the rooms you've already built.
 ```

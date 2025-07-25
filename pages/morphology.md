@@ -13,13 +13,13 @@ Nahuatl. That is, all stems are largely alike in what morphological
 inflections they may take. 
 
 ```
-man.$na$=$3rd$.$sg$.$na$-$par$-$def$ long.$gn$.$na$
+man.$na$=$3rd$.$sg$.$na$ long.$gn$.$na$
 
 The man is tall.
 ```
 
 ```
-long.$gn$.$na$=$3rd$.$sg$.$na$-$par$-$def$ man.$na$
+long.$gn$.$na$=$3rd$.$sg$.$na$ man.$na$
 
 The tall one is a man.
 ```
@@ -45,9 +45,9 @@ a large noun. An example of a nearly-maximal noun (containing a morpheme
 at each position except a collective suffix or a definite suffix) is given:
 
 ```
-yellow.$gn$.$na$=$age$=$pro$-$dep$-marry.$inc$.$na$=$femn$=$hea$.$sg$.$na$-$all$
+yellow.$gn$.$na$=$age$=$pro$-$dep$-marry.$inc$.$na$=$femn$=$3rd$.$sg$.$na$-$abl$
 
-to his jolly bride-to-be
+from his jolly bride-to-be
 ```
 
 It's harder to define a maximal number of morphemes for verbs, as there
@@ -114,19 +114,19 @@ conjunct prefixes, introduced by historical sound change.
 ```
 $st$-$tage$-speak.$pf$.$na$
 
-they spoke
+(they) spoke
 ```
 
 ```
 $gen$=$st$-$tage$-speak.$pf$.$na$
 
-they spoke about it
+(they) spoke about (it)
 ```
 
 ```
 if-$st$-$tage$-speak.$pf$.$na$
 
-if they spoke
+if (they) spoke
 ```
 
 Case suffixes are an edge case. They originate from the same lexical source

@@ -51,53 +51,54 @@ words, as well as applicative prefixes and incorporated nouns
 Here is the full set of glossing 
 abbreviations that will appear in this document:
 
-|||
-|:----------|: $au$      $      | [augment](/augment) |
-| $na$      | [non-augment](/augment) |
-| $age$     | [agentive case](/agentive) |
-| $ins$     | [instrumental case](/instrumental) |
-| $pat$     | [patientive case](/patientive) |
-| $gen$     | [genitive case](/genitive) |
-| $all$     | [allative case](/adpositional) |
-| $loc$     | [locative case](/adpositional) |
-| $abl$     | [ablative case](/adpositional) |
-| $prl$     | [perlative case](/adpositional) |
-| $par$     | [partitive case](/partitive) |
-| $def$     | [definite](/partitive) |
-| $sg$      | [singular](/class) |
-| $du$      | [dual](/class) |
-| $pl$      | [plural](/class) |
-| $1excl$   |first person exclusive [pronouns](/personal_pronouns) |
-| $1incl$   |first person inclusive [pronouns](/personal_pronouns) |
-| $2fam$    | second person familiar [pronouns](/personal_pronouns) |
-| $2fml$    | second person formal [pronouns](/personal_pronouns) |
-| $2hon$    | second person honorific [pronouns](/personal_pronouns) |
-| $3rd$     | third person [pronouns](/personal_pronouns) |
-| $hea$     | [head class](/head) |
-| $bra$     | [branch class](/branch) |
-| $lea$     | [leaf class](/leaf) |
-| $rck$     | [rock class](/rock) |
-| $sea$     | [sea class](/sea) |
-| $tage$    | [agentive trigger](/trigger_agreement) |
-| $tgen$    | [genitive trigger](/trigger_agreement) |
-| $tloc$    | [locative trigger](/trigger_agreement) |
-| $dep$     | [dependent clause](/trigger_agreement) |
-| $t1s$     | first person singular [trigger agreement](/trigger_agreement) |
-| $t1p$     | first person plural [trigger agreement](/trigger_agreement) |
-| $t2s$     | second person singular [trigger agreement](/trigger_agreement) |
-| $t2p$     | second person plural [trigger agreement](/trigger_agreement) |
-| $t3as$    | third person animate singular [trigger agreement](/trigger_agreement) |
-| $t3is$    | third person inanimate singular [trigger agreement](/trigger_agreement) |
-| $t3ap$    | third person animate plural [trigger agreement](/trigger_agreement) |
-| $t3ip$    | third person inanimate plural [trigger agreement](/trigger_agreement) |
-| $gn$      | [general stem form](/primary) |
-| $np$      | [nonpast tense](/primary) |
-| $pt$      | [past tense](/primary) |
-| $pf$      | [perfective aspect](/primary) |
-| $imnp$    | [imperfective aspect, nonpast tense](/primary) |
-| $impt$    | [imperfective aspect, past tense](/primary) |
-| $inc$     | [inceptive aspect](/primary) |
-| $fqnp$    | [frequentative aspect, nonpast tense](/primary) |
-| $fqpt$    | [frequentative aspect, past tense](/primary) |
-| $pro$     | [prospective aspect](/tertiary) |
-| $exp$     | [experiential aspect](/tertiary) |
+|         |                                                                         |
+|:--------|:------------------------------------------------------------------------|
+| $au$    | [augment](/augment)                                                     |
+| $na$    | [non-augment](/augment)                                                 |
+| $age$   | [agentive case](/agentive)                                              |
+| $ins$   | [instrumental case](/instrumental)                                      |
+| $pat$   | [patientive case](/patientive)                                          |
+| $gen$   | [genitive case](/genitive)                                              |
+| $all$   | [allative case](/adpositional)                                          |
+| $loc$   | [locative case](/adpositional)                                          |
+| $abl$   | [ablative case](/adpositional)                                          |
+| $prl$   | [perlative case](/adpositional)                                         |
+| $par$   | [partitive case](/partitive)                                            |
+| $def$   | [definite](/partitive)                                                  |
+| $sg$    | [singular](/class)                                                      |
+| $du$    | [dual](/class)                                                          |
+| $pl$    | [plural](/class)                                                        |
+| $1excl$ | first person exclusive [pronouns](/personal_pronouns)                   |
+| $1incl$ | first person inclusive [pronouns](/personal_pronouns)                   |
+| $2fam$  | second person familiar [pronouns](/personal_pronouns)                   |
+| $2fml$  | second person formal [pronouns](/personal_pronouns)                     |
+| $2hon$  | second person honorific [pronouns](/personal_pronouns)                  |
+| $3rd$   | third person [pronouns](/personal_pronouns)                             |
+| $hea$   | [head class](/head)                                                     |
+| $bra$   | [branch class](/branch)                                                 |
+| $lea$   | [leaf class](/leaf)                                                     |
+| $rck$   | [rock class](/rock)                                                     |
+| $sea$   | [sea class](/sea)                                                       |
+| $tage$  | [agentive trigger](/trigger_agreement)                                  |
+| $tgen$  | [genitive trigger](/trigger_agreement)                                  |
+| $tloc$  | [locative trigger](/trigger_agreement)                                  |
+| $dep$   | [dependent clause](/trigger_agreement)                                  |
+| $t1s$   | first person singular [trigger agreement](/trigger_agreement)           |
+| $t1p$   | first person plural [trigger agreement](/trigger_agreement)             |
+| $t2s$   | second person singular [trigger agreement](/trigger_agreement)          |
+| $t2p$   | second person plural [trigger agreement](/trigger_agreement)            |
+| $t3as$  | third person animate singular [trigger agreement](/trigger_agreement)   |
+| $t3is$  | third person inanimate singular [trigger agreement](/trigger_agreement) |
+| $t3ap$  | third person animate plural [trigger agreement](/trigger_agreement)     |
+| $t3ip$  | third person inanimate plural [trigger agreement](/trigger_agreement)   |
+| $gn$    | [general stem form](/primary)                                           |
+| $np$    | [nonpast tense](/primary)                                               |
+| $pt$    | [past tense](/primary)                                                  |
+| $pf$    | [perfective aspect](/primary)                                           |
+| $imnp$  | [imperfective aspect, nonpast tense](/primary)                          |
+| $impt$  | [imperfective aspect, past tense](/primary)                             |
+| $inc$   | [inceptive aspect](/primary)                                            |
+| $fqnp$  | [frequentative aspect, nonpast tense](/primary)                         |
+| $fqpt$  | [frequentative aspect, past tense](/primary)                            |
+| $pro$   | [prospective aspect](/tertiary)                                         |
+| $exp$   | [experiential aspect](/tertiary)                                        |

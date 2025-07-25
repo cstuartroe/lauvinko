@@ -146,7 +146,7 @@ It is not infrequent for the speaker to want to maintain something
 at the center of discourse which does not occupy one of those three case
 roles in a sentence; in such cases, the sentence does not use trigger
 marking as described in this section. Instead, the topic of the sentence
-is marked with the [partitive case](/partitive) and there are no
+is marked with the [patientive case](/patientive) and there are no
 trigger agreement prefixes on the verb (cf. [](argument_order)).
 
 # Dependence marking
@@ -157,9 +157,10 @@ are unambiguously verbs - or, at any rate, the only Lauvìnko
 words which are unambiguously finite verbs - are those which
 show topic agreement. This may seem like a difficult test to
 apply, given that same topic and agent voice are both zero-marked,
-but in fact any word with dependent noun phrases which does not
+but in fact, words with dependent noun phrases which do not
 show topic agreement
-is instead overtly marked for dependence with a prefix *et-*.
+are generally instead overtly marked for dependence with a
+prefix *et-*.
 
 A frequent use of this prefix is in nominalized clauses.
 
@@ -169,7 +170,7 @@ $2fml$.$sg$.$au$-$age$ bake.$pf$.$na$=$rck$.$na$-$par$ $dep$-put.$pf$.$na$ $gen$
 I saw you throw a brick.
 ```
 
-Even semantically very noun-line words which have dependent noun phrases
+Even semantically very noun-like words which have dependent noun phrases
 use the dependence prefix.
 
 ```

@@ -7,11 +7,11 @@ from lauvinko.lang.proto_kasanic.phonology import (
     PKSurfaceForm,
 )
 
-FALAVAY_CONSONANTS: dict[ProtoKasanicOnset, str, str] = {
+FALAVAY_CONSONANTS: dict[ProtoKasanicOnset, str] = {
     ProtoKasanicOnset.M:   "m",
     ProtoKasanicOnset.N:   "n",
     ProtoKasanicOnset.NY:  "N",
-    ProtoKasanicOnset.NG:  "g",
+    ProtoKasanicOnset.NG:  "q",
     ProtoKasanicOnset.NGW: "m",
 
     ProtoKasanicOnset.P:  "p",
@@ -20,83 +20,45 @@ FALAVAY_CONSONANTS: dict[ProtoKasanicOnset, str, str] = {
     ProtoKasanicOnset.K:  "k",
     ProtoKasanicOnset.KW: "p",
 
-    ProtoKasanicOnset.MP:  "p",
-    ProtoKasanicOnset.NT:  "t",
-    ProtoKasanicOnset.NC:  "j",
-    ProtoKasanicOnset.NK:  "k",
-    ProtoKasanicOnset.NKW: "p",
+    ProtoKasanicOnset.MP:  "Mp",
+    ProtoKasanicOnset.NT:  "Mt",
+    ProtoKasanicOnset.NC:  "Mj",
+    ProtoKasanicOnset.NK:  "Mk",
+    ProtoKasanicOnset.NKW: "Mp",
 
-    ProtoKasanicOnset.PP:  "p",
-    ProtoKasanicOnset.TT:  "t",
-    ProtoKasanicOnset.CC:  "j",
-    ProtoKasanicOnset.KK:  "k",
-    ProtoKasanicOnset.KKW: "p",
+    ProtoKasanicOnset.PP:  "Hp",
+    ProtoKasanicOnset.TT:  "Ht",
+    ProtoKasanicOnset.CC:  "Hj",
+    ProtoKasanicOnset.KK:  "Hk",
+    ProtoKasanicOnset.KKW: "Hp",
 
     ProtoKasanicOnset.S: "x",
     ProtoKasanicOnset.H: "h",
 
     ProtoKasanicOnset.R: "l",
     ProtoKasanicOnset.Y: "y",
-    ProtoKasanicOnset.W: "v",
+    ProtoKasanicOnset.W: "w",
+
+    None: "",
 }
 
-FALAVAY_FREE_VOWELS: dict[ProtoKasanicVowel, str] = {
-    ProtoKasanicVowel.AA: "A",
-    ProtoKasanicVowel.E:  "E",
-    ProtoKasanicVowel.O:  "O",
-    ProtoKasanicVowel.A:  "Q",
-    ProtoKasanicVowel.I:  "I",
-    ProtoKasanicVowel.U:  "U",
+FALAVAY_VOWELS: dict[ProtoKasanicVowel, str] = {
+    ProtoKasanicVowel.AA: "a",
+    ProtoKasanicVowel.E:  "e",
+    ProtoKasanicVowel.O:  "o",
+    ProtoKasanicVowel.A:  "v",
+    ProtoKasanicVowel.I:  "i",
+    ProtoKasanicVowel.U:  "u",
     ProtoKasanicVowel.AI: "Y",
     ProtoKasanicVowel.AU: "W",
 }
 
-FALAVAY_BOUND_VOWELS: dict[ProtoKasanicVowel, tuple[str, str]] = {
-    ProtoKasanicVowel.AA: ("",  "a"),
-    ProtoKasanicVowel.E:  ("e", ""),
-    ProtoKasanicVowel.O:  ("e", "o"),
-    ProtoKasanicVowel.A:  ("",  ""),
-    ProtoKasanicVowel.I:  ("",  "i"),
-    ProtoKasanicVowel.U:  ("",  "u"),
-    ProtoKasanicVowel.AI: ("",  "Y"),
-    ProtoKasanicVowel.AU: ("",  "W"),
-}
 
-
-AUGMENT_CHAR = "G"
-SERIF_CHAR = "q"
-
-SERIF_CONSONANTS = set("hktx")
-SERIF_BLOCKING_VOWELS = set("aou")
-
-WIDE_CONSONANTS = set("hklmtxy")
-WIDE_VOWELS = {
-    "i": "X",
-    "u": "Z",
-}
+AUGMENT_CHAR = "gv"
 
 
 def syllable_falavay(syllable: ProtoKasanicSyllable) -> str:
-    if syllable.onset is None:
-        return FALAVAY_FREE_VOWELS[syllable.vowel]
-
-    if syllable.onset.moa is MannerOfArticulation.PREGLOTTALIZED_STOP:
-        pre_diacritic = "H"
-    elif syllable.onset.moa is MannerOfArticulation.PRENASALIZED_STOP:
-        pre_diacritic = "M"
-    else:
-        pre_diacritic = ""
-
-    onset_char = FALAVAY_CONSONANTS[syllable.onset]
-
-    pre_vowel, post_vowel = FALAVAY_BOUND_VOWELS[syllable.vowel]
-
-    serif = SERIF_CHAR if (onset_char in SERIF_CONSONANTS and post_vowel not in SERIF_BLOCKING_VOWELS) else ""
-
-    if onset_char in WIDE_CONSONANTS:
-        post_vowel = WIDE_VOWELS.get(post_vowel, post_vowel)
-
-    return pre_diacritic + pre_vowel + onset_char + serif + post_vowel
+    return FALAVAY_CONSONANTS[syllable.onset] + FALAVAY_VOWELS[syllable.vowel]
 
 
 def falavay(form: PKSurfaceForm, augment: bool = False) -> str:

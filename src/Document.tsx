@@ -94,10 +94,10 @@ export default class Document extends Component<Props, State> {
       .reduce((prev, curr) => prev + " " + curr, "");
 
     const falavay = datas.map(d => d?.content?.falavay.join("\u200b") || "")
-      .reduce((prev, curr) => prev + (prev && ".\u200b") + curr, "")
+      .reduce((prev, curr) => prev + (prev && ".\u200b") + curr, "") + ".";
 
     const translation = datas.map(d => d?.translation || "")
-      .reduce((prev, curr) => prev + " " + curr, "")
+      .reduce((prev, curr) => prev + " " + curr, "");
 
     return (
       <>
